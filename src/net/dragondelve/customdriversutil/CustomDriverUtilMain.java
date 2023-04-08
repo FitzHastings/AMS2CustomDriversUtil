@@ -15,9 +15,15 @@
 package net.dragondelve.customdriversutil;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import net.dragondelve.customdriversutil.gui.CustomDriverUtilController;
+import net.dragondelve.customdriversutil.gui.StageController;
+
+import javax.xml.bind.annotation.XmlRootElement;
+import java.net.URL;
 
 public class CustomDriverUtilMain extends Application {
     public static void main(String[] args) {
@@ -26,9 +32,20 @@ public class CustomDriverUtilMain extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        BorderPane bp = new BorderPane();
-        Scene scene = new Scene(bp);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        try {
+            FXMLLoader loader = new FXMLLoader(new URL("file:fxml/CustomDriverUtilMain.fxml"));
+            StageController controller = new CustomDriverUtilController();
+            controller.setStage(primaryStage);
+
+            loader.setController(controller);
+            primaryStage.setTitle("Custom Driver Utility V2");
+            Scene scene = new Scene(loader.load());
+            primaryStage.setScene(scene);
+            primaryStage.setMinWidth(880);
+            primaryStage.setMinHeight(800);
+            primaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
