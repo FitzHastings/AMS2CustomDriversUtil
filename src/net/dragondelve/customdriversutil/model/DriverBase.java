@@ -12,12 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package net.dragondelve.customdriversutil.fx.css;
-
-import javafx.scene.control.Label;
+package net.dragondelve.customdriversutil.model;
 
 /**
- * This class only exists for css styling.
+ * Represents a base model of a driver described by AMS2 Developers here:
+ * https://forum.reizastudios.com/threads/information-for-customizing-ai-drivers-in-ams2-v1-3.21758/
  */
-public class PromptLabel extends Label {
+abstract class DriverBase {
 }

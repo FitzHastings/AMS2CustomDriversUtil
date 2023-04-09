@@ -23,13 +23,16 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 
+/**
+ *
+ */
 public class CustomDriverUtilController implements StageController {
 
     @FXML
-    BorderPane rootPane;
+    private BorderPane rootPane;
 
     @FXML
-    AnchorPane centralAnchorPane;
+    private AnchorPane centralAnchorPane;
 
     Stage stage = new Stage();
 

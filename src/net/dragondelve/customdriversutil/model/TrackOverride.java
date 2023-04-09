@@ -12,12 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package net.dragondelve.customdriversutil.fx.css;
+package net.dragondelve.customdriversutil.model;
 
-import javafx.scene.control.Label;
-
-/**
- * This class only exists for css styling.
- */
-public class PromptLabel extends Label {
+final public class TrackOverride extends DriverBase {
 }

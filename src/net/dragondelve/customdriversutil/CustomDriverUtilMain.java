@@ -17,19 +17,29 @@ package net.dragondelve.customdriversutil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import net.dragondelve.customdriversutil.gui.CustomDriverUtilController;
 import net.dragondelve.customdriversutil.gui.StageController;
 
-import javax.xml.bind.annotation.XmlRootElement;
 import java.net.URL;
 
+/**
+ *
+ */
 public class CustomDriverUtilMain extends Application {
+    /**
+     * Application's main method.
+     * @param args Program arguments (ignored).
+     */
     public static void main(String[] args) {
         launch();
     }
 
+    /**
+     *
+     * @param primaryStage primary stage that is used to display the GUI.
+     * @throws Exception any uncaught exception.
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         try {
@@ -42,7 +52,8 @@ public class CustomDriverUtilMain extends Application {
             Scene scene = new Scene(loader.load());
             primaryStage.setScene(scene);
             primaryStage.setMinWidth(880);
-            primaryStage.setMinHeight(800);
+            primaryStage.setMinHeight(700);
+            primaryStage.setHeight(700);
             primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();
