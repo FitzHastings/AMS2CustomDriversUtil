@@ -223,11 +223,19 @@ AnchorPane {
     -fx-border-width: 1;
     -fx-border-color: #9aa2a6;
     -fx-font: 10pt "Arial";
+    -fx-prompt-text-fill: #7b868d;
 }
 
 .text-field:focused {
     -fx-text-fill: #9aa2a6;
-    -fx-background-color: #343d44;
+    -fx-background-color: #21282c;
+    -fx-border-width: 1;
+    -fx-border-color: #a34097;
+    -fx-font: 10pt "Arial";
+}
+
+.text-field:hover {
+    -fx-text-fill: #9aa2a6;
     -fx-border-width: 1;
     -fx-border-color: #a34097;
     -fx-font: 10pt "Arial";
@@ -321,6 +329,19 @@ ImageChooserButton: pressed {
 
 .context-menu {
     -fx-background-color: #181e21;
+}
+
+.slider .track {
+    -fx-background-color: #7b868d;
+}
+
+.slider .thumb {
+    -fx-background-color: #a34097
+}
+
+.slider .axis .axis-tick-mark, .slider .axis .axis-minor-tick-mark {
+    -fx-fill: null;
+    -fx-stroke: #7b868d;
 }
 
 BorderLabel {

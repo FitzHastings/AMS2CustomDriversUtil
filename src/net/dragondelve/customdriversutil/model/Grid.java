@@ -14,21 +14,5 @@
 
 package net.dragondelve.customdriversutil.model;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
-/**
- * Represents a model of a specific track override as described by AMS2 Developers here:
- * https://forum.reizastudios.com/threads/information-for-customizing-ai-drivers-in-ams2-v1-3.21758/
- * It stores a list of track names for which this track is an override.
- */
-final public class TrackOverride extends DriverBase {
-    /**
-     * Full list of tracks that this override applies to.
-     */
-    private final ObservableList<Track> tracks = FXCollections.observableArrayList();
-
-    public ObservableList<Track> getTrack() {
-        return tracks;
-    }
+public final class Grid {
 }
