@@ -340,7 +340,6 @@ ImageChooserButton: pressed {
 }
 
 .slider .axis .axis-tick-mark, .slider .axis .axis-minor-tick-mark {
-    -fx-fill: null;
     -fx-stroke: #7b868d;
 }
 

@@ -19,13 +19,29 @@ import net.dragondelve.customdriversutil.util.GridExporter;
 
 import java.io.File;
 
+/**
+ * Responsible for the conversion between this program's data model and  the AMS2 XML Custom Driver storage method.
+ * AMS2 XML representation of the custom AI drivers can be found here:
+ * https://forum.reizastudios.com/threads/information-for-customizing-ai-drivers-in-ams2-v1-3.21758/
+ */
 public class XMLGridExporter implements GridExporter {
-
+    /**
+     * Exports the given grid to a given file using JAXB. It uses the formatting described in
+     * https://forum.reizastudios.com/threads/information-for-customizing-ai-drivers-in-ams2-v1-3.21758/
+     * @param grid Grid to be exported in an AMS2 XML format.
+     * @param file File to which the grid is to be exported. Should preferably end with .xml.
+     */
     @Override
     public void exportToFile(Grid grid, File file) {
 
     }
 
+    /**
+     * Marshals a given Grid to a string using JAXB. It uses the formatting described in
+     * https://forum.reizastudios.com/threads/information-for-customizing-ai-drivers-in-ams2-v1-3.21758/
+     * @param grid Grid to be serialized.
+     * @return Serialized Grid in an AMS2 Format.
+     */
     @Override
     public String exportToString(Grid grid) {
         return null;

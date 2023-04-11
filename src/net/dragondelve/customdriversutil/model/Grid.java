@@ -14,5 +14,28 @@
 
 package net.dragondelve.customdriversutil.model;
 
-public final class Grid {
+/**
+ * Full Grid of Drivers stores the specific class that has been assigned to the grid.
+ */
+public final class Grid extends DriverLibrary {
+    /**
+     * Class of cars that are driven by the grid.
+     */
+    private VehicleClass vehicleClass = new VehicleClass();
+
+    /**
+     * Lightweight accessor method.
+     * @return Class of cars that are driven by the grid.
+     */
+    public VehicleClass getVehicleClass() {
+        return vehicleClass;
+    }
+
+    /**
+     * Lightweight mutator method.
+     * @param vehicleClass Class of cars that are driven by the grid.
+     */
+    public void setVehicleClass(VehicleClass vehicleClass) {
+        this.vehicleClass = vehicleClass;
+    }
 }

@@ -337,7 +337,7 @@ final class XMLDriver {
 
     /**
      * Lightweight accessor method.
-     * @return The higher the value, the more the AI will try to save fuel in some strategic situations instead of pushing
+     * @return The higher the value, the more the AI will try to save fuel in some strategic situations instead of pushing.
      */
     @XmlElement(name = "fuel_management")
     public Double getFuelManagement() {
@@ -346,7 +346,7 @@ final class XMLDriver {
 
     /**
      * Lightweight mutator method.
-     * @param fuelManagement The higher the value, the more the AI will try to save fuel in some strategic situations instead of pushing
+     * @param fuelManagement The higher the value, the more the AI will try to save fuel in some strategic situations instead of pushing.
      */
     public void setFuelManagement(Double fuelManagement) {
         this.fuelManagement = fuelManagement;
