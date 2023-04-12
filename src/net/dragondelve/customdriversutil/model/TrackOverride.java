@@ -28,6 +28,10 @@ final public class TrackOverride extends DriverBase {
      */
     private final ObservableList<Track> tracks = FXCollections.observableArrayList();
 
+    /**
+     * Lightweight Accessor Method.
+     * @return Full list of tracks that this override applies to.
+     */
     public ObservableList<Track> getTrack() {
         return tracks;
     }

@@ -19,11 +19,17 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Represents an in game track.
  * Stores all properties to allow an automatic generation of track specific overrides.
+ * This class is fully annotated with JAXB for easy XML conversion.
  */
-public class Track {
+@XmlRootElement(name = "track")
+public final class Track {
     /**
      * Track name that is human-readable, it's used for display purposes.
      */
@@ -43,6 +49,7 @@ public class Track {
      * Lightweight accessor method.
      * @return Track name that is human-readable, it's used for display purposes.
      */
+    @XmlAttribute(name = "name")
     public String getName() {
         return name.get();
     }
@@ -56,9 +63,18 @@ public class Track {
     }
 
     /**
+     * Lightweight mutator method.
+     * @param name Track name that is human-readable, it's used for display purposes.
+     */
+    public void setName(String name) {
+        this.name.set(name);
+    }
+
+    /**
      * Lightweight accessor method.
      * @return Track name that is used in the XML when exporting.
      */
+    @XmlAttribute(name = "xml_name)")
     public String getXmlName() {
         return xmlName.get();
     }
@@ -72,9 +88,18 @@ public class Track {
     }
 
     /**
+     * Lightweight mutator method.
+     * @param xmlName Track name that is used in the XML when exporting.
+     */
+    public void setXmlName(String xmlName) {
+        this.xmlName.set(xmlName);
+    }
+
+    /**
      * Lightweight accessor method.
      * @return Flag that determines if the track is an oval track or a road course.
      */
+    @XmlElement(name = "is_oval")
     public boolean isOval() {
         return isOval.get();
     }
@@ -85,5 +110,13 @@ public class Track {
      */
     public BooleanProperty isOvalProperty() {
         return isOval;
+    }
+
+    /**
+     * Lightweight mutator method.
+     * @param isOval Flag that determines if the track is an oval track or a road course.
+     */
+    public void setOval(boolean isOval) {
+        this.isOval.set(isOval);
     }
 }

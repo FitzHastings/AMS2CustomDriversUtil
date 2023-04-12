@@ -12,25 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package net.dragondelve.customdriversutil.model;
+package net.dragondelve.customdriversutil.fx.css;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.scene.control.Label;
 
 /**
- * Represents a library of drivers.
+ * This class only exists for css styling.
  */
-public class DriverLibrary {
-    /**
-     * List of Drivers and their overrides in the library.
-     */
-    private final ObservableList<Driver> drivers = FXCollections.observableArrayList();
-
-    /**
-     * Lightweight accessor method.
-     * @return List of Drivers and their overrides in the library.
-     */
-    public ObservableList<Driver> getDrivers() {
-        return drivers;
-    }
+public class BorderLabel extends Label {
 }

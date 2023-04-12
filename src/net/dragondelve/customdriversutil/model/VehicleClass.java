@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * This class is fully annotated with JAXB for easy XML conversion.
  */
 @XmlRootElement(name = "vehicle_class")
-public class VehicleClass {
+public final class VehicleClass {
     /**
      * Vehicle Class name that is human-readable, it's used for display purposes.
      */

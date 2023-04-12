@@ -17,20 +17,32 @@ package net.dragondelve.customdriversutil.model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import javax.xml.bind.annotation.XmlElementWrapper;
+
 /**
- * Represents a library of drivers.
+ * Library of tracks that is used when generating a custom AI grid.
+ * This class is fully annotated with JAXB for easy XML conversion.
  */
-public class DriverLibrary {
+public class TrackLibrary {
     /**
-     * List of Drivers and their overrides in the library.
+     * List of all tracks in the Track Library.
      */
-    private final ObservableList<Driver> drivers = FXCollections.observableArrayList();
+    private ObservableList<Track> tracks = FXCollections.observableArrayList();
 
     /**
      * Lightweight accessor method.
-     * @return List of Drivers and their overrides in the library.
+     * @return List of all tracks in the Track Library.
      */
-    public ObservableList<Driver> getDrivers() {
-        return drivers;
+    @XmlElementWrapper(name = "tracks")
+    public ObservableList<Track> getTracks() {
+        return tracks;
+    }
+
+    /**
+     * Lightweight mutator method.
+     * @param tracks List of all tracks in the Track Library.
+     */
+    public void setTracks(ObservableList<Track> tracks) {
+        this.tracks = tracks;
     }
 }
