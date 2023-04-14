@@ -16,6 +16,7 @@ package net.dragondelve.customdriversutil.util;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.util.logging.Level;
@@ -80,6 +81,26 @@ public class Configurator {
         } catch (JAXBException | IllegalArgumentException e) {
             e.printStackTrace();
             DDUtil.DEFAULT_LOGGER.log(Level.WARNING,"Configuration loading failed");
+            return false;
+        }
+    }
+
+    public boolean saveConfiguration() {
+        return saveConfiguration(CONFIGURATION_DEFAULT_PATHNAME);
+    }
+
+    public boolean saveConfiguration(String pathname) {
+        File config = new File(pathname);
+        DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Configuration saving initiated with path: " + pathname);
+        try {
+            JAXBContext context = JAXBContext.newInstance(Configuration.class);
+            Marshaller marshaller = context.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            marshaller.marshal(configuration, config);
+            return true;
+        } catch (JAXBException | IllegalArgumentException e) {
+            e.printStackTrace();
+            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Configuration loading failed");
             return false;
         }
     }

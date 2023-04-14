@@ -17,10 +17,17 @@ package net.dragondelve.customdriversutil.gui;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
+import net.dragondelve.customdriversutil.gui.editor.Editor;
+import net.dragondelve.customdriversutil.gui.editor.TrackLibraryEditor;
+import net.dragondelve.customdriversutil.model.Track;
+import net.dragondelve.customdriversutil.util.DDUtil;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -34,14 +41,17 @@ public class CustomDriverUtilController implements StageController {
     @FXML
     private AnchorPane centralAnchorPane;
 
+    @FXML
+    private MenuItem editTracksItem;
+
     Stage stage = new Stage();
 
     @FXML
     public void initialize() {
         rootPane.getStylesheets().clear();
-        rootPane.getStylesheets().add("css/Eraconstas.css");
+        rootPane.getStylesheets().add(DDUtil.MAIN_CSS_RESOURCE);
         try {
-            FXMLLoader loader = new FXMLLoader(new URL("file:fxml/DriverEditor.fxml"));
+            FXMLLoader loader = new FXMLLoader(new URL("file:"+DDUtil.DRIVER_EDITOR_FXML_PATHNAME));
             Node center = loader.load();
             centralAnchorPane.getChildren().add(center);
             AnchorPane.setTopAnchor(center, 0.0);
@@ -49,6 +59,40 @@ public class CustomDriverUtilController implements StageController {
             AnchorPane.setLeftAnchor(center, 0.0);
             AnchorPane.setRightAnchor(center, 0.0);
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        editTracksItem.setOnAction(e-> editTracksAction());
+    }
+
+    private void editTracksAction() {
+        Editor<Track> controller = new TrackLibraryEditor();
+        try {
+            openEditor(new URL("file:"+DDUtil.TRACK_EDITOR_FXML_PATHNAME), controller, "Track Library");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Creates a stage on which an editor controlled by a StageController can be displayed.
+     * Loads an FXML File from the URL, sets the controller and finally displays the stage.
+     * @param editorFXMLURL URL to a FXML file that contains the editor's gui information.
+     * @param controller controller to be used for the new Stage.
+     * @param title text title to be displayed on the new Stage.
+     */
+    private void openEditor(URL editorFXMLURL, StageController controller, String title) {
+        Stage stage = new Stage();
+        try {
+            FXMLLoader loader = new FXMLLoader(editorFXMLURL);
+            loader.setController(controller);
+            controller.setStage(stage);
+            Scene scene = new Scene(loader.load());
+            stage.setScene(scene);
+            stage.initOwner(this.stage);
+            stage.setTitle(title);
+            stage.showAndWait();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

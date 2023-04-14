@@ -21,4 +21,9 @@ import java.util.logging.Logger;
  */
 public abstract class DDUtil {
     public static Logger DEFAULT_LOGGER = Logger.getLogger("AMS2 Custom Drivers Util");
+
+    public static String TRACK_EDITOR_FXML_PATHNAME = "fxml/editor/TrackEditor.fxml";
+    public static String DRIVER_EDITOR_FXML_PATHNAME = "fxml/editor/DriverEditor.fxml";
+
+    public static String MAIN_CSS_RESOURCE = "css/Eraconstas.css";
 }

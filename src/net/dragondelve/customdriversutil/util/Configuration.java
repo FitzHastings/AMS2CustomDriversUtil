@@ -14,10 +14,23 @@
 
 package net.dragondelve.customdriversutil.util;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Configuration file holds all possible configuration states.
  * This class is fully annotated with JAXB for easy XML conversion.
  */
+@XmlRootElement(name = "config")
 public class Configuration {
+    private String trackLibraryPathname;
 
+    @XmlElement (name = "track_library")
+    public String getTrackLibraryPathname() {
+        return trackLibraryPathname;
+    }
+
+    public void setTrackLibraryPathname(String trackLibraryPathname) {
+        this.trackLibraryPathname = trackLibraryPathname;
+    }
 }

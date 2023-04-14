@@ -58,9 +58,9 @@ limitations under the License. -->
            </Menu>
            <Menu mnemonicParsing="false" text="Libraries">
                <Menu mnemonicParsing="false" text="Tracks">
-                   <MenuItem mnemonicParsing="false" text="Edit"/>
-                   <MenuItem mnemonicParsing="false" text="Export"/>
-                   <MenuItem mnemonicParsing="false" text="Import"/>
+                   <MenuItem fx:id="editTracksItem" mnemonicParsing="false" text="Edit"/>
+                   <MenuItem fx:id="exportTracksItem" mnemonicParsing="false" text="Export"/>
+                   <MenuItem fx:id="importTracksItem" mnemonicParsing="false" text="Import"/>
                </Menu>
                <Menu mnemonicParsing="false" text="Vehicle Classes">
                    <MenuItem mnemonicParsing="false" text="Edit"/>
