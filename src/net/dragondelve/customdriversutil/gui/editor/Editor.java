@@ -12,7 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package net.dragondelve.customdriversutil.gui;
+package net.dragondelve.customdriversutil.gui.editor;
 
-public interface Editor {
+import net.dragondelve.customdriversutil.gui.StageController;
+
+import java.util.List;
+
+/**
+ *
+ */
+public interface Editor<T> extends StageController {
+    List<T> getItems();
+
+    void setItems(List<T> items);
+
 }

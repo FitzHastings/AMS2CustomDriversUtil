@@ -67,6 +67,10 @@ limitations under the License. -->
                    <MenuItem mnemonicParsing="false" text="Export"/>
                    <MenuItem mnemonicParsing="false" text="Import"/>
                </Menu>
+               <Menu mnemonicParsing="false" text="Drivers">
+                   <MenuItem mnemonicParsing="false" text="Export"/>
+                   <MenuItem mnemonicParsing="false" text="Import"/>
+               </Menu>
            </Menu>
            <Menu mnemonicParsing="false" text="Settings">
                <MenuItem mnemonicParsing="false" text="Configuration"/>
