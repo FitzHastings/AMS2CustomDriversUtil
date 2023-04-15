@@ -37,7 +37,7 @@ public class Configurator {
     /**
      * The configuration of the program.
      */
-    private Configuration configuration;
+    private Configuration configuration = new Configuration();
 
     /**
      * Lightweight accessor method.

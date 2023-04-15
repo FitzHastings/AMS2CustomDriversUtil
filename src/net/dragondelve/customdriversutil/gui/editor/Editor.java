@@ -25,5 +25,4 @@ public interface Editor<T> extends StageController {
     List<T> getItems();
 
     void setItems(List<T> items);
-
 }

@@ -14,6 +14,7 @@
 
 package net.dragondelve.customdriversutil.gui;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -21,11 +22,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import net.dragondelve.customdriversutil.gui.editor.Editor;
 import net.dragondelve.customdriversutil.gui.editor.TrackLibraryEditor;
 import net.dragondelve.customdriversutil.model.Track;
+import net.dragondelve.customdriversutil.util.Configurator;
 import net.dragondelve.customdriversutil.util.DDUtil;
+import net.dragondelve.customdriversutil.util.LibraryManager;
+
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -43,6 +49,12 @@ public class CustomDriverUtilController implements StageController {
 
     @FXML
     private MenuItem editTracksItem;
+
+    @FXML
+    private MenuItem exportTracksItem;
+
+    @FXML
+    private MenuItem importTracksItem;
 
     Stage stage = new Stage();
 
@@ -63,15 +75,55 @@ public class CustomDriverUtilController implements StageController {
         }
 
         editTracksItem.setOnAction(e-> editTracksAction());
+        exportTracksItem.setOnAction(e->exportTracksAction());
+        importTracksItem.setOnAction(e->importTracksAction());
     }
 
     private void editTracksAction() {
         Editor<Track> controller = new TrackLibraryEditor();
+        controller.setItems(LibraryManager.getInstance().getTrackLibrary().getTracks());
         try {
-            openEditor(new URL("file:"+DDUtil.TRACK_EDITOR_FXML_PATHNAME), controller, "Track Library");
+            URL editorFXMLURL = new URL("file:"+DDUtil.TRACK_EDITOR_FXML_PATHNAME);
+            Stage stage = new Stage();
+            try {
+                FXMLLoader loader = new FXMLLoader(editorFXMLURL);
+                loader.setController(controller);
+                controller.setStage(stage);
+                Scene scene = new Scene(loader.load());
+                stage.setScene(scene);
+                stage.initOwner(this.stage);
+                stage.setTitle("Track Library");
+                stage.showAndWait();
+                LibraryManager.getInstance().getTrackLibrary().setTracks(FXCollections.observableArrayList(controller.getItems()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+    }
+
+    private void exportTracksAction() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Export Track Library");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("xml library file","*.xml"));
+        fileChooser.setInitialDirectory(new File("library/tracks"));
+        File selectedFile = fileChooser.showSaveDialog(stage);
+        if(selectedFile != null)
+            LibraryManager.getInstance().exportTrackLibrary(selectedFile.getPath());
+    }
+
+    private void importTracksAction() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Import Track Library");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("xml library file","*.xml"));
+        fileChooser.setInitialDirectory(new File("library/tracks"));
+        File selectedFile = fileChooser.showOpenDialog(stage);
+        if(selectedFile != null)
+            if(LibraryManager.getInstance().importTrackLibrary(selectedFile.getPath())) {
+                Configurator.getInstance().getConfiguration().setTrackLibraryPathname(selectedFile.getPath());
+                Configurator.getInstance().saveConfiguration();
+            }
     }
 
     /**

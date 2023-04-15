@@ -18,11 +18,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Library of tracks that is used when generating a custom AI grid.
  * This class is fully annotated with JAXB for easy XML conversion.
  */
+@XmlRootElement(name = "track_library")
 public class TrackLibrary {
     /**
      * List of all tracks in the Track Library.

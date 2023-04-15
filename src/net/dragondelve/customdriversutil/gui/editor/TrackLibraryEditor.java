@@ -75,9 +75,9 @@ public class TrackLibraryEditor implements Editor<Track> {
 
     private void addTrackAction() {
         Track track = new Track();
-        track.nameProperty().set("New Name");
-        track.xmlNameProperty().set("track_name");
-        track.isOvalProperty().set(true);
+        track.nameProperty().set("");
+        track.xmlNameProperty().set("");
+        track.isOvalProperty().set(false);
         items.add(track);
     }
 

@@ -74,7 +74,7 @@ public final class Track {
      * Lightweight accessor method.
      * @return Track name that is used in the XML when exporting.
      */
-    @XmlAttribute(name = "xml_name)")
+    @XmlAttribute(name = "xml_name")
     public String getXmlName() {
         return xmlName.get();
     }
