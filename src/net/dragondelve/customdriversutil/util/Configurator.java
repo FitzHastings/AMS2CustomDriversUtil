@@ -56,6 +56,14 @@ public class Configurator {
     }
 
     /**
+     * Lightweight mutator method.
+     * @param configuration program's new configuration, Should only be used if loadConfiguration has failed.
+     */
+    public void setConfiguration(Configuration configuration) {
+        this.configuration = configuration;
+    }
+
+    /**
      * Attempts to load the configuration from the default pathname.
      * If it fails to load the configuration it will return false, if it succeeds in loading the configuration it will return true, allowing
      * the GUI to alert the user of configuration file becoming corrupted or missing.

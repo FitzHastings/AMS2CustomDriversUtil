@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<track_library>
+    <tracks>
+        <tracks name="test track" xml_name="test_track">
+            <is_oval>false</is_oval>
+        </tracks>
+    </tracks>
+</track_library>

@@ -24,6 +24,8 @@ public abstract class DDUtil {
 
     public static String TRACK_EDITOR_FXML_PATHNAME = "fxml/editor/TrackEditor.fxml";
     public static String DRIVER_EDITOR_FXML_PATHNAME = "fxml/editor/DriverEditor.fxml";
+    public static String MAIN_WINDOW_FXML_PATHNAME = "fxml/CustomDriverUtilMain.fxml";
+    public static String TRACK_LIBRARY_DEFAULT_PATHNAME = "library/tracks/ams2_1.4.6.4.xml";
 
     public static String MAIN_CSS_RESOURCE = "css/Eraconstas.css";
 }

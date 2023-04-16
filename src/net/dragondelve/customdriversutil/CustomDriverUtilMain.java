@@ -22,7 +22,10 @@ import javafx.stage.Stage;
 import net.dragondelve.customdriversutil.gui.CustomDriverUtilController;
 import net.dragondelve.customdriversutil.gui.StageController;
 import net.dragondelve.customdriversutil.model.Track;
+import net.dragondelve.customdriversutil.model.TrackLibrary;
+import net.dragondelve.customdriversutil.util.Configuration;
 import net.dragondelve.customdriversutil.util.Configurator;
+import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
 
 import java.net.URL;
@@ -47,21 +50,11 @@ public class CustomDriverUtilMain extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         if(!Configurator.getInstance().loadConfiguration()) {
-            Configurator.getInstance().getConfiguration().setTrackLibraryPathname("library/tracks/ams2_1.4.6.4.xml");
-            Configurator.getInstance().saveConfiguration();
-        }
-
-        if(!LibraryManager.getInstance().importTrackLibrary(Configurator.getInstance().getConfiguration().getTrackLibraryPathname())) {
-            Track testTrack = new Track();
-            testTrack.isOvalProperty().set(false);
-            testTrack.xmlNameProperty().set("test_track");
-            testTrack.nameProperty().set("test track");
-            LibraryManager.getInstance().getTrackLibrary().setTracks(FXCollections.observableArrayList(testTrack));
-            LibraryManager.getInstance().exportTrackLibrary(Configurator.getInstance().getConfiguration().getTrackLibraryPathname());
+            Configurator.getInstance().setConfiguration(generateDefaultConfiguration());
         }
 
         try {
-            FXMLLoader loader = new FXMLLoader(new URL("file:fxml/CustomDriverUtilMain.fxml"));
+            FXMLLoader loader = new FXMLLoader(new URL("file:"+DDUtil.MAIN_WINDOW_FXML_PATHNAME));
             StageController controller = new CustomDriverUtilController();
             controller.setStage(primaryStage);
 
@@ -76,5 +69,15 @@ public class CustomDriverUtilMain extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Generates a new configuration for the program with default values if conf.xml was not found.
+     * @return newly generated default configuration.
+     */
+    private Configuration generateDefaultConfiguration() {
+        Configuration configuration = new Configuration();
+        configuration.setTrackLibraryPathname(DDUtil.TRACK_LIBRARY_DEFAULT_PATHNAME);
+        return configuration;
     }
 }
