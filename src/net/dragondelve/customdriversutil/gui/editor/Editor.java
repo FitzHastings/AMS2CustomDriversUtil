@@ -14,15 +14,25 @@
 
 package net.dragondelve.customdriversutil.gui.editor;
 
+import javafx.collections.ObservableList;
 import net.dragondelve.customdriversutil.gui.StageController;
 
 import java.util.List;
 
 /**
- *
+ * JavaFX Editor that can edit an ObservableList of items of T.
  */
 public interface Editor<T> extends StageController {
-    List<T> getItems();
+    /**
+     * Lightweight accessor method.
+     * @return an observableArrayList of items of T.
+     */
+    ObservableList<T> getItems();
 
-    void setItems(List<T> items);
+    /**
+     * Lightweight mutator method.
+     * Should be called before the editor is displayed to the user.
+     * @param items an observableList of items of T.
+     */
+    void setItems(ObservableList<T> items);
 }

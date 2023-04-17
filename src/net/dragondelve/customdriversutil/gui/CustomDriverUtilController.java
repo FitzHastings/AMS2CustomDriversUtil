@@ -82,25 +82,7 @@ public class CustomDriverUtilController implements StageController {
     private void editTracksAction() {
         Editor<Track> controller = new TrackLibraryEditor();
         controller.setItems(LibraryManager.getInstance().getTrackLibrary().getTracks());
-        try {
-            URL editorFXMLURL = new URL("file:"+DDUtil.TRACK_EDITOR_FXML_PATHNAME);
-            Stage stage = new Stage();
-            try {
-                FXMLLoader loader = new FXMLLoader(editorFXMLURL);
-                loader.setController(controller);
-                controller.setStage(stage);
-                Scene scene = new Scene(loader.load());
-                stage.setScene(scene);
-                stage.initOwner(this.stage);
-                stage.setTitle("Track Library");
-                stage.showAndWait();
-                LibraryManager.getInstance().getTrackLibrary().setTracks(FXCollections.observableArrayList(controller.getItems()));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+        openEditor(DDUtil.TRACK_EDITOR_FXML_PATHNAME, controller, "Track Library");
     }
 
     private void exportTracksAction() {
@@ -129,14 +111,14 @@ public class CustomDriverUtilController implements StageController {
     /**
      * Creates a stage on which an editor controlled by a StageController can be displayed.
      * Loads an FXML File from the URL, sets the controller and finally displays the stage.
-     * @param editorFXMLURL URL to a FXML file that contains the editor's gui information.
+     * @param editorFXMLpathname pathname to a FXML file that contains the editor's gui information.
      * @param controller controller to be used for the new Stage.
      * @param title text title to be displayed on the new Stage.
      */
-    private void openEditor(URL editorFXMLURL, StageController controller, String title) {
+    private void openEditor(String editorFXMLpathname, StageController controller, String title) {
         Stage stage = new Stage();
         try {
-            FXMLLoader loader = new FXMLLoader(editorFXMLURL);
+            FXMLLoader loader = new FXMLLoader(new URL("file:"+editorFXMLpathname));
             loader.setController(controller);
             controller.setStage(stage);
             Scene scene = new Scene(loader.load());

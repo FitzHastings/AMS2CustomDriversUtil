@@ -16,6 +16,15 @@ package net.dragondelve.customdriversutil.gui;
 
 import javafx.stage.Stage;
 
+/**
+ * A JavaFX entity that controls the stage on which it is displayed should implement StageController. This interface
+ * is used when the given Controller must have an ability to create its own pop-up windows, alerts and so on, or
+ * if this Controller needs a way to close itself.
+ */
 public interface StageController {
+    /**
+     * Lightweight mutator method.
+     * @param stage Stage on which this controller is going to be displayed.
+     */
     void setStage(Stage stage);
 }
