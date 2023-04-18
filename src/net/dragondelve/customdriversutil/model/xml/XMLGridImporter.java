@@ -30,7 +30,7 @@ public class XMLGridImporter implements GridImporter {
      * Imports a given string as a grid. If the String is a valid XML formatted with AMS2 XML representation of Custom AI it will return a Grid.
      * This will not set the correct Class for the grid. This should be handled elsewhere.
      * @param source Source String. Should be an XML formatted with AMS2 XML representation of Custom AI.
-     * @return new instance of a Grid from the source, or null if the import has failed.
+     * @return New instance of a Grid from the source, or null if the import has failed.
      */
     @Override
     public Grid importThis(String source) {
@@ -40,8 +40,8 @@ public class XMLGridImporter implements GridImporter {
     /**
      * Imports a grid from a given File. If the File contains a valid XML formatted with AMS2 XML representation of Custom AI it will return a Grid.
      * This will not set the correct Class for the grid. This should be handled elsewhere.
-     * @param file an XML file formatted with AMS2 XML representation of Custom AI.
-     * @return new instance of a Grid from the source, or null if the import has failed.
+     * @param file An XML file formatted with AMS2 XML representation of Custom AI.
+     * @return New instance of a Grid from the source, or null if the import has failed.
      */
     @Override
     public Grid importFromFile(File file) {

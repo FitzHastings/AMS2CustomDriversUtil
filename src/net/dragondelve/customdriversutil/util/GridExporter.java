@@ -18,7 +18,21 @@ import net.dragondelve.customdriversutil.model.Grid;
 
 import java.io.File;
 
+/**
+ * Exports a given Grid to a File or to a String.
+ */
 public interface GridExporter {
+    /**
+     * Exports the given grid to a given file.
+     * @param grid Grid to be exported.
+     * @param file File to which the grid is to be exported.
+     */
     void exportToFile(Grid grid, File file);
+
+    /**
+     * Marshals a given Grid to a String.
+     * @param grid Grid to be serialized.
+     * @return Serialized Grid in an AMS2 Format.
+     */
     String exportToString(Grid grid);
 }

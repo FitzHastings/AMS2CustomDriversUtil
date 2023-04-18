@@ -93,10 +93,19 @@ public class Configurator {
         }
     }
 
+    /**
+     * Saves the current configuration to the defeault pathname, that is defined in CONFIGURATION_DEFAULT_PATHNAME
+     * @return True if the save succeeded, false if the configuration save failed.
+     */
     public boolean saveConfiguration() {
         return saveConfiguration(CONFIGURATION_DEFAULT_PATHNAME);
     }
 
+    /**
+     * Saves the current configuration to the given pathname.
+     * @param pathname pathname to which the configuration file is going to be saved.
+     * @return True if the save succeeded, false if the configuration save failed.
+     */
     public boolean saveConfiguration(String pathname) {
         File config = new File(pathname);
         DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Configuration saving initiated with path: " + pathname);

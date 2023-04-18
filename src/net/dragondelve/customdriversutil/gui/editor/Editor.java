@@ -17,8 +17,6 @@ package net.dragondelve.customdriversutil.gui.editor;
 import javafx.collections.ObservableList;
 import net.dragondelve.customdriversutil.gui.StageController;
 
-import java.util.List;
-
 /**
  * JavaFX Editor that can edit an ObservableList of items of T.
  */

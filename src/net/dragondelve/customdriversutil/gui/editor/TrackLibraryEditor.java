@@ -1,3 +1,17 @@
+// Copyright 2023 Prokhor Kalinin
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package net.dragondelve.customdriversutil.gui.editor;
 
 import javafx.collections.FXCollections;
@@ -75,8 +89,8 @@ public class TrackLibraryEditor implements Editor<Track> {
     private Stage stage;
 
     /**
-     * Initialize function initializes all the visual elements before they are displayed by the user.
-     * initialize function is called automatically by JavaFX when this editor is being loaded from XML.
+     * Initialize method initializes all the visual elements before they are displayed by the user.
+     * initialize method is called automatically by JavaFX when this editor is being loaded from XML.
      */
     @FXML
     public void initialize() {
@@ -90,13 +104,20 @@ public class TrackLibraryEditor implements Editor<Track> {
         trackTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if(oldValue != null)
                 unbindTrack(oldValue);
-            if(newValue != null)
+
+            if(newValue != null) {
+                setDisableControls(false);
                 bindTrack(newValue);
+            } else {
+                setDisableControls(true);
+            }
         });
 
         //button initialization
         addTrackButton.setOnAction(e->addTrackAction());
         removeTrackButton.setOnAction(e->removeTrackAction());
+
+        setDisableControls(true);
     }
 
     /**
@@ -178,5 +199,15 @@ public class TrackLibraryEditor implements Editor<Track> {
         trackNameTextField.textProperty().unbindBidirectional(track.nameProperty());
         trackXMLNameTextField.textProperty().unbindBidirectional(track.xmlNameProperty());
         isOvalCheckBox.selectedProperty().unbindBidirectional(track.isOvalProperty());
+    }
+
+    /**
+     * Method used to disable all editing controls if no selection in the tableView is made.
+     * @param disable True if you want to disable all controls, false if you want to enable them.
+     */
+    private void setDisableControls(boolean disable) {
+        trackNameTextField.setDisable(disable);
+        trackXMLNameTextField.setDisable(disable);
+        isOvalCheckBox.setDisable(disable);
     }
 }

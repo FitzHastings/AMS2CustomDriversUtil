@@ -18,7 +18,23 @@ import net.dragondelve.customdriversutil.model.Grid;
 
 import java.io.File;
 
+/**
+ * Imports a Grid from a File or a String.
+ */
 public interface GridImporter {
+    /**
+     * Imports a given string as a grid
+     * This will not set the correct Class for the grid. This should be handled elsewhere.
+     * @param source Source String.
+     * @return New instance of a Grid from the source, or null if the import has failed.
+     */
     Grid importThis(String source);
+
+    /**
+     * Imports a grid from a given File.
+     * This will not set the correct Class for the grid. This should be handled elsewhere.
+     * @param file a file that contains the Grid.
+     * @return New instance of a Grid from the source, or null if the import has failed.
+     */
     Grid importFromFile(File file);
 }

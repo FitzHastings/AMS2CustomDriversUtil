@@ -23,13 +23,24 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement(name = "config")
 public class Configuration {
+    /**
+     * pathname to the last imported TrackLibrary.
+     */
     private String trackLibraryPathname;
 
+    /**
+     * Lightweight accessor method.
+     * @return pathname to the last imported TrackLibrary.
+     */
     @XmlElement (name = "track_library")
     public String getTrackLibraryPathname() {
         return trackLibraryPathname;
     }
 
+    /**
+     * Lightweight mutator method.
+     * @param trackLibraryPathname pathname to the last imported TrackLibrary.
+     */
     public void setTrackLibraryPathname(String trackLibraryPathname) {
         this.trackLibraryPathname = trackLibraryPathname;
     }

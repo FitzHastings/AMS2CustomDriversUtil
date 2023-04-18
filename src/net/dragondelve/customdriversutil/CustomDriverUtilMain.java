@@ -15,23 +15,20 @@
 package net.dragondelve.customdriversutil;
 
 import javafx.application.Application;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import net.dragondelve.customdriversutil.gui.CustomDriverUtilController;
 import net.dragondelve.customdriversutil.gui.StageController;
-import net.dragondelve.customdriversutil.model.Track;
-import net.dragondelve.customdriversutil.model.TrackLibrary;
 import net.dragondelve.customdriversutil.util.Configuration;
 import net.dragondelve.customdriversutil.util.Configurator;
 import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
 
-import java.net.URL;
-
 /**
- *
+ * CustomDriverUtility's main class.
+ * Responsible for launching the application, making sure the Configurator loads the Configuration and the
+ * LibraryManager loads the last used libraries.
  */
 public class CustomDriverUtilMain extends Application {
     /**
@@ -43,7 +40,7 @@ public class CustomDriverUtilMain extends Application {
     }
 
     /**
-     *
+     * Application Start Method.
      * @param primaryStage primary stage that is used to display the GUI.
      * @throws Exception any uncaught exception.
      */
@@ -55,7 +52,7 @@ public class CustomDriverUtilMain extends Application {
         LibraryManager.getInstance().importTrackLibrary(Configurator.getInstance().getConfiguration().getTrackLibraryPathname());
 
         try {
-            FXMLLoader loader = new FXMLLoader(new URL("file:"+DDUtil.MAIN_WINDOW_FXML_PATHNAME));
+            FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().MAIN_WINDOW_FXML_URL);
             StageController controller = new CustomDriverUtilController();
             controller.setStage(primaryStage);
 
