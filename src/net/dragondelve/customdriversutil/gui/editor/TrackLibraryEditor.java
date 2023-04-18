@@ -89,6 +89,11 @@ public class TrackLibraryEditor implements Editor<Track> {
     private Stage stage;
 
     /**
+     * Flag that determines if the controls are currently disabled or not.
+     */
+    private boolean controlsAreDisabled = false;
+
+    /**
      * Initialize method initializes all the visual elements before they are displayed by the user.
      * initialize method is called automatically by JavaFX when this editor is being loaded from XML.
      */
@@ -106,9 +111,10 @@ public class TrackLibraryEditor implements Editor<Track> {
                 unbindTrack(oldValue);
 
             if(newValue != null) {
-                setDisableControls(false);
+                if(controlsAreDisabled)
+                    setDisableControls(false);
                 bindTrack(newValue);
-            } else {
+            } else if (!controlsAreDisabled) {
                 setDisableControls(true);
             }
         });
@@ -209,5 +215,6 @@ public class TrackLibraryEditor implements Editor<Track> {
         trackNameTextField.setDisable(disable);
         trackXMLNameTextField.setDisable(disable);
         isOvalCheckBox.setDisable(disable);
+        controlsAreDisabled = disable;
     }
 }

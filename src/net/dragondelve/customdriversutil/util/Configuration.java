@@ -24,13 +24,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "config")
 public class Configuration {
     /**
-     * pathname to the last imported TrackLibrary.
+     * Pathname to the last imported TrackLibrary.
      */
     private String trackLibraryPathname;
 
     /**
+     * Pathname to the last imported VehicleClassLibrary
+     */
+    private String vehicleClassLibraryPathname;
+
+    /**
      * Lightweight accessor method.
-     * @return pathname to the last imported TrackLibrary.
+     * @return Pathname to the last imported TrackLibrary.
      */
     @XmlElement (name = "track_library")
     public String getTrackLibraryPathname() {
@@ -43,5 +48,21 @@ public class Configuration {
      */
     public void setTrackLibraryPathname(String trackLibraryPathname) {
         this.trackLibraryPathname = trackLibraryPathname;
+    }
+
+    /**
+     * Lightweight accessor method.
+     * @return Pathname to the last imported VehicleClassLibrary.
+     */
+    public String getVehicleClassLibraryPathname() {
+        return vehicleClassLibraryPathname;
+    }
+
+    /**
+     * Lightweight mutator method.
+     * @param vehicleClassLibraryPathname Pathname to the last imported VehicleClassLibrary.
+     */
+    public void setVehicleClassLibraryPathname(String vehicleClassLibraryPathname) {
+        this.vehicleClassLibraryPathname = vehicleClassLibraryPathname;
     }
 }

@@ -26,6 +26,7 @@ public class DDUtil {
     public static Logger DEFAULT_LOGGER = Logger.getLogger("AMS2 Custom Drivers Util");
 
     public static final String TRACK_EDITOR_FXML_PATHNAME = "fxml/editor/TrackEditor.fxml";
+    public static final String VEHICLE_CLASS_EDITOR_FXML_PATHNAME = "fxml/editor/VehicleClassEditor.fxml";
     public static final String DRIVER_EDITOR_FXML_PATHNAME = "fxml/editor/DriverEditor.fxml";
     public static final String MAIN_WINDOW_FXML_PATHNAME = "fxml/CustomDriverUtilMain.fxml";
 
@@ -34,6 +35,7 @@ public class DDUtil {
     public static final String MAIN_CSS_RESOURCE = "css/Eraconstas.css";
 
     public URL TRACK_EDITOR_FXML_URL;
+    public URL VEHICLE_CLASS_EDITOR_FXML_URL;
     public URL DRIVER_EDITOR_FXML_URL;
     public URL MAIN_WINDOW_FXML_URL;
 
@@ -51,6 +53,12 @@ public class DDUtil {
 
         try {
             TRACK_EDITOR_FXML_URL = new URL("file:" + TRACK_EDITOR_FXML_PATHNAME);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            VEHICLE_CLASS_EDITOR_FXML_URL = new URL("file:" + VEHICLE_CLASS_EDITOR_FXML_PATHNAME);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

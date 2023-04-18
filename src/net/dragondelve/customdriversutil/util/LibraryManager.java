@@ -15,6 +15,8 @@
 package net.dragondelve.customdriversutil.util;
 
 import net.dragondelve.customdriversutil.model.TrackLibrary;
+import net.dragondelve.customdriversutil.model.VehicleClass;
+import net.dragondelve.customdriversutil.model.VehicleClassLibrary;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -34,6 +36,11 @@ public class LibraryManager {
      * Currently used Track Library. Track Library is used for generating new Track Specific Overrides.
      */
     private TrackLibrary trackLibrary = new TrackLibrary();
+
+    /**
+     * Currently used VehicleClassLibrary. VehicleClassLibrary is used to allow players to select a livery from a list.
+     */
+    private VehicleClassLibrary vehicleClassLibrary = new VehicleClassLibrary();
 
     /**
      * The only instance of Library manager that exists, You should use getInstance() in order to get it.
@@ -70,15 +77,16 @@ public class LibraryManager {
      */
     public boolean importTrackLibrary(String pathname) {
         File library = new File(pathname);
-        DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Track library loading initiated with path: " + pathname);
+        DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Track library loading initiated from path: " + pathname);
         try {
             JAXBContext context = JAXBContext.newInstance(TrackLibrary.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
             trackLibrary = (TrackLibrary) unmarshaller.unmarshal(library);
+            DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Track library loading successful from path: " + pathname);
             return true;
         } catch (JAXBException | IllegalArgumentException e) {
             e.printStackTrace();
-            DDUtil.DEFAULT_LOGGER.log(Level.WARNING,"Track library loading failed");
+            DDUtil.DEFAULT_LOGGER.log(Level.WARNING,"Track library loading failed from path: " + pathname);
             return false;
         }
     }
@@ -96,10 +104,61 @@ public class LibraryManager {
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.marshal(trackLibrary, library);
+            DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Track Library successfully saved to path: " + pathname);
             return true;
         } catch (JAXBException | IllegalArgumentException e) {
             e.printStackTrace();
-            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Track Library loading failed");
+            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Track Library saving failed with path: " + pathname);
+            return false;
+        }
+    }
+
+    /**
+     * Lightweight accessor method.
+     * @return The currently loaded VehicleClassLibrary.
+     */
+    public VehicleClassLibrary getVehicleClassLibrary() {
+        return vehicleClassLibrary;
+    }
+
+    /**
+     * Imports the VehicleClassLibrary from a File located at a given pathname.
+     * @param pathname Pathname to an XML file that contains a Vehicle Class Library.
+     * @return True if importing has succeeded, false if it has failed.
+     */
+    public boolean importVehicleClassLibrary(String pathname) {
+        File library = new File(pathname);
+        DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Vehicle Class Library loading initiated with path: " + pathname);
+        try {
+            JAXBContext context = JAXBContext.newInstance(VehicleClass.class);
+            Unmarshaller unmarshaller = context.createUnmarshaller();
+            vehicleClassLibrary = (VehicleClassLibrary) unmarshaller.unmarshal(library);
+            DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Vehicle Class Library loading successful from path: " + pathname);
+            return true;
+        } catch (JAXBException | IllegalArgumentException e) {
+            e.printStackTrace();
+            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Vehicle Class Library loading failed with path: " + pathname);
+            return false;
+        }
+    }
+
+    /**
+     * Exports the currently loaded TrackLibrary to an XML file located at a given pathname.
+     * @param pathname Pathname to an XML file that contains a Vehicle Class Library.
+     * @return True if exporting has succeeded, false if it has failed.
+     */
+    public boolean exportVehicleClassLibrary(String pathname) {
+        File library = new File(pathname);
+        DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Vehicle Class Library saving initiated to path: " + pathname);
+        try {
+            JAXBContext context = JAXBContext.newInstance(VehicleClass.class);
+            Marshaller marshaller = context.createMarshaller();
+            marshaller.marshal(trackLibrary, library);
+            DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Vehicle Class Library loading successful to path: " + pathname);
+            return true;
+        } catch (JAXBException | IllegalArgumentException e) {
+            e.printStackTrace();
+            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Vehicle Class Library saving failed to path: " + pathname);
             return false;
         }
     }

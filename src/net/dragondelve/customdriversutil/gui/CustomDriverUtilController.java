@@ -25,10 +25,13 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import net.dragondelve.customdriversutil.gui.editor.Editor;
 import net.dragondelve.customdriversutil.gui.editor.TrackLibraryEditor;
+import net.dragondelve.customdriversutil.gui.editor.VehicleClassLibraryEditor;
 import net.dragondelve.customdriversutil.model.Track;
+import net.dragondelve.customdriversutil.model.VehicleClass;
 import net.dragondelve.customdriversutil.util.Configurator;
 import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
+import net.dragondelve.customdriversutil.util.PathRelativisor;
 
 import java.io.File;
 import java.io.IOException;
@@ -67,11 +70,31 @@ public class CustomDriverUtilController implements StageController {
     private MenuItem exportTracksItem;
 
     /**
-     * Import Track Library Menu Item. Shows a FileChooser and if a selection is made attempts to import a track library
+     * Import Track Library Menu Item. Shows a FileChooser and if a selection is made attempts to import a track library.
      * from the File chosen.
      */
     @FXML
     private MenuItem importTracksItem;
+
+    /**
+     * Edit Vehicle Class Library Menu Item.  Displays the VehicleClassLibraryEditor
+     */
+    @FXML
+    private MenuItem editVehicleClassesItem;
+
+    /**
+     *  Export Vehicle Class Library Menu Item.  Shows a FileChooser and if a selection is made attempts to export the
+     *  currently loaded vehicle class library to this file.
+     */
+    @FXML
+    private MenuItem exportVehicleClassesItem;
+
+    /**
+     * Import Vehicle Class Library Menu Item. Shows a FileChooser and if a selection is made attempts to import a
+     * vehicle class library from the File chosen.
+     */
+    @FXML
+    private MenuItem importVehicleClassesItem;
 
     /**
      * Stage on which this controller is displayed.
@@ -100,8 +123,12 @@ public class CustomDriverUtilController implements StageController {
         }
 
         editTracksItem.setOnAction(e-> editTracksAction());
-        exportTracksItem.setOnAction(e->exportTracksAction());
-        importTracksItem.setOnAction(e->importTracksAction());
+        exportTracksItem.setOnAction(e-> exportTracksAction());
+        importTracksItem.setOnAction(e-> importTracksAction());
+
+        editVehicleClassesItem.setOnAction(e-> editVehicleClassesAction());
+        exportVehicleClassesItem.setOnAction(e-> exportVehicleClassesAction());
+        importVehicleClassesItem.setOnAction(e-> importVehicleClassesAction());
     }
 
     /**
@@ -121,11 +148,7 @@ public class CustomDriverUtilController implements StageController {
      * TrackLibrary to the chosen file.
      */
     private void exportTracksAction() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Export Track Library");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("xml library file","*.xml"));
-        fileChooser.setInitialDirectory(new File("library/tracks"));
-        File selectedFile = fileChooser.showSaveDialog(stage);
+        File selectedFile = chooseFileToSave("Export Track Library", "library/tracks");
         if(selectedFile != null)
             LibraryManager.getInstance().exportTrackLibrary(selectedFile.getPath());
     }
@@ -137,16 +160,44 @@ public class CustomDriverUtilController implements StageController {
      * chosen file.
      */
     private void importTracksAction() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Import Track Library");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("xml library file","*.xml"));
-        fileChooser.setInitialDirectory(new File("library/tracks"));
-        File selectedFile = fileChooser.showOpenDialog(stage);
-        if(selectedFile != null)
-            if(LibraryManager.getInstance().importTrackLibrary(selectedFile.getPath())) {
-                Configurator.getInstance().getConfiguration().setTrackLibraryPathname(selectedFile.getPath());
-                Configurator.getInstance().saveConfiguration();
-            }
+        File selectedFile = chooseFileToOpen("Import Track Library", "library/tracks");
+        if(selectedFile != null && LibraryManager.getInstance().importTrackLibrary(selectedFile.getPath())) {
+            PathRelativisor relativisor = new PathRelativisor(selectedFile.toPath());
+            Configurator.getInstance().getConfiguration().setTrackLibraryPathname(relativisor.relativize());
+            Configurator.getInstance().saveConfiguration();
+        }
+    }
+
+    /**
+     * Action that is performed by editVehicleClassesItem.
+     * Opens a new Stage with a VehicleClassLibraryEditor, and waits until the stage is closed by the user.
+     */
+    private void editVehicleClassesAction() {
+        Editor<VehicleClass> controller = new VehicleClassLibraryEditor();
+        controller.setItems(LibraryManager.getInstance().getVehicleClassLibrary().getVehicleClasses());
+        openEditor(DDUtil.getInstance().VEHICLE_CLASS_EDITOR_FXML_URL, controller, "Vehicle Classes");
+    }
+
+    /**
+     *
+     */
+    private void importVehicleClassesAction() {
+        File selectedFile = chooseFileToOpen("Import Vehicle Class Library", "library/vehicles");
+        if(selectedFile != null) {
+            LibraryManager.getInstance().importVehicleClassLibrary(selectedFile.getPath());
+        }
+    }
+
+    /**
+     *
+     */
+    private void exportVehicleClassesAction() {
+        File selectedFile = chooseFileToSave("Export Vehicle Class Library", "library/vehicles");
+        if(selectedFile != null && LibraryManager.getInstance().importVehicleClassLibrary(selectedFile.getPath())) {
+            PathRelativisor relativisor = new PathRelativisor(selectedFile.toPath());
+            Configurator.getInstance().getConfiguration().setVehicleClassLibraryPathname(relativisor.relativize());
+            Configurator.getInstance().saveConfiguration();
+        }
     }
 
     /**
@@ -170,6 +221,40 @@ public class CustomDriverUtilController implements StageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     *
+     * @param title
+     * @param initialDirectory
+     * @return
+     */
+    private FileChooser createLibraryFileChooser(String title, String initialDirectory) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle(title);
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("xml library file", "*.xml"));
+        fileChooser.setInitialDirectory(new File(initialDirectory));
+        return fileChooser;
+    }
+
+    /**
+     *
+     * @param title
+     * @param initialDirectory
+     * @return
+     */
+    private File chooseFileToOpen(String title, String initialDirectory) {
+        return createLibraryFileChooser(title, initialDirectory).showOpenDialog(stage);
+    }
+
+    /**
+     *
+     * @param title
+     * @param initialDirectory
+     * @return
+     */
+    private File chooseFileToSave(String title, String initialDirectory) {
+        return  createLibraryFileChooser(title, initialDirectory).showSaveDialog(stage);
     }
 
     /**
