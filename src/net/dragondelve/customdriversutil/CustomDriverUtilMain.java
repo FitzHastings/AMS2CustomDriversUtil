@@ -48,6 +48,7 @@ public class CustomDriverUtilMain extends Application {
     public void start(Stage primaryStage) throws Exception {
         if(!Configurator.getInstance().loadConfiguration()) {
             Configurator.getInstance().setConfiguration(generateDefaultConfiguration());
+            Configurator.getInstance().saveConfiguration();
         }
         LibraryManager.getInstance().importTrackLibrary(Configurator.getInstance().getConfiguration().getTrackLibraryPathname());
         LibraryManager.getInstance().importVehicleClassLibrary(Configurator.getInstance().getConfiguration().getVehicleClassLibraryPathname());
@@ -77,6 +78,7 @@ public class CustomDriverUtilMain extends Application {
     private Configuration generateDefaultConfiguration() {
         Configuration configuration = new Configuration();
         configuration.setTrackLibraryPathname(DDUtil.TRACK_LIBRARY_DEFAULT_PATHNAME);
+        configuration.setVehicleClassLibraryPathname(DDUtil.VEHICLE_CLASS_LIBRARY_DEFAULT_PATHNAME);
         return configuration;
     }
 }

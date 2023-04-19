@@ -15,8 +15,12 @@
 package net.dragondelve.customdriversutil.model.xml;
 
 import net.dragondelve.customdriversutil.model.Grid;
+import net.dragondelve.customdriversutil.model.VehicleClass;
 import net.dragondelve.customdriversutil.util.GridImporter;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import java.io.File;
 
 /**
@@ -46,5 +50,24 @@ public class XMLGridImporter implements GridImporter {
     @Override
     public Grid importFromFile(File file) {
         return null;
+    }
+
+    /**
+     * Loads a Vehicle Class only from an XML Grid assigning all livery names to the grid setting its name and xmlname to
+     * the name of the file.
+     * @param file File that contains the xmlGrid.
+     * @return new Vehicle Class that was used to create this XMLGrid.
+     */
+    public static VehicleClass importVehicleClassFromXMLGrid(File file) {
+        XMLGrid xmlGrid;
+        try {
+            JAXBContext context = JAXBContext.newInstance(XMLGrid.class);
+            Unmarshaller unmarshaller = context.createUnmarshaller();
+            xmlGrid = (XMLGrid) unmarshaller.unmarshal(file);
+           return xmlGrid.generateVehicleClass(file.getName(), file.getName());
+        } catch (JAXBException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

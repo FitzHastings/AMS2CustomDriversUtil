@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <config>
-    <track_library>library\tracks\ams2_1.4.6.4.xml</track_library>
-    <vehicleClassLibraryPathname>library\vehicles\test ams2_1.4.6.4.xml</vehicleClassLibraryPathname>
+    <track_library>library/tracks/ams2_tracks_1.4.6.4.xml</track_library>
+    <vehicleClassLibraryPathname>library/vehicles/ams2_vehicles_1.4.6.4.xml</vehicleClassLibraryPathname>
 </config>

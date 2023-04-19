@@ -17,6 +17,7 @@ package net.dragondelve.customdriversutil.model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -36,6 +37,7 @@ public class VehicleClassLibrary {
      * @return List of vehicle classes contained in the library.
      */
     @XmlElementWrapper(name = "vehicle_classes")
+    @XmlElement(name = "vehicle_class")
     public ObservableList<VehicleClass> getVehicleClasses() {
         return vehicleClasses;
     }

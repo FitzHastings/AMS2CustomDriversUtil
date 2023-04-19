@@ -30,7 +30,8 @@ public class DDUtil {
     public static final String DRIVER_EDITOR_FXML_PATHNAME = "fxml/editor/DriverEditor.fxml";
     public static final String MAIN_WINDOW_FXML_PATHNAME = "fxml/CustomDriverUtilMain.fxml";
 
-    public static final String TRACK_LIBRARY_DEFAULT_PATHNAME = "library/tracks/ams2_1.4.6.4.xml";
+    public static final String TRACK_LIBRARY_DEFAULT_PATHNAME = "library/tracks/ams2_tracks_1.4.6.4.xml";
+    public static final String VEHICLE_CLASS_LIBRARY_DEFAULT_PATHNAME = "library/vehicles/ams2_vehicles_1.4.6.4.xml";
 
     public static final String MAIN_CSS_RESOURCE = "css/Eraconstas.css";
 

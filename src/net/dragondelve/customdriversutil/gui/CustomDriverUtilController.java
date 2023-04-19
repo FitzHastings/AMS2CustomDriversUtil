@@ -28,6 +28,8 @@ import net.dragondelve.customdriversutil.gui.editor.TrackLibraryEditor;
 import net.dragondelve.customdriversutil.gui.editor.VehicleClassLibraryEditor;
 import net.dragondelve.customdriversutil.model.Track;
 import net.dragondelve.customdriversutil.model.VehicleClass;
+import net.dragondelve.customdriversutil.model.VehicleClassLibrary;
+import net.dragondelve.customdriversutil.model.xml.XMLGridImporter;
 import net.dragondelve.customdriversutil.util.Configurator;
 import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
@@ -55,6 +57,13 @@ public class CustomDriverUtilController implements StageController {
      */
     @FXML
     private AnchorPane centralAnchorPane;
+
+    /**
+     * Import Grid with a Vehicle Class Item.
+     * Imports the Grid with a Vehicle class, adding the vehicle class to the current VehicleClassLibrary.
+     */
+    @FXML
+    private MenuItem importGridITemWithClassItem;
 
     /**
      * Edit Tracks Menu Item. Displays the TrackLibraryEditor
@@ -122,6 +131,8 @@ public class CustomDriverUtilController implements StageController {
             e.printStackTrace();
         }
 
+        importGridITemWithClassItem.setOnAction(e->importGridITemWithClassAction());
+
         editTracksItem.setOnAction(e-> editTracksAction());
         exportTracksItem.setOnAction(e-> exportTracksAction());
         importTracksItem.setOnAction(e-> importTracksAction());
@@ -129,6 +140,16 @@ public class CustomDriverUtilController implements StageController {
         editVehicleClassesItem.setOnAction(e-> editVehicleClassesAction());
         exportVehicleClassesItem.setOnAction(e-> exportVehicleClassesAction());
         importVehicleClassesItem.setOnAction(e-> importVehicleClassesAction());
+    }
+
+    /**
+     * Action that is performed by importGridITemWithClassItem.
+     */
+    private void importGridITemWithClassAction() {
+        File file = chooseFileToOpen("Choose XML Grid File", "grids");
+        VehicleClass vehicleClass = XMLGridImporter.importVehicleClassFromXMLGrid(chooseFileToOpen("Choose XML Grid File", "grids"));
+        if(vehicleClass != null)
+            LibraryManager.getInstance().getVehicleClassLibrary().getVehicleClasses().add(vehicleClass);
     }
 
     /**

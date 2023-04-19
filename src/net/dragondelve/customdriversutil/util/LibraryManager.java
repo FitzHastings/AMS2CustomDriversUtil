@@ -15,7 +15,6 @@
 package net.dragondelve.customdriversutil.util;
 
 import net.dragondelve.customdriversutil.model.TrackLibrary;
-import net.dragondelve.customdriversutil.model.VehicleClass;
 import net.dragondelve.customdriversutil.model.VehicleClassLibrary;
 
 import javax.xml.bind.JAXBContext;

@@ -14,6 +14,9 @@
 
 package net.dragondelve.customdriversutil.model.xml;
 
+import net.dragondelve.customdriversutil.model.VehicleClass;
+
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,21 +31,36 @@ final class XMLGrid {
     /**
      * List of all drivers and track overrides in the grid in their XML form.
      */
-    private List<XMLDriver> XMLDrivers = new ArrayList<>();
+    private List<XMLDriver> xmlDrivers = new ArrayList<>();
 
     /**
      * Lightweight Accessor Method.
      * @return List of all drivers and track overrides in the grid in their XML form.
      */
-    public List<XMLDriver> getXMLDrivers() {
-        return XMLDrivers;
+    @XmlElement(name="driver")
+    public List<XMLDriver> getXmlDrivers() {
+        return xmlDrivers;
     }
 
     /**
      * Lightweight Mutator Method.
-     * @param XMLDrivers List of all drivers and track overrides in the grid in their XML form.
+     * @param xmlDrivers List of all drivers and track overrides in the grid in their XML form.
      */
-    public void setXMLDrivers(List<XMLDriver> XMLDrivers) {
-        this.XMLDrivers = XMLDrivers;
+    public void setXmlDrivers(List<XMLDriver> xmlDrivers) {
+        this.xmlDrivers = xmlDrivers;
+    }
+
+    /**
+     * Generates a new VehicleClass for this XMLGrid. It includes all
+     * @param name new VehicleClass's name.
+     * @param xmlName new VehicleCLass's xmlName.
+     * @return new VehicleClass with liveries from this grid.
+     */
+    public VehicleClass generateVehicleClass(String name, String xmlName) {
+        VehicleClass vehicleClass = new VehicleClass();
+        vehicleClass.setName(name);
+        vehicleClass.setXmlName(xmlName);
+        xmlDrivers.forEach(e->vehicleClass.getLiveryNames().add(e.getLiveryName()));
+        return vehicleClass;
     }
 }
