@@ -42,7 +42,7 @@ limitations under the License. -->
                 <Button fx:id="removeVehicleClassButton" mnemonicParsing="false" prefHeight="28.0"
                         prefWidth="28.0" text="-"/>
             </ToolBar>
-            <TableView fx:id="vehicleClassTableVIew" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+            <TableView fx:id="vehicleClassTableView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                 <columns>
                     <TableColumn fx:id="vehicleClassNameTableColumn" prefWidth="75.0" text="Vehicle Classes"/>
                 </columns>
@@ -56,11 +56,11 @@ limitations under the License. -->
         <VBox layoutX="130.0" layoutY="27.0" prefHeight="335.0" prefWidth="397.0" AnchorPane.bottomAnchor="10.0"
               AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
             <BorderLabel alignment="CENTER" maxHeight="-Infinity" maxWidth="1.7976931348623157E308"
-                   minHeight="-Infinity" prefHeight="28.0" prefWidth="395.0" text="Vehicle Class Library"
+                   minHeight="28" prefHeight="28.0" prefWidth="395.0" text="Vehicle Class Library"
                    textAlignment="CENTER">
-                <padding>
-                    <Insets bottom="10.0"/>
-                </padding>
+                <VBox.margin>
+                    <Insets bottom="10.0" top="10.0"/>
+                </VBox.margin>
             </BorderLabel>
             <GridPane maxHeight="60.0" prefHeight="60.0" prefWidth="397.0">
                 <columnConstraints>

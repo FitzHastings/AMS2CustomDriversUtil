@@ -50,6 +50,7 @@ public class CustomDriverUtilMain extends Application {
             Configurator.getInstance().setConfiguration(generateDefaultConfiguration());
         }
         LibraryManager.getInstance().importTrackLibrary(Configurator.getInstance().getConfiguration().getTrackLibraryPathname());
+        LibraryManager.getInstance().importVehicleClassLibrary(Configurator.getInstance().getConfiguration().getVehicleClassLibraryPathname());
 
         try {
             FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().MAIN_WINDOW_FXML_URL);

@@ -130,7 +130,7 @@ public class LibraryManager {
         File library = new File(pathname);
         DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Vehicle Class Library loading initiated with path: " + pathname);
         try {
-            JAXBContext context = JAXBContext.newInstance(VehicleClass.class);
+            JAXBContext context = JAXBContext.newInstance(VehicleClassLibrary.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
             vehicleClassLibrary = (VehicleClassLibrary) unmarshaller.unmarshal(library);
             DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Vehicle Class Library loading successful from path: " + pathname);
@@ -143,7 +143,7 @@ public class LibraryManager {
     }
 
     /**
-     * Exports the currently loaded TrackLibrary to an XML file located at a given pathname.
+     * Exports the currently loaded VehicleClassLibrary to an XML file located at a given pathname.
      * @param pathname Pathname to an XML file that contains a Vehicle Class Library.
      * @return True if exporting has succeeded, false if it has failed.
      */
@@ -151,9 +151,10 @@ public class LibraryManager {
         File library = new File(pathname);
         DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Vehicle Class Library saving initiated to path: " + pathname);
         try {
-            JAXBContext context = JAXBContext.newInstance(VehicleClass.class);
+            JAXBContext context = JAXBContext.newInstance(VehicleClassLibrary.class);
             Marshaller marshaller = context.createMarshaller();
-            marshaller.marshal(trackLibrary, library);
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            marshaller.marshal(vehicleClassLibrary, library);
             DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Vehicle Class Library loading successful to path: " + pathname);
             return true;
         } catch (JAXBException | IllegalArgumentException e) {

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<vehicle_class_library>
+    <vehicle_classes>
+        <vehicleClasses name="Test Class 1" xml_name="test_class_1">
+            <liveries>
+                <livery>Test Livery 1</livery>
+                <livery>Test Livery 2</livery>
+                <livery>Test Livery 3</livery>
+                <livery>Test Livery 4</livery>
+            </liveries>
+        </vehicleClasses>
+    </vehicle_classes>
+</vehicle_class_library>

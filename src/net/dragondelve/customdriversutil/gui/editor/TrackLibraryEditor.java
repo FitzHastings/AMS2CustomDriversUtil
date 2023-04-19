@@ -177,7 +177,7 @@ public class TrackLibraryEditor implements Editor<Track> {
     private void removeTrackAction() {
         Track selectedTrack = trackTableView.getSelectionModel().getSelectedItem();
         if(selectedTrack != null) {
-            if(!trackTableView.getSelectionModel().isSelected(trackTableView.getSelectionModel().getSelectedIndex()))
+            if(!trackTableView.getSelectionModel().isSelected(trackTableView.getItems().size()))
                 trackTableView.getSelectionModel().selectNext();
             else
                 trackTableView.getSelectionModel().selectPrevious();

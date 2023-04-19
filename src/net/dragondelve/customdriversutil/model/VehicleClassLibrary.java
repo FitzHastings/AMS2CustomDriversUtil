@@ -18,11 +18,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Represents a reference Library of Vehicle Classes.
  * This class is fully annotated with JAXB for easy XML conversion.
  */
+@XmlRootElement(name="vehicle_class_library")
 public class VehicleClassLibrary {
     /**
      * List of vehicle classes contained in the library.

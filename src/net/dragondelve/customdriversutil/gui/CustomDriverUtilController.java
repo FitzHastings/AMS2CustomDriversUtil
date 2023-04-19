@@ -179,20 +179,25 @@ public class CustomDriverUtilController implements StageController {
     }
 
     /**
-     *
+     * Action that is performed by importVehicleClassesItem.
+     * Opens a FileChooser with the *.xml extension filter, displays the FileChooser to the user and allows them to make
+     * a selection. When the FileChooser is closed if a file was selected it attempts to export the currently loaded
+     * VehicleClassLibrary to the chosen file.
      */
-    private void importVehicleClassesAction() {
-        File selectedFile = chooseFileToOpen("Import Vehicle Class Library", "library/vehicles");
+    private void exportVehicleClassesAction() {
+        File selectedFile = chooseFileToSave("Import Vehicle Class Library", "library/vehicles");
         if(selectedFile != null) {
-            LibraryManager.getInstance().importVehicleClassLibrary(selectedFile.getPath());
+            LibraryManager.getInstance().exportVehicleClassLibrary(selectedFile.getPath());
         }
     }
 
     /**
-     *
+     * Opens a FileChooser with the *.xml extension filter, displays the FileChooser to the user and allows them to make
+     * a selection. When the FileChooser is closed if a file was selected it attempts to import a VehicleClassLibrary from
+     * the chosen file.
      */
-    private void exportVehicleClassesAction() {
-        File selectedFile = chooseFileToSave("Export Vehicle Class Library", "library/vehicles");
+    private void importVehicleClassesAction() {
+        File selectedFile = chooseFileToOpen("Export Vehicle Class Library", "library/vehicles");
         if(selectedFile != null && LibraryManager.getInstance().importVehicleClassLibrary(selectedFile.getPath())) {
             PathRelativisor relativisor = new PathRelativisor(selectedFile.toPath());
             Configurator.getInstance().getConfiguration().setVehicleClassLibraryPathname(relativisor.relativize());
@@ -224,10 +229,11 @@ public class CustomDriverUtilController implements StageController {
     }
 
     /**
-     *
-     * @param title
-     * @param initialDirectory
-     * @return
+     * Creates a new FileChooser, sets its extension filter to *.xml and sets its initial directory to the pathname provided,
+     * and the title of its Stage to the title provided.
+     * @param title Title of the Stage on which the FileChooser is going to be displayed.
+     * @param initialDirectory Pathname to an initial directory for the FileChooser.
+     * @return A new FileChooser that is ready to be displayed.
      */
     private FileChooser createLibraryFileChooser(String title, String initialDirectory) {
         FileChooser fileChooser = new FileChooser();
@@ -238,20 +244,24 @@ public class CustomDriverUtilController implements StageController {
     }
 
     /**
-     *
-     * @param title
-     * @param initialDirectory
-     * @return
+     * Creates a new FileChooser, sets its extension filter to *.xml and sets its initial directory to the pathname provided.
+     * and the title of its Stage to the title provided. Displays the FileChooser to the user with showOpenDialog, waits
+     * for a selection to be made and returns the File selected.
+     * @param title Title of the Stage on which the FileChooser is going to be displayed.
+     * @param initialDirectory Pathname to an initial directory for the FileChooser.
+     * @return File Chosen by the user. returns null if no file was chosen.
      */
     private File chooseFileToOpen(String title, String initialDirectory) {
         return createLibraryFileChooser(title, initialDirectory).showOpenDialog(stage);
     }
 
     /**
-     *
-     * @param title
-     * @param initialDirectory
-     * @return
+     * Creates a new FileChooser, sets its extension filter to *.xml and sets its initial directory to the pathname provided.
+     * and the title of its Stage to the title provided. Displays the FileChooser to the user with showSaveDialog, waits
+     * for a selection to be made and returns the File selected.
+     * @param title Title of the Stage on which the FileChooser is going to be displayed.
+     * @param initialDirectory Pathname to an initial directory for the FileChooser.
+     * @return File Chosen by the user. returns null if no file was chosen.
      */
     private File chooseFileToSave(String title, String initialDirectory) {
         return  createLibraryFileChooser(title, initialDirectory).showSaveDialog(stage);
