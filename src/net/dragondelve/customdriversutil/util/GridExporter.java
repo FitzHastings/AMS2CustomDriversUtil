@@ -28,11 +28,4 @@ public interface GridExporter {
      * @param file File to which the grid is to be exported.
      */
     void exportToFile(Grid grid, File file);
-
-    /**
-     * Marshals a given Grid to a String.
-     * @param grid Grid to be serialized.
-     * @return Serialized Grid in an AMS2 Format.
-     */
-    String exportToString(Grid grid);
 }

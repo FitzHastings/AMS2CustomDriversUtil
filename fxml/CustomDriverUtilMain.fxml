@@ -93,9 +93,9 @@ limitations under the License. -->
                                <VBox AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="-10.0"
                                      AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="-10.0">
                                    <ToolBar prefHeight="40.0" prefWidth="200.0" VBox.vgrow="NEVER">
-                                       <Button mnemonicParsing="false" prefHeight="26.0"
+                                       <Button fx:id="addTrackOverrideButton" mnemonicParsing="false" prefHeight="26.0"
                                                prefWidth="26.0" text="+"/>
-                                       <Button mnemonicParsing="false" prefHeight="26.0"
+                                       <Button fx:id="removeTrackOverrideButton" mnemonicParsing="false" prefHeight="26.0"
                                                prefWidth="26.0" text="-"/>
                                    </ToolBar>
                                    <TableView prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
@@ -114,19 +114,15 @@ limitations under the License. -->
                                <VBox AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="-10.0"
                                      AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="-10.0">
                                    <ToolBar prefHeight="40.0" prefWidth="200.0">
-                                       <Button mnemonicParsing="false" prefHeight="26.0"
+                                       <Button fx:id="addDriverButton" mnemonicParsing="false" prefHeight="26.0"
                                                prefWidth="26.0" text="+"/>
-                                       <Button mnemonicParsing="false" prefHeight="26.0"
+                                       <Button fx:id="removeDriverButton" mnemonicParsing="false" prefHeight="26.0"
                                                prefWidth="26.0" text="-"/>
-                                       <Button mnemonicParsing="false" prefHeight="26.0"
-                                               text="Export"/>
-                                       <Button mnemonicParsing="false" prefHeight="26.0"
-                                               text="Import"/>
                                    </ToolBar>
-                                   <TableView prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                   <TableView fx:id="driverTableView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                        <columns>
-                                           <TableColumn prefWidth="75.0" text="Name"/>
-                                           <TableColumn prefWidth="75.0" text="Country"/>
+                                           <TableColumn fx:id="driverNameColumn" prefWidth="75.0" text="Name"/>
+                                           <TableColumn fx:id="driverCountryColumn" prefWidth="75.0" text="Country"/>
                                        </columns>
                                        <columnResizePolicy>
                                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>

@@ -53,14 +53,6 @@ final public class Driver extends DriverBase {
     }
 
     /**
-     * Lightweight mutator method.
-     * @param liveryName In game name of the livery.
-     */
-    public void setLiveryName(String liveryName) {
-        this.liveryName.set(liveryName);
-    }
-
-    /**
      * Lightweight accessor method.
      * @return List of all track specific overrides.
      */

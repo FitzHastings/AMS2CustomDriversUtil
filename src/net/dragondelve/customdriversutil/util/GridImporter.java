@@ -15,6 +15,7 @@
 package net.dragondelve.customdriversutil.util;
 
 import net.dragondelve.customdriversutil.model.Grid;
+import net.dragondelve.customdriversutil.model.VehicleClassLibrary;
 
 import java.io.File;
 
@@ -23,18 +24,19 @@ import java.io.File;
  */
 public interface GridImporter {
     /**
-     * Imports a given string as a grid
-     * This will not set the correct Class for the grid. This should be handled elsewhere.
-     * @param source Source String.
-     * @return New instance of a Grid from the source, or null if the import has failed.
-     */
-    Grid importThis(String source);
-
-    /**
      * Imports a grid from a given File.
      * This will not set the correct Class for the grid. This should be handled elsewhere.
      * @param file a file that contains the Grid.
      * @return New instance of a Grid from the source, or null if the import has failed.
      */
     Grid importFromFile(File file);
+
+    /**
+     * Imports a grid from a given File and generates a new VehicleClass if a vehicle class is not present in the given
+     * VehicleClassLibrary. This will set the VehicleClass of Grid.
+     * @param file a file that contains the Grid.
+     * @param library Vehicle Class Library that is meant to contain the newly loaded VehicleClass.
+     * @return New instance of a Grid from the source, or null if the import has failed.
+     */
+    Grid importWithVehicleClass(File file, VehicleClassLibrary library);
 }
