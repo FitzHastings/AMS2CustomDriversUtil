@@ -26,14 +26,12 @@ import javafx.stage.Stage;
 import net.dragondelve.customdriversutil.gui.editor.Editor;
 import net.dragondelve.customdriversutil.gui.editor.TrackLibraryEditor;
 import net.dragondelve.customdriversutil.gui.editor.VehicleClassLibraryEditor;
+import net.dragondelve.customdriversutil.model.Grid;
 import net.dragondelve.customdriversutil.model.Track;
 import net.dragondelve.customdriversutil.model.VehicleClass;
-import net.dragondelve.customdriversutil.model.VehicleClassLibrary;
+import net.dragondelve.customdriversutil.model.xml.XMLGridExporter;
 import net.dragondelve.customdriversutil.model.xml.XMLGridImporter;
-import net.dragondelve.customdriversutil.util.Configurator;
-import net.dragondelve.customdriversutil.util.DDUtil;
-import net.dragondelve.customdriversutil.util.LibraryManager;
-import net.dragondelve.customdriversutil.util.PathRelativisor;
+import net.dragondelve.customdriversutil.util.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -63,7 +61,21 @@ public class CustomDriverUtilController implements StageController {
      * Imports the Grid with a Vehicle class, adding the vehicle class to the current VehicleClassLibrary.
      */
     @FXML
-    private MenuItem importGridITemWithClassItem;
+    private MenuItem importGridWithClassItem;
+
+    /**
+     * Imports a Grid.
+     * Imports the grid without the vehicle class.
+     */
+    @FXML
+    private MenuItem importGridItem;
+
+    /**
+     * Exports a Grid
+     * Exports a grid to XML.
+     */
+    @FXML
+    private MenuItem exportGridItem;
 
     /**
      * Edit Tracks Menu Item. Displays the TrackLibraryEditor
@@ -111,6 +123,8 @@ public class CustomDriverUtilController implements StageController {
      */
     Stage stage = new Stage();
 
+    Grid editedGrid = new Grid();
+
     /**
      * Initialize method initializes all the visual elements before they are displayed by the user.
      * initialize method is called automatically by JavaFX when this editor is being loaded from XML.
@@ -131,7 +145,9 @@ public class CustomDriverUtilController implements StageController {
             e.printStackTrace();
         }
 
-        importGridITemWithClassItem.setOnAction(e->importGridITemWithClassAction());
+        exportGridItem.setOnAction(e->exportGridAction());
+        importGridItem.setOnAction(e->importGridAction());
+        importGridWithClassItem.setOnAction(e-> importGridWithClassAction());
 
         editTracksItem.setOnAction(e-> editTracksAction());
         exportTracksItem.setOnAction(e-> exportTracksAction());
@@ -142,14 +158,43 @@ public class CustomDriverUtilController implements StageController {
         importVehicleClassesItem.setOnAction(e-> importVehicleClassesAction());
     }
 
+
+    /**
+     * Action that is performed by ExportGridItem.
+     */
+    private void exportGridAction() {
+        File file = chooseFileToSave("Choose XML Grid File", "grids");
+        GridExporter exporter = new XMLGridExporter();
+        exporter.exportToFile(editedGrid, file);
+
+    }
+
     /**
      * Action that is performed by importGridITemWithClassItem.
      */
-    private void importGridITemWithClassAction() {
+    private void importGridWithClassAction() {
         File file = chooseFileToOpen("Choose XML Grid File", "grids");
         VehicleClass vehicleClass = XMLGridImporter.importVehicleClassFromXMLGrid(chooseFileToOpen("Choose XML Grid File", "grids"));
         if(vehicleClass != null)
             LibraryManager.getInstance().getVehicleClassLibrary().getVehicleClasses().add(vehicleClass);
+        GridImporter importer = new XMLGridImporter();
+        Grid importedGrid = importer.importFromFile(file);
+        if(importedGrid != null) {
+            editedGrid = importedGrid;
+            editedGrid.setVehicleClass(vehicleClass);
+        }
+
+    }
+
+    /**
+     * Action that is performed by ImportGridItem
+     */
+    private void importGridAction() {
+        File file = chooseFileToOpen("Choose XML Grid File", "grids");
+        XMLGridImporter importer = new XMLGridImporter();
+        Grid importedGrid = importer.importFromFile(file);
+        if(importedGrid != null)
+            editedGrid = importedGrid;
     }
 
     /**
