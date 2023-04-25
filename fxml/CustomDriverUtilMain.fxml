@@ -38,10 +38,10 @@ limitations under the License. -->
                <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" text="-"/>
                <PromptLabel text="Drivers"/>
            </ToolBar>
-           <TableView prefHeight="466.0" prefWidth="259.0" VBox.vgrow="ALWAYS">
+           <TableView fx:id="driversTableView" prefHeight="466.0" prefWidth="259.0" VBox.vgrow="ALWAYS">
                <columns>
-                   <TableColumn prefWidth="192.0" text="Name"/>
-                   <TableColumn prefWidth="65.0" text="Country"/>
+                   <TableColumn fx:id="driverNameColumn" prefWidth="192.0" text="Name"/>
+                   <TableColumn fx:id="driverCountryColumn" prefWidth="65.0" text="Country"/>
                </columns>
               <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
@@ -98,9 +98,9 @@ limitations under the License. -->
                                        <Button fx:id="removeTrackOverrideButton" mnemonicParsing="false" prefHeight="26.0"
                                                prefWidth="26.0" text="-"/>
                                    </ToolBar>
-                                   <TableView prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                   <TableView fx:id="trackOverrideColumn" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                        <columns>
-                                           <TableColumn prefWidth="75.0" text="Tracks"/>
+                                           <TableColumn fx:id="trackNameColumn" prefWidth="75.0" text="Tracks"/>
                                        </columns>
                                        <columnResizePolicy>
                                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
@@ -119,10 +119,10 @@ limitations under the License. -->
                                        <Button fx:id="removeDriverButton" mnemonicParsing="false" prefHeight="26.0"
                                                prefWidth="26.0" text="-"/>
                                    </ToolBar>
-                                   <TableView fx:id="driverTableView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                   <TableView fx:id="libraryDriverTableView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                        <columns>
-                                           <TableColumn fx:id="driverNameColumn" prefWidth="75.0" text="Name"/>
-                                           <TableColumn fx:id="driverCountryColumn" prefWidth="75.0" text="Country"/>
+                                           <TableColumn fx:id="libraryDriverNameColumn" prefWidth="75.0" text="Name"/>
+                                           <TableColumn fx:id="libraryDriverCountryColumn" prefWidth="75.0" text="Country"/>
                                        </columns>
                                        <columnResizePolicy>
                                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>

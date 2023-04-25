@@ -23,6 +23,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import net.dragondelve.customdriversutil.gui.editor.DriverEditor;
 import net.dragondelve.customdriversutil.gui.editor.Editor;
 import net.dragondelve.customdriversutil.gui.editor.TrackLibraryEditor;
 import net.dragondelve.customdriversutil.gui.editor.VehicleClassLibraryEditor;
@@ -121,9 +122,11 @@ public class CustomDriverUtilController implements StageController {
      * Stage on which this controller is displayed.
      * This is also the primaryStage in the Application's main method.
      */
-    Stage stage = new Stage();
+    private Stage stage = new Stage();
 
-    Grid editedGrid = new Grid();
+    private Grid editedGrid = new Grid();
+
+    private final DriverEditor driverEditor = new DriverEditor();
 
     /**
      * Initialize method initializes all the visual elements before they are displayed by the user.
@@ -135,6 +138,7 @@ public class CustomDriverUtilController implements StageController {
         rootPane.getStylesheets().add(DDUtil.MAIN_CSS_RESOURCE);
         try {
             FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().DRIVER_EDITOR_FXML_URL);
+            loader.setController(driverEditor);
             Node center = loader.load();
             centralAnchorPane.getChildren().add(center);
             AnchorPane.setTopAnchor(center, 0.0);
