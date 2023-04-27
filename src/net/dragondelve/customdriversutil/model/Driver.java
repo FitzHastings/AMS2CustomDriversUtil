@@ -29,6 +29,7 @@ final public class Driver extends DriverBase {
      * In game name of the livery. Ths value determines to which car the custom AI values are going to be applied.
      */
     private final StringProperty liveryName = new SimpleStringProperty();
+
     /**
      * List of all track specific overrides that this driver has.
      * Track specific overrides are applied on specific tracks and can override a variety of different values

@@ -20,6 +20,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import net.dragondelve.customdriversutil.model.Driver;
 
 public class DriverEditor {
 
@@ -182,18 +183,50 @@ public class DriverEditor {
     @FXML
     private TextField wetSkillTextField;
 
+    private Driver editedDriver;
+
+    private boolean overrideMode = false;
+
+    /**
+     * Initialize method initializes all the visual elements before they are displayed by the user.
+     * initialize method is called automatically by JavaFX when this editor is being loaded from XML.
+     */
     @FXML
     public void initialize() {
 
     }
 
-    public void setEditedDriver() {
-
+    /**
+     * NOT a lightweight mutator method, unbinds the previous driver's properties and binds the new driver to the control
+     * elements of this editor.
+     * @param driver Driver to be edited.
+     */
+    public void setEditedDriver(Driver driver) {
+        if(this.editedDriver != null) {
+            unbindDriver(this.editedDriver);
+        }
+        this.editedDriver = driver;
+        bindDriver(editedDriver);
     }
 
-    public void setOverrideMode() {
-
+    public void setOverrideMode(boolean overrideMode) {
+        this.overrideMode = overrideMode;
     }
 
+    /**
+     * Binds the given driver's properties to the control elements that are supposed to edit them. The bind will be done
+     * bidirectionally, and you should call unbindDriver on the same driver after it is no longer being edited.
+     * @param driver a driver whose properties are to be bind to the control elements of this editor.
+     */
+    private void bindDriver(Driver driver) {
+        driverNameTextField.textProperty()      .bindBidirectional(driver.liveryNameProperty());
+        driverNameTextField.textProperty()      .bindBidirectional(driver.nameProperty());
+        driverCountryTextField.textProperty()   .bindBidirectional(driver.countryProperty());
+    }
 
+    private void unbindDriver(Driver driver) {
+        driverNameTextField.textProperty()      .unbindBidirectional(driver.liveryNameProperty());
+        driverNameTextField.textProperty()      .unbindBidirectional(driver.nameProperty());
+        driverCountryTextField.textProperty()   .unbindBidirectional(driver.countryProperty());
+    }
 }

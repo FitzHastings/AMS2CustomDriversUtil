@@ -19,6 +19,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
@@ -27,6 +29,7 @@ import net.dragondelve.customdriversutil.gui.editor.DriverEditor;
 import net.dragondelve.customdriversutil.gui.editor.Editor;
 import net.dragondelve.customdriversutil.gui.editor.TrackLibraryEditor;
 import net.dragondelve.customdriversutil.gui.editor.VehicleClassLibraryEditor;
+import net.dragondelve.customdriversutil.model.Driver;
 import net.dragondelve.customdriversutil.model.Grid;
 import net.dragondelve.customdriversutil.model.Track;
 import net.dragondelve.customdriversutil.model.VehicleClass;
@@ -118,13 +121,22 @@ public class CustomDriverUtilController implements StageController {
     @FXML
     private MenuItem importVehicleClassesItem;
 
+    @FXML
+    private TableView<Driver> driversTableView;
+
+    @FXML
+    private TableColumn<Driver, String> driverNameColumn;
+
+    @FXML
+    private TableColumn<Driver, String> driverCountryColumn;
+
     /**
      * Stage on which this controller is displayed.
      * This is also the primaryStage in the Application's main method.
      */
     private Stage stage = new Stage();
 
-    private Grid editedGrid = new Grid();
+    private final Grid editedGrid = new Grid();
 
     private final DriverEditor driverEditor = new DriverEditor();
 
@@ -160,6 +172,15 @@ public class CustomDriverUtilController implements StageController {
         editVehicleClassesItem.setOnAction(e-> editVehicleClassesAction());
         exportVehicleClassesItem.setOnAction(e-> exportVehicleClassesAction());
         importVehicleClassesItem.setOnAction(e-> importVehicleClassesAction());
+
+        driversTableView.setItems(editedGrid.getDrivers());
+        driverNameColumn.setCellValueFactory(e->e.getValue().nameProperty());
+        driverCountryColumn.setCellValueFactory(e->e.getValue().countryProperty());
+        driversTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue != null) {
+                driverEditor.setEditedDriver(newValue);
+            }
+        });
     }
 
 
@@ -184,7 +205,8 @@ public class CustomDriverUtilController implements StageController {
         GridImporter importer = new XMLGridImporter();
         Grid importedGrid = importer.importFromFile(file);
         if(importedGrid != null) {
-            editedGrid = importedGrid;
+            editedGrid.getDrivers().clear();
+            editedGrid.getDrivers().addAll(importedGrid.getDrivers());
             editedGrid.setVehicleClass(vehicleClass);
         }
 
@@ -198,7 +220,8 @@ public class CustomDriverUtilController implements StageController {
         XMLGridImporter importer = new XMLGridImporter();
         Grid importedGrid = importer.importFromFile(file);
         if(importedGrid != null)
-            editedGrid = importedGrid;
+            editedGrid.getDrivers().clear();
+            editedGrid.getDrivers().addAll(importedGrid.getDrivers());
     }
 
     /**
