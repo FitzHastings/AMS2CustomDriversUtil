@@ -64,7 +64,7 @@ public class DriverEditor {
     private TextField driverNameTextField;
 
     @FXML
-    private TextField forcedMistakeAvoidanceTextField;
+    private TextField MistakeAvoidanceTextField;
 
     @FXML
     private Slider forcedMistakeSlider;
@@ -91,6 +91,9 @@ public class DriverEditor {
     private CheckBox overrideCountryCheckBox;
 
     @FXML
+    private CheckBox overrideConsistencyCheckBox;
+
+    @FXML
     private CheckBox overrideDefendingCheckBox;
 
     @FXML
@@ -100,10 +103,10 @@ public class DriverEditor {
     private CheckBox overrideForcedMistakeAvoidanceCheckBox;
 
     @FXML
-    private CheckBox overrideForcedMistakesCheckBox;
+    private CheckBox overrideFuelManagementCheckBox;
 
     @FXML
-    private CheckBox overrideFuelManagementCheckBox;
+    private CheckBox overrideMistakeAvoidanceCheckBox;
 
     @FXML
     private CheckBox overrideQualiSkillCheckBox;
@@ -120,6 +123,8 @@ public class DriverEditor {
     @FXML
     private CheckBox overrideTyreManagementCheckBox;
 
+    @FXML
+    private CheckBox overrideVehicleReliabilityCheckBox;
     @FXML
     private CheckBox overrideWeatherPitCheckBox;
 
@@ -193,7 +198,23 @@ public class DriverEditor {
      */
     @FXML
     public void initialize() {
-
+        driverNameTextField.disableProperty().bind(overrideDriverNameCheckBox.selectedProperty().not());
+        driverCountryTextField.disableProperty().bind(overrideCountryCheckBox.selectedProperty().not());
+        racingSkillSlider.disableProperty().bind(overrideRacingSkillCheckBox.selectedProperty().not());
+        qualiSkillSlider.disableProperty().bind(overrideQualiSkillCheckBox.selectedProperty().not());
+        aggressionSlider.disableProperty().bind(overrideAggressionCheckBox.selectedProperty().not());
+        defendingSlider.disableProperty().bind(overrideDefendingCheckBox.selectedProperty().not());
+        staminaSlider.disableProperty().bind(overrideStaminaCheckBox.selectedProperty().not());
+        consistencySlider.disableProperty().bind(overrideConsistencyCheckBox.selectedProperty().not());
+        startReactionsSlider.disableProperty().bind(overrideStartReactions.selectedProperty().not());
+        wetSkillSlider.disableProperty().bind(overrideWetSkillCheckbox.selectedProperty().not());
+        tyreManagementSlider.disableProperty().bind(overrideTyreManagementCheckBox.selectedProperty().not());
+        fuelManagementSlider.disableProperty().bind(overrideFuelManagementCheckBox.selectedProperty().not());
+        blueFlagSlider.disableProperty().bind(overrideBlueFlagCheckBox.selectedProperty().not());
+        weatherPitSlider.disableProperty().bind(overrideWeatherPitCheckBox.selectedProperty().not());
+        mistakeAvoidanceSlider.disableProperty().bind(overrideMistakeAvoidanceCheckBox.selectedProperty().not());
+        forcedMistakeSlider.disableProperty().bind(overrideForcedMistakeAvoidanceCheckBox.selectedProperty().not());
+        vehicleReliabilitySlider.disableProperty().bind(overrideVehicleReliabilityCheckBox.selectedProperty().not());
     }
 
     /**
@@ -219,14 +240,77 @@ public class DriverEditor {
      * @param driver a driver whose properties are to be bind to the control elements of this editor.
      */
     private void bindDriver(Driver driver) {
-        driverNameTextField.textProperty()      .bindBidirectional(driver.liveryNameProperty());
-        driverNameTextField.textProperty()      .bindBidirectional(driver.nameProperty());
-        driverCountryTextField.textProperty()   .bindBidirectional(driver.countryProperty());
+        driverLiveryNameTextField.textProperty()    .bindBidirectional(driver.liveryNameProperty());
+        driverNameTextField.textProperty()          .bindBidirectional(driver.nameProperty());
+        driverCountryTextField.textProperty()       .bindBidirectional(driver.countryProperty());
+        racingSkillSlider.valueProperty()           .bindBidirectional(driver.raceSkillProperty());
+        qualiSkillSlider.valueProperty()            .bindBidirectional(driver.qualifyingSkillProperty());
+        aggressionSlider.valueProperty()            .bindBidirectional(driver.aggressionProperty());
+        defendingSlider.valueProperty()             .bindBidirectional(driver.defendingProperty());
+        staminaSlider.valueProperty()               .bindBidirectional(driver.staminaProperty());
+        consistencySlider.valueProperty()           .bindBidirectional(driver.consistencyProperty());
+        startReactionsSlider.valueProperty()        .bindBidirectional(driver.startReactionsProperty());
+        wetSkillSlider.valueProperty()              .bindBidirectional(driver.wetSkillProperty());
+        tyreManagementSlider.valueProperty()        .bindBidirectional(driver.tyreManagementProperty());
+        fuelManagementSlider.valueProperty()        .bindBidirectional(driver.fuelManagementProperty());
+        blueFlagSlider.valueProperty()              .bindBidirectional(driver.blueFlagConcedingProperty());
+        weatherPitSlider.valueProperty()            .bindBidirectional(driver.weatherTyreChangeProperty());
+        mistakeAvoidanceSlider.valueProperty()      .bindBidirectional(driver.avoidanceOfMistakesProperty());
+        forcedMistakeSlider.valueProperty()         .bindBidirectional(driver.avoidanceOfForcedMistakesProperty());
+        vehicleReliabilitySlider.valueProperty()    .bindBidirectional(driver.vehicleReliabilityProperty());
+
+
+        overrideRacingSkillCheckBox.selectedProperty()              .bindBidirectional(driver.overrideRaceSkillProperty());
+        overrideQualiSkillCheckBox.selectedProperty()               .bindBidirectional(driver.overrideQualifyingSkillProperty());
+        overrideAggressionCheckBox.selectedProperty()               .bindBidirectional(driver.overrideAggressionProperty());
+        overrideDefendingCheckBox.selectedProperty()                .bindBidirectional(driver.overrideDefendingProperty());
+        overrideStaminaCheckBox.selectedProperty()                  .bindBidirectional(driver.overrideStaminaProperty());
+        overrideConsistencyCheckBox.selectedProperty()              .bindBidirectional(driver.overrideConsistencyProperty());
+        overrideStartReactions.selectedProperty()                   .bindBidirectional(driver.overrideStartReactionsProperty());
+        overrideWetSkillCheckbox.selectedProperty()                 .bindBidirectional(driver.overrideWetSkillProperty());
+        overrideTyreManagementCheckBox.selectedProperty()           .bindBidirectional(driver.overrideTyreManagementProperty());
+        overrideFuelManagementCheckBox.selectedProperty()           .bindBidirectional(driver.overrideFuelManagementProperty());
+        overrideBlueFlagCheckBox.selectedProperty()                 .bindBidirectional(driver.overrideBlueFlagConcedingProperty());
+        overrideWeatherPitCheckBox.selectedProperty()               .bindBidirectional(driver.overrideWeatherTyreChangeProperty());
+        overrideMistakeAvoidanceCheckBox.selectedProperty()         .bindBidirectional(driver.overrideAvoidanceOfMistakesProperty());
+        overrideForcedMistakeAvoidanceCheckBox.selectedProperty()   .bindBidirectional(driver.overrideAvoidanceOfForcedMistakesProperty());
+        overrideVehicleReliabilityCheckBox.selectedProperty()       .bindBidirectional(driver.overrideVehicleReliabilityProperty());
     }
 
     private void unbindDriver(Driver driver) {
-        driverNameTextField.textProperty()      .unbindBidirectional(driver.liveryNameProperty());
-        driverNameTextField.textProperty()      .unbindBidirectional(driver.nameProperty());
-        driverCountryTextField.textProperty()   .unbindBidirectional(driver.countryProperty());
+        driverLiveryNameTextField.textProperty()    .unbindBidirectional(driver.liveryNameProperty());
+        driverNameTextField.textProperty()          .unbindBidirectional(driver.nameProperty());
+        driverCountryTextField.textProperty()       .unbindBidirectional(driver.countryProperty());
+        racingSkillSlider.valueProperty()           .unbindBidirectional(driver.raceSkillProperty());
+        qualiSkillSlider.valueProperty()            .unbindBidirectional(driver.qualifyingSkillProperty());
+        aggressionSlider.valueProperty()            .unbindBidirectional(driver.aggressionProperty());
+        defendingSlider.valueProperty()             .unbindBidirectional(driver.defendingProperty());
+        staminaSlider.valueProperty()               .unbindBidirectional(driver.staminaProperty());
+        consistencySlider.valueProperty()           .unbindBidirectional(driver.consistencyProperty());
+        startReactionsSlider.valueProperty()        .unbindBidirectional(driver.startReactionsProperty());
+        wetSkillSlider.valueProperty()              .unbindBidirectional(driver.wetSkillProperty());
+        tyreManagementSlider.valueProperty()        .unbindBidirectional(driver.tyreManagementProperty());
+        fuelManagementSlider.valueProperty()        .unbindBidirectional(driver.fuelManagementProperty());
+        blueFlagSlider.valueProperty()              .unbindBidirectional(driver.blueFlagConcedingProperty());
+        weatherPitSlider.valueProperty()            .unbindBidirectional(driver.weatherTyreChangeProperty());
+        mistakeAvoidanceSlider.valueProperty()      .unbindBidirectional(driver.avoidanceOfMistakesProperty());
+        forcedMistakeSlider.valueProperty()         .unbindBidirectional(driver.avoidanceOfForcedMistakesProperty());
+        vehicleReliabilitySlider.valueProperty()    .unbindBidirectional(driver.vehicleReliabilityProperty());
+
+        overrideRacingSkillCheckBox.selectedProperty()              .unbindBidirectional(driver.overrideRaceSkillProperty());
+        overrideQualiSkillCheckBox.selectedProperty()               .unbindBidirectional(driver.overrideQualifyingSkillProperty());
+        overrideAggressionCheckBox.selectedProperty()               .unbindBidirectional(driver.overrideAggressionProperty());
+        overrideDefendingCheckBox.selectedProperty()                .unbindBidirectional(driver.overrideDefendingProperty());
+        overrideStaminaCheckBox.selectedProperty()                  .unbindBidirectional(driver.overrideStaminaProperty());
+        overrideConsistencyCheckBox.selectedProperty()              .unbindBidirectional(driver.overrideConsistencyProperty());
+        overrideStartReactions.selectedProperty()                   .unbindBidirectional(driver.overrideStartReactionsProperty());
+        overrideWetSkillCheckbox.selectedProperty()                 .unbindBidirectional(driver.overrideWetSkillProperty());
+        overrideTyreManagementCheckBox.selectedProperty()           .unbindBidirectional(driver.overrideTyreManagementProperty());
+        overrideFuelManagementCheckBox.selectedProperty()           .unbindBidirectional(driver.overrideFuelManagementProperty());
+        overrideBlueFlagCheckBox.selectedProperty()                 .unbindBidirectional(driver.overrideBlueFlagConcedingProperty());
+        overrideWeatherPitCheckBox.selectedProperty()               .unbindBidirectional(driver.overrideWeatherTyreChangeProperty());
+        overrideMistakeAvoidanceCheckBox.selectedProperty()         .unbindBidirectional(driver.overrideAvoidanceOfMistakesProperty());
+        overrideForcedMistakeAvoidanceCheckBox.selectedProperty()   .unbindBidirectional(driver.overrideAvoidanceOfForcedMistakesProperty());
+        overrideVehicleReliabilityCheckBox.selectedProperty()       .unbindBidirectional(driver.overrideVehicleReliabilityProperty());
     }
 }

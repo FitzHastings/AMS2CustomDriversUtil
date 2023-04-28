@@ -201,10 +201,10 @@ limitations under the License. -->
       <TextField fx:id="tyreManagementTextField" GridPane.columnIndex="2" GridPane.rowIndex="8" />
       <TextField fx:id="blueFlagTextField" GridPane.columnIndex="2" GridPane.rowIndex="10" />
       <TextField fx:id="weatherPitTextField" GridPane.columnIndex="2" GridPane.rowIndex="11" />
-      <TextField fx:id="forcedMistakeAvoidanceTextField" GridPane.columnIndex="2" GridPane.rowIndex="12" />
+      <TextField fx:id="MistakeAvoidanceTextField" GridPane.columnIndex="2" GridPane.rowIndex="12" />
       <TextField fx:id="forcedMistakeTextField" GridPane.columnIndex="2" GridPane.rowIndex="13" />
       <PromptLabel text="Vehicle Reliability" GridPane.rowIndex="14" />
-      <Slider fx:id="vehicleReliablitySlider" blockIncrement="0.1" majorTickUnit="0.1" max="1.0" minorTickCount="10" showTickMarks="true" snapToTicks="true" GridPane.columnIndex="1" GridPane.rowIndex="14">
+      <Slider fx:id="vehicleReliabilitySlider" blockIncrement="0.1" majorTickUnit="0.1" max="1.0" minorTickCount="10" showTickMarks="true" snapToTicks="true" GridPane.columnIndex="1" GridPane.rowIndex="14">
          <GridPane.margin>
             <Insets right="10.0" />
          </GridPane.margin>
@@ -235,7 +235,7 @@ limitations under the License. -->
             <Insets left="10.0" />
          </GridPane.margin>
       </CheckBox>
-      <CheckBox fx:id="consistencyCheckBox" mnemonicParsing="false" selected="true" GridPane.columnIndex="3" GridPane.rowIndex="5">
+      <CheckBox fx:id="overrideConsistencyCheckBox" mnemonicParsing="false" selected="true" GridPane.columnIndex="3" GridPane.rowIndex="5">
          <GridPane.margin>
             <Insets left="10.0" />
          </GridPane.margin>
@@ -265,17 +265,17 @@ limitations under the License. -->
             <Insets left="10.0" />
          </GridPane.margin>
       </CheckBox>
-      <CheckBox fx:id="overrideForcedMistakeAvoidanceCheckBox" mnemonicParsing="false" selected="true" GridPane.columnIndex="3" GridPane.rowIndex="12">
+      <CheckBox fx:id="overrideMistakeAvoidanceCheckBox" mnemonicParsing="false" selected="true" GridPane.columnIndex="3" GridPane.rowIndex="12">
          <GridPane.margin>
             <Insets left="10.0" />
          </GridPane.margin>
       </CheckBox>
-      <CheckBox fx:id="overrideForcedMistakesCheckBox" mnemonicParsing="false" selected="true" GridPane.columnIndex="3" GridPane.rowIndex="13">
+      <CheckBox fx:id="overrideForcedMistakeAvoidanceCheckBox" mnemonicParsing="false" selected="true" GridPane.columnIndex="3" GridPane.rowIndex="13">
          <GridPane.margin>
             <Insets left="10.0" />
          </GridPane.margin>
       </CheckBox>
-      <CheckBox fx:id="vehicleReliabilityCheckBox" mnemonicParsing="false" selected="true" GridPane.columnIndex="3" GridPane.rowIndex="14">
+      <CheckBox fx:id="overrideVehicleReliabilityCheckBox" mnemonicParsing="false" selected="true" GridPane.columnIndex="3" GridPane.rowIndex="14">
          <GridPane.margin>
             <Insets left="10.0" />
          </GridPane.margin>

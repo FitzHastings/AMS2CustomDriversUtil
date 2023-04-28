@@ -192,7 +192,7 @@ public class XMLGridImporter implements GridImporter {
                 driver.avoidanceOfMistakesProperty().set(e.getAvoidanceOfForcedMistakes());
                 driver.overrideAvoidanceOfMistakesProperty().set(true);
             } else
-                driver.overrideAvoidanceOfForcedMistakesProperty().set(false);
+                driver.overrideAvoidanceOfMistakesProperty().set(false);
 
             if (e.getAvoidanceOfForcedMistakes() != null) {
                 driver.avoidanceOfForcedMistakesProperty().set(e.getAvoidanceOfForcedMistakes());
