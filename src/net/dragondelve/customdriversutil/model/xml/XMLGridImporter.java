@@ -30,7 +30,7 @@ import java.util.logging.Level;
 /**
  * Responsible for the conversion between AMS2 XML Custom Driver storage method and this program's data model.
  * AMS2 XML representation of the custom AI drivers can be found here:
- * https://forum.reizastudios.com/threads/information-for-customizing-ai-drivers-in-ams2-v1-3.21758/
+ * <a href="https://forum.reizastudios.com/threads/information-for-customizing-ai-drivers-in-ams2-v1-3.21758/">Reiza Studios Forum</a>
  */
 public class XMLGridImporter implements GridImporter {
 

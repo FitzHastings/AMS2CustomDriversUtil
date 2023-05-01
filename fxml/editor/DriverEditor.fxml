@@ -27,7 +27,7 @@ limitations under the License. -->
 
 <?import net.dragondelve.customdriversutil.fx.css.PromptLabel?>
 
-<VBox fx:id="rootPane" prefHeight="502.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="rootPane" prefHeight="502.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <GridPane minHeight="10.0" minWidth="10.0" prefHeight="70.0" prefWidth="638.0">
       <columnConstraints>
          <ColumnConstraints hgrow="NEVER" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
@@ -201,7 +201,7 @@ limitations under the License. -->
       <TextField fx:id="tyreManagementTextField" GridPane.columnIndex="2" GridPane.rowIndex="8" />
       <TextField fx:id="blueFlagTextField" GridPane.columnIndex="2" GridPane.rowIndex="10" />
       <TextField fx:id="weatherPitTextField" GridPane.columnIndex="2" GridPane.rowIndex="11" />
-      <TextField fx:id="MistakeAvoidanceTextField" GridPane.columnIndex="2" GridPane.rowIndex="12" />
+      <TextField fx:id="mistakeAvoidanceTextField" GridPane.columnIndex="2" GridPane.rowIndex="12" />
       <TextField fx:id="forcedMistakeTextField" GridPane.columnIndex="2" GridPane.rowIndex="13" />
       <PromptLabel text="Vehicle Reliability" GridPane.rowIndex="14" />
       <Slider fx:id="vehicleReliabilitySlider" blockIncrement="0.1" majorTickUnit="0.1" max="1.0" minorTickCount="10" showTickMarks="true" snapToTicks="true" GridPane.columnIndex="1" GridPane.rowIndex="14">

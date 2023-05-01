@@ -30,7 +30,7 @@ limitations under the License. -->
 
 <?import net.dragondelve.customdriversutil.fx.css.PromptLabel?>
 
-<BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="10.0" minWidth="10.0" prefHeight="802.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="10.0" minWidth="10.0" prefHeight="802.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <left>
        <VBox BorderPane.alignment="CENTER">
            <ToolBar prefHeight="40.0" prefWidth="200.0">

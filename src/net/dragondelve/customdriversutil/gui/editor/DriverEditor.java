@@ -40,9 +40,6 @@ public class DriverEditor {
     private CheckBox chooseLiveryCheckBox;
 
     @FXML
-    private CheckBox consistencyCheckBox;
-
-    @FXML
     private Slider consistencySlider;
 
     @FXML
@@ -64,7 +61,7 @@ public class DriverEditor {
     private TextField driverNameTextField;
 
     @FXML
-    private TextField MistakeAvoidanceTextField;
+    private TextField mistakeAvoidanceTextField;
 
     @FXML
     private Slider forcedMistakeSlider;
@@ -215,6 +212,23 @@ public class DriverEditor {
         mistakeAvoidanceSlider.disableProperty().bind(overrideMistakeAvoidanceCheckBox.selectedProperty().not());
         forcedMistakeSlider.disableProperty().bind(overrideForcedMistakeAvoidanceCheckBox.selectedProperty().not());
         vehicleReliabilitySlider.disableProperty().bind(overrideVehicleReliabilityCheckBox.selectedProperty().not());
+
+        racingSkillTextField.textProperty().bind(racingSkillSlider.valueProperty().asString("%.2f"));
+        qualiSkillTextField.textProperty().bind(qualiSkillSlider.valueProperty().asString("%.2f"));
+        aggressionTextField.textProperty().bind(aggressionSlider.valueProperty().asString("%.2f"));
+        defendingTextField.textProperty().bind(defendingSlider.valueProperty().asString("%.2f"));
+        staminaTextField.textProperty().bind(staminaSlider.valueProperty().asString("%.2f"));
+        consistencyTextField.textProperty().bind(consistencySlider.valueProperty().asString("%.2f"));
+        startReactionsTextField.textProperty().bind(startReactionsSlider.valueProperty().asString("%.2f"));
+        wetSkillTextField.textProperty().bind(wetSkillSlider.valueProperty().asString("%.2f"));
+        tyreManagementTextField.textProperty().bind(tyreManagementSlider.valueProperty().asString("%.2f"));
+        fuelManagementTextField.textProperty().bind(fuelManagementSlider.valueProperty().asString("%.2f"));
+        blueFlagTextField.textProperty().bind(blueFlagSlider.valueProperty().asString("%.2f"));
+        weatherPitTextField.textProperty().bind(weatherPitSlider.valueProperty().asString("%.2f"));
+        mistakeAvoidanceTextField.textProperty().bind(mistakeAvoidanceSlider.valueProperty().asString("%.2f"));
+        forcedMistakeTextField.textProperty().bind(forcedMistakeSlider.valueProperty().asString("%.2f"));
+        vehicleReliabilityTextField.textProperty().bind(vehicleReliabilitySlider.valueProperty().asString("%.2f"));
+
     }
 
     /**
