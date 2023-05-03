@@ -289,6 +289,22 @@ public class DriverEditor {
         overrideMistakeAvoidanceCheckBox.selectedProperty()         .bindBidirectional(driver.overrideAvoidanceOfMistakesProperty());
         overrideForcedMistakeAvoidanceCheckBox.selectedProperty()   .bindBidirectional(driver.overrideAvoidanceOfForcedMistakesProperty());
         overrideVehicleReliabilityCheckBox.selectedProperty()       .bindBidirectional(driver.overrideVehicleReliabilityProperty());
+
+        racingSkillTextField.setEditable(false);
+        qualiSkillTextField.setEditable(false);
+        aggressionTextField.setEditable(false);
+        defendingTextField.setEditable(false);
+        staminaTextField.setEditable(false);
+        consistencyTextField.setEditable(false);
+        startReactionsTextField.setEditable(false);
+        wetSkillTextField.setEditable(false);
+        tyreManagementTextField.setEditable(false);
+        fuelManagementTextField.setEditable(false);
+        blueFlagTextField.setEditable(false);
+        weatherPitTextField.setEditable(false);
+        mistakeAvoidanceTextField.setEditable(false);
+        forcedMistakeTextField.setEditable(false);
+        vehicleReliabilityTextField.setEditable(false);
     }
 
     private void unbindDriver(Driver driver) {
