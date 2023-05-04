@@ -14,10 +14,7 @@
 
 package net.dragondelve.customdriversutil.model.xml;
 
-import net.dragondelve.customdriversutil.model.Driver;
-import net.dragondelve.customdriversutil.model.Grid;
-import net.dragondelve.customdriversutil.model.VehicleClass;
-import net.dragondelve.customdriversutil.model.VehicleClassLibrary;
+import net.dragondelve.customdriversutil.model.*;
 import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.GridImporter;
 
@@ -25,7 +22,11 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Level;
+import java.util.stream.Collectors;
 
 /**
  * Responsible for the conversion between AMS2 XML Custom Driver storage method and this program's data model.
@@ -93,123 +94,39 @@ public class XMLGridImporter implements GridImporter {
             return null;
 
         Grid grid = new Grid();
-        xmlGrid.getXmlDrivers().forEach(e-> {
-            if (e.getTracks() != null)
+        xmlGrid.getXmlDrivers().forEach(xmlDriver-> {
+            if (xmlDriver.getTracks() != null)
                 return;
-
+            
             Driver driver = new Driver();
-            if (e.getLiveryName() != null) {
-                driver.liveryNameProperty().set(e.getLiveryName());
-                driver.overrideNameProperty().set(true);
-            } else
-                driver.overrideNameProperty().set(false);
-
-            if (e.getName() != null) {
-                driver.nameProperty().set(e.getName());
-                driver.overrideNameProperty().set(true);
-            } else
-                driver.overrideNameProperty().set(false);
-
-            if (e.getCountry() != null) {
-                driver.countryProperty().set(e.getCountry());
-                driver.overrideCountryProperty().set(true);
-            } else
-                driver.overrideCountryProperty().set(false);
-
-            if (e.getRaceSkill() != null) {
-                driver.raceSkillProperty().set(e.getRaceSkill());
-                driver.overrideRaceSkillProperty().set(true);
-            } else
-                driver.overrideRaceSkillProperty().set(false);
-
-            if (e.getQualifyingSkill() != null) {
-                driver.qualifyingSkillProperty().set(e.getQualifyingSkill());
-                driver.overrideQualifyingSkillProperty().set(true);
-            } else
-                driver.overrideQualifyingSkillProperty().set(false);
-
-            if (e.getAggression() != null) {
-                driver.aggressionProperty().set(e.getAggression());
-                driver.overrideAggressionProperty().set(true);
-            } else
-                driver.overrideAggressionProperty().set(false);
-
-            if (e.getDefending() != null) {
-                driver.defendingProperty().set(e.getDefending());
-                driver.overrideDefendingProperty().set(true);
-            } else
-                driver.overrideDefendingProperty().set(false);
-
-            if (e.getStamina() != null) {
-                driver.staminaProperty().set(e.getStamina());
-                driver.overrideStaminaProperty().set(true);
-            } else
-                driver.overrideStaminaProperty().set(false);
-
-            if (e.getConsistency() != null) {
-                driver.consistencyProperty().set(e.getConsistency());
-                driver.overrideConsistencyProperty().set(true);
-            } else
-                driver.overrideConsistencyProperty().set(false);
-
-            if (e.getStartReactions() != null) {
-                driver.startReactionsProperty().set(e.getStartReactions());
-                driver.overrideStartReactionsProperty().set(true);
-            } else
-                driver.overrideStartReactionsProperty().set(false);
-
-            if (e.getWetSkill() != null) {
-                driver.wetSkillProperty().set(e.getWetSkill());
-                driver.overrideWetSkillProperty().set(true);
-            } else
-                driver.overrideWetSkillProperty().set(false);
-
-            if (e.getTyreManagement() != null) {
-                driver.tyreManagementProperty().set(e.getTyreManagement());
-                driver.overrideTyreManagementProperty().set(true);
-            } else
-                driver.overrideTyreManagementProperty().set(false);
-
-            if (e.getFuelManagement() != null) {
-                driver.fuelManagementProperty().set(e.getFuelManagement());
-                driver.overrideFuelManagementProperty().set(true);
-            } else
-                driver.overrideFuelManagementProperty().set(false);
-
-            if (e.getBlueFlagConceding() != null) {
-                driver.blueFlagConcedingProperty().set(e.getBlueFlagConceding());
-                driver.overrideBlueFlagConcedingProperty().set(true);
-            } else
-                driver.overrideBlueFlagConcedingProperty().set(false);
-
-            if (e.getWeatherTyreChanges() != null) {
-                driver.weatherTyreChangeProperty().set(e.getWeatherTyreChanges());
-                driver.overrideWeatherTyreChangeProperty().set(true);
-            } else
-                driver.overrideWeatherTyreChangeProperty().set(false);
-
-            if (e.getAvoidanceOfMistakes() != null) {
-                driver.avoidanceOfMistakesProperty().set(e.getAvoidanceOfForcedMistakes());
-                driver.overrideAvoidanceOfMistakesProperty().set(true);
-            } else
-                driver.overrideAvoidanceOfMistakesProperty().set(false);
-
-            if (e.getAvoidanceOfForcedMistakes() != null) {
-                driver.avoidanceOfForcedMistakesProperty().set(e.getAvoidanceOfForcedMistakes());
-                driver.overrideAvoidanceOfForcedMistakesProperty().set(true);
-            } else
-                driver.overrideAvoidanceOfForcedMistakesProperty().set(false);
-
-            if (e.getVehicleReliability() != null) {
-                driver.vehicleReliabilityProperty().set(e.getVehicleReliability());
-                driver.overrideVehicleReliabilityProperty().set(true);
-            } else
-                driver.overrideVehicleReliabilityProperty().set(false);
-
+            
+            if (xmlDriver.getLiveryName() != null)
+                driver.liveryNameProperty().set(xmlDriver.getLiveryName());
+            
+            importBaseProperties(xmlDriver, driver);
             grid.getDrivers().add(driver);
         });
 
-        //TODO:Parse for Track Specific Overrides Here.
+        xmlGrid.getXmlDrivers().forEach(xmlDriver -> {
+            if(xmlDriver.getTracks() == null)
+                return;
+
+            TrackOverride override = new TrackOverride();
+            List<String> stringTracks = Arrays.asList(xmlDriver.getTracks().split(","));
+            List<Track> tracks = new ArrayList<>();
+            stringTracks.forEach(stringTrack-> tracks.add(new Track(stringTrack, stringTrack)));
+            override.getTrack().addAll(tracks);
+
+            List<Driver> collect = grid.getDrivers().stream().filter(driver -> {
+                return driver.liveryNameProperty().get().equals(xmlDriver.getLiveryName());
+            }).collect(Collectors.toList());
+
+            importBaseProperties(xmlDriver, override);
+
+            if(collect.size() == 1) {
+                collect.get(0).getTrackOverrides().add(override);
+            }
+        });
 
         return grid;
     }
@@ -232,5 +149,114 @@ public class XMLGridImporter implements GridImporter {
             DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "XML Grid loading failed from path: " + file.getPath());
             return null;
         }
+    }
+
+    /**
+     * Imports the bas properties shared between the track specific overrides and driver overrides.
+     * @param source Source XML driver, whose fields will be used to set the base properties.
+     * @param target Target whose properties are going to be set. Should be either a Driver or a TrackOverride.
+     */
+    private void importBaseProperties(XMLDriver source, DriverBase target) {
+        if (source.getName() != null) {
+            target.nameProperty().set(source.getName());
+            target.overrideNameProperty().set(true);
+        } else
+            target.overrideNameProperty().set(false);
+
+        if (source.getCountry() != null) {
+            target.countryProperty().set(source.getCountry());
+            target.overrideCountryProperty().set(true);
+        } else
+            target.overrideCountryProperty().set(false);
+
+        if (source.getRaceSkill() != null) {
+            target.raceSkillProperty().set(source.getRaceSkill());
+            target.overrideRaceSkillProperty().set(true);
+        } else
+            target.overrideRaceSkillProperty().set(false);
+
+        if (source.getQualifyingSkill() != null) {
+            target.qualifyingSkillProperty().set(source.getQualifyingSkill());
+            target.overrideQualifyingSkillProperty().set(true);
+        } else
+            target.overrideQualifyingSkillProperty().set(false);
+
+        if (source.getAggression() != null) {
+            target.aggressionProperty().set(source.getAggression());
+            target.overrideAggressionProperty().set(true);
+        } else
+            target.overrideAggressionProperty().set(false);
+
+        if (source.getDefending() != null) {
+            target.defendingProperty().set(source.getDefending());
+            target.overrideDefendingProperty().set(true);
+        } else
+            target.overrideDefendingProperty().set(false);
+
+        if (source.getStamina() != null) {
+            target.staminaProperty().set(source.getStamina());
+            target.overrideStaminaProperty().set(true);
+        } else
+            target.overrideStaminaProperty().set(false);
+
+        if (source.getConsistency() != null) {
+            target.consistencyProperty().set(source.getConsistency());
+            target.overrideConsistencyProperty().set(true);
+        } else
+            target.overrideConsistencyProperty().set(false);
+
+        if (source.getStartReactions() != null) {
+            target.startReactionsProperty().set(source.getStartReactions());
+            target.overrideStartReactionsProperty().set(true);
+        } else
+            target.overrideStartReactionsProperty().set(false);
+
+        if (source.getWetSkill() != null) {
+            target.wetSkillProperty().set(source.getWetSkill());
+            target.overrideWetSkillProperty().set(true);
+        } else
+            target.overrideWetSkillProperty().set(false);
+
+        if (source.getTyreManagement() != null) {
+            target.tyreManagementProperty().set(source.getTyreManagement());
+            target.overrideTyreManagementProperty().set(true);
+        } else
+            target.overrideTyreManagementProperty().set(false);
+
+        if (source.getFuelManagement() != null) {
+            target.fuelManagementProperty().set(source.getFuelManagement());
+            target.overrideFuelManagementProperty().set(true);
+        } else
+            target.overrideFuelManagementProperty().set(false);
+
+        if (source.getBlueFlagConceding() != null) {
+            target.blueFlagConcedingProperty().set(source.getBlueFlagConceding());
+            target.overrideBlueFlagConcedingProperty().set(true);
+        } else
+            target.overrideBlueFlagConcedingProperty().set(false);
+
+        if (source.getWeatherTyreChanges() != null) {
+            target.weatherTyreChangeProperty().set(source.getWeatherTyreChanges());
+            target.overrideWeatherTyreChangeProperty().set(true);
+        } else
+            target.overrideWeatherTyreChangeProperty().set(false);
+
+        if (source.getAvoidanceOfMistakes() != null) {
+            target.avoidanceOfMistakesProperty().set(source.getAvoidanceOfForcedMistakes());
+            target.overrideAvoidanceOfMistakesProperty().set(true);
+        } else
+            target.overrideAvoidanceOfMistakesProperty().set(false);
+
+        if (source.getAvoidanceOfForcedMistakes() != null) {
+            target.avoidanceOfForcedMistakesProperty().set(source.getAvoidanceOfForcedMistakes());
+            target.overrideAvoidanceOfForcedMistakesProperty().set(true);
+        } else
+            target.overrideAvoidanceOfForcedMistakesProperty().set(false);
+
+        if (source.getVehicleReliability() != null) {
+            target.vehicleReliabilityProperty().set(source.getVehicleReliability());
+            target.overrideVehicleReliabilityProperty().set(true);
+        } else
+            target.overrideVehicleReliabilityProperty().set(false);
     }
 }

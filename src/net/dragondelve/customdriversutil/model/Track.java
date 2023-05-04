@@ -46,6 +46,23 @@ public final class Track {
     private final BooleanProperty isOval = new SimpleBooleanProperty();
 
     /**
+     * Default constructor does not provide default values
+     */
+    public Track() {
+        super();
+    }
+
+    /**
+     *
+     * @param name Track name that is human-readable, it's used for display purposes.
+     * @param xmlName Track name that is used in the XML when exporting.
+     */
+    public Track(String name, String xmlName) {
+        this.name.set(name);
+        this.xmlName.set(xmlName);
+    }
+
+    /**
      * Lightweight accessor method.
      * @return Track name that is human-readable, it's used for display purposes.
      */

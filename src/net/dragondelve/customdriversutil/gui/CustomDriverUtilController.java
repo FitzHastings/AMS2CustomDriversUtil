@@ -29,10 +29,7 @@ import net.dragondelve.customdriversutil.gui.editor.DriverEditor;
 import net.dragondelve.customdriversutil.gui.editor.Editor;
 import net.dragondelve.customdriversutil.gui.editor.TrackLibraryEditor;
 import net.dragondelve.customdriversutil.gui.editor.VehicleClassLibraryEditor;
-import net.dragondelve.customdriversutil.model.Driver;
-import net.dragondelve.customdriversutil.model.Grid;
-import net.dragondelve.customdriversutil.model.Track;
-import net.dragondelve.customdriversutil.model.VehicleClass;
+import net.dragondelve.customdriversutil.model.*;
 import net.dragondelve.customdriversutil.model.xml.XMLGridExporter;
 import net.dragondelve.customdriversutil.model.xml.XMLGridImporter;
 import net.dragondelve.customdriversutil.util.*;
@@ -125,6 +122,12 @@ public class CustomDriverUtilController implements StageController {
     private TableView<Driver> driversTableView;
 
     @FXML
+    private TableView<TrackOverride> trackOverrideTableView;
+
+    @FXML
+    private TableColumn<TrackOverride, String> trackNameColumn;
+
+    @FXML
     private TableColumn<Driver, String> driverNameColumn;
 
     @FXML
@@ -179,8 +182,11 @@ public class CustomDriverUtilController implements StageController {
         driversTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null) {
                 driverEditor.setEditedDriver(newValue);
+                trackOverrideTableView.setItems(newValue.getTrackOverrides());
             }
         });
+
+        trackNameColumn.setCellValueFactory(e-> e.getValue().getTrack().get(0).nameProperty());
     }
 
 
@@ -219,9 +225,10 @@ public class CustomDriverUtilController implements StageController {
         File file = chooseFileToOpen("Choose XML Grid File", "grids");
         XMLGridImporter importer = new XMLGridImporter();
         Grid importedGrid = importer.importFromFile(file);
-        if(importedGrid != null)
+        if(importedGrid != null) {
             editedGrid.getDrivers().clear();
             editedGrid.getDrivers().addAll(importedGrid.getDrivers());
+        }
     }
 
     /**

@@ -18,9 +18,9 @@ import javafx.beans.property.*;
 
 /**
  * Represents a base model of a driver described by AMS2 Developers here:
- * https://forum.reizastudios.com/threads/information-for-customizing-ai-drivers-in-ams2-v1-3.21758/
+ * <a href="https://forum.reizastudios.com/threads/information-for-customizing-ai-drivers-in-ams2-v1-3.21758/">Reiza AMS2 Forums</a>
  */
-abstract class DriverBase {
+public abstract class DriverBase {
     /**
      * Driver name.
      */

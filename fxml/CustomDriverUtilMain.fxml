@@ -98,7 +98,7 @@ limitations under the License. -->
                                        <Button fx:id="removeTrackOverrideButton" mnemonicParsing="false" prefHeight="26.0"
                                                prefWidth="26.0" text="-"/>
                                    </ToolBar>
-                                   <TableView fx:id="trackOverrideColumn" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                   <TableView fx:id="trackOverrideTableView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                        <columns>
                                            <TableColumn fx:id="trackNameColumn" prefWidth="75.0" text="Tracks"/>
                                        </columns>
