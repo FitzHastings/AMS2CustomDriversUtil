@@ -28,37 +28,77 @@ import javafx.stage.Stage;
 import net.dragondelve.customdriversutil.model.VehicleClass;
 import net.dragondelve.customdriversutil.util.DDUtil;
 
+/**
+ * Editor that can edit a VehicleLibrary's List<VehicleClass>.
+ * Allows the user to create new instances of VehicleClass, remove tracks from the list and to edit
+ * each item on the list. The Editor should be displayed on a separate decorated stage as there is no
+ * way to close the stage from inside the editor.
+ */
 public class VehicleClassLibraryEditor implements Editor<VehicleClass> {
+    /**
+     * Button that adds a new LiveryName to a VehicleClass this button performs addLiveryNameAction on action.
+     */
     @FXML
     private Button addLiveryNameButton;
 
+    /**
+     * Button that adds a new VehicleClass to a VehicleClassLibrary. This button performs addVehicleClassAction on action.
+     */
     @FXML
     private Button addVehicleClassButton;
 
+    /**
+     * List View that shows the list of all livery names assigned to a VehicleClass selected in the vehicleClassTableView.
+     */
     @FXML
     private ListView<String> liveryNameListView;
 
+    /**
+     * Button that removes a liveryName that is selected in liveryNameListView. This button performs addLiveryNameAction on action.
+     */
     @FXML
     private Button removeLiveryNameButton;
 
+    /**
+     * Button that removes the vehicleClass selected in the vehicleClassTableView.This button performs removeVehicleClass action on action.
+     */
     @FXML
     private Button removeVehicleClassButton;
 
+    /**
+     * Root pane of this editor. It is used to apply a css stylesheet to this editor.
+     */
     @FXML
     private SplitPane rootPane;
 
+    /**
+     * TableColumn that is a part of VehicleClassTableView that displays the human readable name for the vehicle class.
+     */
     @FXML
     private TableColumn<VehicleClass, String> vehicleClassNameTableColumn;
 
+    /**
+     * TextField that allows the user to edit the name of the vehicle class that is currently selected in the vehicleClassTableView.
+     */
     @FXML
     private TextField vehicleClassNameTextField;
 
+    /**
+     * TableView that displays the list of vehicleClasses that are currently edited.
+     */
     @FXML
     private TableView<VehicleClass> vehicleClassTableView;
 
+    /**
+     * TextField that displays and allows the user to edit the name of the vehicle class selected in the vehicleClassTableView
+     * that is going to be used as a default filename when saving the xml file.
+     */
     @FXML
     private TextField vehicleClassXMLNameTextField;
 
+    /**
+     * Flag that determines if the controls are currently being disabled.
+     */
     private boolean controlsAreDisabled = false;
 
     /**
@@ -104,7 +144,7 @@ public class VehicleClassLibraryEditor implements Editor<VehicleClass> {
         liveryNameListView.setCellFactory(TextFieldListCell.forListView());
 
         addLiveryNameButton.setOnAction(e->addLiveryNameAction());
-        removeLiveryNameButton.setOnAction(e->setRemoveLiveryNameAction());
+        removeLiveryNameButton.setOnAction(e-> removeLiveryNameAction());
 
     }
 
@@ -137,6 +177,10 @@ public class VehicleClassLibraryEditor implements Editor<VehicleClass> {
         this.items = items;
     }
 
+    /**
+     * Creates a new VehicleClass in the vehicleClassLibrary. The name of the class is set to New Class and the xmlName
+     * is set to New class as well.
+     */
     private void addVehicleClassAction() {
        VehicleClass vehicleClass =  new VehicleClass();
        vehicleClass.setName("New Class");
@@ -144,6 +188,11 @@ public class VehicleClassLibraryEditor implements Editor<VehicleClass> {
        items.add(vehicleClass);
     }
 
+    /**
+     * Removes a vehicle class currently selected in the vehicleClassTableView. if a selection is empty it will return.
+     * If the vehicleClass selected is the last in the list it will select the previous item in the tableView. If the
+     * selectedVehicleClass is not the last one in the list it will instead select the next one in the list.
+     */
     private void removeVehicleClassAction() {
         VehicleClass selectedVehicleClass = vehicleClassTableView.getSelectionModel().getSelectedItem();
         if (selectedVehicleClass != null) {
@@ -155,11 +204,18 @@ public class VehicleClassLibraryEditor implements Editor<VehicleClass> {
         }
     }
 
+    /**
+     * Adds a new livery name to the vehicleClass currently selected in the TableView. The name of the livery is set to New Livery.
+     */
     private void addLiveryNameAction() {
         liveryNameListView.getItems().add("New Livery");
     }
 
-    private void setRemoveLiveryNameAction() {
+    /**
+     * of an item is selected in the liveryNameListView it removes the selected item. If the item removed was the last
+     * item of the list it will attempt to select the previous item. If it is not the last it will select the next item instead.
+     */
+    private void removeLiveryNameAction() {
         String selectedLiveryName = liveryNameListView.getSelectionModel().getSelectedItem();
         if (selectedLiveryName != null) {
             if(!liveryNameListView.getSelectionModel().isSelected(liveryNameListView.getItems().size()))

@@ -22,171 +22,370 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import net.dragondelve.customdriversutil.model.Driver;
 
+import java.util.Random;
+
+/**
+ * Driver Editor is designed to edit a single driver or a single track specific override if it is put into
+ * trackOverrideMode. This is a controller for the fxml/editor/DriverEditor.fxml.
+ */
 public class DriverEditor {
 
+    /**
+     * Slider that determines the value of the Driver's Aggression. The values range from 0.0 to 1.0
+     */
     @FXML
     private Slider aggressionSlider;
 
+    /**
+     * Textfield that displays the value of the Driver's Aggression.
+     */
     @FXML
     private TextField aggressionTextField;
 
+    /**
+     * Slider that determines the value of the driver's blueFlagConceding. The values range from 0.0 to 1.0
+     */
     @FXML
     private Slider blueFlagSlider;
 
+    /**
+     * TextField that displays the value of the Driver's blueFlagConceding.
+     */
     @FXML
     private TextField blueFlagTextField;
 
+    /**
+     * CheckBox that determines if the user wants to choose a livery from a List with a ChoiceBox or he wants to
+     * Type it in manually. If this checkbox is selected the user wishes to choose the livery from a list.
+     */
     @FXML
     private CheckBox chooseLiveryCheckBox;
 
+    /**
+     * Slider that determines the driver's consistency. Values range from 0.0 to 1.0.
+     */
     @FXML
     private Slider consistencySlider;
 
+    /**
+     * TextField that displays the value of the driver's consistency.
+     */
     @FXML
     private TextField consistencyTextField;
 
+    /**
+     * Slider that determines the driver's defending. Values range from 0.0 to 1.0.
+     */
     @FXML
     private Slider defendingSlider;
 
+    /**
+     * TextField that displays the value of the driver's defending.
+     */
     @FXML
     private TextField defendingTextField;
 
+    /**
+     * TextField that displays the driver'a country code.
+     * This country code is used to dis[lau the flag in the game. Should use three letter codes
+     * for the desired country.
+     */
     @FXML
     private TextField driverCountryTextField;
 
+    /**
+     * TextField that allows the user to edit the livery name of the driver directly.
+     */
     @FXML
     private TextField driverLiveryNameTextField;
 
+    /**
+     * TextField that is bound to the driver's name property.
+     */
     @FXML
     private TextField driverNameTextField;
 
+    /**
+     * TextField that displays the value of the driver's avoidanceOfMistakes.
+     */
     @FXML
     private TextField mistakeAvoidanceTextField;
 
+    /**
+     * Slider that determines the driver's avoidanceOfForcedMistakes. Values range from 0.0 to 1.0.
+     */
     @FXML
     private Slider forcedMistakeSlider;
 
+    /**
+     * TextField that displays the value of the driver's avoidanceOfForcedMistakes..
+     */
     @FXML
     private TextField forcedMistakeTextField;
 
+    /**
+     * Slider that determines the driver's fuelManagement. Values range from 0.0 to 1.0.
+     */
     @FXML
     private Slider fuelManagementSlider;
 
+    /**
+     * TextField that displays the value of the driver's fuelManagement..
+     */
     @FXML
     private TextField fuelManagementTextField;
 
+    /**
+     * Slider that determines the driver's avoidanceOfMistakes. Values range from 0.0 to 1.0.
+     */
     @FXML
     private Slider mistakeAvoidanceSlider;
 
+    /**
+     * CheckBox that determines whether the aggression value of the default driver should be
+     * overridden or not.
+     */
     @FXML
     private CheckBox overrideAggressionCheckBox;
 
+    /**
+     * CheckBox that determines whether the bleFlagConceding value of the default driver should be
+     * overridden or not.
+     */
     @FXML
     private CheckBox overrideBlueFlagCheckBox;
 
+    /**
+     * CheckBox that determines whether the country value of the default driver should be
+     * overridden or not.
+     */
     @FXML
     private CheckBox overrideCountryCheckBox;
 
+    /**
+     * CheckBox that determines whether the consistency value of the default driver should be
+     * overridden or not.
+     */
     @FXML
     private CheckBox overrideConsistencyCheckBox;
 
+    /**
+     * CheckBox that determines whether the defending value of the default driver should be
+     * overridden or not.
+     */
     @FXML
     private CheckBox overrideDefendingCheckBox;
 
+    /**
+     * CheckBox that determines whether the name value of the default driver should be
+     * overridden or not.
+     */
     @FXML
     private CheckBox overrideDriverNameCheckBox;
 
+    /**
+     * CheckBox that determines whether the avoidanceOfForcedMistakes value of the default driver should be
+     * overridden or not.
+     */
     @FXML
     private CheckBox overrideForcedMistakeAvoidanceCheckBox;
 
+    /**
+     * CheckBox that determines whether the fuelManagement value of the default driver should be
+     * overridden or not.
+     */
     @FXML
     private CheckBox overrideFuelManagementCheckBox;
 
+    /**
+     * CheckBox that determines whether the avoidanceOfMistakes value of the default driver should be
+     * overridden or not.
+     */
     @FXML
     private CheckBox overrideMistakeAvoidanceCheckBox;
 
+    /**
+     * CheckBox that determines whether the qualifyingSkill value of the default driver should be
+     * overridden or not.
+     */
     @FXML
     private CheckBox overrideQualiSkillCheckBox;
 
+    /**
+     * CheckBox that determines whether the raceSkill value of the default driver should be
+     * overridden or not.
+     */
     @FXML
     private CheckBox overrideRacingSkillCheckBox;
 
+    /**
+     * CheckBox that determines whether the stamina value of the default driver should be
+     * overridden or not.
+     */
     @FXML
     private CheckBox overrideStaminaCheckBox;
 
+    /**
+     * CheckBox that determines whether the startReaction value of the default driver should be
+     * overridden or not.
+     */
     @FXML
     private CheckBox overrideStartReactions;
 
+    /**
+     * CheckBox that determines whether the aggression value of the default driver should be
+     * overridden or not.
+     */
     @FXML
     private CheckBox overrideTyreManagementCheckBox;
 
+    /**
+     * CheckBox that determines whether the aggression value of the default driver should be
+     * overridden or not.
+     */
     @FXML
     private CheckBox overrideVehicleReliabilityCheckBox;
+    /**
+     * CheckBox that determines whether the weatherTyreChange value of the default driver should be
+     * overridden or not.
+     */
     @FXML
     private CheckBox overrideWeatherPitCheckBox;
 
+    /**
+     * CheckBox that determines whether the wetSkill value of the default driver should be
+     * overridden or not.
+     */
     @FXML
     private CheckBox overrideWetSkillCheckbox;
 
+    /**
+     * Slider that determines the driver's qualifyingSkill. Values range from 0.0 to 1.0.
+     */
     @FXML
     private Slider qualiSkillSlider;
 
+    /**
+     * TextField that displays the value of the driver's avoidanceOfForcedMistakes..
+     */
     @FXML
     private TextField qualiSkillTextField;
 
+    /**
+     * Slider that determines the driver's racingSkill. Values range from 0.0 to 1.0.
+     */
     @FXML
     private Slider racingSkillSlider;
 
+    /**
+     * TextField that displays the value of the driver's racingSkill..
+     */
     @FXML
     private TextField racingSkillTextField;
 
+    /**
+     * Button that randomizes the values of the sliders. Performs randomizeDriverAction.
+     */
     @FXML
     private Button randomizeButton;
 
+    /**
+     * rootPane of the editor that is used to apply the stylesheet to the entire editor.
+     */
     @FXML
     private VBox rootPane;
 
+    /**
+     * Slider that determines the driver's stamina. Values range from 0.0 to 1.0.
+     */
     @FXML
     private Slider staminaSlider;
 
+    /**
+     * TextField that displays the value of the driver's stamina.
+     */
     @FXML
     private TextField staminaTextField;
 
+    /**
+     * Slider that determines the driver's startReactions. Values range from 0.0 to 1.0.
+     */
     @FXML
     private Slider startReactionsSlider;
 
+    /**
+     * TextField that displays the value of the driver's startReactions.
+     */
     @FXML
     private TextField startReactionsTextField;
 
+    /**
+     * Slider that determines the driver's tyreManagement. Values range from 0.0 to 1.0.
+     */
     @FXML
     private Slider tyreManagementSlider;
 
+    /**
+     * TextField that displays the value of the driver's tyreManagement.
+     */
     @FXML
     private TextField tyreManagementTextField;
 
+    /**
+     * CheckBox that determines whether the vehicleReliability value of the default driver should be
+     * overridden or not.
+     */
     @FXML
     private CheckBox vehicleReliabilityCheckBox;
 
+    /**
+     * TextField that displays the value of the driver's vehicleReliability.
+     */
     @FXML
     private TextField vehicleReliabilityTextField;
 
+    /**
+     * Slider that determines the driver's vehicleReliability. Values range from 0.0 to 1.0. Actual accepted values have
+     * a much broader range but this slider has the same default behaviour as the rest of the Sliders.
+     */
     @FXML
     private Slider vehicleReliabilitySlider;
 
+    /**
+     * Slider that determines the driver's weatherTyreChanges. Values range from 0.0 to 1.0.
+     */
     @FXML
     private Slider weatherPitSlider;
 
+    /**
+     * TextField that displays the value of the driver's vehicleReliability.
+     */
     @FXML
     private TextField weatherPitTextField;
 
+    /**
+     * Slider that determines the driver's wetSkill. Values range from 0.0 to 1.0.
+     */
     @FXML
     private Slider wetSkillSlider;
 
+    /**
+     * TextField that displays the value of the driver's wetSkill.
+     */
     @FXML
     private TextField wetSkillTextField;
 
+    /**
+     * Driver that is currently being edited by this editor. His properties are bound bidirectionally to the controls
+     * and they have to be unbound with unbindDriver(Driver driver) if the value changes.
+     */
     private Driver editedDriver;
 
+    /**
+     * A flag that determines whether this editor is run in the trackOverride mode or not. This flag should be set to
+     * true if you want to edit a trackOverride. When setting this flag you have to already have set a driver and you
+     * need to provide a track or a String value of an xmlName of the track that is going to be actually edited.
+     */
     private boolean overrideMode = false;
 
     /**
@@ -229,6 +428,8 @@ public class DriverEditor {
         forcedMistakeTextField.textProperty().bind(forcedMistakeSlider.valueProperty().asString("%.2f"));
         vehicleReliabilityTextField.textProperty().bind(vehicleReliabilitySlider.valueProperty().asString("%.2f"));
 
+        randomizeButton.setOnAction(e->randomizeDriverAction());
+
     }
 
     /**
@@ -242,10 +443,6 @@ public class DriverEditor {
         }
         this.editedDriver = driver;
         bindDriver(editedDriver);
-    }
-
-    public void setOverrideMode(boolean overrideMode) {
-        this.overrideMode = overrideMode;
     }
 
     /**
@@ -307,6 +504,11 @@ public class DriverEditor {
         vehicleReliabilityTextField.setEditable(false);
     }
 
+    /**
+     * Unbinds the given driver's properties from the control elements of the editor. The bind will be unbound bidirectionally.
+     * If a driver was bound with bindDriver then you should unbind it with this method.
+     * @param driver a driver whose properties are to be unbound from the control elements of this editor.
+     */
     private void unbindDriver(Driver driver) {
         driverLiveryNameTextField.textProperty()    .unbindBidirectional(driver.liveryNameProperty());
         driverNameTextField.textProperty()          .unbindBidirectional(driver.nameProperty());
@@ -342,5 +544,21 @@ public class DriverEditor {
         overrideMistakeAvoidanceCheckBox.selectedProperty()         .unbindBidirectional(driver.overrideAvoidanceOfMistakesProperty());
         overrideForcedMistakeAvoidanceCheckBox.selectedProperty()   .unbindBidirectional(driver.overrideAvoidanceOfForcedMistakesProperty());
         overrideVehicleReliabilityCheckBox.selectedProperty()       .unbindBidirectional(driver.overrideVehicleReliabilityProperty());
+    }
+
+    private void randomizeDriverAction() {
+        Random random = new Random();
+        editedDriver.raceSkillProperty().set(random.nextDouble());
+        editedDriver.qualifyingSkillProperty().set(random.nextDouble());
+        editedDriver.aggressionProperty().set(random.nextDouble());
+        editedDriver.defendingProperty().set(random.nextDouble());
+        editedDriver.staminaProperty().set(random.nextDouble());
+        editedDriver.wetSkillProperty().set(random.nextDouble());
+        editedDriver.tyreManagementProperty().set(random.nextDouble());
+        editedDriver.fuelManagementProperty().set(random.nextDouble());
+        editedDriver.blueFlagConcedingProperty().set(random.nextDouble());
+        editedDriver.weatherTyreChangeProperty().set(random.nextDouble());
+        editedDriver.avoidanceOfMistakesProperty().set(random.nextDouble());
+        editedDriver.avoidanceOfForcedMistakesProperty().set(random.nextDouble());
     }
 }
