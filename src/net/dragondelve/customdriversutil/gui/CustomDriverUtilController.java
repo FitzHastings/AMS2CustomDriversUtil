@@ -118,18 +118,33 @@ public class CustomDriverUtilController implements StageController {
     @FXML
     private MenuItem importVehicleClassesItem;
 
+    /**
+     * Tableview That displays the drivers from the grid that is being edited.
+     */
     @FXML
     private TableView<Driver> driversTableView;
 
+    /**
+     * TableView that displays the trackOverrides for the driver selected int the driversTableView
+     */
     @FXML
     private TableView<TrackOverride> trackOverrideTableView;
 
+    /**
+     * TableColumn in trackOverrideTableView that displays the track name for the given override.
+     */
     @FXML
     private TableColumn<TrackOverride, String> trackNameColumn;
 
+    /**
+     * TableColumn in driversTableView that displays the name of a driver
+     */
     @FXML
     private TableColumn<Driver, String> driverNameColumn;
 
+    /**
+     * TableColumn in driver driversTableView that displays the three letter code for the driver's country.
+     */
     @FXML
     private TableColumn<Driver, String> driverCountryColumn;
 
@@ -139,8 +154,14 @@ public class CustomDriverUtilController implements StageController {
      */
     private Stage stage = new Stage();
 
+    /**
+     * Grid that is being edited by the editor.
+     */
     private final Grid editedGrid = new Grid();
 
+    /**
+     * an instance of DriverEditor that controls the driver editor that will edit a driver selected in driverTableView.
+     */
     private final DriverEditor driverEditor = new DriverEditor();
 
     /**

@@ -21,7 +21,7 @@ import javafx.collections.ObservableList;
 
 /**
  * Represents a model of a driver with their track overrides included as described by AMS2 Developers here:
- * https://forum.reizastudios.com/threads/information-for-customizing-ai-drivers-in-ams2-v1-3.21758/
+ * <a href="https://forum.reizastudios.com/threads/information-for-customizing-ai-drivers-in-ams2-v1-3.21758/">Reiza AMS2Forums</a>
  * Stores Livery Name that is shared with its track specific overrides.
  */
 final public class Driver extends DriverBase {
