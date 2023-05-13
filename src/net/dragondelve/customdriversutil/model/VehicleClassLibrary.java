@@ -16,10 +16,13 @@ package net.dragondelve.customdriversutil.model;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import net.dragondelve.customdriversutil.util.DDUtil;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.NoSuchElementException;
+import java.util.logging.Level;
 
 /**
  * Represents a reference Library of Vehicle Classes.
@@ -40,6 +43,24 @@ public class VehicleClassLibrary {
     @XmlElement(name = "vehicle_class")
     public ObservableList<VehicleClass> getVehicleClasses() {
         return vehicleClasses;
+    }
+
+    public VehicleClass findVehicleClassWithName(String name) {
+        try {
+            return vehicleClasses.stream().filter(track -> track.getName().equals(name)).findFirst().get();
+        } catch (NoSuchElementException e) {
+            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Trying to find vehicle class with name '"+name+"' in the library but no such track found");
+            return null;
+        }
+    }
+
+    public VehicleClass findVehicleClassWithXmlName(String xmlName) {
+        try {
+            return vehicleClasses.stream().filter(track -> track.getName().equals(xmlName)).findFirst().get();
+        } catch (NoSuchElementException e) {
+            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Trying to find vehicle class with xml name '"+xmlName+"' in the library but no such track found");
+            return null;
+        }
     }
 
     /**

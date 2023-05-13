@@ -16,9 +16,12 @@ package net.dragondelve.customdriversutil.model;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import net.dragondelve.customdriversutil.util.DDUtil;
 
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.NoSuchElementException;
+import java.util.logging.Level;
 
 /**
  * Library of tracks that is used when generating a custom AI grid.
@@ -38,6 +41,20 @@ public class TrackLibrary {
     @XmlElementWrapper(name = "tracks")
     public ObservableList<Track> getTracks() {
         return tracks;
+    }
+
+    /**
+     * Finds a track in the library with a given name.
+     * @param name human-readable name of a track.
+     * @return track from the library with that name or null if none found.
+     */
+    public Track findTrackWithName(String name) {
+        try {
+            return tracks.stream().filter(track -> track.getName().equals(name)).findFirst().get();
+        } catch (NoSuchElementException e) {
+            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Trying to find track with name '"+name+"' in the library but no such track found");
+            return null;
+        }
     }
 
     /**

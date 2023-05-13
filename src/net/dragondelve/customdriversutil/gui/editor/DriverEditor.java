@@ -21,8 +21,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import net.dragondelve.customdriversutil.model.Driver;
-
-import java.util.Random;
+import net.dragondelve.customdriversutil.model.GridGenerator;
 
 /**
  * Driver Editor is designed to edit a single driver or a single track specific override if it is put into
@@ -553,21 +552,6 @@ public class DriverEditor {
         if (editedDriver == null)
             return;
 
-        Random random = new Random();
-        editedDriver.raceSkillProperty().set(random.nextDouble());
-        editedDriver.qualifyingSkillProperty().set(random.nextDouble());
-        editedDriver.aggressionProperty().set(random.nextDouble());
-        editedDriver.defendingProperty().set(random.nextDouble());
-        editedDriver.staminaProperty().set(random.nextDouble());
-        editedDriver.consistencyProperty().set(random.nextDouble());
-        editedDriver.startReactionsProperty().set(random.nextDouble());
-        editedDriver.wetSkillProperty().set(random.nextDouble());
-        editedDriver.tyreManagementProperty().set(random.nextDouble());
-        editedDriver.fuelManagementProperty().set(random.nextDouble());
-        editedDriver.blueFlagConcedingProperty().set(random.nextDouble());
-        editedDriver.weatherTyreChangeProperty().set(random.nextDouble());
-        editedDriver.avoidanceOfMistakesProperty().set(random.nextDouble());
-        editedDriver.avoidanceOfForcedMistakesProperty().set(random.nextDouble());
-        editedDriver.vehicleReliabilityProperty().set(random.nextDouble());
+        GridGenerator.randomizeDriver(editedDriver);
     }
 }

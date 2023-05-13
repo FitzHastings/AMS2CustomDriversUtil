@@ -18,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -43,6 +44,17 @@ import java.net.URL;
  * Controls the top menu and what is shown inside the rootPane
  */
 public class CustomDriverUtilController implements StageController {
+    /**
+     * Button that performs addDriverAction on action.
+     */
+    @FXML
+    private Button addDriverButton;
+
+    /**
+     * Button that performs removeDriverAction on action.
+     */
+    @FXML
+    private Button removeDriverButton;
 
     /**
      * Root Pane of the main screen. Is used to display everything inside the main window.
@@ -157,7 +169,7 @@ public class CustomDriverUtilController implements StageController {
     /**
      * Grid that is being edited by the editor.
      */
-    private final Grid editedGrid = new Grid();
+    private Grid editedGrid = new Grid();
 
     /**
      * an instance of DriverEditor that controls the driver editor that will edit a driver selected in driverTableView.
@@ -172,6 +184,15 @@ public class CustomDriverUtilController implements StageController {
     public void initialize() {
         rootPane.getStylesheets().clear();
         rootPane.getStylesheets().add(DDUtil.MAIN_CSS_RESOURCE);
+
+        trackNameColumn.setCellValueFactory(e-> e.getValue().getTrack().get(0).nameProperty());
+//        GridGenerator gridGenerator = new GridGenerator();
+//        VehicleClass vehicleClass = LibraryManager.getInstance().getVehicleClassLibrary().findVehicleClassWithXmlName("F-Inter");
+//        if (vehicleClass != null) {
+//            gridGenerator.setVehicleClass(vehicleClass);
+//            editedGrid = gridGenerator.generateNewGrid();
+//        }
+
         try {
             FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().DRIVER_EDITOR_FXML_URL);
             loader.setController(driverEditor);
@@ -206,10 +227,13 @@ public class CustomDriverUtilController implements StageController {
                 trackOverrideTableView.setItems(newValue.getTrackOverrides());
             }
         });
-
-        trackNameColumn.setCellValueFactory(e-> e.getValue().getTrack().get(0).nameProperty());
     }
 
+    private void addDriverAction() {
+        Driver driver = new Driver();
+
+        editedGrid.getDrivers().add(driver);
+    }
 
     /**
      * Action that is performed by ExportGridItem.

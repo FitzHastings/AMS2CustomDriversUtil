@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<custom_ai_drivers>
+    <driver livery_name="JLM Racing #28">
+        <aggression>0.5592857539337636</aggression>
+        <avoidance_of_forced_mistakes>0.49283773278801635</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.5119091632550367</avoidance_of_mistakes>
+        <blue_flag_conceding>0.766735384299264</blue_flag_conceding>
+        <consistency>0.860520405009433</consistency>
+        <defending>0.6171838803295194</defending>
+        <fuel_management>0.571950604178687</fuel_management>
+        <name>drv JLM Raci</name>
+        <qualifying_skill>0.7643605366698939</qualifying_skill>
+        <race_skill>0.3171182163650754</race_skill>
+        <stamina>0.41809623380132777</stamina>
+        <start_reactions>0.6914855948328955</start_reactions>
+        <tyre_management>0.2273544439339199</tyre_management>
+        <vehicle_reliability>0.5688194135511998</vehicle_reliability>
+        <weather_tyre_changes>0.19144049063040547</weather_tyre_changes>
+        <wet_skill>0.3904977002299427</wet_skill>
+    </driver>
+    <driver livery_name="JLM Racing #43">
+        <aggression>0.9504551236300341</aggression>
+        <avoidance_of_forced_mistakes>0.03287321393626497</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.9699240820110088</avoidance_of_mistakes>
+        <blue_flag_conceding>0.8476983628646934</blue_flag_conceding>
+        <consistency>0.499454577017043</consistency>
+        <defending>0.3073651039434506</defending>
+        <fuel_management>0.3183250647068122</fuel_management>
+        <name>drv JLM Raci</name>
+        <qualifying_skill>0.472558202475694</qualifying_skill>
+        <race_skill>0.24607312102740642</race_skill>
+        <stamina>0.6310454339640938</stamina>
+        <start_reactions>0.4909554668336177</start_reactions>
+        <tyre_management>0.9803173067839039</tyre_management>
+        <vehicle_reliability>0.3986553058483002</vehicle_reliability>
+        <weather_tyre_changes>0.28907350602480675</weather_tyre_changes>
+        <wet_skill>0.15714428447993656</wet_skill>
+    </driver>
+    <driver livery_name="JLM Racing #113">
+        <aggression>0.7658263764676754</aggression>
+        <avoidance_of_forced_mistakes>0.7763247560077821</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.46335241726517884</avoidance_of_mistakes>
+        <blue_flag_conceding>0.5772427748781385</blue_flag_conceding>
+        <consistency>0.08070871363685284</consistency>
+        <defending>0.6983928849308124</defending>
+        <fuel_management>0.39145990705477385</fuel_management>
+        <name>drv JLM Raci</name>
+        <qualifying_skill>0.9346554113192433</qualifying_skill>
+        <race_skill>0.511416579136816</race_skill>
+        <stamina>0.39749862689393156</stamina>
+        <start_reactions>0.29326510393366</start_reactions>
+        <tyre_management>0.23739712241410582</tyre_management>
+        <vehicle_reliability>0.7696610221688321</vehicle_reliability>
+        <weather_tyre_changes>0.46266093341906145</weather_tyre_changes>
+        <wet_skill>0.5610903608621253</wet_skill>
+    </driver>
+    <driver livery_name="JLM Racing #175">
+        <aggression>0.022955139007121983</aggression>
+        <avoidance_of_forced_mistakes>0.5114545662488834</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.4632708030167416</avoidance_of_mistakes>
+        <blue_flag_conceding>0.37320576388676696</blue_flag_conceding>
+        <consistency>0.6489596116739584</consistency>
+        <defending>0.7255551782479922</defending>
+        <fuel_management>0.84603310695228</fuel_management>
+        <name>drv JLM Raci</name>
+        <qualifying_skill>0.059144489318076254</qualifying_skill>
+        <race_skill>0.7095692492040284</race_skill>
+        <stamina>0.462248679744772</stamina>
+        <start_reactions>0.17588698634226518</start_reactions>
+        <tyre_management>0.907629013226103</tyre_management>
+        <vehicle_reliability>0.16789656793162966</vehicle_reliability>
+        <weather_tyre_changes>0.8839904322378468</weather_tyre_changes>
+        <wet_skill>0.3076635661993271</wet_skill>
+    </driver>
+    <driver livery_name="AJR-Tubarao #5">
+        <aggression>0.5194086300445109</aggression>
+        <avoidance_of_forced_mistakes>0.3851839456472681</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.5063783256588569</avoidance_of_mistakes>
+        <blue_flag_conceding>0.9006924817950182</blue_flag_conceding>
+        <consistency>0.3192025454851414</consistency>
+        <defending>0.33467727917756274</defending>
+        <fuel_management>0.8918413457577347</fuel_management>
+        <name>drv AJR-Tuba</name>
+        <qualifying_skill>0.46168911718460404</qualifying_skill>
+        <race_skill>0.6755707602645814</race_skill>
+        <stamina>0.6339113862129612</stamina>
+        <start_reactions>0.3547614707444616</start_reactions>
+        <tyre_management>0.44168258727943754</tyre_management>
+        <vehicle_reliability>0.8198913325595205</vehicle_reliability>
+        <weather_tyre_changes>0.9474936043042406</weather_tyre_changes>
+        <wet_skill>0.533261385028101</wet_skill>
+    </driver>
+    <driver livery_name="MM AJR #37 - H.Blom Skin">
+        <aggression>0.3083298047532852</aggression>
+        <avoidance_of_forced_mistakes>0.9610704245852881</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.8888212509667616</avoidance_of_mistakes>
+        <blue_flag_conceding>0.07599642926789829</blue_flag_conceding>
+        <consistency>0.11110309085385717</consistency>
+        <defending>0.23580561977310133</defending>
+        <fuel_management>0.8291851594560706</fuel_management>
+        <name>drv MM AJR #</name>
+        <qualifying_skill>0.8908117891151084</qualifying_skill>
+        <race_skill>0.04155439354490653</race_skill>
+        <stamina>0.7457698751225832</stamina>
+        <start_reactions>0.8489693895873288</start_reactions>
+        <tyre_management>0.9446587133174099</tyre_management>
+        <vehicle_reliability>0.321880138455915</vehicle_reliability>
+        <weather_tyre_changes>0.3380563847783563</weather_tyre_changes>
+        <wet_skill>0.5765342682519315</wet_skill>
+    </driver>
+    <driver livery_name="MM AJR #58 - S.Rogers Skin">
+        <aggression>0.42714003396400013</aggression>
+        <avoidance_of_forced_mistakes>0.4107020902581082</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.9031041847108293</avoidance_of_mistakes>
+        <blue_flag_conceding>0.5195260455896572</blue_flag_conceding>
+        <consistency>0.21291243168810858</consistency>
+        <defending>0.9021239770726523</defending>
+        <fuel_management>0.9595196483611566</fuel_management>
+        <name>drv MM AJR #</name>
+        <qualifying_skill>0.9607793117902111</qualifying_skill>
+        <race_skill>0.8324869217446598</race_skill>
+        <stamina>0.19279107970338472</stamina>
+        <start_reactions>0.2566855981693893</start_reactions>
+        <tyre_management>0.09307264243743485</tyre_management>
+        <vehicle_reliability>0.31504960009193306</vehicle_reliability>
+        <weather_tyre_changes>0.987248152704001</weather_tyre_changes>
+        <wet_skill>0.3403997177362539</wet_skill>
+    </driver>
+    <driver livery_name="NC Racing #65">
+        <aggression>0.5902240080368578</aggression>
+        <avoidance_of_forced_mistakes>0.9455935383394485</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.5463710931653056</avoidance_of_mistakes>
+        <blue_flag_conceding>0.4497119229031934</blue_flag_conceding>
+        <consistency>0.8823336907695736</consistency>
+        <defending>0.9831145371594409</defending>
+        <fuel_management>0.16229967470737028</fuel_management>
+        <name>drv NC Racin</name>
+        <qualifying_skill>0.6643301236451973</qualifying_skill>
+        <race_skill>0.7643114031662829</race_skill>
+        <stamina>0.27907483783351905</stamina>
+        <start_reactions>0.015186425332355591</start_reactions>
+        <tyre_management>0.5785280259961767</tyre_management>
+        <vehicle_reliability>0.3097182883989653</vehicle_reliability>
+        <weather_tyre_changes>0.452279889974722</weather_tyre_changes>
+        <wet_skill>0.7470769484185432</wet_skill>
+    </driver>
+    <driver livery_name="PMotor Brasil #2">
+        <aggression>0.5370297690281584</aggression>
+        <avoidance_of_forced_mistakes>0.6450816131258355</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.9813713602927984</avoidance_of_mistakes>
+        <blue_flag_conceding>0.19126861808162576</blue_flag_conceding>
+        <consistency>0.18441231486162424</consistency>
+        <defending>0.2283237801474327</defending>
+        <fuel_management>0.9280154693309197</fuel_management>
+        <name>drv PMotor B</name>
+        <qualifying_skill>0.1386506669938441</qualifying_skill>
+        <race_skill>0.1128446056862985</race_skill>
+        <stamina>0.6163097153620549</stamina>
+        <start_reactions>0.14739623177547</start_reactions>
+        <tyre_management>0.8638738930827313</tyre_management>
+        <vehicle_reliability>0.7986818889569317</vehicle_reliability>
+        <weather_tyre_changes>0.0910950163230898</weather_tyre_changes>
+        <wet_skill>0.08723699260990736</wet_skill>
+    </driver>
+    <driver livery_name="JLM Racing #11">
+        <aggression>0.11036017942203613</aggression>
+        <avoidance_of_forced_mistakes>0.46738084691619075</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.10123844859790432</avoidance_of_mistakes>
+        <blue_flag_conceding>0.6953751900157874</blue_flag_conceding>
+        <consistency>0.9552226226624418</consistency>
+        <defending>0.29763768598774565</defending>
+        <fuel_management>0.409295612601407</fuel_management>
+        <name>drv JLM Raci</name>
+        <qualifying_skill>0.6514220200174148</qualifying_skill>
+        <race_skill>0.6731990555920313</race_skill>
+        <stamina>0.2358175391580638</stamina>
+        <start_reactions>0.3205071827399404</start_reactions>
+        <tyre_management>0.48207881721264445</tyre_management>
+        <vehicle_reliability>0.36709603418110803</vehicle_reliability>
+        <weather_tyre_changes>0.8968539033656414</weather_tyre_changes>
+        <wet_skill>0.11422322406539231</wet_skill>
+    </driver>
+    <driver livery_name="Motikov Sport #13">
+        <aggression>0.8674692136801315</aggression>
+        <avoidance_of_forced_mistakes>0.23456131626192145</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.08004151953780148</avoidance_of_mistakes>
+        <blue_flag_conceding>0.25946240128521714</blue_flag_conceding>
+        <consistency>0.11196857724074383</consistency>
+        <defending>0.12158714845104557</defending>
+        <fuel_management>0.973897149889782</fuel_management>
+        <name>drv Motikov </name>
+        <qualifying_skill>0.00567675618244512</qualifying_skill>
+        <race_skill>0.4049218755836097</race_skill>
+        <stamina>0.9702222725521644</stamina>
+        <start_reactions>0.9162117631215024</start_reactions>
+        <tyre_management>0.7485432875037974</tyre_management>
+        <vehicle_reliability>0.6699636199879829</vehicle_reliability>
+        <weather_tyre_changes>0.5301514413307364</weather_tyre_changes>
+        <wet_skill>0.4833369990472114</wet_skill>
+    </driver>
+    <driver livery_name="Motikov Sport #15">
+        <aggression>0.6831475898244392</aggression>
+        <avoidance_of_forced_mistakes>0.9555296101505693</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.44345737645775507</avoidance_of_mistakes>
+        <blue_flag_conceding>0.19862333454495584</blue_flag_conceding>
+        <consistency>0.9858748946727255</consistency>
+        <defending>0.4441160073616277</defending>
+        <fuel_management>0.6399612682784533</fuel_management>
+        <name>drv Motikov </name>
+        <qualifying_skill>0.9824916569772517</qualifying_skill>
+        <race_skill>0.3118768294389551</race_skill>
+        <stamina>0.20931321929395108</stamina>
+        <start_reactions>0.5646076910921494</start_reactions>
+        <tyre_management>0.6990569007602917</tyre_management>
+        <vehicle_reliability>0.7065169016499117</vehicle_reliability>
+        <weather_tyre_changes>0.9879810907887032</weather_tyre_changes>
+        <wet_skill>0.13424575087306534</wet_skill>
+    </driver>
+    <driver livery_name="MM AJR #22 - F.Castelloes Skin">
+        <aggression>0.08777504265192071</aggression>
+        <avoidance_of_forced_mistakes>0.5214107718532973</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.8270300280663594</avoidance_of_mistakes>
+        <blue_flag_conceding>0.8359350647504765</blue_flag_conceding>
+        <consistency>0.8518143429498334</consistency>
+        <defending>0.5995213364633124</defending>
+        <fuel_management>0.409939184177159</fuel_management>
+        <name>drv MM AJR #</name>
+        <qualifying_skill>0.3579465976050905</qualifying_skill>
+        <race_skill>0.24607599445061212</race_skill>
+        <stamina>0.30116336095689766</stamina>
+        <start_reactions>0.6252494762853772</start_reactions>
+        <tyre_management>0.9019677337937307</tyre_management>
+        <vehicle_reliability>0.492603772227041</vehicle_reliability>
+        <weather_tyre_changes>0.5586491475907774</weather_tyre_changes>
+        <wet_skill>0.6345983466858142</wet_skill>
+    </driver>
+    <driver livery_name="MM AJR #40 - D.Emerson Skin">
+        <aggression>0.893632034760591</aggression>
+        <avoidance_of_forced_mistakes>0.19748398087654606</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.0438600451879696</avoidance_of_mistakes>
+        <blue_flag_conceding>0.833999256376733</blue_flag_conceding>
+        <consistency>0.03539894717934222</consistency>
+        <defending>0.5118922039757623</defending>
+        <fuel_management>0.12442130842973276</fuel_management>
+        <name>drv MM AJR #</name>
+        <qualifying_skill>0.4471091357118593</qualifying_skill>
+        <race_skill>0.5763935488245426</race_skill>
+        <stamina>0.7064750858355671</stamina>
+        <start_reactions>0.31712836984306925</start_reactions>
+        <tyre_management>0.596894648624213</tyre_management>
+        <vehicle_reliability>0.5797495748099887</vehicle_reliability>
+        <weather_tyre_changes>0.5002071933026141</weather_tyre_changes>
+        <wet_skill>0.2730718417921394</wet_skill>
+    </driver>
+    <driver livery_name="Mottin Racing #46">
+        <aggression>0.14016639776636952</aggression>
+        <avoidance_of_forced_mistakes>0.3577239327150733</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.39050388704711003</avoidance_of_mistakes>
+        <blue_flag_conceding>0.16267876426420258</blue_flag_conceding>
+        <consistency>0.3277190341752326</consistency>
+        <defending>0.8183204255935348</defending>
+        <fuel_management>0.38491137117399954</fuel_management>
+        <name>drv Mottin R</name>
+        <qualifying_skill>0.23304821121768038</qualifying_skill>
+        <race_skill>0.915562861457358</race_skill>
+        <stamina>0.32430689844952676</stamina>
+        <start_reactions>0.753674637204354</start_reactions>
+        <tyre_management>0.6504061890540105</tyre_management>
+        <vehicle_reliability>4.7791022013954354E-4</vehicle_reliability>
+        <weather_tyre_changes>0.7360884648343538</weather_tyre_changes>
+        <wet_skill>0.39443836068524507</wet_skill>
+    </driver>
+    <driver livery_name="MM AJR #62 - R.Sandstorm Skin">
+        <aggression>0.03795748409407618</aggression>
+        <avoidance_of_forced_mistakes>0.16882908765154925</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.7429918126514312</avoidance_of_mistakes>
+        <blue_flag_conceding>0.0443797529990273</blue_flag_conceding>
+        <consistency>0.733879756600036</consistency>
+        <defending>0.6374880282069852</defending>
+        <fuel_management>0.19307067263415545</fuel_management>
+        <name>drv MM AJR #</name>
+        <qualifying_skill>0.0453160087370178</qualifying_skill>
+        <race_skill>0.15165720248053383</race_skill>
+        <stamina>0.888047972167476</stamina>
+        <start_reactions>0.352343314524175</start_reactions>
+        <tyre_management>0.8835390905601543</tyre_management>
+        <vehicle_reliability>0.28833382862810386</vehicle_reliability>
+        <weather_tyre_changes>0.20295260564088924</weather_tyre_changes>
+        <wet_skill>0.8010491062720274</wet_skill>
+    </driver>
+    <driver livery_name="Reiza Engineering #7">
+        <aggression>0.7957096083514515</aggression>
+        <avoidance_of_forced_mistakes>0.7096518581588069</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.46239609686323435</avoidance_of_mistakes>
+        <blue_flag_conceding>0.653803410885307</blue_flag_conceding>
+        <consistency>0.9104655522900597</consistency>
+        <defending>0.8262728985936483</defending>
+        <fuel_management>0.9356081095477867</fuel_management>
+        <name>drv Reiza En</name>
+        <qualifying_skill>0.9759372698993066</qualifying_skill>
+        <race_skill>0.1718177057381206</race_skill>
+        <stamina>0.04449543802337086</stamina>
+        <start_reactions>0.40020493416130665</start_reactions>
+        <tyre_management>0.16240804004086795</tyre_management>
+        <vehicle_reliability>0.822044496675874</vehicle_reliability>
+        <weather_tyre_changes>0.5186756150989377</weather_tyre_changes>
+        <wet_skill>0.7851569987472814</wet_skill>
+    </driver>
+    <driver livery_name="VX Endurance #8">
+        <aggression>0.7620475371619823</aggression>
+        <avoidance_of_forced_mistakes>0.9928274434322905</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.6921245817997445</avoidance_of_mistakes>
+        <blue_flag_conceding>0.13986858253587597</blue_flag_conceding>
+        <consistency>0.4480614745531243</consistency>
+        <defending>0.34722972915316574</defending>
+        <fuel_management>0.16902584892774308</fuel_management>
+        <name>drv VX Endur</name>
+        <qualifying_skill>0.4473385746863916</qualifying_skill>
+        <race_skill>0.4161230042524954</race_skill>
+        <stamina>0.8666363468494366</stamina>
+        <start_reactions>0.6116158646989723</start_reactions>
+        <tyre_management>0.5437971364231441</tyre_management>
+        <vehicle_reliability>0.2732378702828352</vehicle_reliability>
+        <weather_tyre_changes>0.9797979111027041</weather_tyre_changes>
+        <wet_skill>0.4672833162509644</wet_skill>
+    </driver>
+    <driver livery_name="JLM Racing #29">
+        <aggression>0.4514090943426413</aggression>
+        <avoidance_of_forced_mistakes>0.36006537682923445</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.37957082266355346</avoidance_of_mistakes>
+        <blue_flag_conceding>0.9839496562916067</blue_flag_conceding>
+        <consistency>0.6131640406149866</consistency>
+        <defending>0.8639931704853593</defending>
+        <fuel_management>0.5915588812374294</fuel_management>
+        <name>drv JLM Raci</name>
+        <qualifying_skill>0.8943263573127519</qualifying_skill>
+        <race_skill>0.9951288481796079</race_skill>
+        <stamina>0.33952309656494606</stamina>
+        <start_reactions>0.5275653305145346</start_reactions>
+        <tyre_management>0.26849191351101054</tyre_management>
+        <vehicle_reliability>0.791551884689035</vehicle_reliability>
+        <weather_tyre_changes>0.2920694447987612</weather_tyre_changes>
+        <wet_skill>0.8719779365206568</wet_skill>
+    </driver>
+    <driver livery_name="MM AJR #30 - P.Tiago Skin">
+        <aggression>0.18399536506587166</aggression>
+        <avoidance_of_forced_mistakes>0.17265812946295445</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.3547976268364763</avoidance_of_mistakes>
+        <blue_flag_conceding>0.965646257612935</blue_flag_conceding>
+        <consistency>0.4088048717556716</consistency>
+        <defending>0.3577758080716805</defending>
+        <fuel_management>0.7048413087058527</fuel_management>
+        <name>drv MM AJR #</name>
+        <qualifying_skill>0.37459201486602767</qualifying_skill>
+        <race_skill>0.7885895920684506</race_skill>
+        <stamina>0.3407594649540504</stamina>
+        <start_reactions>0.9349933811455687</start_reactions>
+        <tyre_management>0.9098150824998139</tyre_management>
+        <vehicle_reliability>0.3675649521926877</vehicle_reliability>
+        <weather_tyre_changes>0.03550333858764254</weather_tyre_changes>
+        <wet_skill>0.9685280742922231</wet_skill>
+    </driver>
+    <driver livery_name="MM AJR #52 - E.Mesquita Skin">
+        <aggression>0.2777507055759463</aggression>
+        <avoidance_of_forced_mistakes>0.7058978383030512</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.9568146493187499</avoidance_of_mistakes>
+        <blue_flag_conceding>0.663011740418615</blue_flag_conceding>
+        <consistency>0.5372791619123968</consistency>
+        <defending>0.8267129138301931</defending>
+        <fuel_management>0.29332565713131586</fuel_management>
+        <name>drv MM AJR #</name>
+        <qualifying_skill>0.9596230273679168</qualifying_skill>
+        <race_skill>0.7757009884445389</race_skill>
+        <stamina>0.3702619236328951</stamina>
+        <start_reactions>0.8133410975271707</start_reactions>
+        <tyre_management>0.3774771324655063</tyre_management>
+        <vehicle_reliability>0.3341067773738674</vehicle_reliability>
+        <weather_tyre_changes>0.4968414225601743</weather_tyre_changes>
+        <wet_skill>0.7969419507856615</wet_skill>
+    </driver>
+    <driver livery_name="MM AJR #84 - J.Billings Skin">
+        <aggression>0.837084770317112</aggression>
+        <avoidance_of_forced_mistakes>0.03911982689829796</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.015744949596785407</avoidance_of_mistakes>
+        <blue_flag_conceding>0.06623692874499831</blue_flag_conceding>
+        <consistency>0.5231351959209833</consistency>
+        <defending>0.35274454958834256</defending>
+        <fuel_management>0.09547391065254718</fuel_management>
+        <name>drv MM AJR #</name>
+        <qualifying_skill>0.19051549423431946</qualifying_skill>
+        <race_skill>0.40049260504084083</race_skill>
+        <stamina>0.1973877265916777</stamina>
+        <start_reactions>0.32572492429178046</start_reactions>
+        <tyre_management>0.9961726098224871</tyre_management>
+        <vehicle_reliability>0.7285813146052527</vehicle_reliability>
+        <weather_tyre_changes>0.7523233736669552</weather_tyre_changes>
+        <wet_skill>0.059482955566855344</wet_skill>
+    </driver>
+    <driver livery_name="Padole Racing #21">
+        <aggression>0.12003934009284356</aggression>
+        <avoidance_of_forced_mistakes>0.6181544716186721</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.2598303472812986</avoidance_of_mistakes>
+        <blue_flag_conceding>0.15733127808622616</blue_flag_conceding>
+        <consistency>0.6843816163821583</consistency>
+        <defending>0.7733209341939646</defending>
+        <fuel_management>0.16310294876672637</fuel_management>
+        <name>drv Padole R</name>
+        <qualifying_skill>0.1437414612507104</qualifying_skill>
+        <race_skill>0.948179620838688</race_skill>
+        <stamina>0.9841858820920157</stamina>
+        <start_reactions>0.38383708326738697</start_reactions>
+        <tyre_management>0.9081385831233122</tyre_management>
+        <vehicle_reliability>0.6379197622537549</vehicle_reliability>
+        <weather_tyre_changes>0.16727629297743318</weather_tyre_changes>
+        <wet_skill>0.9946452961190496</wet_skill>
+    </driver>
+    <driver livery_name="Padole Racing #27">
+        <aggression>0.42461004563541016</aggression>
+        <avoidance_of_forced_mistakes>0.7149557962388837</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.5810716993057973</avoidance_of_mistakes>
+        <blue_flag_conceding>0.964534691835186</blue_flag_conceding>
+        <consistency>0.1885308382999683</consistency>
+        <defending>0.8560351255541834</defending>
+        <fuel_management>0.8890651986690445</fuel_management>
+        <name>drv Padole R</name>
+        <qualifying_skill>0.2361165781186858</qualifying_skill>
+        <race_skill>0.2445101706636439</race_skill>
+        <stamina>0.31639688922173737</stamina>
+        <start_reactions>0.2601239710282538</start_reactions>
+        <tyre_management>0.515830890761846</tyre_management>
+        <vehicle_reliability>0.24057562903158847</vehicle_reliability>
+        <weather_tyre_changes>0.9536626119446625</weather_tyre_changes>
+        <wet_skill>0.8856839124708569</wet_skill>
+    </driver>
+    <driver livery_name="MM AJR #10 - E.Sackbauer Skin">
+        <aggression>0.6033060809609537</aggression>
+        <avoidance_of_forced_mistakes>0.1132854599955595</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.7728450507293908</avoidance_of_mistakes>
+        <blue_flag_conceding>0.5359079772924246</blue_flag_conceding>
+        <consistency>0.7396220699623959</consistency>
+        <defending>0.40296331831380827</defending>
+        <fuel_management>0.6787527051014715</fuel_management>
+        <name>drv MM AJR #</name>
+        <qualifying_skill>0.47865925601023274</qualifying_skill>
+        <race_skill>0.7977614765195874</race_skill>
+        <stamina>0.7147017759944057</stamina>
+        <start_reactions>0.29738611760805245</start_reactions>
+        <tyre_management>0.3756340195637704</tyre_management>
+        <vehicle_reliability>0.6047919640918775</vehicle_reliability>
+        <weather_tyre_changes>0.7289243894228458</weather_tyre_changes>
+        <wet_skill>0.4427721193023454</wet_skill>
+    </driver>
+    <driver livery_name="MM AJR #35 - A.Mocanu Skin">
+        <aggression>0.5658201512904536</aggression>
+        <avoidance_of_forced_mistakes>0.04603499852935222</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.8907250247818118</avoidance_of_mistakes>
+        <blue_flag_conceding>0.11971752405555691</blue_flag_conceding>
+        <consistency>0.7324264781849464</consistency>
+        <defending>0.15140597540536826</defending>
+        <fuel_management>0.5497597646030913</fuel_management>
+        <name>drv MM AJR #</name>
+        <qualifying_skill>0.43965046309959765</qualifying_skill>
+        <race_skill>0.43351350663223653</race_skill>
+        <stamina>0.23944374726376216</stamina>
+        <start_reactions>0.2750731108747475</start_reactions>
+        <tyre_management>0.45890787624674734</tyre_management>
+        <vehicle_reliability>0.9061705313676577</vehicle_reliability>
+        <weather_tyre_changes>0.6340018228344082</weather_tyre_changes>
+        <wet_skill>0.4927201684889331</wet_skill>
+    </driver>
+    <driver livery_name="MM AJR #55 - P.Papaioannou Skin">
+        <aggression>0.4162067712968218</aggression>
+        <avoidance_of_forced_mistakes>0.7653750228950666</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.9060207701279246</avoidance_of_mistakes>
+        <blue_flag_conceding>0.20262767509873736</blue_flag_conceding>
+        <consistency>0.10633592708058037</consistency>
+        <defending>0.06345423346830104</defending>
+        <fuel_management>0.8734730355349569</fuel_management>
+        <name>drv MM AJR #</name>
+        <qualifying_skill>0.24000533763356313</qualifying_skill>
+        <race_skill>0.08084484600274933</race_skill>
+        <stamina>0.06242471838467023</stamina>
+        <start_reactions>0.973535691933711</start_reactions>
+        <tyre_management>0.8889241166216282</tyre_management>
+        <vehicle_reliability>0.9214031933575457</vehicle_reliability>
+        <weather_tyre_changes>0.7332136423553806</weather_tyre_changes>
+        <wet_skill>0.9389012436909552</wet_skill>
+    </driver>
+    <driver livery_name="Laponi Racing #73">
+        <aggression>0.30580193621737295</aggression>
+        <avoidance_of_forced_mistakes>0.9984528230479055</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.7726660068029758</avoidance_of_mistakes>
+        <blue_flag_conceding>0.9758989795242042</blue_flag_conceding>
+        <consistency>0.48303765829962775</consistency>
+        <defending>0.15018826038212174</defending>
+        <fuel_management>0.04862813957392298</fuel_management>
+        <name>drv Laponi R</name>
+        <qualifying_skill>0.5172653995705383</qualifying_skill>
+        <race_skill>0.28395040014892603</race_skill>
+        <stamina>0.8035093446853451</stamina>
+        <start_reactions>0.38620065695317807</start_reactions>
+        <tyre_management>0.11145765607297398</tyre_management>
+        <vehicle_reliability>0.18137042638844236</vehicle_reliability>
+        <weather_tyre_changes>0.31580006009261363</weather_tyre_changes>
+        <wet_skill>0.9402474285204231</wet_skill>
+    </driver>
+    <driver livery_name="Kia Power Imports Racing #80">
+        <aggression>0.19115082123034766</aggression>
+        <avoidance_of_forced_mistakes>0.9846851255656184</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.3373817503516596</avoidance_of_mistakes>
+        <blue_flag_conceding>0.6024292537800651</blue_flag_conceding>
+        <consistency>0.1797126850429619</consistency>
+        <defending>0.8296086481262318</defending>
+        <fuel_management>0.9264848176248934</fuel_management>
+        <name>drv Kia Powe</name>
+        <qualifying_skill>0.0551944664139441</qualifying_skill>
+        <race_skill>0.8030728205645156</race_skill>
+        <stamina>0.12924637988828047</stamina>
+        <start_reactions>0.9721788038314718</start_reactions>
+        <tyre_management>0.9250200836060374</tyre_management>
+        <vehicle_reliability>0.43175678870920986</vehicle_reliability>
+        <weather_tyre_changes>0.13728064473268975</weather_tyre_changes>
+        <wet_skill>0.43001623470176353</wet_skill>
+    </driver>
+    <driver livery_name="Ginetta G58 #1">
+        <aggression>0.143721828693802</aggression>
+        <avoidance_of_forced_mistakes>0.865700486622993</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.09987280293894385</avoidance_of_mistakes>
+        <blue_flag_conceding>0.3840722275107342</blue_flag_conceding>
+        <consistency>0.44944147191994</consistency>
+        <defending>0.5451511191733108</defending>
+        <fuel_management>0.36255581384363333</fuel_management>
+        <name>drv Ginetta </name>
+        <qualifying_skill>0.189007971375032</qualifying_skill>
+        <race_skill>0.6800209512620922</race_skill>
+        <stamina>0.9974829500570604</stamina>
+        <start_reactions>0.8854467753738979</start_reactions>
+        <tyre_management>0.0653923133713834</tyre_management>
+        <vehicle_reliability>0.9789137313410072</vehicle_reliability>
+        <weather_tyre_changes>0.16379929678648764</weather_tyre_changes>
+        <wet_skill>0.8636086725944001</wet_skill>
+    </driver>
+    <driver livery_name="Ginetta G58 #111">
+        <aggression>0.27936488757205047</aggression>
+        <avoidance_of_forced_mistakes>0.17617117425773998</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.5232311824591729</avoidance_of_mistakes>
+        <blue_flag_conceding>0.5941119882524062</blue_flag_conceding>
+        <consistency>0.21722409828992806</consistency>
+        <defending>0.8878612883126001</defending>
+        <fuel_management>0.871929071940691</fuel_management>
+        <name>drv Ginetta </name>
+        <qualifying_skill>0.4075194445597816</qualifying_skill>
+        <race_skill>0.4558189558970549</race_skill>
+        <stamina>0.5112840435021085</stamina>
+        <start_reactions>0.5867217196362448</start_reactions>
+        <tyre_management>0.028084719528851165</tyre_management>
+        <vehicle_reliability>0.7077761541977657</vehicle_reliability>
+        <weather_tyre_changes>0.08925619769540227</weather_tyre_changes>
+        <wet_skill>0.5846198392263662</wet_skill>
+    </driver>
+    <driver livery_name="Ginetta G58 #3">
+        <aggression>0.8383426402174843</aggression>
+        <avoidance_of_forced_mistakes>0.5293968997649309</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.0347348940882829</avoidance_of_mistakes>
+        <blue_flag_conceding>0.8097742885001302</blue_flag_conceding>
+        <consistency>0.22808958984209315</consistency>
+        <defending>0.7513151773088134</defending>
+        <fuel_management>0.7428067217760808</fuel_management>
+        <name>drv Ginetta </name>
+        <qualifying_skill>0.5607714816548321</qualifying_skill>
+        <race_skill>0.4414085176852478</race_skill>
+        <stamina>0.5142465069727619</stamina>
+        <start_reactions>0.05711163772864658</start_reactions>
+        <tyre_management>0.06369049729021592</tyre_management>
+        <vehicle_reliability>0.5443405829615908</vehicle_reliability>
+        <weather_tyre_changes>0.5868385751132409</weather_tyre_changes>
+        <wet_skill>0.6758972923615684</wet_skill>
+    </driver>
+    <driver livery_name="Ginetta G58 #4">
+        <aggression>0.7185220818571622</aggression>
+        <avoidance_of_forced_mistakes>0.10886728586115757</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.20675890057138102</avoidance_of_mistakes>
+        <blue_flag_conceding>0.7972543358076467</blue_flag_conceding>
+        <consistency>0.31007189418276626</consistency>
+        <defending>0.623292520358374</defending>
+        <fuel_management>0.3014014740267671</fuel_management>
+        <name>drv Ginetta </name>
+        <qualifying_skill>0.4688005234763112</qualifying_skill>
+        <race_skill>0.6613215540580017</race_skill>
+        <stamina>0.777707581618923</stamina>
+        <start_reactions>0.16195250674363637</start_reactions>
+        <tyre_management>0.3330196559768771</tyre_management>
+        <vehicle_reliability>0.9783881327267716</vehicle_reliability>
+        <weather_tyre_changes>0.2865756874192015</weather_tyre_changes>
+        <wet_skill>0.7137366915318457</wet_skill>
+    </driver>
+    <driver livery_name="Ginetta G58 #20">
+        <aggression>0.5049966527682528</aggression>
+        <avoidance_of_forced_mistakes>0.17405568320249232</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.5286066581016768</avoidance_of_mistakes>
+        <blue_flag_conceding>0.42277901805841367</blue_flag_conceding>
+        <consistency>0.11583661453015881</consistency>
+        <defending>0.9891733544758827</defending>
+        <fuel_management>0.43545925983053657</fuel_management>
+        <name>drv Ginetta </name>
+        <qualifying_skill>0.08296667931919655</qualifying_skill>
+        <race_skill>0.7543869526869383</race_skill>
+        <stamina>0.23798191103914412</stamina>
+        <start_reactions>0.6891158215053599</start_reactions>
+        <tyre_management>0.435019588184146</tyre_management>
+        <vehicle_reliability>0.8604626416580409</vehicle_reliability>
+        <weather_tyre_changes>0.35069417695031824</weather_tyre_changes>
+        <wet_skill>0.7743177321242586</wet_skill>
+    </driver>
+    <driver livery_name="Ginetta G58 #21">
+        <aggression>0.4545229294528763</aggression>
+        <avoidance_of_forced_mistakes>0.669733427621408</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.5941017729084814</avoidance_of_mistakes>
+        <blue_flag_conceding>0.3946509852024753</blue_flag_conceding>
+        <consistency>0.5343011976055853</consistency>
+        <defending>0.11001434283401534</defending>
+        <fuel_management>0.9766743475761994</fuel_management>
+        <name>drv Ginetta </name>
+        <qualifying_skill>0.4089543882433463</qualifying_skill>
+        <race_skill>0.39566322740546933</race_skill>
+        <stamina>0.8115213874547648</stamina>
+        <start_reactions>0.4834434279309262</start_reactions>
+        <tyre_management>0.8259779913295476</tyre_management>
+        <vehicle_reliability>0.5347363192078853</vehicle_reliability>
+        <weather_tyre_changes>0.4466915469051179</weather_tyre_changes>
+        <wet_skill>0.1687028071222194</wet_skill>
+    </driver>
+    <driver livery_name="Ginetta G58 #22">
+        <aggression>0.6795139792711758</aggression>
+        <avoidance_of_forced_mistakes>0.8571146021565169</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.32022453250094074</avoidance_of_mistakes>
+        <blue_flag_conceding>0.5690428801259608</blue_flag_conceding>
+        <consistency>0.3122698172892584</consistency>
+        <defending>0.3321865209284094</defending>
+        <fuel_management>0.11072313246510035</fuel_management>
+        <name>drv Ginetta </name>
+        <qualifying_skill>0.10509539707322879</qualifying_skill>
+        <race_skill>0.2729263135601785</race_skill>
+        <stamina>0.4911800273008603</stamina>
+        <start_reactions>0.9958298803563876</start_reactions>
+        <tyre_management>0.34505995665667344</tyre_management>
+        <vehicle_reliability>0.6833873981230363</vehicle_reliability>
+        <weather_tyre_changes>0.33650567371211537</weather_tyre_changes>
+        <wet_skill>0.07092538389009262</wet_skill>
+    </driver>
+    <driver livery_name="Ginetta G58 #40">
+        <aggression>0.3344962542317814</aggression>
+        <avoidance_of_forced_mistakes>0.4731791374997122</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.8017539345964064</avoidance_of_mistakes>
+        <blue_flag_conceding>0.06552218249761921</blue_flag_conceding>
+        <consistency>0.7055979294043223</consistency>
+        <defending>0.6815971985105052</defending>
+        <fuel_management>0.4593928337385481</fuel_management>
+        <name>drv Ginetta </name>
+        <qualifying_skill>0.42706038005300473</qualifying_skill>
+        <race_skill>0.9216177863895383</race_skill>
+        <stamina>0.8395264671728757</stamina>
+        <start_reactions>0.11013610352559566</start_reactions>
+        <tyre_management>0.5985360580002332</tyre_management>
+        <vehicle_reliability>0.6137787609366195</vehicle_reliability>
+        <weather_tyre_changes>0.87361438199458</weather_tyre_changes>
+        <wet_skill>0.558215568760899</wet_skill>
+    </driver>
+    <driver livery_name="Ginetta G58 #53">
+        <aggression>0.6257646690611361</aggression>
+        <avoidance_of_forced_mistakes>0.4973172389406876</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.7350903556402641</avoidance_of_mistakes>
+        <blue_flag_conceding>0.5716405171786784</blue_flag_conceding>
+        <consistency>0.9814315498435827</consistency>
+        <defending>0.11760152463241946</defending>
+        <fuel_management>0.2841745218025933</fuel_management>
+        <name>drv Ginetta </name>
+        <qualifying_skill>0.6278081516304588</qualifying_skill>
+        <race_skill>0.6375340784511179</race_skill>
+        <stamina>0.6753894015232672</stamina>
+        <start_reactions>0.5467342060723196</start_reactions>
+        <tyre_management>0.35966575704267867</tyre_management>
+        <vehicle_reliability>0.8843836654908638</vehicle_reliability>
+        <weather_tyre_changes>0.21925811161022435</weather_tyre_changes>
+        <wet_skill>0.05313115088344522</wet_skill>
+    </driver>
+    <driver livery_name="Ginetta G58 #54">
+        <aggression>0.423379229833027</aggression>
+        <avoidance_of_forced_mistakes>0.6676948716249343</avoidance_of_forced_mistakes>
+        <avoidance_of_mistakes>0.9389613582124908</avoidance_of_mistakes>
+        <blue_flag_conceding>0.8948298629019812</blue_flag_conceding>
+        <consistency>0.7737901180010253</consistency>
+        <defending>0.49058666316212474</defending>
+        <fuel_management>0.8764836368763238</fuel_management>
+        <name>drv Ginetta </name>
+        <qualifying_skill>0.9518989475326943</qualifying_skill>
+        <race_skill>0.39671074695891506</race_skill>
+        <stamina>0.5238667352764497</stamina>
+        <start_reactions>0.6970494340655182</start_reactions>
+        <tyre_management>0.35716225555935255</tyre_management>
+        <vehicle_reliability>0.0852067398630435</vehicle_reliability>
+        <weather_tyre_changes>0.10664047888842787</weather_tyre_changes>
+        <wet_skill>0.29472094098023993</wet_skill>
+    </driver>
+</custom_ai_drivers>
