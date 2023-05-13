@@ -19,7 +19,7 @@ import javafx.collections.ObservableList;
 
 /**
  * Represents a model of a specific track override as described by AMS2 Developers here:
- * https://forum.reizastudios.com/threads/information-for-customizing-ai-drivers-in-ams2-v1-3.21758/
+ * <a href="https://forum.reizastudios.com/threads/information-for-customizing-ai-drivers-in-ams2-v1-3.21758/">AMS2 Reiza Forums</a>
  * It stores a list of track names for which this track is an override.
  */
 final public class TrackOverride extends DriverBase {

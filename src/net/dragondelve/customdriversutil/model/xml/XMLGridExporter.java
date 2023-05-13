@@ -14,6 +14,7 @@
 
 package net.dragondelve.customdriversutil.model.xml;
 
+import net.dragondelve.customdriversutil.model.DriverBase;
 import net.dragondelve.customdriversutil.model.Grid;
 import net.dragondelve.customdriversutil.util.GridExporter;
 
@@ -24,12 +25,12 @@ import java.io.File;
 /**
  * Responsible for the conversion between this program's data model and  the AMS2 XML Custom Driver storage method.
  * AMS2 XML representation of the custom AI drivers can be found here:
- * https://forum.reizastudios.com/threads/information-for-customizing-ai-drivers-in-ams2-v1-3.21758/
+ * <a href="https://forum.reizastudios.com/threads/information-for-customizing-ai-drivers-in-ams2-v1-3.21758/">AMS2 Reiza Forums</a>
  */
 public class XMLGridExporter implements GridExporter {
     /**
      * Exports the given grid to a given file using JAXB. It uses the formatting described in
-     * https://forum.reizastudios.com/threads/information-for-customizing-ai-drivers-in-ams2-v1-3.21758/
+     * <a href="https://forum.reizastudios.com/threads/information-for-customizing-ai-drivers-in-ams2-v1-3.21758/">AMS2 Reiza Forums</a>
      * @param grid Grid to be exported in an AMS2 XML format.
      * @param file File to which the grid is to be exported. Should preferably end with .xml.
      */
@@ -61,32 +62,70 @@ public class XMLGridExporter implements GridExporter {
      */
     private XMLGrid toXMLGrid(Grid grid) {
         XMLGrid xmlGrid = new XMLGrid();
-        grid.getDrivers().forEach(e-> {
-            XMLDriver driver = new XMLDriver();
-            driver.setName(e.getName());
-            driver.setLiveryName(e.getLiveryName());
-            driver.setCountry(e.getCountry());
-            driver.setRaceSkill(e.getRaceSkill());
-            driver.setQualifyingSkill(e.getQualifyingSkill());
-            driver.setAggression(e.getAggression());
-            driver.setDefending(e.getDefending());
-            driver.setStamina(e.getStamina());
-            driver.setConsistency(e.getConsistency());
-            driver.setStartReactions(e.getStartReactions());
-            driver.setWetSkill(e.getWetSkill());
-            driver.setTyreManagement(e.getTyreManagement());
-            driver.setFuelManagement(e.getFuelManagement());
-            driver.setBlueFlagConceding(e.getBlueFlagConceding());
-            driver.setWeatherTyreChanges(e.getWeatherTyreChange());
-            driver.setAvoidanceOfMistakes(e.getAvoidanceOfMistakes());
-            driver.setAvoidanceOfForcedMistakes(e.getAvoidanceOfForcedMistakes());
-            driver.setVehicleReliability(e.getVehicleReliability());
+        grid.getDrivers().forEach(driver-> {
+            XMLDriver xmlDriver = new XMLDriver();
+            xmlDriver.setLiveryName(driver.getLiveryName());
+            exportBaseProperties(driver, xmlDriver);
+            xmlGrid.getXmlDrivers().add(xmlDriver);
 
-            xmlGrid.getXmlDrivers().add(driver);
+            driver.getTrackOverrides().forEach(trackOverride -> {
+                XMLDriver xmlOverride = new XMLDriver();
+                StringBuilder builder = new StringBuilder();
+                trackOverride.getTrack().forEach(track -> {
+                    if (builder.length() > 0)
+                        builder.append(',');
+                    builder.append(track.getXmlName());
+
+                });
+                xmlOverride.setTracks(builder.toString());
+                xmlOverride.setLiveryName(driver.getLiveryName());
+                exportBaseProperties(trackOverride, xmlOverride);
+                xmlGrid.getXmlDrivers().add(xmlOverride);
+            });
         });
 
-        //TODO: Parse Track Specific Overrides here.
-
         return xmlGrid;
+    }
+
+    /**
+     * Exports the base properties shared between the track specific overrides and driver overrides.
+     * @param source Source DriverBase, whose fields will be used to set the base properties of the xmlDriver.
+     * @param target Target whose properties are going to be set. Should be an xmlDriver whose other fields are set appropriately.
+     */
+    private void exportBaseProperties(DriverBase source, XMLDriver target) {
+        if (source.isOverrideName())
+            target.setName(source.getName());
+        if (source.isOverrideCountry())
+            target.setCountry(source.getCountry());
+        if (source.isOverrideRaceSkill())
+            target.setRaceSkill(source.getRaceSkill());
+        if (source.isOverrideQualifyingSkill())
+            target.setQualifyingSkill(source.getQualifyingSkill());
+        if (source.isOverrideAggression())
+            target.setAggression(source.getAggression());
+        if (source.isOverrideDefending())
+            target.setDefending(source.getDefending());
+        if (source.isOverrideStamina())
+            target.setStamina(source.getStamina());
+        if (source.isOverrideConsistency())
+            target.setConsistency(source.getConsistency());
+        if (source.isOverrideStartReactions())
+            target.setStartReactions(source.getStartReactions());
+        if (source.isOverrideWetSkill())
+            target.setWetSkill(source.getWetSkill());
+        if (source.isOverrideTyreManagement())
+            target.setTyreManagement(source.getTyreManagement());
+        if (source.isOverrideFuelManagement())
+            target.setFuelManagement(source.getFuelManagement());
+        if (source.isOverrideBlueFlagConceding())
+            target.setBlueFlagConceding(source.getBlueFlagConceding());
+        if (source.isOverrideWeatherTyreChange())
+            target.setWeatherTyreChanges(source.getWeatherTyreChange());
+        if (source.isOverrideAvoidanceOfMistakes())
+            target.setAvoidanceOfMistakes(source.getAvoidanceOfMistakes());
+        if (source.isOverrideAvoidanceOfForcedMistakes())
+            target.setAvoidanceOfForcedMistakes(source.getAvoidanceOfForcedMistakes());
+        if (source.isOverrideVehicleReliability())
+            target.setVehicleReliability(source.getVehicleReliability());
     }
 }

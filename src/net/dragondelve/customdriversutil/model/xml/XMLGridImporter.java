@@ -117,9 +117,7 @@ public class XMLGridImporter implements GridImporter {
             stringTracks.forEach(stringTrack-> tracks.add(new Track(stringTrack, stringTrack)));
             override.getTrack().addAll(tracks);
 
-            List<Driver> collect = grid.getDrivers().stream().filter(driver -> {
-                return driver.liveryNameProperty().get().equals(xmlDriver.getLiveryName());
-            }).collect(Collectors.toList());
+            List<Driver> collect = grid.getDrivers().stream().filter(driver -> driver.liveryNameProperty().get().equals(xmlDriver.getLiveryName())).collect(Collectors.toList());
 
             importBaseProperties(xmlDriver, override);
 
@@ -152,7 +150,7 @@ public class XMLGridImporter implements GridImporter {
     }
 
     /**
-     * Imports the bas properties shared between the track specific overrides and driver overrides.
+     * Imports the base properties shared between the track specific overrides and driver overrides.
      * @param source Source XML driver, whose fields will be used to set the base properties.
      * @param target Target whose properties are going to be set. Should be either a Driver or a TrackOverride.
      */

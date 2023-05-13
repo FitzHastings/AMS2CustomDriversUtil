@@ -22,7 +22,7 @@ import java.io.File;
 import java.util.logging.Level;
 
 /**
- * A non instatiable class with a single instance. It loads the current configuration of the program and allows parts of the program to access
+ * A non installable class with a single instance. It loads the current configuration of the program and allows parts of the program to access
  * the data in the configuration. In order to get access to it's only instance you should use the static method getInstance().
  */
 public class Configurator {

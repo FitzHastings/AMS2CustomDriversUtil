@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 /**
  * This class is fully annotated for use with JAXB.
  * Represents a base model of a driver or a track override as described by AMS2 Developers here:
- * https://forum.reizastudios.com/threads/information-for-customizing-ai-drivers-in-ams2-v1-3.21758/
+ * <a href="https://forum.reizastudios.com/threads/information-for-customizing-ai-drivers-in-ams2-v1-3.21758/">AMS2 Reiza Forums</a>
  */
 @XmlRootElement(name = "driver")
 final class XMLDriver {

@@ -546,13 +546,21 @@ public class DriverEditor {
         overrideVehicleReliabilityCheckBox.selectedProperty()       .unbindBidirectional(driver.overrideVehicleReliabilityProperty());
     }
 
+    /**
+     * Randomizes the traits of the driver selected.
+     */
     private void randomizeDriverAction() {
+        if (editedDriver == null)
+            return;
+
         Random random = new Random();
         editedDriver.raceSkillProperty().set(random.nextDouble());
         editedDriver.qualifyingSkillProperty().set(random.nextDouble());
         editedDriver.aggressionProperty().set(random.nextDouble());
         editedDriver.defendingProperty().set(random.nextDouble());
         editedDriver.staminaProperty().set(random.nextDouble());
+        editedDriver.consistencyProperty().set(random.nextDouble());
+        editedDriver.startReactionsProperty().set(random.nextDouble());
         editedDriver.wetSkillProperty().set(random.nextDouble());
         editedDriver.tyreManagementProperty().set(random.nextDouble());
         editedDriver.fuelManagementProperty().set(random.nextDouble());
@@ -560,5 +568,6 @@ public class DriverEditor {
         editedDriver.weatherTyreChangeProperty().set(random.nextDouble());
         editedDriver.avoidanceOfMistakesProperty().set(random.nextDouble());
         editedDriver.avoidanceOfForcedMistakesProperty().set(random.nextDouble());
+        editedDriver.vehicleReliabilityProperty().set(random.nextDouble());
     }
 }
