@@ -33,7 +33,7 @@ limitations under the License. -->
          <ColumnConstraints hgrow="NEVER" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="329.0" />
          <ColumnConstraints hgrow="NEVER" maxWidth="59.0" minWidth="13.0" prefWidth="59.0" />
-         <ColumnConstraints hgrow="NEVER" maxWidth="135.0" minWidth="28.0" prefWidth="54.0" />
+         <ColumnConstraints hgrow="NEVER" maxWidth="135.0" minWidth="50.0" prefWidth="60.0" />
          <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="82.0" prefWidth="123.0" />
          <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="18.0" prefWidth="18.0" />
       </columnConstraints>
