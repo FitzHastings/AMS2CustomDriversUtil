@@ -45,14 +45,14 @@ public class TrackLibrary {
 
     /**
      * Finds a track in the library with a given name.
-     * @param name human-readable name of a track.
+     * @param xmlName Track name that is used in the XML when exporting.
      * @return track from the library with that name or null if none found.
      */
-    public Track findTrackWithName(String name) {
+    public Track findTrackWithXmlName(String xmlName) {
         try {
-            return tracks.stream().filter(track -> track.getName().equals(name)).findFirst().get();
+            return tracks.stream().filter(track -> track.getXmlName().equals(xmlName)).findFirst().get();
         } catch (NoSuchElementException e) {
-            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Trying to find track with name '"+name+"' in the library but no such track found");
+            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Trying to find track with name '"+xmlName+"' in the library but no such track found");
             return null;
         }
     }

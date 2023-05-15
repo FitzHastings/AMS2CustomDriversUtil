@@ -17,6 +17,7 @@ package net.dragondelve.customdriversutil.model.xml;
 import net.dragondelve.customdriversutil.model.*;
 import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.GridImporter;
+import net.dragondelve.customdriversutil.util.LibraryManager;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -114,7 +115,14 @@ public class XMLGridImporter implements GridImporter {
             TrackOverride override = new TrackOverride();
             List<String> stringTracks = Arrays.asList(xmlDriver.getTracks().split(","));
             List<Track> tracks = new ArrayList<>();
-            stringTracks.forEach(stringTrack-> tracks.add(new Track(stringTrack, stringTrack)));
+            stringTracks.forEach(stringTrack-> {
+                Track track = LibraryManager.getInstance().getTrackLibrary().findTrackWithXmlName(stringTrack);
+                if(track != null)
+                    tracks.add(track);
+                else
+                    tracks.add(new Track(stringTrack, stringTrack));
+            });
+
             override.getTrack().addAll(tracks);
 
             List<Driver> collect = grid.getDrivers().stream().filter(driver -> driver.liveryNameProperty().get().equals(xmlDriver.getLiveryName())).collect(Collectors.toList());
