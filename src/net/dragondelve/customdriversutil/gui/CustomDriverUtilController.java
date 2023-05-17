@@ -160,6 +160,12 @@ public class CustomDriverUtilController implements StageController {
     @FXML
     private TableColumn<Driver, String> driverCountryColumn;
 
+    @FXML
+    private Button addTrackOverrideButton;
+
+    @FXML
+    private Button removeTrackOverrideButton;
+
     /**
      * Stage on which this controller is displayed.
      * This is also the primaryStage in the Application's main method.
@@ -227,6 +233,9 @@ public class CustomDriverUtilController implements StageController {
                 trackOverrideTableView.setItems(newValue.getTrackOverrides());
             }
         });
+
+        addTrackOverrideButton.setOnAction(e-> addTrackOverrideAction());
+        addDriverButton.setOnAction(e -> addDriverAction());
     }
 
     private void addDriverAction() {
@@ -235,6 +244,20 @@ public class CustomDriverUtilController implements StageController {
         editedGrid.getDrivers().add(driver);
     }
 
+    private void addTrackOverrideAction() {
+        FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().DEFINE_TRACKS_STEP_FXML_URL);
+        loader.setController(new DefineTracksStep());
+        try {
+            Stage stage = new Stage();
+            stage.initOwner(this.stage);
+            Scene scene = new Scene(loader.load());
+            stage.setScene(scene);
+            stage.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * Action that is performed by ExportGridItem.
      */

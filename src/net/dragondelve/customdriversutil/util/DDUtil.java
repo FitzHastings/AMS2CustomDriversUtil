@@ -29,6 +29,7 @@ public class DDUtil {
     public static final String VEHICLE_CLASS_EDITOR_FXML_PATHNAME = "fxml/editor/VehicleClassEditor.fxml";
     public static final String DRIVER_EDITOR_FXML_PATHNAME = "fxml/editor/DriverEditor.fxml";
     public static final String MAIN_WINDOW_FXML_PATHNAME = "fxml/CustomDriverUtilMain.fxml";
+    public static final String DEFINE_TRACKS_STEP_FXML_PATHNAME = "fxml/DefineTracksStep.fxml";
 
     public static final String TRACK_LIBRARY_DEFAULT_PATHNAME = "library/tracks/ams2_tracks_1.4.6.4.xml";
     public static final String VEHICLE_CLASS_LIBRARY_DEFAULT_PATHNAME = "library/vehicles/ams2_vehicles_1.4.6.4.xml";
@@ -39,6 +40,7 @@ public class DDUtil {
     public URL VEHICLE_CLASS_EDITOR_FXML_URL;
     public URL DRIVER_EDITOR_FXML_URL;
     public URL MAIN_WINDOW_FXML_URL;
+    public URL DEFINE_TRACKS_STEP_FXML_URL;
 
     private final static DDUtil instance = new DDUtil();
 
@@ -72,6 +74,12 @@ public class DDUtil {
 
         try {
             MAIN_WINDOW_FXML_URL = new URL("file:" + MAIN_WINDOW_FXML_PATHNAME);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            DEFINE_TRACKS_STEP_FXML_URL = new URL("file:" + DEFINE_TRACKS_STEP_FXML_PATHNAME);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
