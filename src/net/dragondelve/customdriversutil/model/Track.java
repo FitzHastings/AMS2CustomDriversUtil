@@ -136,4 +136,13 @@ public final class Track {
     public void setOval(boolean isOval) {
         this.isOval.set(isOval);
     }
+
+    /**
+     * Overrides toString method, makes it so that the toString() value is the human-readable Name of the track
+     * @return human-readable name of the track.
+     */
+    @Override
+    public String toString() {
+        return this.getName();
+    }
 }

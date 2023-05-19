@@ -15,34 +15,68 @@
 package net.dragondelve.customdriversutil.gui;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.TransferMode;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import net.dragondelve.customdriversutil.gui.editor.DriverEditor;
 import net.dragondelve.customdriversutil.model.Track;
 import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
+
+import java.io.IOException;
+import java.util.List;
 
 /**
  * DefineTracksStep is an intermediate step between pressing the addTrackOverrideButton and the Driver Editor opening
  * in the Override mode to allow the user to set all the tracks on which the newly created override will be overriding
  * the base driver properties. This is a controller class for  fxml/DefineTracksStep.fxml.
  */
-public class DefineTracksStep {
-    
+public class DefineTracksStep implements StageController {
+
+    /**
+     * Button that performs nextAction on action.
+     */
     @FXML
     private Button nextButton;
 
+    /**
+     * Button that performs the cancelAction on action.
+     */
     @FXML
     private Button cancelButton;
 
+    /**
+     * The root pane of the entire scene. Used to assign the css style to the controls and containers.
+     */
     @FXML
     private VBox rootPane;
 
+    /**
+     * ListView that displays the tracks selected by the user. Items of this list are going to be passed forward to the
+     * DriverEditor to edit the override for the chosen tracks
+     */
     @FXML
     private ListView<Track> selectedListView;
 
+    /**
+     * ListView that displays all tracks in the current track library, minus the tracks that are already selected in the
+     * selectedListView
+     */
     @FXML
     private ListView<Track> trackLibraryListView;
+
+    /**
+     * Stage on which this editor is displayed.
+     */
+    private Stage stage;
 
     /**
      * Initialize method initializes all the visual elements before they are displayed by the user.
@@ -54,5 +88,134 @@ public class DefineTracksStep {
         rootPane.getStylesheets().add(DDUtil.MAIN_CSS_RESOURCE);
 
         trackLibraryListView.setItems(LibraryManager.getInstance().getTrackLibrary().getTracks());
+        //Remove everything that is already selected in the Selected List view.
+        trackLibraryListView.getItems().removeAll(selectedListView.getItems());
+
+        //Handling Double Clicks
+        trackLibraryListView.setOnMouseClicked(e-> {
+            Track selectedTrack = trackLibraryListView.getSelectionModel().getSelectedItem();
+            if(e.getClickCount() == 2 && selectedTrack != null) {
+                selectedListView.getItems().add(selectedTrack);
+                trackLibraryListView.getItems().remove(selectedTrack);
+            }
+        });
+
+        selectedListView.setOnMouseClicked(e-> {
+            Track selectedTrack = selectedListView.getSelectionModel().getSelectedItem();
+            if(e.getClickCount() >= 2 && selectedTrack != null) {
+                trackLibraryListView.getItems().add(selectedTrack);
+                selectedListView.getItems().remove(selectedTrack);
+            }
+        });
+
+        //Handle Drag and drop from trackLibraryListView into selectedListView.
+        trackLibraryListView.setOnDragDetected(event -> {
+            if(trackLibraryListView.getSelectionModel().getSelectedItem() != null) {
+                Dragboard db = trackLibraryListView.startDragAndDrop(TransferMode.ANY);
+                ClipboardContent content = new ClipboardContent();
+                content.putString(trackLibraryListView.getSelectionModel().getSelectedItem().getName());
+                db.setContent(content);
+            }
+            event.consume();
+        });
+
+        trackLibraryListView.setOnMouseDragged(event -> event.setDragDetect(true));
+        selectedListView.setOnDragOver((DragEvent event) ->  {
+                if (event.getGestureSource() != selectedListView && event.getDragboard().hasString())
+                    event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+                event.consume();
+        });
+
+        selectedListView.setOnDragDropped((DragEvent event) -> {
+            Track selectedTrack = trackLibraryListView.getSelectionModel().getSelectedItem();
+            if(trackLibraryListView.getSelectionModel().getSelectedItem() != null) {
+                selectedListView.getItems().add(selectedTrack);
+                trackLibraryListView.getItems().remove(selectedTrack);
+            }
+            event.consume();
+
+        });
+
+        //Handle Drag and drop from selectedListView into trackLibraryListView.
+        selectedListView.setOnDragDetected(event -> {
+            if(selectedListView.getSelectionModel().getSelectedItem() != null) {
+                Dragboard db = selectedListView.startDragAndDrop(TransferMode.ANY);
+                ClipboardContent content = new ClipboardContent();
+                content.putString(selectedListView.getSelectionModel().getSelectedItem().getName());
+                db.setContent(content);
+            }
+
+            event.consume();
+        });
+
+        selectedListView.setOnMouseDragged(event -> event.setDragDetect(true));
+        trackLibraryListView.setOnDragOver((DragEvent event) ->  {
+            if (event.getGestureSource() != trackLibraryListView && event.getDragboard().hasString())
+                event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+            event.consume();
+        });
+
+        trackLibraryListView.setOnDragDropped((DragEvent event) -> {
+            Track selectedTrack = selectedListView.getSelectionModel().getSelectedItem();
+            if(selectedListView.getSelectionModel().getSelectedItem() != null) {
+                trackLibraryListView.getItems().add(selectedTrack);
+                selectedListView.getItems().remove(selectedTrack);
+            }
+            event.consume();
+        });
+
+        //setting up the buttons
+        nextButton.setOnAction(e -> nextAction());
+        cancelButton.setOnAction(e -> cancelAction());
+    }
+
+    /**
+     * Lightweight mutator method. Used when editing a trackOverride.
+     * @param tracks A list of tracks that are going to be displayed in the selected list, and removed from the library view.
+     */
+    @FXML
+    public void setInitialTracks(List<Track> tracks) {
+        selectedListView.getItems().addAll(tracks);
+    }
+
+    /**
+     * Lightweight mutator method.
+     * Should be called before the editor is initialized by JavaFX.
+     * @param stage stage on which this editor is going to be displayed.
+     */
+    @Override
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+
+    /**
+     * Action that is performed by the cancelButton. Closes this editor's Stage.
+     */
+    private void cancelAction() {
+        stage.close();
+    }
+
+    /**
+     * Action that is performed by the nextButton. Opens a driver editor in a new window
+     */
+    private void nextAction() {
+        FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().DRIVER_EDITOR_FXML_URL);
+        DriverEditor editor = new DriverEditor();
+        loader.setController(editor);
+        try {
+            Stage editorStage = new Stage();
+            BorderPane borderPane = new BorderPane();
+            borderPane.setCenter(loader.load());
+            borderPane.setLeft(selectedListView);
+            borderPane.getStylesheets().clear();
+            borderPane.getStylesheets().add(DDUtil.MAIN_CSS_RESOURCE);
+            Scene scene = new Scene(borderPane);
+            editorStage.setScene(scene);
+            stage.close();
+            editorStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

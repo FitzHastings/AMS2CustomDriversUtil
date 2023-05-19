@@ -175,7 +175,7 @@ public class CustomDriverUtilController implements StageController {
     /**
      * Grid that is being edited by the editor.
      */
-    private Grid editedGrid = new Grid();
+    private final Grid editedGrid = new Grid();
 
     /**
      * an instance of DriverEditor that controls the driver editor that will edit a driver selected in driverTableView.
@@ -240,16 +240,18 @@ public class CustomDriverUtilController implements StageController {
 
     private void addDriverAction() {
         Driver driver = new Driver();
-
+        //TODO: Assign default values.
         editedGrid.getDrivers().add(driver);
     }
 
     private void addTrackOverrideAction() {
         FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().DEFINE_TRACKS_STEP_FXML_URL);
-        loader.setController(new DefineTracksStep());
+        StageController stageController = new DefineTracksStep();
+        loader.setController(stageController);
+        Stage stage = new Stage();
+        stageController.setStage(stage);
+        stage.initOwner(this.stage);
         try {
-            Stage stage = new Stage();
-            stage.initOwner(this.stage);
             Scene scene = new Scene(loader.load());
             stage.setScene(scene);
             stage.showAndWait();
@@ -259,17 +261,21 @@ public class CustomDriverUtilController implements StageController {
         }
     }
     /**
-     * Action that is performed by ExportGridItem.
+     * Action that is performed by ExportGridItem. Exports the currently edited grid to an XML file chosen by the
+     * FileChooser that is displayed to the user. If the selection is made exports the currently edited grid to the file
+     * selected.
      */
     private void exportGridAction() {
         File file = chooseFileToSave("Choose XML Grid File", "grids");
         GridExporter exporter = new XMLGridExporter();
-        exporter.exportToFile(editedGrid, file);
+        if(file != null)
+            exporter.exportToFile(editedGrid, file);
 
     }
 
     /**
-     * Action that is performed by importGridITemWithClassItem.
+     * Action that is performed by importGridITemWithClassItem. Displays the file chooser with extension filters set for
+     * xml files only in the grids folder by default. If a selection is made it will attempt to import the grid.
      */
     private void importGridWithClassAction() {
         File file = chooseFileToOpen("Choose XML Grid File", "grids");
@@ -278,24 +284,29 @@ public class CustomDriverUtilController implements StageController {
             LibraryManager.getInstance().getVehicleClassLibrary().getVehicleClasses().add(vehicleClass);
         GridImporter importer = new XMLGridImporter();
         Grid importedGrid = importer.importFromFile(file);
-        if(importedGrid != null) {
+         if(importedGrid != null) {
             editedGrid.getDrivers().clear();
             editedGrid.getDrivers().addAll(importedGrid.getDrivers());
             editedGrid.setVehicleClass(vehicleClass);
         }
+        //TODO:Add this new class to the library and save it. Preferably allow user to rename it.
 
     }
 
     /**
-     * Action that is performed by ImportGridItem
+     * Action that is performed by ImportGridItem. Displays the file chooser with extension filters set for
+     * xml files only in the grids folder by default. If a selection is made it will attempt to import the grid.
      */
     private void importGridAction() {
         File file = chooseFileToOpen("Choose XML Grid File", "grids");
         XMLGridImporter importer = new XMLGridImporter();
-        Grid importedGrid = importer.importFromFile(file);
-        if(importedGrid != null) {
-            editedGrid.getDrivers().clear();
-            editedGrid.getDrivers().addAll(importedGrid.getDrivers());
+        if(file != null) {
+            Grid importedGrid = importer.importFromFile(file);
+            if (importedGrid != null) {
+                //TODO:Check for vehicleClass here
+                editedGrid.getDrivers().clear();
+                editedGrid.getDrivers().addAll(importedGrid.getDrivers());
+            }
         }
     }
 
