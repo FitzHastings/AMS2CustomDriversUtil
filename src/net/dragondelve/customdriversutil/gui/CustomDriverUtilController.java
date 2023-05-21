@@ -160,11 +160,23 @@ public class CustomDriverUtilController implements StageController {
     @FXML
     private TableColumn<Driver, String> driverCountryColumn;
 
+    /**
+     *
+     */
     @FXML
     private Button addTrackOverrideButton;
 
+    /**
+     *
+     */
     @FXML
     private Button removeTrackOverrideButton;
+
+    /**
+     *
+     */
+    @FXML
+    private Button editTrackOverrideButton;
 
     /**
      * Stage on which this controller is displayed.
@@ -212,21 +224,21 @@ public class CustomDriverUtilController implements StageController {
             e.printStackTrace();
         }
 
-        exportGridItem.setOnAction(e->exportGridAction());
-        importGridItem.setOnAction(e->importGridAction());
-        importGridWithClassItem.setOnAction(e-> importGridWithClassAction());
+        exportGridItem.setOnAction(e -> exportGridAction());
+        importGridItem.setOnAction(e -> importGridAction());
+        importGridWithClassItem.setOnAction(e -> importGridWithClassAction());
 
-        editTracksItem.setOnAction(e-> editTracksAction());
-        exportTracksItem.setOnAction(e-> exportTracksAction());
-        importTracksItem.setOnAction(e-> importTracksAction());
+        editTracksItem.setOnAction(e -> editTracksAction());
+        exportTracksItem.setOnAction(e -> exportTracksAction());
+        importTracksItem.setOnAction(e -> importTracksAction());
 
-        editVehicleClassesItem.setOnAction(e-> editVehicleClassesAction());
-        exportVehicleClassesItem.setOnAction(e-> exportVehicleClassesAction());
-        importVehicleClassesItem.setOnAction(e-> importVehicleClassesAction());
+        editVehicleClassesItem.setOnAction(e -> editVehicleClassesAction());
+        exportVehicleClassesItem.setOnAction(e -> exportVehicleClassesAction());
+        importVehicleClassesItem.setOnAction(e -> importVehicleClassesAction());
 
         driversTableView.setItems(editedGrid.getDrivers());
-        driverNameColumn.setCellValueFactory(e->e.getValue().nameProperty());
-        driverCountryColumn.setCellValueFactory(e->e.getValue().countryProperty());
+        driverNameColumn.setCellValueFactory(e -> e.getValue().nameProperty());
+        driverCountryColumn.setCellValueFactory(e -> e.getValue().countryProperty());
         driversTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null) {
                 driverEditor.setEditedDriver(newValue);
@@ -234,19 +246,67 @@ public class CustomDriverUtilController implements StageController {
             }
         });
 
-        addTrackOverrideButton.setOnAction(e-> addTrackOverrideAction());
         addDriverButton.setOnAction(e -> addDriverAction());
+        removeDriverButton.setOnAction(e -> removeDriverAction());
+        addTrackOverrideButton.setOnAction(e -> addTrackOverrideAction());
+        removeTrackOverrideButton.setOnAction(e -> removeTrackOverrideAction());
+        editTrackOverrideButton.setOnAction(e -> editTrackOverrideAction());
     }
 
+    /**
+     *
+     */
     private void addDriverAction() {
         Driver driver = new Driver();
         //TODO: Assign default values.
         editedGrid.getDrivers().add(driver);
     }
 
+    /**
+     *
+     */
+    private void removeDriverAction() {
+        Driver editedDriver = driversTableView.getSelectionModel().getSelectedItem();
+        if(editedDriver != null)
+            driversTableView.getItems().remove(editedDriver);
+    }
+
+    /**
+     *
+     */
     private void addTrackOverrideAction() {
+        Driver editedDriver = driversTableView.getSelectionModel().getSelectedItem();
+        TrackOverride override = new TrackOverride();
+        initTrackOverrideEditor(override);
+        if (override.getTrack().size() > 0)
+            editedDriver.getTrackOverrides().add(override);
+    }
+
+    /**
+     *
+     */
+    private void removeTrackOverrideAction() {
+        TrackOverride selectedTrackOverride = trackOverrideTableView.getSelectionModel().getSelectedItem();
+        if(selectedTrackOverride != null)
+            trackOverrideTableView.getItems().remove(selectedTrackOverride);
+    }
+
+    /**
+     *
+     */
+    private void editTrackOverrideAction() {
+        TrackOverride selectedTrackOverride = trackOverrideTableView.getSelectionModel().getSelectedItem();
+        if (selectedTrackOverride != null)
+            initTrackOverrideEditor(selectedTrackOverride);
+    }
+
+    private void initTrackOverrideEditor(TrackOverride override) {
+        Driver editedDriver = driversTableView.getSelectionModel().getSelectedItem();
+        if(editedDriver == null)
+            return;
         FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().DEFINE_TRACKS_STEP_FXML_URL);
-        StageController stageController = new DefineTracksStep();
+        DefineTracksStep stageController = new DefineTracksStep();
+        stageController.setTrackOverride(override);
         loader.setController(stageController);
         Stage stage = new Stage();
         stageController.setStage(stage);
@@ -260,6 +320,7 @@ public class CustomDriverUtilController implements StageController {
             e.printStackTrace();
         }
     }
+
     /**
      * Action that is performed by ExportGridItem. Exports the currently edited grid to an XML file chosen by the
      * FileChooser that is displayed to the user. If the selection is made exports the currently edited grid to the file

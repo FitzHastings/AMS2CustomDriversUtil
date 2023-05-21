@@ -14,6 +14,8 @@
 
 package net.dragondelve.customdriversutil.gui.editor;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -21,6 +23,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import net.dragondelve.customdriversutil.model.Driver;
+import net.dragondelve.customdriversutil.model.DriverBase;
 import net.dragondelve.customdriversutil.model.GridGenerator;
 
 /**
@@ -378,14 +381,14 @@ public class DriverEditor {
      * Driver that is currently being edited by this editor. His properties are bound bidirectionally to the controls
      * and they have to be unbound with unbindDriver(Driver driver) if the value changes.
      */
-    private Driver editedDriver;
+    private DriverBase editedDriver;
 
     /**
      * A flag that determines whether this editor is run in the trackOverride mode or not. This flag should be set to
      * true if you want to edit a trackOverride. When setting this flag you have to already have set a driver and you
      * need to provide a track or a String value of an xmlName of the track that is going to be actually edited.
      */
-    private boolean overrideMode = false;
+    private final BooleanProperty overrideMode = new SimpleBooleanProperty();
 
     /**
      * Initialize method initializes all the visual elements before they are displayed by the user.
@@ -427,8 +430,23 @@ public class DriverEditor {
         forcedMistakeTextField.textProperty().bind(forcedMistakeSlider.valueProperty().asString("%.2f"));
         vehicleReliabilityTextField.textProperty().bind(vehicleReliabilitySlider.valueProperty().asString("%.2f"));
 
-        randomizeButton.setOnAction(e->randomizeDriverAction());
+        racingSkillTextField.setEditable(false);
+        qualiSkillTextField.setEditable(false);
+        aggressionTextField.setEditable(false);
+        defendingTextField.setEditable(false);
+        staminaTextField.setEditable(false);
+        consistencyTextField.setEditable(false);
+        startReactionsTextField.setEditable(false);
+        wetSkillTextField.setEditable(false);
+        tyreManagementTextField.setEditable(false);
+        fuelManagementTextField.setEditable(false);
+        blueFlagTextField.setEditable(false);
+        weatherPitTextField.setEditable(false);
+        mistakeAvoidanceTextField.setEditable(false);
+        forcedMistakeTextField.setEditable(false);
+        vehicleReliabilityTextField.setEditable(false);
 
+        randomizeButton.setOnAction(e->randomizeDriverAction());
     }
 
     /**
@@ -436,10 +454,10 @@ public class DriverEditor {
      * elements of this editor.
      * @param driver Driver to be edited.
      */
-    public void setEditedDriver(Driver driver) {
-        if(this.editedDriver != null) {
+    public void setEditedDriver(DriverBase driver) {
+        if (this.editedDriver != null)
             unbindDriver(this.editedDriver);
-        }
+        overrideMode.set(!driver.getClass().equals(Driver.class));
         this.editedDriver = driver;
         bindDriver(editedDriver);
     }
@@ -449,8 +467,25 @@ public class DriverEditor {
      * bidirectionally, and you should call unbindDriver on the same driver after it is no longer being edited.
      * @param driver a driver whose properties are to be bind to the control elements of this editor.
      */
-    private void bindDriver(Driver driver) {
-        driverLiveryNameTextField.textProperty()    .bindBidirectional(driver.liveryNameProperty());
+    private void bindDriver(DriverBase driver) {
+        if(!overrideMode.get())
+            driverLiveryNameTextField.textProperty()    .bindBidirectional(((Driver)driver).liveryNameProperty());
+        bindBaseProperties(driver);
+    }
+
+    /**
+     * Unbinds the given driver's properties from the control elements of the editor. The bind will be unbound bidirectionally.
+     * If a driver was bound with bindDriver then you should unbind it with this method.
+     * @param driver a driver whose properties are to be unbound from the control elements of this editor.
+     */
+    private void unbindDriver(DriverBase driver) {
+        if(!overrideMode.get())
+            driverLiveryNameTextField.textProperty()    .unbindBidirectional(((Driver)driver).liveryNameProperty());
+        unbindBaseProperties(driver);
+
+    }
+
+    private void bindBaseProperties(DriverBase driver) {
         driverNameTextField.textProperty()          .bindBidirectional(driver.nameProperty());
         driverCountryTextField.textProperty()       .bindBidirectional(driver.countryProperty());
         racingSkillSlider.valueProperty()           .bindBidirectional(driver.raceSkillProperty());
@@ -470,6 +505,8 @@ public class DriverEditor {
         vehicleReliabilitySlider.valueProperty()    .bindBidirectional(driver.vehicleReliabilityProperty());
 
 
+        overrideDriverNameCheckBox.selectedProperty()               .bindBidirectional(driver.overrideNameProperty());
+        overrideCountryCheckBox.selectedProperty()                  .bindBidirectional(driver.overrideCountryProperty());
         overrideRacingSkillCheckBox.selectedProperty()              .bindBidirectional(driver.overrideRaceSkillProperty());
         overrideQualiSkillCheckBox.selectedProperty()               .bindBidirectional(driver.overrideQualifyingSkillProperty());
         overrideAggressionCheckBox.selectedProperty()               .bindBidirectional(driver.overrideAggressionProperty());
@@ -486,30 +523,10 @@ public class DriverEditor {
         overrideForcedMistakeAvoidanceCheckBox.selectedProperty()   .bindBidirectional(driver.overrideAvoidanceOfForcedMistakesProperty());
         overrideVehicleReliabilityCheckBox.selectedProperty()       .bindBidirectional(driver.overrideVehicleReliabilityProperty());
 
-        racingSkillTextField.setEditable(false);
-        qualiSkillTextField.setEditable(false);
-        aggressionTextField.setEditable(false);
-        defendingTextField.setEditable(false);
-        staminaTextField.setEditable(false);
-        consistencyTextField.setEditable(false);
-        startReactionsTextField.setEditable(false);
-        wetSkillTextField.setEditable(false);
-        tyreManagementTextField.setEditable(false);
-        fuelManagementTextField.setEditable(false);
-        blueFlagTextField.setEditable(false);
-        weatherPitTextField.setEditable(false);
-        mistakeAvoidanceTextField.setEditable(false);
-        forcedMistakeTextField.setEditable(false);
-        vehicleReliabilityTextField.setEditable(false);
+        driverLiveryNameTextField.disableProperty().bind(overrideMode);
     }
 
-    /**
-     * Unbinds the given driver's properties from the control elements of the editor. The bind will be unbound bidirectionally.
-     * If a driver was bound with bindDriver then you should unbind it with this method.
-     * @param driver a driver whose properties are to be unbound from the control elements of this editor.
-     */
-    private void unbindDriver(Driver driver) {
-        driverLiveryNameTextField.textProperty()    .unbindBidirectional(driver.liveryNameProperty());
+    private void unbindBaseProperties(DriverBase driver) {
         driverNameTextField.textProperty()          .unbindBidirectional(driver.nameProperty());
         driverCountryTextField.textProperty()       .unbindBidirectional(driver.countryProperty());
         racingSkillSlider.valueProperty()           .unbindBidirectional(driver.raceSkillProperty());
@@ -528,6 +545,8 @@ public class DriverEditor {
         forcedMistakeSlider.valueProperty()         .unbindBidirectional(driver.avoidanceOfForcedMistakesProperty());
         vehicleReliabilitySlider.valueProperty()    .unbindBidirectional(driver.vehicleReliabilityProperty());
 
+        overrideDriverNameCheckBox.selectedProperty()               .unbindBidirectional(driver.overrideNameProperty());
+        overrideCountryCheckBox.selectedProperty()                  .unbindBidirectional(driver.overrideCountryProperty());
         overrideRacingSkillCheckBox.selectedProperty()              .unbindBidirectional(driver.overrideRaceSkillProperty());
         overrideQualiSkillCheckBox.selectedProperty()               .unbindBidirectional(driver.overrideQualifyingSkillProperty());
         overrideAggressionCheckBox.selectedProperty()               .unbindBidirectional(driver.overrideAggressionProperty());

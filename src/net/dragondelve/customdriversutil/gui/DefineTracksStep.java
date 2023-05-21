@@ -28,11 +28,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import net.dragondelve.customdriversutil.gui.editor.DriverEditor;
 import net.dragondelve.customdriversutil.model.Track;
+import net.dragondelve.customdriversutil.model.TrackOverride;
 import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.logging.Level;
 
 /**
  * DefineTracksStep is an intermediate step between pressing the addTrackOverrideButton and the Driver Editor opening
@@ -78,6 +79,8 @@ public class DefineTracksStep implements StageController {
      */
     private Stage stage;
 
+    private TrackOverride trackOverride;
+
     /**
      * Initialize method initializes all the visual elements before they are displayed by the user.
      * initialize method is called automatically by JavaFX when this editor is being loaded from XML.
@@ -87,6 +90,12 @@ public class DefineTracksStep implements StageController {
         rootPane.getStylesheets().clear();
         rootPane.getStylesheets().add(DDUtil.MAIN_CSS_RESOURCE);
 
+        if(trackOverride == null) {
+            DDUtil.DEFAULT_LOGGER.log(Level.SEVERE, "Define Track Step initialized without calling setTrackOverride() first.");
+            return;
+        }
+
+        selectedListView.setItems(trackOverride.getTrack());
         trackLibraryListView.setItems(LibraryManager.getInstance().getTrackLibrary().getTracks());
         //Remove everything that is already selected in the Selected List view.
         trackLibraryListView.getItems().removeAll(selectedListView.getItems());
@@ -171,11 +180,13 @@ public class DefineTracksStep implements StageController {
 
     /**
      * Lightweight mutator method. Used when editing a trackOverride.
-     * @param tracks A list of tracks that are going to be displayed in the selected list, and removed from the library view.
+     * @param trackOverride trackOverride that is being edited if this editor is performing the edit action
      */
     @FXML
-    public void setInitialTracks(List<Track> tracks) {
-        selectedListView.getItems().addAll(tracks);
+    public void setTrackOverride(TrackOverride trackOverride) {
+        this.trackOverride = trackOverride;
+        if(selectedListView != null)
+            selectedListView.getItems().addAll(this.trackOverride.getTrack());
     }
 
     /**
@@ -205,14 +216,17 @@ public class DefineTracksStep implements StageController {
         loader.setController(editor);
         try {
             Stage editorStage = new Stage();
+            editorStage.setTitle(stage.getTitle());
             BorderPane borderPane = new BorderPane();
             borderPane.setCenter(loader.load());
             borderPane.setLeft(selectedListView);
+            selectedListView.setDisable(true);
             borderPane.getStylesheets().clear();
             borderPane.getStylesheets().add(DDUtil.MAIN_CSS_RESOURCE);
             Scene scene = new Scene(borderPane);
             editorStage.setScene(scene);
             stage.close();
+            editor.setEditedDriver(trackOverride);
             editorStage.show();
         } catch (IOException e) {
             e.printStackTrace();
