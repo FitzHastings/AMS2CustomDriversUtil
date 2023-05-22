@@ -482,9 +482,12 @@ public class DriverEditor {
         if(!overrideMode.get())
             driverLiveryNameTextField.textProperty()    .unbindBidirectional(((Driver)driver).liveryNameProperty());
         unbindBaseProperties(driver);
-
     }
 
+    /**
+     * Binds all base properties that are shared between the Driver and TrackOverride. called from within bindDriver
+     * @param driver a driverbase whose properties re to be bound to the control elements of theis editor.
+     */
     private void bindBaseProperties(DriverBase driver) {
         driverNameTextField.textProperty()          .bindBidirectional(driver.nameProperty());
         driverCountryTextField.textProperty()       .bindBidirectional(driver.countryProperty());
@@ -526,6 +529,10 @@ public class DriverEditor {
         driverLiveryNameTextField.disableProperty().bind(overrideMode);
     }
 
+    /**
+     * Unbinds all base properties that are shared between the Driver and TrackOverride. called from within umbindDriver
+     * @param driver a driverbase whose properties re to be unbound to the control elements of theis editor.
+     */
     private void unbindBaseProperties(DriverBase driver) {
         driverNameTextField.textProperty()          .unbindBidirectional(driver.nameProperty());
         driverCountryTextField.textProperty()       .unbindBidirectional(driver.countryProperty());

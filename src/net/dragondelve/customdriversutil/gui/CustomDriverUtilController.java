@@ -161,19 +161,19 @@ public class CustomDriverUtilController implements StageController {
     private TableColumn<Driver, String> driverCountryColumn;
 
     /**
-     *
+     * Button that performs addTrackOverrideAction on action.
      */
     @FXML
     private Button addTrackOverrideButton;
 
     /**
-     *
+     * Button that performs removeTrackOverrideAction on action.
      */
     @FXML
     private Button removeTrackOverrideButton;
 
     /**
-     *
+     * Button that performs editTrackOverrideAction on action.
      */
     @FXML
     private Button editTrackOverrideButton;
@@ -254,7 +254,7 @@ public class CustomDriverUtilController implements StageController {
     }
 
     /**
-     *
+     * Adds a new driver to the editedGrid.
      */
     private void addDriverAction() {
         Driver driver = new Driver();
@@ -263,7 +263,7 @@ public class CustomDriverUtilController implements StageController {
     }
 
     /**
-     *
+     * If a driver is selected in the driversTableView, removes the selected driver form the editedGrid.
      */
     private void removeDriverAction() {
         Driver editedDriver = driversTableView.getSelectionModel().getSelectedItem();
@@ -272,7 +272,8 @@ public class CustomDriverUtilController implements StageController {
     }
 
     /**
-     *
+     * Opens the DefineTrack step window. If any tracks are chosen by the user it adds a new TrackOverride for the tracks
+     * selected..
      */
     private void addTrackOverrideAction() {
         Driver editedDriver = driversTableView.getSelectionModel().getSelectedItem();
@@ -283,7 +284,7 @@ public class CustomDriverUtilController implements StageController {
     }
 
     /**
-     *
+     * if a track override is chosen in the trackOverrideTableView removes the selected track.
      */
     private void removeTrackOverrideAction() {
         TrackOverride selectedTrackOverride = trackOverrideTableView.getSelectionModel().getSelectedItem();
@@ -292,7 +293,8 @@ public class CustomDriverUtilController implements StageController {
     }
 
     /**
-     *
+     * if a track override is chosen in the trackOverrideTalbeView it opens the defineTrackStep window and passes it the
+     * currently selected track override for editing.
      */
     private void editTrackOverrideAction() {
         TrackOverride selectedTrackOverride = trackOverrideTableView.getSelectionModel().getSelectedItem();
@@ -300,6 +302,11 @@ public class CustomDriverUtilController implements StageController {
             initTrackOverrideEditor(selectedTrackOverride);
     }
 
+    /**
+     * Initializes the Track Override Editor by opening the defineTrackStep and passing it the trackOverride that
+     * is passed as an argument.
+     * @param override Track specific override that is going to be edited by the trackOverrideEditor.
+     */
     private void initTrackOverrideEditor(TrackOverride override) {
         Driver editedDriver = driversTableView.getSelectionModel().getSelectedItem();
         if(editedDriver == null)
