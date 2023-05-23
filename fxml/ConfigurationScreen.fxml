@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Copyright 2023 Prokhor Kalinin
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License. -->
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import net.dragondelve.customdriversutil.fx.css.PromptLabel?>
+
+<VBox fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1">
+    <GridPane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity"
+              prefHeight="113.0" prefWidth="600.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="163.0"/>
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="437.0"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        </rowConstraints>
+        <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+        </VBox.margin>
+        <PromptLabel text="Path To Track Library"/>
+        <PromptLabel text="Path to Vehicle Class Library" GridPane.rowIndex="1"/>
+        <PromptLabel text="Path To Driver Library" GridPane.rowIndex="2"/>
+        <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+              GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
+            <TextField fx:id="vehicleClassLibraryTextField" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                       HBox.hgrow="ALWAYS"/>
+            <Button fx:id="vehicleClassFileChooserButton" mnemonicParsing="false" text="..."/>
+        </HBox>
+        <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"
+              GridPane.rowIndex="2">
+            <TextField fx:id="driverLibraryTextField" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                       HBox.hgrow="ALWAYS"/>
+            <Button fx:id="driverLibraryFileChooserButton" mnemonicParsing="false" text="..."/>
+        </HBox>
+        <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
+            <TextField fx:id="trackLibraryTextField" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                       HBox.hgrow="ALWAYS"/>
+            <Button fx:id="trackLibraryFileChooserButton" mnemonicParsing="false" text="..."/>
+        </HBox>
+    </GridPane>
+    <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+        <Tab text="Default New Driver">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <GridPane AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
+                          AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <CheckBox fx:id="overrideNameCheckBox" mnemonicParsing="false"
+                              text="Override Name"/>
+                    <CheckBox fx:id="overrideCountryCheckBox" mnemonicParsing="false"
+                              text="Override Country" GridPane.rowIndex="1"/>
+                    <CheckBox fx:id="overrideRacingSkillCheckBox" mnemonicParsing="false"
+                              text="Override Racing Skill" GridPane.columnIndex="1"/>
+                    <CheckBox fx:id="overrideQualifyingSkillCheckBox" mnemonicParsing="false"
+                              text="Override Qualifying Skill" GridPane.columnIndex="2"/>
+                    <CheckBox fx:id="overrideAggressionCheckBox" mnemonicParsing="false"
+                              text="Override Aggression" GridPane.columnIndex="3"/>
+                    <CheckBox fx:id="overrideDefendingCheckBox" mnemonicParsing="false"
+                              text="Override Defending" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    <CheckBox fx:id="overrideStaminaCheckBox" mnemonicParsing="false"
+                              text="Override Stamina" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                    <CheckBox fx:id="overrideConsistencyCheckBox" mnemonicParsing="false"
+                              text="Override Consistency" GridPane.columnIndex="3"
+                              GridPane.rowIndex="1"/>
+                    <CheckBox fx:id="overrideStartReactionsCheckBox" mnemonicParsing="false"
+                              text="Override Start Reactions" GridPane.columnIndex="1"
+                              GridPane.rowIndex="2"/>
+                    <CheckBox fx:id="overrideWetSkillCheckBox" mnemonicParsing="false"
+                              text="Override Wet Skill" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                    <CheckBox fx:id="overrideTyreManagemnetCheckBox" mnemonicParsing="false"
+                              text="Override Tyre Management" GridPane.columnIndex="3"
+                              GridPane.rowIndex="2"/>
+                    <CheckBox fx:id="overrideFuelManagementCheckBox" mnemonicParsing="false"
+                              text="Override Fuel Management" GridPane.columnIndex="1"
+                              GridPane.rowIndex="3"/>
+                    <CheckBox fx:id="overrideBlueFlagCheckBox" mnemonicParsing="false"
+                              text="Override Blue Flag" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+                    <CheckBox fx:id="overrideWeatherPitCheckBox" mnemonicParsing="false"
+                              text="Override Weather Pit" GridPane.columnIndex="3"
+                              GridPane.rowIndex="3"/>
+                    <CheckBox fx:id="overrideMistakeAvoidanceCheckBox" mnemonicParsing="false"
+                              text="Override Mistake Avoidance" GridPane.columnIndex="1"
+                              GridPane.rowIndex="4"/>
+                    <CheckBox fx:id="overrideForcedMistakeAvoidanceCheckBox" mnemonicParsing="false"
+                              text="Override Forced Mistake Avoidance" GridPane.columnIndex="2"
+                              GridPane.rowIndex="4"/>
+                    <CheckBox fx:id="overrideVehicleReliabilityCheckBox" mnemonicParsing="false"
+                              text="Vehicle Reliability" GridPane.columnIndex="3"
+                              GridPane.rowIndex="4"/>
+                    <CheckBox fx:id="chooseLiveryNameCheckBox" mnemonicParsing="false"
+                              text="Choose Livery Name" GridPane.rowIndex="2"/>
+                </GridPane>
+            </AnchorPane>
+        </Tab>
+        <Tab text="Default New Override">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <GridPane layoutX="23.0" layoutY="14.0" AnchorPane.bottomAnchor="10.0"
+                          AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"
+                          AnchorPane.topAnchor="10.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <CheckBox fx:id="tOverrideNameCheckBox" mnemonicParsing="false"
+                              text="Override Name"/>
+                    <CheckBox fx:id="tOverrideCountry" mnemonicParsing="false" text="Override Country"
+                              GridPane.rowIndex="1"/>
+                    <CheckBox fx:id="tOverrideRacingSkillCheckBox" mnemonicParsing="false"
+                              text="Override Racing Skill" GridPane.columnIndex="1"/>
+                    <CheckBox fx:id="tOverrideQualifyingSkillCheckBox" mnemonicParsing="false"
+                              text="Override Qualifying Skill" GridPane.columnIndex="2"/>
+                    <CheckBox fx:id="tOverrideAggressionCheckBox" mnemonicParsing="false"
+                              text="Override Aggression" GridPane.columnIndex="3"/>
+                    <CheckBox fx:id="tOverrideDefendingCheckBox" mnemonicParsing="false"
+                              text="Override Defending" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    <CheckBox fx:id="tOverrideStaminaCheckBox" mnemonicParsing="false"
+                              text="Override Stamina" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                    <CheckBox fx:id="tOverrideConsistencyCheckBox" mnemonicParsing="false"
+                              text="Override Consistency" GridPane.columnIndex="3"
+                              GridPane.rowIndex="1"/>
+                    <CheckBox fx:id="tOverrideStartReactionsCheckBox" mnemonicParsing="false"
+                              text="Override Start Reactions" GridPane.columnIndex="1"
+                              GridPane.rowIndex="2"/>
+                    <CheckBox fx:id="tOverrideWetSkillCheckBox" mnemonicParsing="false"
+                              text="Override Wet Skill" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                    <CheckBox fx:id="tOverrideTyreManagementCheckBox" mnemonicParsing="false"
+                              text="Override Tyre Management" GridPane.columnIndex="3"
+                              GridPane.rowIndex="2"/>
+                    <CheckBox fx:id="tOverrideFuelManagementCheckBox" mnemonicParsing="false"
+                              text="Override Fuel Management" GridPane.columnIndex="1"
+                              GridPane.rowIndex="3"/>
+                    <CheckBox fx:id="tOverrideBlueFlagCheckBox" mnemonicParsing="false"
+                              text="Override Blue Flag" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+                    <CheckBox fx:id="tOverrideWeatherPitCheckBox" mnemonicParsing="false"
+                              text="Override Weather Pit" GridPane.columnIndex="3"
+                              GridPane.rowIndex="3"/>
+                    <CheckBox fx:id="tOverrideMistakeAvoidanceCheckBox" mnemonicParsing="false"
+                              text="Override Mistake Avoidance" GridPane.columnIndex="1"
+                              GridPane.rowIndex="4"/>
+                    <CheckBox fx:id="tOverrideForcedMistakeCheckBox" mnemonicParsing="false"
+                              text="Override Forced Mistake Avoidance" GridPane.columnIndex="2"
+                              GridPane.rowIndex="4"/>
+                    <CheckBox fx:id="tOverrideVehicleReliabilityCheckBox" mnemonicParsing="false"
+                              text="Vehicle Reliability" GridPane.columnIndex="3"
+                              GridPane.rowIndex="4"/>
+                </GridPane>
+            </AnchorPane>
+        </Tab>
+    </TabPane>
+</VBox>

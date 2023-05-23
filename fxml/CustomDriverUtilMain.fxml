@@ -74,7 +74,7 @@ limitations under the License. -->
                </Menu>
            </Menu>
            <Menu mnemonicParsing="false" text="Settings">
-               <MenuItem mnemonicParsing="false" text="Configuration"/>
+               <MenuItem fx:id="configurationMenuItem" mnemonicParsing="false" text="Configuration"/>
            </Menu>
        </MenuBar>
    </top>

@@ -343,6 +343,10 @@ ImageChooserButton: pressed {
     -fx-stroke: #7b868d;
 }
 
+VBox {
+    -fx-background-color: #21282c;
+}
+
 BorderLabel {
     -fx-background-color: #343d44;
     -fx-border-width: 1;

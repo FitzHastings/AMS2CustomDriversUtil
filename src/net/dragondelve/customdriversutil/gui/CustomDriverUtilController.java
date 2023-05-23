@@ -131,6 +131,14 @@ public class CustomDriverUtilController implements StageController {
     private MenuItem importVehicleClassesItem;
 
     /**
+     * Shows a configuration screen allowing  the user to directly edit the configuration file. Performs configurationAction
+     * on action.
+     */
+    @FXML
+    private MenuItem configurationMenuItem;
+
+
+    /**
      * Tableview That displays the drivers from the grid that is being edited.
      */
     @FXML
@@ -235,6 +243,8 @@ public class CustomDriverUtilController implements StageController {
         editVehicleClassesItem.setOnAction(e -> editVehicleClassesAction());
         exportVehicleClassesItem.setOnAction(e -> exportVehicleClassesAction());
         importVehicleClassesItem.setOnAction(e -> importVehicleClassesAction());
+
+        configurationMenuItem.setOnAction(e -> configurationAction());
 
         driversTableView.setItems(editedGrid.getDrivers());
         driverNameColumn.setCellValueFactory(e -> e.getValue().nameProperty());
@@ -449,6 +459,24 @@ public class CustomDriverUtilController implements StageController {
             PathRelativisor relativisor = new PathRelativisor(selectedFile.toPath());
             Configurator.getInstance().getConfiguration().setVehicleClassLibraryPathname(relativisor.relativize());
             Configurator.getInstance().saveConfiguration();
+        }
+    }
+
+    /**
+     * Shows the ConfigurationScreen on a separate stage. This action is performed by the configurationMenuItem.
+     */
+    private void configurationAction() {
+        FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().CONFIGURATION_SCREEN_FXML_URL);
+        StageController controller = new ConfigurationScreenController();
+        Stage screenStage = new Stage();
+        controller.setStage(screenStage);
+        loader.setController(controller);;
+        try {
+            Scene scene = new Scene(loader.load());
+            screenStage.setScene(scene);
+            screenStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
