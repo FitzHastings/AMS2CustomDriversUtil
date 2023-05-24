@@ -14,6 +14,8 @@
 
 package net.dragondelve.customdriversutil.util;
 
+import net.dragondelve.customdriversutil.model.OverrideFlags;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -32,6 +34,16 @@ public class Configuration {
      * Pathname to the last imported VehicleClassLibrary
      */
     private String vehicleClassLibraryPathname;
+
+    /**
+     * Default override flags that are set to every new Driver.
+     */
+    private OverrideFlags defaultDriverFlags;
+
+    /**
+     * Default override flags that are set to every new TrackOverride.
+     */
+    private OverrideFlags defaultTrackOverrideFlags;
 
     /**
      * Lightweight accessor method.
@@ -54,6 +66,7 @@ public class Configuration {
      * Lightweight accessor method.
      * @return Pathname to the last imported VehicleClassLibrary.
      */
+    @XmlElement (name = "vehicle_class_library")
     public String getVehicleClassLibraryPathname() {
         return vehicleClassLibraryPathname;
     }
@@ -64,5 +77,39 @@ public class Configuration {
      */
     public void setVehicleClassLibraryPathname(String vehicleClassLibraryPathname) {
         this.vehicleClassLibraryPathname = vehicleClassLibraryPathname;
+    }
+
+    /**
+     * Lightweight accessor method.
+     * @return Default override flags that are set to every new Driver.
+     */
+    @XmlElement(name = "default_driver_flags")
+    public OverrideFlags getDefaultDriverFlags() {
+        return defaultDriverFlags;
+    }
+
+    /**
+     * Lightweight mutator method.
+     * @param defaultDriverFlags Default override flags that are set to every new Driver.
+     */
+    public void setDefaultDriverFlags(OverrideFlags defaultDriverFlags) {
+        this.defaultDriverFlags = defaultDriverFlags;
+    }
+
+    /**
+     * Lightweight accessor method.
+     * @return Default override flags that are set to every new TrackOverride.
+     */
+    @XmlElement (name = "default_track_override_flags")
+    public OverrideFlags getDefaultTrackOverrideFlags() {
+        return defaultTrackOverrideFlags;
+    }
+
+    /**
+     * Lightweight mutator method.
+     * @param defaultTrackOverrideFlags Default override flags that are set to every new TrackOverride.
+     */
+    public void setDefaultTrackOverrideFlags(OverrideFlags defaultTrackOverrideFlags) {
+        this.defaultTrackOverrideFlags = defaultTrackOverrideFlags;
     }
 }

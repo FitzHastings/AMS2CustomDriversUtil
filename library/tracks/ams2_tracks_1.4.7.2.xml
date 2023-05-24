@@ -490,5 +490,14 @@
         <tracks name="Watkins Glen Short (Inner Loop)" xml_name="Watkins_Glen_SIL">
             <is_oval>false</is_oval>
         </tracks>
+        <tracks name="Nurb 1971 Gesamt" xml_name="Nurb_1971_Gesamt">
+            <is_oval>false</is_oval>
+        </tracks>
+        <tracks name="Nurb 971 Nords" xml_name="Nurb_1971_Nords">
+            <is_oval>false</is_oval>
+        </tracks>
+        <tracks name="Nurb 1971 Suds" xml_name="Nurb_1971_Suds">
+            <is_oval>false</is_oval>
+        </tracks>
     </tracks>
 </track_library>

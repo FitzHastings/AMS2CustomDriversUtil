@@ -18,147 +18,83 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import net.dragondelve.customdriversutil.util.Configuration;
+import net.dragondelve.customdriversutil.util.Configurator;
 import net.dragondelve.customdriversutil.util.DDUtil;
 
 public class ConfigurationScreenController implements StageController {
     @FXML
-    private CheckBox tOverrideBlueFlagCheckBox;
-
-    @FXML
-    private CheckBox overrideAggressionCheckBox;
-
-    @FXML
-    private TextField trackLibraryTextField;
-
-    @FXML
-    private CheckBox tOverrideMistakeAvoidanceCheckBox;
-
-    @FXML
-    private CheckBox overrideDefendingCheckBox;
-
-    @FXML
-    private CheckBox tOverrideAggressionCheckBox;
-
-    @FXML
-    private Button vehicleClassFileChooserButton;
-
-    @FXML
-    private CheckBox tOverrideConsistencyCheckBox;
-
-    @FXML
-    private CheckBox tOverrideWetSkillCheckBox;
-
-    @FXML
-    private CheckBox tOverrideNameCheckBox;
-
-    @FXML
-    private CheckBox overrideNameCheckBox;
-
-    @FXML
-    private TextField driverLibraryTextField;
-
-    @FXML
-    private CheckBox tOverrideStartReactionsCheckBox;
-
-    @FXML
-    private CheckBox tOverrideRacingSkillCheckBox;
-
-    @FXML
-    private Button trackLibraryFileChooserButton;
-
-    @FXML
-    private CheckBox overrideVehicleReliabilityCheckBox;
-
-    @FXML
-    private CheckBox overrideStaminaCheckBox;
-
-    @FXML
-    private CheckBox overrideFuelManagementCheckBox;
+    private AnchorPane defaultNewDriverAnchorPane;
 
     @FXML
     private TextField vehicleClassLibraryTextField;
 
     @FXML
-    private CheckBox overrideStartReactionsCheckBox;
+    private TextField trackLibraryTextField;
 
     @FXML
-    private CheckBox overrideForcedMistakeAvoidanceCheckBox;
+    private AnchorPane defaultNewOverrideAnchorPane;
 
     @FXML
-    private CheckBox tOverrideDefendingCheckBox;
+    private VBox rootPane;
 
     @FXML
-    private CheckBox tOverrideFuelManagementCheckBox;
-
-    @FXML
-    private CheckBox overrideWeatherPitCheckBox;
-
-    @FXML
-    private CheckBox tOverrideTyreManagementCheckBox;
-
-    @FXML
-    private CheckBox tOverrideVehicleReliabilityCheckBox;
-
-    @FXML
-    private CheckBox overrideWetSkillCheckBox;
-
-    @FXML
-    private CheckBox overrideMistakeAvoidanceCheckBox;
-
-    @FXML
-    private CheckBox overrideConsistencyCheckBox;
+    private Button vehicleClassFileChooserButton;
 
     @FXML
     private Button driverLibraryFileChooserButton;
 
     @FXML
-    private CheckBox tOverrideStaminaCheckBox;
+    private TextField driverLibraryTextField;
 
     @FXML
-    private CheckBox overrideRacingSkillCheckBox;
+    private CheckBox chooseLiveryCheckBox;
 
     @FXML
-    private CheckBox overrideQualifyingSkillCheckBox;
+    private Button trackLibraryFileChooserButton;
 
     @FXML
-    private CheckBox overrideBlueFlagCheckBox;
+    private Button okButton;
 
     @FXML
-    private CheckBox overrideTyreManagemnetCheckBox;
-
-    @FXML
-    private CheckBox chooseLiveryNameCheckBox;
-
-    @FXML
-    private CheckBox overrideCountryCheckBox;
-
-    @FXML
-    private CheckBox tOverrideWeatherPitCheckBox;
-
-    @FXML
-    private CheckBox tOverrideCountry;
-
-    @FXML
-    private CheckBox tOverrideForcedMistakeCheckBox;
-
-    @FXML
-    private CheckBox tOverrideQualifyingSkillCheckBox;
-
-    @FXML
-    private VBox rootPane;
+    private Button cancelButton;
 
     Stage stage;
+    Configuration buffer = new Configuration();
 
     @FXML
     public void initialize() {
         rootPane.getStylesheets().clear();
         rootPane.getStylesheets().add(DDUtil.MAIN_CSS_RESOURCE);
+        createConfigurationBuffer();
+
+        trackLibraryTextField.setText(buffer.getTrackLibraryPathname());
+        vehicleClassLibraryTextField.setText(buffer.getVehicleClassLibraryPathname());
+
+        okButton.setOnAction(e -> okAction());
+        cancelButton.setOnAction(e -> cancelAction());
     }
 
     @Override
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+
+    private void createConfigurationBuffer() {
+        buffer.setTrackLibraryPathname(Configurator.getInstance().getConfiguration().getTrackLibraryPathname());
+        buffer.setVehicleClassLibraryPathname(Configurator.getInstance().getConfiguration().getVehicleClassLibraryPathname());
+    }
+
+    private void okAction() {
+        Configurator.getInstance().setConfiguration(buffer);
+        Configurator.getInstance().saveConfiguration();
+        stage.close();
+    }
+
+    private void cancelAction() {
+        stage.close();
     }
 }

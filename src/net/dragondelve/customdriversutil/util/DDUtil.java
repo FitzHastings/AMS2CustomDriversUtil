@@ -28,18 +28,20 @@ public class DDUtil {
     public static final String TRACK_EDITOR_FXML_PATHNAME = "fxml/editor/TrackEditor.fxml";
     public static final String VEHICLE_CLASS_EDITOR_FXML_PATHNAME = "fxml/editor/VehicleClassEditor.fxml";
     public static final String DRIVER_EDITOR_FXML_PATHNAME = "fxml/editor/DriverEditor.fxml";
+    public static final String OVERRIDE_FLAGS_EDITOR_FXML_PATHNAME = "fxml/editor/OverrideFlagsEditor.fxml";
     public static final String MAIN_WINDOW_FXML_PATHNAME = "fxml/CustomDriverUtilMain.fxml";
     public static final String DEFINE_TRACKS_STEP_FXML_PATHNAME = "fxml/DefineTracksStep.fxml";
     public static final String CONFIGURATION_SCREEN_FXML_PATHNAME = "fxml/ConfigurationScreen.fxml";
 
-    public static final String TRACK_LIBRARY_DEFAULT_PATHNAME = "library/tracks/ams2_tracks_1.4.6.4.xml";
-    public static final String VEHICLE_CLASS_LIBRARY_DEFAULT_PATHNAME = "library/vehicles/ams2_vehicles_1.4.6.4.xml";
+    public static final String TRACK_LIBRARY_DEFAULT_PATHNAME = "library/tracks/ams2_tracks_1.4.7.2.xml";
+    public static final String VEHICLE_CLASS_LIBRARY_DEFAULT_PATHNAME = "library/vehicles/ams2_vehicles_1.4.7.2.xml";
 
     public static final String MAIN_CSS_RESOURCE = "css/Eraconstas.css";
 
     public URL TRACK_EDITOR_FXML_URL;
     public URL VEHICLE_CLASS_EDITOR_FXML_URL;
     public URL DRIVER_EDITOR_FXML_URL;
+    public URL OVERRIDE_FLAGS_EDITOR_FXML_URL;
     public URL MAIN_WINDOW_FXML_URL;
     public URL DEFINE_TRACKS_STEP_FXML_URL;
     public URL CONFIGURATION_SCREEN_FXML_URL;
@@ -70,6 +72,12 @@ public class DDUtil {
 
         try {
             DRIVER_EDITOR_FXML_URL = new URL("file:" + DRIVER_EDITOR_FXML_PATHNAME);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            OVERRIDE_FLAGS_EDITOR_FXML_URL = new URL("file:" + OVERRIDE_FLAGS_EDITOR_FXML_PATHNAME);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

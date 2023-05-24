@@ -2027,6 +2027,41 @@ limitations under the License. -->
                 <livery>RKL Competicoes - G.Frigotto #86</livery>
             </liveries>
         </vehicle_class>
+        <vehicle_class name="StockCarV8 2023" xml_name="StockCarV8_2023.xml">
+            <liveries>
+                <livery>Full Time Bassani - T.Kanaan #6</livery>
+                <livery>RCM Motorsport - R.Zonta #10</livery>
+                <livery>RCM Motorsport - B.Baptista #44</livery>
+                <livery>Ipiranga Racing - T.Camilo #21</livery>
+                <livery>Ipiranga Racing - C.Ramos #30</livery>
+                <livery>Crown Racing - E.Elias #28</livery>
+                <livery>Crown Racing - N.Piquet Jr #33</livery>
+                <livery>Scuderia Chiarelli - R.Teixeira #37</livery>
+                <livery>Scuderia Chiarelli - S.Jimenez #73</livery>
+                <livery>MOBIL ALE - E.Barrichello #91</livery>
+                <livery>MOBIL ALE - R.Barrichello #111</livery>
+                <livery>Full Time Sports - G.Petecof #101</livery>
+                <livery>Full Time Sports - M.Rossi #117</livery>
+                <livery>KTF Sports - C.Bueno #0</livery>
+                <livery>KTF Sports - R.Baptista #3</livery>
+                <livery>Lubrax Podium TMG - J.Campos #4</livery>
+                <livery>Lubrax Podium TMG - F.Massa #19</livery>
+                <livery>Cavaleiro Sports - D.Navarro #5</livery>
+                <livery>Cavaleiro Sports - M.Gomes #80</livery>
+                <livery>POLE Motorsport - R.Suzuki #8</livery>
+                <livery>POLE Motorsports - A.Abreu #51</livery>
+                <livery>Hot Car Competicoes -  G.Di Mauro #11</livery>
+                <livery>Hot Car Competicoes - L.Kohl #95</livery>
+                <livery>AMM Vogel - L.Foresti #12</livery>
+                <livery>AMM Vogel - G.Casagrande #83</livery>
+                <livery>Blau Motorsport - A.Khodair #18</livery>
+                <livery>Blau Motorsport - F.Fraga #74</livery>
+                <livery>Eurofarma RC - D.Serra #29</livery>
+                <livery>Eurofarma RC - R.Mauricio #90</livery>
+                <livery>KTF Racing - G.Salas #85</livery>
+                <livery>KTF Racing - F.Baptista #121</livery>
+            </liveries>
+        </vehicle_class>
         <vehicle_class name="Street" xml_name="Street">
             <liveries>
                 <livery>Chevrolet Camaro SS #01</livery>
