@@ -46,6 +46,11 @@ public class Configuration {
     private OverrideFlags defaultTrackOverrideFlags;
 
     /**
+     * Flag that determines if the user prefers to choose the livery or to type the livery's name into the textField.
+     */
+    private boolean chooseLivery = false;
+
+    /**
      * Lightweight accessor method.
      * @return Pathname to the last imported TrackLibrary.
      */
@@ -111,5 +116,22 @@ public class Configuration {
      */
     public void setDefaultTrackOverrideFlags(OverrideFlags defaultTrackOverrideFlags) {
         this.defaultTrackOverrideFlags = defaultTrackOverrideFlags;
+    }
+
+    /**
+     * Lightweight accessor method.
+     * @return Flag that determines if the user prefers to choose the livery or to type the livery's name into the textField.
+     */
+    @XmlElement (name = "choose_livery")
+    public boolean isChooseLivery() {
+        return chooseLivery;
+    }
+
+    /**
+     * Lightweight mutator method.
+     * @param chooseLivery Flag that determines if the user prefers to choose the livery or to type the livery's name into the textField.
+     */
+    public void setChooseLivery(boolean chooseLivery) {
+        this.chooseLivery = chooseLivery;
     }
 }

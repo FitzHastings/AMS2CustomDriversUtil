@@ -268,7 +268,7 @@ public class CustomDriverUtilController implements StageController {
      */
     private void addDriverAction() {
         Driver driver = new Driver();
-        //TODO: Assign default values.
+        driver.setOverrideFlags(Configurator.getInstance().getConfiguration().getDefaultDriverFlags());
         editedGrid.getDrivers().add(driver);
     }
 
@@ -288,6 +288,7 @@ public class CustomDriverUtilController implements StageController {
     private void addTrackOverrideAction() {
         Driver editedDriver = driversTableView.getSelectionModel().getSelectedItem();
         TrackOverride override = new TrackOverride();
+        override.setOverrideFlags(Configurator.getInstance().getConfiguration().getDefaultTrackOverrideFlags());
         initTrackOverrideEditor(override);
         if (override.getTrack().size() > 0)
             editedDriver.getTrackOverrides().add(override);

@@ -14,16 +14,24 @@
 
 package net.dragondelve.customdriversutil.gui;
 
+import com.sun.javafx.collections.ImmutableObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import net.dragondelve.customdriversutil.gui.editor.Editor;
+import net.dragondelve.customdriversutil.gui.editor.OverrideFlagsEditor;
+import net.dragondelve.customdriversutil.model.OverrideFlags;
 import net.dragondelve.customdriversutil.util.Configuration;
 import net.dragondelve.customdriversutil.util.Configurator;
 import net.dragondelve.customdriversutil.util.DDUtil;
+
+import java.io.IOException;
 
 public class ConfigurationScreenController implements StageController {
     @FXML
@@ -76,6 +84,9 @@ public class ConfigurationScreenController implements StageController {
 
         okButton.setOnAction(e -> okAction());
         cancelButton.setOnAction(e -> cancelAction());
+
+        loadOverrideFlagsEditor(defaultNewDriverAnchorPane, buffer.getDefaultDriverFlags());
+        loadOverrideFlagsEditor(defaultNewOverrideAnchorPane, buffer.getDefaultTrackOverrideFlags());
     }
 
     @Override
@@ -86,9 +97,13 @@ public class ConfigurationScreenController implements StageController {
     private void createConfigurationBuffer() {
         buffer.setTrackLibraryPathname(Configurator.getInstance().getConfiguration().getTrackLibraryPathname());
         buffer.setVehicleClassLibraryPathname(Configurator.getInstance().getConfiguration().getVehicleClassLibraryPathname());
+        buffer.setDefaultDriverFlags(Configurator.getInstance().getConfiguration().getDefaultDriverFlags());
+        buffer.setDefaultTrackOverrideFlags(Configurator.getInstance().getConfiguration().getDefaultTrackOverrideFlags());
     }
 
     private void okAction() {
+        buffer.setTrackLibraryPathname(trackLibraryTextField.getText());
+        buffer.setVehicleClassLibraryPathname(vehicleClassLibraryTextField.getText());
         Configurator.getInstance().setConfiguration(buffer);
         Configurator.getInstance().saveConfiguration();
         stage.close();
@@ -96,5 +111,28 @@ public class ConfigurationScreenController implements StageController {
 
     private void cancelAction() {
         stage.close();
+    }
+
+    /**
+     *
+     * @param targetPane
+     * @param item
+     */
+    private void loadOverrideFlagsEditor(AnchorPane targetPane, OverrideFlags item) {
+        FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().OVERRIDE_FLAGS_EDITOR_FXML_URL);
+        Editor<OverrideFlags> controller = new OverrideFlagsEditor();
+        controller.setStage(stage);
+        controller.setItems(new ImmutableObservableList<>(item));
+        loader.setController(controller);
+        try {
+            Node node = loader.load();
+            targetPane.getChildren().add(node);
+            AnchorPane.setBottomAnchor(node, 0.0);
+            AnchorPane.setTopAnchor(node, 0.0);
+            AnchorPane.setLeftAnchor(node, 0.0);
+            AnchorPane.setRightAnchor(node, 0.0);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

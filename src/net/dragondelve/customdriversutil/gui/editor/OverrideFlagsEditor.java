@@ -82,7 +82,23 @@ public class OverrideFlagsEditor implements Editor<OverrideFlags> {
 
     @FXML
     public void initialize() {
-        overrideNameCheckBox.selectedProperty().bindBidirectional(overrideFlags.overrideNameProperty());
+        overrideNameCheckBox.selectedProperty()                     .bindBidirectional(overrideFlags.overrideNameProperty());
+        overrideCountryCheckBox.selectedProperty()                  .bindBidirectional(overrideFlags.overrideCountryProperty());
+        overrideRacingSkillCheckBox.selectedProperty()              .bindBidirectional(overrideFlags.overrideRaceSkillProperty());
+        overrideQualifyingSkillCheckBox.selectedProperty()          .bindBidirectional(overrideFlags.overrideQualifyingSkillProperty());
+        overrideAggressionCheckBox.selectedProperty()               .bindBidirectional(overrideFlags.overrideAggressionProperty());
+        overrideDefendingCheckBox.selectedProperty()                .bindBidirectional(overrideFlags.overrideDefendingProperty());
+        overrideStaminaCheckBox.selectedProperty()                  .bindBidirectional(overrideFlags.overrideStaminaProperty());
+        overrideConsistencyCheckBox.selectedProperty()              .bindBidirectional(overrideFlags.overrideConsistencyProperty());
+        overrideStartReactionsCheckBox.selectedProperty()           .bindBidirectional(overrideFlags.overrideStartReactionsProperty());
+        overrideWetSkillCheckBox.selectedProperty()                 .bindBidirectional(overrideFlags.overrideWetSkillProperty());
+        overrideTyreManagemnetCheckBox.selectedProperty()           .bindBidirectional(overrideFlags.overrideTyreManagementProperty());
+        overrideFuelManagementCheckBox.selectedProperty()           .bindBidirectional(overrideFlags.overrideFuelManagementProperty());
+        overrideBlueFlagCheckBox.selectedProperty()                 .bindBidirectional(overrideFlags.overrideBlueFlagConcedingProperty());
+        overrideWeatherPitCheckBox.selectedProperty()               .bindBidirectional(overrideFlags.overrideWeatherTyreChangeProperty());
+        overrideMistakeAvoidanceCheckBox.selectedProperty()         .bindBidirectional(overrideFlags.overrideAvoidanceOfMistakesProperty());
+        overrideForcedMistakeAvoidanceCheckBox.selectedProperty()   .bindBidirectional(overrideFlags.overrideAvoidanceOfForcedMistakesProperty());
+        overrideVehicleReliabilityCheckBox.selectedProperty()       .bindBidirectional(overrideFlags.overrideVehicleReliabilityProperty());
     }
 
     @Override
@@ -97,9 +113,9 @@ public class OverrideFlagsEditor implements Editor<OverrideFlags> {
 
     @Override
     public void setItems(ObservableList<OverrideFlags> items) {
-        if(items != null && items.size() != 1)
+        if(items != null || items.size() == 1)
             overrideFlags = items.get(0);
         else
-            DDUtil.DEFAULT_LOGGER.log(Level.SEVERE, "ERROR: More OverrideFlagsEditor received items incorrectly.");
+            DDUtil.DEFAULT_LOGGER.log(Level.SEVERE, "ERROR: OverrideFlagsEditor received items incorrectly.");
     }
 }

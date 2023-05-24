@@ -9,7 +9,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 /**
  * A class that encapsulates all flags that determine whether you should override the DriverBase's properties or
  * not. All flags are stored as boolean properties and you can access their value by calling a corresponding accessor
- * method or you can access them as properties. All properties within this class are final.
+ * method or you can access them as properties. All properties within this class are final. This class is fully annotated
+ * to be used with JAXB for exporting to and importing from an xml file. It is exported as part of the configuration file.
  */
 @XmlRootElement(name = "override_flags")
 public class OverrideFlags {

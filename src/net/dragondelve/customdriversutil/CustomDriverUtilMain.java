@@ -20,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import net.dragondelve.customdriversutil.gui.CustomDriverUtilController;
 import net.dragondelve.customdriversutil.gui.StageController;
+import net.dragondelve.customdriversutil.model.OverrideFlags;
 import net.dragondelve.customdriversutil.util.Configuration;
 import net.dragondelve.customdriversutil.util.Configurator;
 import net.dragondelve.customdriversutil.util.DDUtil;
@@ -79,6 +80,15 @@ public class CustomDriverUtilMain extends Application {
         Configuration configuration = new Configuration();
         configuration.setTrackLibraryPathname(DDUtil.TRACK_LIBRARY_DEFAULT_PATHNAME);
         configuration.setVehicleClassLibraryPathname(DDUtil.VEHICLE_CLASS_LIBRARY_DEFAULT_PATHNAME);
+
+        OverrideFlags defaultDriverOverrideFlags = new OverrideFlags();
+        defaultDriverOverrideFlags.setOverrideAll(true);
+        configuration.setDefaultDriverFlags(defaultDriverOverrideFlags);
+
+        OverrideFlags defaultTrackOverrideFlags = new OverrideFlags();
+        defaultTrackOverrideFlags.setOverrideRaceSkill(true);
+        configuration.setDefaultTrackOverrideFlags(defaultTrackOverrideFlags);
+
         return configuration;
     }
 }
