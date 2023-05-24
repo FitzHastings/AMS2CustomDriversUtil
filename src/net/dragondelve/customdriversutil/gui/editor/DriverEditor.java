@@ -508,23 +508,23 @@ public class DriverEditor {
         vehicleReliabilitySlider.valueProperty()    .bindBidirectional(driver.vehicleReliabilityProperty());
 
 
-        overrideDriverNameCheckBox.selectedProperty()               .bindBidirectional(driver.overrideNameProperty());
-        overrideCountryCheckBox.selectedProperty()                  .bindBidirectional(driver.overrideCountryProperty());
-        overrideRacingSkillCheckBox.selectedProperty()              .bindBidirectional(driver.overrideRaceSkillProperty());
-        overrideQualiSkillCheckBox.selectedProperty()               .bindBidirectional(driver.overrideQualifyingSkillProperty());
-        overrideAggressionCheckBox.selectedProperty()               .bindBidirectional(driver.overrideAggressionProperty());
-        overrideDefendingCheckBox.selectedProperty()                .bindBidirectional(driver.overrideDefendingProperty());
-        overrideStaminaCheckBox.selectedProperty()                  .bindBidirectional(driver.overrideStaminaProperty());
-        overrideConsistencyCheckBox.selectedProperty()              .bindBidirectional(driver.overrideConsistencyProperty());
-        overrideStartReactions.selectedProperty()                   .bindBidirectional(driver.overrideStartReactionsProperty());
-        overrideWetSkillCheckbox.selectedProperty()                 .bindBidirectional(driver.overrideWetSkillProperty());
-        overrideTyreManagementCheckBox.selectedProperty()           .bindBidirectional(driver.overrideTyreManagementProperty());
-        overrideFuelManagementCheckBox.selectedProperty()           .bindBidirectional(driver.overrideFuelManagementProperty());
-        overrideBlueFlagCheckBox.selectedProperty()                 .bindBidirectional(driver.overrideBlueFlagConcedingProperty());
-        overrideWeatherPitCheckBox.selectedProperty()               .bindBidirectional(driver.overrideWeatherTyreChangeProperty());
-        overrideMistakeAvoidanceCheckBox.selectedProperty()         .bindBidirectional(driver.overrideAvoidanceOfMistakesProperty());
-        overrideForcedMistakeAvoidanceCheckBox.selectedProperty()   .bindBidirectional(driver.overrideAvoidanceOfForcedMistakesProperty());
-        overrideVehicleReliabilityCheckBox.selectedProperty()       .bindBidirectional(driver.overrideVehicleReliabilityProperty());
+        overrideDriverNameCheckBox.selectedProperty()               .bindBidirectional(driver.getOverrideFlags().overrideNameProperty());
+        overrideCountryCheckBox.selectedProperty()                  .bindBidirectional(driver.getOverrideFlags().overrideCountryProperty());
+        overrideRacingSkillCheckBox.selectedProperty()              .bindBidirectional(driver.getOverrideFlags().overrideRaceSkillProperty());
+        overrideQualiSkillCheckBox.selectedProperty()               .bindBidirectional(driver.getOverrideFlags().overrideQualifyingSkillProperty());
+        overrideAggressionCheckBox.selectedProperty()               .bindBidirectional(driver.getOverrideFlags().overrideAggressionProperty());
+        overrideDefendingCheckBox.selectedProperty()                .bindBidirectional(driver.getOverrideFlags().overrideDefendingProperty());
+        overrideStaminaCheckBox.selectedProperty()                  .bindBidirectional(driver.getOverrideFlags().overrideStaminaProperty());
+        overrideConsistencyCheckBox.selectedProperty()              .bindBidirectional(driver.getOverrideFlags().overrideConsistencyProperty());
+        overrideStartReactions.selectedProperty()                   .bindBidirectional(driver.getOverrideFlags().overrideStartReactionsProperty());
+        overrideWetSkillCheckbox.selectedProperty()                 .bindBidirectional(driver.getOverrideFlags().overrideWetSkillProperty());
+        overrideTyreManagementCheckBox.selectedProperty()           .bindBidirectional(driver.getOverrideFlags().overrideTyreManagementProperty());
+        overrideFuelManagementCheckBox.selectedProperty()           .bindBidirectional(driver.getOverrideFlags().overrideFuelManagementProperty());
+        overrideBlueFlagCheckBox.selectedProperty()                 .bindBidirectional(driver.getOverrideFlags().overrideBlueFlagConcedingProperty());
+        overrideWeatherPitCheckBox.selectedProperty()               .bindBidirectional(driver.getOverrideFlags().overrideWeatherTyreChangeProperty());
+        overrideMistakeAvoidanceCheckBox.selectedProperty()         .bindBidirectional(driver.getOverrideFlags().overrideAvoidanceOfMistakesProperty());
+        overrideForcedMistakeAvoidanceCheckBox.selectedProperty()   .bindBidirectional(driver.getOverrideFlags().overrideAvoidanceOfForcedMistakesProperty());
+        overrideVehicleReliabilityCheckBox.selectedProperty()       .bindBidirectional(driver.getOverrideFlags().overrideVehicleReliabilityProperty());
 
         driverLiveryNameTextField.disableProperty().bind(overrideMode);
     }
@@ -552,23 +552,23 @@ public class DriverEditor {
         forcedMistakeSlider.valueProperty()         .unbindBidirectional(driver.avoidanceOfForcedMistakesProperty());
         vehicleReliabilitySlider.valueProperty()    .unbindBidirectional(driver.vehicleReliabilityProperty());
 
-        overrideDriverNameCheckBox.selectedProperty()               .unbindBidirectional(driver.overrideNameProperty());
-        overrideCountryCheckBox.selectedProperty()                  .unbindBidirectional(driver.overrideCountryProperty());
-        overrideRacingSkillCheckBox.selectedProperty()              .unbindBidirectional(driver.overrideRaceSkillProperty());
-        overrideQualiSkillCheckBox.selectedProperty()               .unbindBidirectional(driver.overrideQualifyingSkillProperty());
-        overrideAggressionCheckBox.selectedProperty()               .unbindBidirectional(driver.overrideAggressionProperty());
-        overrideDefendingCheckBox.selectedProperty()                .unbindBidirectional(driver.overrideDefendingProperty());
-        overrideStaminaCheckBox.selectedProperty()                  .unbindBidirectional(driver.overrideStaminaProperty());
-        overrideConsistencyCheckBox.selectedProperty()              .unbindBidirectional(driver.overrideConsistencyProperty());
-        overrideStartReactions.selectedProperty()                   .unbindBidirectional(driver.overrideStartReactionsProperty());
-        overrideWetSkillCheckbox.selectedProperty()                 .unbindBidirectional(driver.overrideWetSkillProperty());
-        overrideTyreManagementCheckBox.selectedProperty()           .unbindBidirectional(driver.overrideTyreManagementProperty());
-        overrideFuelManagementCheckBox.selectedProperty()           .unbindBidirectional(driver.overrideFuelManagementProperty());
-        overrideBlueFlagCheckBox.selectedProperty()                 .unbindBidirectional(driver.overrideBlueFlagConcedingProperty());
-        overrideWeatherPitCheckBox.selectedProperty()               .unbindBidirectional(driver.overrideWeatherTyreChangeProperty());
-        overrideMistakeAvoidanceCheckBox.selectedProperty()         .unbindBidirectional(driver.overrideAvoidanceOfMistakesProperty());
-        overrideForcedMistakeAvoidanceCheckBox.selectedProperty()   .unbindBidirectional(driver.overrideAvoidanceOfForcedMistakesProperty());
-        overrideVehicleReliabilityCheckBox.selectedProperty()       .unbindBidirectional(driver.overrideVehicleReliabilityProperty());
+        overrideDriverNameCheckBox.selectedProperty()               .unbindBidirectional(driver.getOverrideFlags().overrideNameProperty());
+        overrideCountryCheckBox.selectedProperty()                  .unbindBidirectional(driver.getOverrideFlags().overrideCountryProperty());
+        overrideRacingSkillCheckBox.selectedProperty()              .unbindBidirectional(driver.getOverrideFlags().overrideRaceSkillProperty());
+        overrideQualiSkillCheckBox.selectedProperty()               .unbindBidirectional(driver.getOverrideFlags().overrideQualifyingSkillProperty());
+        overrideAggressionCheckBox.selectedProperty()               .unbindBidirectional(driver.getOverrideFlags().overrideAggressionProperty());
+        overrideDefendingCheckBox.selectedProperty()                .unbindBidirectional(driver.getOverrideFlags().overrideDefendingProperty());
+        overrideStaminaCheckBox.selectedProperty()                  .unbindBidirectional(driver.getOverrideFlags().overrideStaminaProperty());
+        overrideConsistencyCheckBox.selectedProperty()              .unbindBidirectional(driver.getOverrideFlags().overrideConsistencyProperty());
+        overrideStartReactions.selectedProperty()                   .unbindBidirectional(driver.getOverrideFlags().overrideStartReactionsProperty());
+        overrideWetSkillCheckbox.selectedProperty()                 .unbindBidirectional(driver.getOverrideFlags().overrideWetSkillProperty());
+        overrideTyreManagementCheckBox.selectedProperty()           .unbindBidirectional(driver.getOverrideFlags().overrideTyreManagementProperty());
+        overrideFuelManagementCheckBox.selectedProperty()           .unbindBidirectional(driver.getOverrideFlags().overrideFuelManagementProperty());
+        overrideBlueFlagCheckBox.selectedProperty()                 .unbindBidirectional(driver.getOverrideFlags().overrideBlueFlagConcedingProperty());
+        overrideWeatherPitCheckBox.selectedProperty()               .unbindBidirectional(driver.getOverrideFlags().overrideWeatherTyreChangeProperty());
+        overrideMistakeAvoidanceCheckBox.selectedProperty()         .unbindBidirectional(driver.getOverrideFlags().overrideAvoidanceOfMistakesProperty());
+        overrideForcedMistakeAvoidanceCheckBox.selectedProperty()   .unbindBidirectional(driver.getOverrideFlags().overrideAvoidanceOfForcedMistakesProperty());
+        overrideVehicleReliabilityCheckBox.selectedProperty()       .unbindBidirectional(driver.getOverrideFlags().overrideVehicleReliabilityProperty());
     }
 
     /**
@@ -578,6 +578,6 @@ public class DriverEditor {
         if (editedDriver == null)
             return;
 
-        GridGenerator.randomizeDriver(editedDriver);
+        editedDriver.randomize();
     }
 }

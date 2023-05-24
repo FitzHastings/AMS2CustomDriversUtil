@@ -16,6 +16,8 @@ package net.dragondelve.customdriversutil.model;
 
 import javafx.beans.property.*;
 
+import java.util.Random;
+
 /**
  * Represents a base model of a driver described by AMS2 Developers here:
  * <a href="https://forum.reizastudios.com/threads/information-for-customizing-ai-drivers-in-ams2-v1-3.21758/">Reiza AMS2 Forums</a>
@@ -27,19 +29,9 @@ public abstract class DriverBase {
     private final StringProperty name = new SimpleStringProperty();
 
     /**
-     * Flag that determines whether you should override driver name or not.
-     */
-    private final BooleanProperty overrideName = new SimpleBooleanProperty();
-
-    /**
      * 3 letter country code. This is used for displaying the country flag.
      */
     private final StringProperty country = new SimpleStringProperty();
-
-    /**
-     * Flag that determines whether you should override driver's country or not.
-     */
-    private final BooleanProperty overrideCountry = new SimpleBooleanProperty();
 
     /**
      * Race session driver skill. It is mapped into a smaller range based on the "Opponent Skill Level" slider setting. Example:
@@ -49,20 +41,10 @@ public abstract class DriverBase {
     private final DoubleProperty raceSkill = new SimpleDoubleProperty();
 
     /**
-     * Flag that determines whether you should override driver's race skill or not.
-     */
-    private final BooleanProperty overrideRaceSkill = new SimpleBooleanProperty();
-
-    /**
      * Qualification Session driver skill. Its completely independent of the race_skill.
      * One detail is that a lower qualifying_skill value increases the likelihood of AI programmed mistakes during qualifying hotlaps.
      */
     private final DoubleProperty qualifyingSkill = new SimpleDoubleProperty();
-
-    /**
-     * Flag that determines whether you should override driver's qualifying skill or not.
-     */
-    private final BooleanProperty overrideQualifyingSkill = new SimpleBooleanProperty();
 
     /**
      * Driver aggression. It is scaled by the "Opponent Aggression" setting:
@@ -74,31 +56,16 @@ public abstract class DriverBase {
     private final DoubleProperty aggression = new SimpleDoubleProperty();
 
     /**
-     * Flag that determines whether you should override driver's aggression or not.
-     */
-    private final BooleanProperty overrideAggression = new SimpleBooleanProperty();
-
-    /**
      * How much the driver will try to defend his position. Is also scaled by the "Opponent Aggression" slider setting.
      * One detail is that a lower defending value increases the likelihood of AI programmed mistakes when under pressure.
      */
     private final DoubleProperty defending = new SimpleDoubleProperty();
 
     /**
-     * Flag that determines whether you should override driver's defending or not.
-     */
-    private final BooleanProperty overrideDefending = new SimpleBooleanProperty();
-
-    /**
      * Lower stamina value means the driver loses more of his skill during the session,
      * and also makes the driver to become tired earlier (which increases the likelihood of AI programmed mistakes)
      */
     private final DoubleProperty stamina = new SimpleDoubleProperty();
-
-    /**
-     * Flag that determines whether you should override driver's stamina or not.
-     */
-    private final BooleanProperty overrideStamina = new SimpleBooleanProperty();
 
     /**
      * Lower consistency value means the driver skill can be randomly reduced more (basically, the lower the consistency
@@ -110,20 +77,10 @@ public abstract class DriverBase {
     private final DoubleProperty consistency = new SimpleDoubleProperty();
 
     /**
-     * Flag that determines whether you should override driver's consistency or not.
-     */
-    private final BooleanProperty overrideConsistency = new SimpleBooleanProperty();
-
-    /**
      * Lower start_reactions value means the driver will take more time to react to the race green flag and is more likely to make race start
      * programmed mistakes at the moment of the race green flag (like losing rear grip with some smoke).
      */
     private final DoubleProperty startReactions = new SimpleDoubleProperty();
-
-    /**
-     * Flag that determines whether you should override driver's start reactions or not.
-     */
-    private final BooleanProperty overrideStartReactions = new SimpleBooleanProperty();
 
     /**
      * How good he is on a wet track. Controls how much he will slow down in curves as the track gets wet
@@ -133,21 +90,11 @@ public abstract class DriverBase {
     private final DoubleProperty wetSkill = new SimpleDoubleProperty();
 
     /**
-     * Flag that determines whether you should override driver's wet skill or not.
-     */
-    private final BooleanProperty overrideWetSkill = new SimpleBooleanProperty();
-
-    /**
      * How good he is in preventing tyre wear (higher values means he will have less tyre wear and consequently
      * he will be able do keep doing good laptimes for a longer period and pit later due to that).
      * This doesn't change the behavior of the driver (i.e. he won't drive differently to try to save tires), just the tyre wear.
      */
     private final DoubleProperty tyreManagement = new SimpleDoubleProperty();
-
-    /**
-     * Flag that determines whether you should override driver's tyre management or not.
-     */
-    private final BooleanProperty overrideTyreManagement = new SimpleBooleanProperty();
 
     /**
      * For now this parameter works in oval tracks only (but in future it will be extended to all track types);
@@ -159,19 +106,9 @@ public abstract class DriverBase {
     private final DoubleProperty fuelManagement = new SimpleDoubleProperty();
 
     /**
-     * Flag that determines whether you should override driver's fuel management or not.
-     */
-    private final BooleanProperty overrideFuelManagement = new SimpleBooleanProperty();
-
-    /**
      * Drivers with high blue_flag_conceding will work harder to concede the position when under blue flag.
      */
     private final DoubleProperty blueFlagConceding = new SimpleDoubleProperty();
-
-    /**
-     * Flag that determines whether you should override driver's blue flag conceding or not.
-     */
-    private final BooleanProperty overrideBlueFlagConceding = new SimpleBooleanProperty();
 
     /**
      * Drivers with lower avoidance_of_mistakes value are more likely to make AI programmed mistakes during the session in general
@@ -180,20 +117,10 @@ public abstract class DriverBase {
     private final DoubleProperty weatherTyreChange = new SimpleDoubleProperty();
 
     /**
-     * Flag that determines whether you should override driver's weather tyre change or not.
-     */
-    private final BooleanProperty overrideWeatherTyreChange = new SimpleBooleanProperty();
-
-    /**
      * Drivers with lower avoidance_of_mistakes value are more likely to make AI programmed mistakes during the session in general
      * (like understeer, oversteer, recoverable and non-recoverable mistakes).
      */
     private final DoubleProperty avoidanceOfMistakes = new SimpleDoubleProperty();
-
-    /**
-     * Flag that determines whether you should override driver's avoidance of mistakes or not.
-     */
-    private final BooleanProperty overrideAvoidanceOfMistakes = new SimpleBooleanProperty();
 
     /**
      *  Drivers with 1.0 value for avoidance_of_forced_mistakes won't have their chances of mistakes increased when under pressure (when defending position).
@@ -203,25 +130,20 @@ public abstract class DriverBase {
     private final DoubleProperty avoidanceOfForcedMistakes = new SimpleDoubleProperty();
 
     /**
-     * Flag that determines whether you should override driver's avoidance of forced mistakes or not.
-     */
-    private final BooleanProperty overrideAvoidanceOfForcedMistakes = new SimpleBooleanProperty();
-
-    /**
      * Ratio between the lowest and highest possible reliability for the car/class in question.
      */
     private final DoubleProperty vehicleReliability = new SimpleDoubleProperty();
 
     /**
-     * Flag that determines whether you should override driver's vehicle reliability or not.
+     * Flags that determine if given properties should be overriden on export.
      */
-    private final BooleanProperty overrideVehicleReliability = new SimpleBooleanProperty();
+    private final OverrideFlags overrideFlags = new OverrideFlags();
 
     /**
      * Lightweight accessor method.
      * @return Driver name.
      */
-    public String getName() {
+    public final String getName() {
         return name.get();
     }
 
@@ -229,63 +151,31 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return Driver name as a property.
      */
-    public StringProperty nameProperty() {
+    public final StringProperty nameProperty() {
         return name;
-    }
-
-    /**
-     * Lightweight accessor method.
-     * @return Flag that determines whether you should override driver name or not.
-     */
-    public boolean isOverrideName() {
-        return overrideName.get();
-    }
-
-    /**
-     * Lightweight accessor method.
-     * @return Flag that determines whether you should override driver name or not as a property.
-     */
-    public BooleanProperty overrideNameProperty() {
-        return overrideName;
     }
 
     /**
      * Lightweight accessor method.
      * @return 3 letter country code as a property. This is used for displaying the country flag.
      */
-    public StringProperty countryProperty() {
+    public final StringProperty countryProperty() {
         return country;
     }
 
-    /**
      /**
      * Lightweight accessor method.
      * @return 3 letter country code. This is used for displaying the country flag.
      */
-    public String getCountry() {
+    public final String getCountry() {
         return country.get();
-    }
-    /**
-     * Lightweight accessor method.
-     * @return Flag that determines whether you should override driver's country or not.
-     */
-    public boolean isOverrideCountry() {
-        return overrideCountry.get();
-    }
-
-    /**
-     * Lightweight accessor method.
-     * @return Flag that determines whether you should override driver's country or not.
-     */
-    public BooleanProperty overrideCountryProperty() {
-        return overrideCountry;
     }
 
     /**
      * Lightweight accessor method.
      * @return Race session driver skill. It is mapped into a smaller range based on the "Opponent Skill Level" slider setting.
      */
-    public double getRaceSkill() {
+    public final double getRaceSkill() {
         return raceSkill.get();
     }
 
@@ -293,7 +183,7 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return Race session driver skill as a property. It is mapped into a smaller range based on the "Opponent Skill Level" slider setting.
      */
-    public DoubleProperty raceSkillProperty() {
+    public final DoubleProperty raceSkillProperty() {
         return raceSkill;
     }
 
@@ -301,7 +191,7 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return Qualification Session driver skill. Its completely independent from the race_skill.
      */
-    public double getQualifyingSkill() {
+    public final double getQualifyingSkill() {
         return qualifyingSkill.get();
     }
 
@@ -309,7 +199,7 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return Qualification Session driver skill as a property. Its completely independent from the race_skill.
      */
-    public DoubleProperty qualifyingSkillProperty() {
+    public final DoubleProperty qualifyingSkillProperty() {
         return qualifyingSkill;
     }
 
@@ -317,7 +207,7 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return Driver aggression. It is scaled by the "Opponent Aggression".
      */
-    public double getAggression() {
+    public final double getAggression() {
         return aggression.get();
     }
 
@@ -325,7 +215,7 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return Driver aggression as a property. It is scaled by the "Opponent Aggression".
      */
-    public DoubleProperty aggressionProperty() {
+    public final DoubleProperty aggressionProperty() {
         return aggression;
     }
 
@@ -333,7 +223,7 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return How much the driver will try to defend his position.
      */
-    public double getDefending() {
+    public final double getDefending() {
         return defending.get();
     }
 
@@ -341,7 +231,7 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return How much the driver will try to defend his position as a property.
      */
-    public DoubleProperty defendingProperty() {
+    public final DoubleProperty defendingProperty() {
         return defending;
     }
 
@@ -349,7 +239,7 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return Lower stamina value means the driver loses more of his skill during the session.
      */
-    public double getStamina() {
+    public final double getStamina() {
         return stamina.get();
     }
 
@@ -357,7 +247,7 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return Lower stamina value means the driver loses more of his skill during the session.
      */
-    public DoubleProperty staminaProperty() {
+    public final DoubleProperty staminaProperty() {
         return stamina;
     }
 
@@ -365,7 +255,7 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return Lower consistency value means the driver skill can be randomly reduced more.
      */
-    public double getConsistency() {
+    public final double getConsistency() {
         return consistency.get();
     }
 
@@ -373,7 +263,7 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return Lower consistency value means the driver skill can be randomly reduced more.
      */
-    public DoubleProperty consistencyProperty() {
+    public final DoubleProperty consistencyProperty() {
         return consistency;
     }
 
@@ -381,7 +271,7 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return Lower start_reactions value means the driver will take more time to react to the race green flag
      */
-    public double getStartReactions() {
+    public final double getStartReactions() {
         return startReactions.get();
     }
 
@@ -389,7 +279,7 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return Lower start_reactions value means the driver will take more time to react to the race green flag
      */
-    public DoubleProperty startReactionsProperty() {
+    public final DoubleProperty startReactionsProperty() {
         return startReactions;
     }
 
@@ -397,7 +287,7 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return How good the driver is on a wet track.
      */
-    public double getWetSkill() {
+    public final double getWetSkill() {
         return wetSkill.get();
     }
 
@@ -405,7 +295,7 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return How good the driver is on a wet track as a property.
      */
-    public DoubleProperty wetSkillProperty() {
+    public final DoubleProperty wetSkillProperty() {
         return wetSkill;
     }
 
@@ -413,7 +303,7 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return How good the driver is in preventing tyre wear.
      */
-    public double getTyreManagement() {
+    public final double getTyreManagement() {
         return tyreManagement.get();
     }
 
@@ -421,7 +311,7 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return How good the driver is in preventing tyre wear as a proeprty.
      */
-    public DoubleProperty tyreManagementProperty() {
+    public final DoubleProperty tyreManagementProperty() {
         return tyreManagement;
     }
 
@@ -429,7 +319,7 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return The higher the value, the more the AI will try to save fuel in some strategic situations instead of pushing.
      */
-    public double getFuelManagement() {
+    public final double getFuelManagement() {
         return fuelManagement.get();
     }
 
@@ -437,7 +327,7 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return The higher the value, the more the AI will try to save fuel in some strategic situations instead of pushing.
      */
-    public DoubleProperty fuelManagementProperty() {
+    public final DoubleProperty fuelManagementProperty() {
         return fuelManagement;
     }
 
@@ -445,11 +335,11 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return Drivers with high blue_flag_conceding will work harder to concede the position when under blue flag.
      */
-    public double getBlueFlagConceding() {
+    public final double getBlueFlagConceding() {
         return blueFlagConceding.get();
     }
 
-    public DoubleProperty blueFlagConcedingProperty() {
+    public final DoubleProperty blueFlagConcedingProperty() {
         return blueFlagConceding;
     }
 
@@ -457,7 +347,7 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return Drivers with high weather_tyre_changes are more likely to make pitstops for changing tyres when the track wetness state changes.
      */
-    public double getWeatherTyreChange() {
+    public final double getWeatherTyreChange() {
         return weatherTyreChange.get();
     }
 
@@ -465,7 +355,7 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return Drivers with high weather_tyre_changes are more likely to make pitstops for changing tyres when the track wetness state changes.
      */
-    public DoubleProperty weatherTyreChangeProperty() {
+    public final DoubleProperty weatherTyreChangeProperty() {
         return weatherTyreChange;
     }
 
@@ -473,7 +363,7 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return Drivers with lower avoidance_of_mistakes value are more likely to make AI programmed mistakes
      */
-    public double getAvoidanceOfMistakes() {
+    public final double getAvoidanceOfMistakes() {
         return avoidanceOfMistakes.get();
     }
 
@@ -481,7 +371,7 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return Drivers with lower avoidance_of_mistakes value are more likely to make AI programmed mistakes
      */
-    public DoubleProperty avoidanceOfMistakesProperty() {
+    public final DoubleProperty avoidanceOfMistakesProperty() {
         return avoidanceOfMistakes;
     }
 
@@ -489,7 +379,7 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return Drivers with lower value for avoidance_of_forced_mistakes will have their chances of mistakes increased when under pressure.
      */
-    public double getAvoidanceOfForcedMistakes() {
+    public final double getAvoidanceOfForcedMistakes() {
         return avoidanceOfForcedMistakes.get();
     }
 
@@ -497,7 +387,7 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return Drivers with lower value for avoidance_of_forced_mistakes will have their chances of mistakes increased when under pressure.
      */
-    public DoubleProperty avoidanceOfForcedMistakesProperty() {
+    public final DoubleProperty avoidanceOfForcedMistakesProperty() {
         return avoidanceOfForcedMistakes;
     }
 
@@ -505,7 +395,7 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return Ratio between the lowest and highest possible reliability for the car/class in question.
      */
-    public double getVehicleReliability() {
+    public final double getVehicleReliability() {
         return vehicleReliability.get();
     }
 
@@ -513,127 +403,62 @@ public abstract class DriverBase {
      * Lightweight accessor method.
      * @return Ratio between the lowest and highest possible reliability for the car/class in question.
      */
-    public DoubleProperty vehicleReliabilityProperty() {
+    public final DoubleProperty vehicleReliabilityProperty() {
         return vehicleReliability;
     }
 
-    public boolean isOverrideRaceSkill() {
-        return overrideRaceSkill.get();
+    /**
+     * Lightweight accessor method.
+     * @return Flags that determine if given properties should be overriden on export.
+     */
+    public final OverrideFlags getOverrideFlags() {
+        return overrideFlags;
     }
 
-    public BooleanProperty overrideRaceSkillProperty() {
-        return overrideRaceSkill;
+    /**
+     * Semi lightweight mutator method. Sets each property within overrideFlags within driverBase to match the values
+     * in the given instance of overrideFlags.
+     * @param overrideFlags instance of overrideFlags whose values are to be assigned to the overrideFlags within driverBase.
+     */
+    public final void setOverrideFlags(OverrideFlags overrideFlags) {
+        this.overrideFlags.overrideNameProperty().set(overrideFlags.isOverrideName());
+        this.overrideFlags.overrideCountryProperty().set(overrideFlags.isOverrideCountry());
+        this.overrideFlags.overrideRaceSkillProperty().set(overrideFlags.isOverrideRaceSkill());
+        this.overrideFlags.overrideQualifyingSkillProperty().set(overrideFlags.isOverrideQualifyingSkill());
+        this.overrideFlags.overrideAggressionProperty().set(overrideFlags.isOverrideAggression());
+        this.overrideFlags.overrideDefendingProperty().set(overrideFlags.isOverrideDefending());
+        this.overrideFlags.overrideStaminaProperty().set(overrideFlags.isOverrideStamina());
+        this.overrideFlags.overrideConsistencyProperty().set(overrideFlags.isOverrideConsistency());
+        this.overrideFlags.overrideStartReactionsProperty().set(overrideFlags.isOverrideStartReactions());
+        this.overrideFlags.overrideWetSkillProperty().set(overrideFlags.isOverrideWetSkill());
+        this.overrideFlags.overrideTyreManagementProperty().set(overrideFlags.isOverrideTyreManagement());
+        this.overrideFlags.overrideFuelManagementProperty().set(overrideFlags.isOverrideFuelManagement());
+        this.overrideFlags.overrideBlueFlagConcedingProperty().set(overrideFlags.isOverrideBlueFlagConceding());
+        this.overrideFlags.overrideWeatherTyreChangeProperty().set(overrideFlags.isOverrideWeatherTyreChange());
+        this.overrideFlags.overrideAvoidanceOfMistakesProperty().set(overrideFlags.isOverrideAvoidanceOfMistakes());
+        this.overrideFlags.overrideAvoidanceOfForcedMistakesProperty().set(overrideFlags.isOverrideAvoidanceOfForcedMistakes());
+        this.overrideFlags.overrideVehicleReliabilityProperty().set(overrideFlags.isOverrideVehicleReliability());
     }
 
-    public boolean isOverrideQualifyingSkill() {
-        return overrideQualifyingSkill.get();
-    }
-
-    public BooleanProperty overrideQualifyingSkillProperty() {
-        return overrideQualifyingSkill;
-    }
-
-    public boolean isOverrideAggression() {
-        return overrideAggression.get();
-    }
-
-    public BooleanProperty overrideAggressionProperty() {
-        return overrideAggression;
-    }
-
-    public boolean isOverrideDefending() {
-        return overrideDefending.get();
-    }
-
-    public BooleanProperty overrideDefendingProperty() {
-        return overrideDefending;
-    }
-
-    public boolean isOverrideStamina() {
-        return overrideStamina.get();
-    }
-
-    public BooleanProperty overrideStaminaProperty() {
-        return overrideStamina;
-    }
-
-    public boolean isOverrideConsistency() {
-        return overrideConsistency.get();
-    }
-
-    public BooleanProperty overrideConsistencyProperty() {
-        return overrideConsistency;
-    }
-
-    public boolean isOverrideStartReactions() {
-        return overrideStartReactions.get();
-    }
-
-    public BooleanProperty overrideStartReactionsProperty() {
-        return overrideStartReactions;
-    }
-
-    public boolean isOverrideWetSkill() {
-        return overrideWetSkill.get();
-    }
-
-    public BooleanProperty overrideWetSkillProperty() {
-        return overrideWetSkill;
-    }
-
-    public boolean isOverrideTyreManagement() {
-        return overrideTyreManagement.get();
-    }
-
-    public BooleanProperty overrideTyreManagementProperty() {
-        return overrideTyreManagement;
-    }
-
-    public boolean isOverrideFuelManagement() {
-        return overrideFuelManagement.get();
-    }
-
-    public BooleanProperty overrideFuelManagementProperty() {
-        return overrideFuelManagement;
-    }
-
-    public boolean isOverrideBlueFlagConceding() {
-        return overrideBlueFlagConceding.get();
-    }
-
-    public BooleanProperty overrideBlueFlagConcedingProperty() {
-        return overrideBlueFlagConceding;
-    }
-
-    public boolean isOverrideWeatherTyreChange() {
-        return overrideWeatherTyreChange.get();
-    }
-
-    public BooleanProperty overrideWeatherTyreChangeProperty() {
-        return overrideWeatherTyreChange;
-    }
-
-    public boolean isOverrideAvoidanceOfMistakes() {
-        return overrideAvoidanceOfMistakes.get();
-    }
-
-    public BooleanProperty overrideAvoidanceOfMistakesProperty() {
-        return overrideAvoidanceOfMistakes;
-    }
-
-    public boolean isOverrideAvoidanceOfForcedMistakes() {
-        return overrideAvoidanceOfForcedMistakes.get();
-    }
-
-    public BooleanProperty overrideAvoidanceOfForcedMistakesProperty() {
-        return overrideAvoidanceOfForcedMistakes;
-    }
-
-    public boolean isOverrideVehicleReliability() {
-        return overrideVehicleReliability.get();
-    }
-
-    public BooleanProperty overrideVehicleReliabilityProperty() {
-        return overrideVehicleReliability;
+    /**
+     * Randomizes all base properties to a range between 0.0 and 1.0 where 0.0 is included and 1.0 is not included.
+     */
+    public void randomize() {
+        Random random = new Random();
+        raceSkillProperty().set(random.nextDouble());
+        qualifyingSkillProperty().set(random.nextDouble());
+        aggressionProperty().set(random.nextDouble());
+        defendingProperty().set(random.nextDouble());
+        staminaProperty().set(random.nextDouble());
+        consistencyProperty().set(random.nextDouble());
+        startReactionsProperty().set(random.nextDouble());
+        wetSkillProperty().set(random.nextDouble());
+        tyreManagementProperty().set(random.nextDouble());
+        fuelManagementProperty().set(random.nextDouble());
+        blueFlagConcedingProperty().set(random.nextDouble());
+        weatherTyreChangeProperty().set(random.nextDouble());
+        avoidanceOfMistakesProperty().set(random.nextDouble());
+        avoidanceOfForcedMistakesProperty().set(random.nextDouble());
+        vehicleReliabilityProperty().set(random.nextDouble());
     }
 }

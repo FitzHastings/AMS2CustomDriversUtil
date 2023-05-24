@@ -32,49 +32,11 @@ public class GridGenerator {
                 driver.nameProperty().set("drv2 "+liveryName.substring(liveryName.length()-8));
                 driver.countryProperty().set("USA");
                 driver.liveryNameProperty().set(liveryName);
-                GridGenerator.randomizeDriver(driver);
-                GridGenerator.setOverrideAll(driver, true);
+                driver.randomize();
+                driver.getOverrideFlags().setOverrideAll(true);
                 grid.getDrivers().add(driver);
         });
 
         return grid;
-    }
-
-    public static void setOverrideAll(Driver driver, boolean overrideAll) {
-        driver.overrideNameProperty().set(overrideAll);
-        driver.overrideCountryProperty().set(overrideAll);
-        driver.overrideRaceSkillProperty().set(overrideAll);
-        driver.overrideQualifyingSkillProperty().set(overrideAll);
-        driver.overrideAggressionProperty().set(overrideAll);
-        driver.overrideDefendingProperty().set(overrideAll);
-        driver.overrideStaminaProperty().set(overrideAll);
-        driver.overrideConsistencyProperty().set(overrideAll);
-        driver.overrideStartReactionsProperty().set(overrideAll);
-        driver.overrideWetSkillProperty().set(overrideAll);
-        driver.overrideTyreManagementProperty().set(overrideAll);
-        driver.overrideFuelManagementProperty().set(overrideAll);
-        driver.overrideBlueFlagConcedingProperty().set(overrideAll);
-        driver.overrideWeatherTyreChangeProperty().set(overrideAll);
-        driver.overrideAvoidanceOfMistakesProperty().set(overrideAll);
-        driver.overrideAvoidanceOfForcedMistakesProperty().set(overrideAll);
-        driver.overrideVehicleReliabilityProperty().set(overrideAll);
-    }
-    public static void randomizeDriver(DriverBase driver) {
-        Random random = new Random();
-        driver.raceSkillProperty().set(random.nextDouble());
-        driver.qualifyingSkillProperty().set(random.nextDouble());
-        driver.aggressionProperty().set(random.nextDouble());
-        driver.defendingProperty().set(random.nextDouble());
-        driver.staminaProperty().set(random.nextDouble());
-        driver.consistencyProperty().set(random.nextDouble());
-        driver.startReactionsProperty().set(random.nextDouble());
-        driver.wetSkillProperty().set(random.nextDouble());
-        driver.tyreManagementProperty().set(random.nextDouble());
-        driver.fuelManagementProperty().set(random.nextDouble());
-        driver.blueFlagConcedingProperty().set(random.nextDouble());
-        driver.weatherTyreChangeProperty().set(random.nextDouble());
-        driver.avoidanceOfMistakesProperty().set(random.nextDouble());
-        driver.avoidanceOfForcedMistakesProperty().set(random.nextDouble());
-        driver.vehicleReliabilityProperty().set(random.nextDouble());
     }
 }

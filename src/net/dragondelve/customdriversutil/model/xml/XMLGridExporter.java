@@ -93,39 +93,39 @@ public class XMLGridExporter implements GridExporter {
      * @param target Target whose properties are going to be set. Should be an xmlDriver whose other fields are set appropriately.
      */
     private void exportBaseProperties(DriverBase source, XMLDriver target) {
-        if (source.isOverrideName())
+        if (source.getOverrideFlags().isOverrideName())
             target.setName(source.getName());
-        if (source.isOverrideCountry())
+        if (source.getOverrideFlags().isOverrideCountry())
             target.setCountry(source.getCountry());
-        if (source.isOverrideRaceSkill())
+        if (source.getOverrideFlags().isOverrideRaceSkill())
             target.setRaceSkill(source.getRaceSkill());
-        if (source.isOverrideQualifyingSkill())
+        if (source.getOverrideFlags().isOverrideQualifyingSkill())
             target.setQualifyingSkill(source.getQualifyingSkill());
-        if (source.isOverrideAggression())
+        if (source.getOverrideFlags().isOverrideAggression())
             target.setAggression(source.getAggression());
-        if (source.isOverrideDefending())
+        if (source.getOverrideFlags().isOverrideDefending())
             target.setDefending(source.getDefending());
-        if (source.isOverrideStamina())
+        if (source.getOverrideFlags().isOverrideStamina())
             target.setStamina(source.getStamina());
-        if (source.isOverrideConsistency())
+        if (source.getOverrideFlags().isOverrideConsistency())
             target.setConsistency(source.getConsistency());
-        if (source.isOverrideStartReactions())
+        if (source.getOverrideFlags().isOverrideStartReactions())
             target.setStartReactions(source.getStartReactions());
-        if (source.isOverrideWetSkill())
+        if (source.getOverrideFlags().isOverrideWetSkill())
             target.setWetSkill(source.getWetSkill());
-        if (source.isOverrideTyreManagement())
+        if (source.getOverrideFlags().isOverrideTyreManagement())
             target.setTyreManagement(source.getTyreManagement());
-        if (source.isOverrideFuelManagement())
+        if (source.getOverrideFlags().isOverrideFuelManagement())
             target.setFuelManagement(source.getFuelManagement());
-        if (source.isOverrideBlueFlagConceding())
+        if (source.getOverrideFlags().isOverrideBlueFlagConceding())
             target.setBlueFlagConceding(source.getBlueFlagConceding());
-        if (source.isOverrideWeatherTyreChange())
+        if (source.getOverrideFlags().isOverrideWeatherTyreChange())
             target.setWeatherTyreChanges(source.getWeatherTyreChange());
-        if (source.isOverrideAvoidanceOfMistakes())
+        if (source.getOverrideFlags().isOverrideAvoidanceOfMistakes())
             target.setAvoidanceOfMistakes(source.getAvoidanceOfMistakes());
-        if (source.isOverrideAvoidanceOfForcedMistakes())
+        if (source.getOverrideFlags().isOverrideAvoidanceOfForcedMistakes())
             target.setAvoidanceOfForcedMistakes(source.getAvoidanceOfForcedMistakes());
-        if (source.isOverrideVehicleReliability())
+        if (source.getOverrideFlags().isOverrideVehicleReliability())
             target.setVehicleReliability(source.getVehicleReliability());
     }
 }
