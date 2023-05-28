@@ -89,6 +89,10 @@ public class ConfigurationScreenController implements StageController {
         loadOverrideFlagsEditor(defaultNewOverrideAnchorPane, buffer.getDefaultTrackOverrideFlags());
     }
 
+    /**
+     * Lightweight mutator method.
+     * @param stage Stage on which this controller is going to be displayed.
+     */
     @Override
     public void setStage(Stage stage) {
         this.stage = stage;

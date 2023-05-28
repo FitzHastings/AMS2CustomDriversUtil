@@ -33,6 +33,7 @@ public class DDUtil {
     public static final String DEFINE_TRACKS_STEP_FXML_PATHNAME = "fxml/DefineTracksStep.fxml";
     public static final String CONFIGURATION_SCREEN_FXML_PATHNAME = "fxml/ConfigurationScreen.fxml";
     public static final String NEW_GRID_WIZARD_FXML_PATHNAME = "fxml/NewGridWizard.fxml";
+    public static final String CUSTOM_GRID_WELCOME_FXML_PATHNAME = "fxml/CustomGridWelcome.fxml";
 
     public static final String TRACK_LIBRARY_DEFAULT_PATHNAME = "library/tracks/ams2_tracks_1.4.7.2.xml";
     public static final String VEHICLE_CLASS_LIBRARY_DEFAULT_PATHNAME = "library/vehicles/ams2_vehicles_1.4.7.2.xml";
@@ -47,6 +48,7 @@ public class DDUtil {
     public URL DEFINE_TRACKS_STEP_FXML_URL;
     public URL CONFIGURATION_SCREEN_FXML_URL;
     public URL NEW_GRID_WIZARD_FXML_URL;
+    public URL CUSTOM_GRID_WELCOME_FXML_URL;
 
     private final static DDUtil instance = new DDUtil();
 
@@ -104,6 +106,12 @@ public class DDUtil {
 
         try {
             NEW_GRID_WIZARD_FXML_URL = new URL("file:" + NEW_GRID_WIZARD_FXML_PATHNAME);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            CUSTOM_GRID_WELCOME_FXML_URL = new URL("file:" + CUSTOM_GRID_WELCOME_FXML_PATHNAME);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
