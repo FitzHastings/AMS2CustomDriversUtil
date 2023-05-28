@@ -18,7 +18,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import net.dragondelve.customdriversutil.gui.CustomDriverUtilController;
 import net.dragondelve.customdriversutil.gui.CustomGridWelcomeController;
 import net.dragondelve.customdriversutil.gui.StageController;
 import net.dragondelve.customdriversutil.model.OverrideFlags;
@@ -56,16 +55,17 @@ public class CustomDriverUtilMain extends Application {
         LibraryManager.getInstance().importVehicleClassLibrary(Configurator.getInstance().getConfiguration().getVehicleClassLibraryPathname());
 
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
+            FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().CUSTOM_GRID_WELCOME_FXML_URL);
             StageController stageController = new CustomGridWelcomeController();
             stageController.setStage(primaryStage);
-            fxmlLoader.setController(stageController);
-            Scene scene = fxmlLoader.load(DDUtil.getInstance().CUSTOM_GRID_WELCOME_FXML_URL);
+            loader.setController(stageController);
+            Scene scene = new Scene(loader.load());
             primaryStage.setTitle("Custom Driver Utility V2.0");
             primaryStage.setScene(scene);
             primaryStage.setMinWidth(880);
             primaryStage.setMinHeight(700);
             primaryStage.setHeight(700);
+            primaryStage.setWidth(1200);
             primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();

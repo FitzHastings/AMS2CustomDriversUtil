@@ -3,15 +3,17 @@ package net.dragondelve.customdriversutil.gui;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import net.dragondelve.customdriversutil.model.VehicleClass;
 import net.dragondelve.customdriversutil.util.DDUtil;
 
-public class NewGridWizardController {
+public class NewGridWizardController implements StageController {
     @FXML
     private RadioButton blankNamesRadioButton;
 
     @FXML
     private RadioButton useNAMeSPlusRadioButton;
+
 
     @FXML
     private Button generateButton;
@@ -85,9 +87,20 @@ public class NewGridWizardController {
     @FXML
     private TextField amountCheckBox;
 
+    Stage stage;
+
     @FXML
     public void initialize() {
         rootPane.getStylesheets().clear();
         rootPane.getStylesheets().add(DDUtil.MAIN_CSS_RESOURCE);
+    }
+
+    /**
+     * Lightweight mutator method.
+     * @param stage Stage on which this controller is going to be displayed.
+     */
+    @Override
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 }

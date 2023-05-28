@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 import net.dragondelve.customdriversutil.util.DDUtil;
 
 import java.io.IOException;
+import java.net.URL;
 
 
 public class CustomGridWelcomeController implements StageController {
@@ -48,12 +49,23 @@ public class CustomGridWelcomeController implements StageController {
 
     @FXML
     public void initialize() {
+        rootPane.getStylesheets().clear();
+        rootPane.getStylesheets().add(DDUtil.MAIN_CSS_RESOURCE);
+
         newEmptyGridButton.setOnAction(e -> newEmptyGridAction());
+        newGeneratedGridButton.setOnAction(e -> newGeneratedGridAction());
     }
 
     private void newEmptyGridAction() {
-        FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().MAIN_WINDOW_FXML_URL);
-        StageController controller = new CustomDriverUtilController();
+        nextScene(new CustomDriverUtilController(), DDUtil.getInstance().MAIN_WINDOW_FXML_URL);
+    }
+
+    private void newGeneratedGridAction() {
+        nextScene(new NewGridWizardController(), DDUtil.getInstance().NEW_GRID_WIZARD_FXML_URL);
+    }
+
+    private void nextScene(StageController controller, URL fxmlURL) {
+        FXMLLoader loader = new FXMLLoader(fxmlURL);
         controller.setStage(stage);
         loader.setController(controller);
 
