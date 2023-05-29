@@ -4,10 +4,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import net.dragondelve.customdriversutil.fx.css.PromptLabel?>
 <VBox fx:id="rootPane" prefHeight="475.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/8"
       xmlns:fx="http://javafx.com/fxml/1">
-    <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="602.0"
-           text="New Grid Wizard" textAlignment="CENTER"/>
+    <PromptLabel alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="602.0"
+                 text="New Grid Wizard" textAlignment="CENTER"/>
     <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity"
           minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
         <opaqueInsets>
@@ -42,7 +43,7 @@
             </HBox.margin>
             <ChoiceBox fx:id="vehicleClassChoiceBox" maxWidth="1.7976931348623157E308" prefHeight="25.0"
                        prefWidth="147.0" GridPane.columnIndex="1"/>
-            <Label text="Choose Vehicle Class"/>
+            <PromptLabel text="Choose Vehicle Class"/>
             <CheckBox fx:id="randomValuesCheckBox" mnemonicParsing="false" text="Random Values"
                       GridPane.rowIndex="1"/>
             <CheckBox fx:id="rangeOfValuesCheckBox" mnemonicParsing="false" text="Range of Values"
@@ -71,30 +72,30 @@
                       text="Quali Skill &gt; Race Skill" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
             <CheckBox fx:id="noValuesCheckBox" mnemonicParsing="false" text="No Values" GridPane.rowIndex="3"/>
             <HBox alignment="CENTER" spacing="10.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
-                <Label alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="187.0" text="By This Amount:"/>
+                <PromptLabel alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="187.0" text="By This Amount:"/>
                 <TextField fx:id="qualiExceedsTextField" GridPane.columnIndex="3" GridPane.rowIndex="5"/>
             </HBox>
             <HBox alignment="CENTER" GridPane.rowIndex="4">
-                <Label prefHeight="30.0" prefWidth="130.0" text="Min Value"/>
+                <PromptLabel prefHeight="30.0" prefWidth="130.0" text="Min Value"/>
                 <TextField fx:id="minValueTextField" GridPane.columnIndex="1" GridPane.rowIndex="4"
                            HBox.hgrow="ALWAYS"/>
             </HBox>
             <HBox alignment="CENTER" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                <Label prefHeight="17.0" prefWidth="140.0" text="Max Value"/>
+                <PromptLabel prefHeight="17.0" prefWidth="140.0" text="Max Value"/>
                 <TextField fx:id="maxValueTextField" GridPane.columnIndex="3" GridPane.rowIndex="4"
                            HBox.hgrow="ALWAYS"/>
             </HBox>
             <CheckBox mnemonicParsing="false" text="Limit Aggression" GridPane.columnIndex="2"
                       GridPane.rowIndex="4"/>
             <HBox alignment="CENTER" spacing="10.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
-                <Label text="Limit to: "/>
+                <PromptLabel text="Limit to: "/>
                 <TextField fx:id="limitToTextField" prefHeight="25.0" prefWidth="79.0"
                            GridPane.columnIndex="3" HBox.hgrow="ALWAYS"/>
             </HBox>
             <CheckBox fx:id="forEachLiveryCheckBox" mnemonicParsing="false" text="For Each Livery"
                       GridPane.columnIndex="2"/>
             <HBox alignment="CENTER" spacing="10.0" GridPane.columnIndex="3">
-                <Label prefHeight="17.0" prefWidth="118.0" text="Amount"/>
+                <PromptLabel prefHeight="17.0" prefWidth="118.0" text="Amount"/>
                 <TextField fx:id="amountCheckBox" GridPane.columnIndex="3" HBox.hgrow="ALWAYS"/>
             </HBox>
             <CheckBox fx:id="reduceGapOnOvalsCheckBox" mnemonicParsing="false" text="Reduce gap on Ovals"

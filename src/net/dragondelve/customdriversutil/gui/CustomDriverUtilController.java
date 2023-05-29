@@ -195,7 +195,7 @@ public class CustomDriverUtilController implements StageController {
     /**
      * Grid that is being edited by the editor.
      */
-    private final Grid editedGrid = new Grid();
+    private Grid editedGrid = new Grid();
 
     /**
      * an instance of DriverEditor that controls the driver editor that will edit a driver selected in driverTableView.
@@ -261,6 +261,25 @@ public class CustomDriverUtilController implements StageController {
         addTrackOverrideButton.setOnAction(e -> addTrackOverrideAction());
         removeTrackOverrideButton.setOnAction(e -> removeTrackOverrideAction());
         editTrackOverrideButton.setOnAction(e -> editTrackOverrideAction());
+    }
+
+    /**
+     * Lightweight mutator method.
+     * Should be called before this class is displayed to the user.
+     * @param stage Stage on which this controller is going to be displayed.
+     */
+    @Override
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    /**
+     * Lightweight mutator method.
+     * Should be called before the initialize() method is called.
+     * @param grid Grid to be edited in the Custom Driver Utility.
+     */
+    public void setEditedGrid(Grid grid) {
+        this.editedGrid = grid;
     }
 
     /**
@@ -471,7 +490,7 @@ public class CustomDriverUtilController implements StageController {
         StageController controller = new ConfigurationScreenController();
         Stage screenStage = new Stage();
         controller.setStage(screenStage);
-        loader.setController(controller);;
+        loader.setController(controller);
         try {
             Scene scene = new Scene(loader.load());
             screenStage.setScene(scene);
@@ -541,15 +560,5 @@ public class CustomDriverUtilController implements StageController {
      */
     private File chooseFileToSave(String title, String initialDirectory) {
         return  createLibraryFileChooser(title, initialDirectory).showSaveDialog(stage);
-    }
-
-    /**
-     * Lightweight mutator method.
-     * Should be called before this class is displayed to the user.
-     * @param stage Stage on which this controller is going to be displayed.
-     */
-    @Override
-    public void setStage(Stage stage) {
-        this.stage = stage;
     }
 }

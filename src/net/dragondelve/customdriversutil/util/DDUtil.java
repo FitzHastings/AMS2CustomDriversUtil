@@ -25,6 +25,8 @@ import java.util.logging.Logger;
 public class DDUtil {
     public static Logger DEFAULT_LOGGER = Logger.getLogger("AMS2 Custom Drivers Util");
 
+    public static final String DEFAULT_UPDATE = "http://dragondelve.net";
+
     public static final String TRACK_EDITOR_FXML_PATHNAME = "fxml/editor/TrackEditor.fxml";
     public static final String VEHICLE_CLASS_EDITOR_FXML_PATHNAME = "fxml/editor/VehicleClassEditor.fxml";
     public static final String DRIVER_EDITOR_FXML_PATHNAME = "fxml/editor/DriverEditor.fxml";

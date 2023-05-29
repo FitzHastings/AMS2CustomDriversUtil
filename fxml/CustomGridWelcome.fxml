@@ -44,6 +44,12 @@ limitations under the License. -->
          <Button fx:id="loadModdedGridButton" mnemonicParsing="false" text="Existing Modded Grid"/>
       </HBox>
    </ToolBar>
+   <ToolBar>
+      <HBox spacing="10.0">
+         <PromptLabel prefHeight="25.0"  text="Don't like seeing this welcome screen? "/>
+         <CheckBox fx:id="skipWelcomeScreenCheckBox" mnemonicParsing="false" text="Skip Welcome Screen"/>
+      </HBox>
+   </ToolBar>
    <DarkerVBox VBox.vgrow="ALWAYS">
       <Separator prefWidth="200.0"/>
    </DarkerVBox>
@@ -52,5 +58,6 @@ limitations under the License. -->
    <ToolBar>
       <PromptLabel prefHeight="25.0" prefWidth="182.0" text="New AMS 2 Version Out? "/>
       <Button fx:id="manualUpdateButton" mnemonicParsing="false" text="Manual Update"/>
+      <PromptLabel prefHeight="25.0" text=" This software is going to be updated within 72 hours of the new AMS2 Version to include new tracks, vehicles, bug fixes and new features."/>
    </ToolBar>
 </DarkerVBox>

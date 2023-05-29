@@ -34,9 +34,9 @@ limitations under the License. -->
    <left>
        <VBox BorderPane.alignment="CENTER">
            <ToolBar prefHeight="40.0" prefWidth="200.0">
+               <PromptLabel text="Drivers"/>
                <Button fx:id="addDriverButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" text="+"/>
                <Button fx:id="removeDriverButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" text="-"/>
-               <PromptLabel text="Drivers"/>
            </ToolBar>
            <TableView fx:id="driversTableView" prefHeight="466.0" prefWidth="259.0" VBox.vgrow="ALWAYS">
                <columns>

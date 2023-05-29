@@ -87,7 +87,6 @@ public class Configurator {
             configuration = (Configuration) unmarshaller.unmarshal(config);
             return true;
         } catch (JAXBException | IllegalArgumentException e) {
-            e.printStackTrace();
             DDUtil.DEFAULT_LOGGER.log(Level.WARNING,"Configuration loading failed");
             return false;
         }

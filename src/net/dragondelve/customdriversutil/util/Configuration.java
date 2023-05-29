@@ -46,9 +46,19 @@ public class Configuration {
     private OverrideFlags defaultTrackOverrideFlags;
 
     /**
+     * URL to which the user goes when pressing on the manual update button.
+     */
+    private String updateURL;
+
+    /**
      * Flag that determines if the user prefers to choose the livery or to type the livery's name into the textField.
      */
     private boolean chooseLivery = false;
+
+    /**
+     * Flag that determines if the user prefers to skip the welcome screen of the Custom Driver Utility.
+     */
+    private boolean skipWelcomeScreen = false;
 
     /**
      * Lightweight accessor method.
@@ -133,5 +143,39 @@ public class Configuration {
      */
     public void setChooseLivery(boolean chooseLivery) {
         this.chooseLivery = chooseLivery;
+    }
+
+    /**
+     * Lightweight accessor method.
+     * @return Flag that determines if the user prefers to skip the welcome screen of the Custom Driver Utility.
+     */
+    @XmlElement (name = "skip_welcome_screen")
+    public boolean isSkipWelcomeScreen() {
+        return skipWelcomeScreen;
+    }
+
+    /**
+     * Lightweight mutator method.
+     * @param skipWelcomeScreen Flag that determines if the user prefers to skip the welcome screen of the Custom Driver Utility.
+     */
+    public void setSkipWelcomeScreen(boolean skipWelcomeScreen) {
+        this.skipWelcomeScreen = skipWelcomeScreen;
+    }
+
+    /**
+     * Lightweight accessor method.
+     * @return URL to which the user goes when pressing on the manual update button.
+     */
+    @XmlElement (name = "update_url")
+    public String getUpdateURL() {
+        return updateURL;
+    }
+
+    /**
+     * Lightweight mutator method.
+     * @param updateURL URL to which the user goes when pressing on the manual update button.
+     */
+    public void setUpdateURL(String updateURL) {
+        this.updateURL = updateURL;
     }
 }

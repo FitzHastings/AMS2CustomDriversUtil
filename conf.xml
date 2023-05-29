@@ -39,6 +39,8 @@
         <overrideWeatherTyreChange>false</overrideWeatherTyreChange>
         <override_wet_skill>false</override_wet_skill>
     </default_track_override_flags>
+    <skip_welcome_screen>false</skip_welcome_screen>
     <track_library>library/tracks/ams2_tracks_1.4.7.2.xml</track_library>
+    <update_url>http://dragondelve.net</update_url>
     <vehicle_class_library>library/vehicles/ams2_vehicles_1.4.7.2.xml</vehicle_class_library>
 </config>

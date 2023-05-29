@@ -62,6 +62,9 @@ public class ConfigurationScreenController implements StageController {
     private CheckBox chooseLiveryCheckBox;
 
     @FXML
+    private CheckBox skipWelcomeScreenCheckBox;
+
+    @FXML
     private Button trackLibraryFileChooserButton;
 
     @FXML
@@ -87,6 +90,8 @@ public class ConfigurationScreenController implements StageController {
 
         loadOverrideFlagsEditor(defaultNewDriverAnchorPane, buffer.getDefaultDriverFlags());
         loadOverrideFlagsEditor(defaultNewOverrideAnchorPane, buffer.getDefaultTrackOverrideFlags());
+
+        skipWelcomeScreenCheckBox.selectedProperty().set(buffer.isSkipWelcomeScreen());
     }
 
     /**
@@ -103,11 +108,13 @@ public class ConfigurationScreenController implements StageController {
         buffer.setVehicleClassLibraryPathname(Configurator.getInstance().getConfiguration().getVehicleClassLibraryPathname());
         buffer.setDefaultDriverFlags(Configurator.getInstance().getConfiguration().getDefaultDriverFlags());
         buffer.setDefaultTrackOverrideFlags(Configurator.getInstance().getConfiguration().getDefaultTrackOverrideFlags());
+        buffer.setSkipWelcomeScreen(Configurator.getInstance().getConfiguration().isSkipWelcomeScreen());
     }
 
     private void okAction() {
         buffer.setTrackLibraryPathname(trackLibraryTextField.getText());
         buffer.setVehicleClassLibraryPathname(vehicleClassLibraryTextField.getText());
+        buffer.setSkipWelcomeScreen(skipWelcomeScreenCheckBox.isSelected());
         Configurator.getInstance().setConfiguration(buffer);
         Configurator.getInstance().saveConfiguration();
         stage.close();

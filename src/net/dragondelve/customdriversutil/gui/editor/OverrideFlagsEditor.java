@@ -24,62 +24,127 @@ import net.dragondelve.customdriversutil.util.DDUtil;
 
 import java.util.logging.Level;
 
+/**
+ * Edits a list of a single element (I know) of OverrideFlags.
+ * Controller for fxml/editor/OverrideFlagsEditor.fxml
+ */
 public class OverrideFlagsEditor implements Editor<OverrideFlags> {
+    /**
+     * CheckBox that determines the overrideWetSkill property of the edited OverrideFlags.
+     */
     @FXML
     private CheckBox overrideWetSkillCheckBox;
 
+    /**
+     * CheckBox that determines the overrideAggression property of the edited OverrideFlags.
+     */
     @FXML
     private CheckBox overrideAggressionCheckBox;
 
+    /**
+     * CheckBox that determines the overrideDefending property of the edited OverrideFlags.
+     */
     @FXML
     private CheckBox overrideDefendingCheckBox;
 
+    /**
+     * CheckBox that determines the overrideMistakeAvoidance property of the edited OverrideFlags.
+     */
     @FXML
     private CheckBox overrideMistakeAvoidanceCheckBox;
 
+    /**
+     * CheckBox that determines the overrideConsistency property of the edited OverrideFlags.
+     */
     @FXML
     private CheckBox overrideConsistencyCheckBox;
 
+    /**
+     * CheckBox that determines the overrideName property of the edited OverrideFlags.
+     */
     @FXML
     private CheckBox overrideNameCheckBox;
 
+    /**
+     * CheckBox that determines the overrideRacingSkill property of the edited OverrideFlags.
+     */
     @FXML
     private CheckBox overrideRacingSkillCheckBox;
 
+    /**
+     * CheckBox that determines the overrideQualifyingSkill property of the edited OverrideFlags.
+     */
     @FXML
     private CheckBox overrideQualifyingSkillCheckBox;
 
+    /**
+     * CheckBox that determines the overrideBlueFlagConceding property of the edited OverrideFlags.
+     */
     @FXML
     private CheckBox overrideBlueFlagCheckBox;
 
+    /**
+     * CheckBox that determines the overrideTyreManagement property of the edited OverrideFlags.
+     */
     @FXML
     private CheckBox overrideTyreManagemnetCheckBox;
 
+    /**
+     * CheckBox that determines the overrideVehicleReliability property of the edited OverrideFlags.
+     */
     @FXML
     private CheckBox overrideVehicleReliabilityCheckBox;
 
+    /**
+     * CheckBox that determines the overrideCountry property of the edited OverrideFlags.
+     */
     @FXML
     private CheckBox overrideCountryCheckBox;
 
+    /**
+     * CheckBox that determines the overrideStamina property of the edited OverrideFlags.
+     */
     @FXML
     private CheckBox overrideStaminaCheckBox;
 
+    /**
+     * CheckBox that determines the overrideFuelManagement property of the edited OverrideFlags.
+     */
     @FXML
     private CheckBox overrideFuelManagementCheckBox;
 
+    /**
+     * CheckBox that determines the overrideStartReactions property of the edited OverrideFlags.
+     */
     @FXML
     private CheckBox overrideStartReactionsCheckBox;
 
+    /**
+     * CheckBox that determines the overrideForcedMistakeAvoidance property of the edited OverrideFlags.
+     */
     @FXML
     private CheckBox overrideForcedMistakeAvoidanceCheckBox;
 
+    /**
+     * CheckBox that determines the overrideWeatherPit property of the edited OverrideFlags.
+     */
     @FXML
     private CheckBox overrideWeatherPitCheckBox;
 
+    /**
+     * Stage on which this StageController is going to be displayed.
+     */
     Stage stage;
 
+    /**
+     * Edited OverrideFlags.
+     */
     OverrideFlags overrideFlags;
 
+    /**
+     * Initialize method initializes all the visual elements before they are displayed by the user.
+     * initialize method is called automatically by JavaFX when this editor is being loaded from XML.
+     */
     @FXML
     public void initialize() {
         overrideNameCheckBox.selectedProperty()                     .bindBidirectional(overrideFlags.overrideNameProperty());
@@ -101,19 +166,32 @@ public class OverrideFlagsEditor implements Editor<OverrideFlags> {
         overrideVehicleReliabilityCheckBox.selectedProperty()       .bindBidirectional(overrideFlags.overrideVehicleReliabilityProperty());
     }
 
+    /**
+     * Lightweight mutator method.
+     * @param stage Stage on which this controller is going to be displayed.
+     */
     @Override
     public void setStage(Stage stage) {
         this.stage = stage;
     }
 
+    /**
+     * Lightweight accessor method.
+     * @return an ImmutableObservableList of OverrideFlags that contains only one element.
+     */
     @Override
     public ObservableList<OverrideFlags> getItems() {
         return new ImmutableObservableList<>(overrideFlags);
     }
 
+    /**
+     * Semi-lightweight mutator method. Has to check for size to make sure that the amount of elements in the list passed
+     * to this method equals to one.
+     * @param items an observableList of OverrideFlags that should contain only one element.
+     */
     @Override
     public void setItems(ObservableList<OverrideFlags> items) {
-        if(items != null || items.size() == 1)
+        if(items != null && items.size() == 1)
             overrideFlags = items.get(0);
         else
             DDUtil.DEFAULT_LOGGER.log(Level.SEVERE, "ERROR: OverrideFlagsEditor received items incorrectly.");

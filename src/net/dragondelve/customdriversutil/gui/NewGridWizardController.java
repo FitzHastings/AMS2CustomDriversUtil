@@ -14,7 +14,6 @@ public class NewGridWizardController implements StageController {
     @FXML
     private RadioButton useNAMeSPlusRadioButton;
 
-
     @FXML
     private Button generateButton;
 
