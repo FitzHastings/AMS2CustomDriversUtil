@@ -14,8 +14,6 @@
 
 package net.dragondelve.customdriversutil.model;
 
-import java.util.Random;
-
 public class GridGenerator {
     VehicleClass vehicleClass;
 
