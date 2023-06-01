@@ -17,14 +17,13 @@ package net.dragondelve.customdriversutil.gui.editor;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import net.dragondelve.customdriversutil.fx.HybridChoiceHBox;
 import net.dragondelve.customdriversutil.model.Driver;
 import net.dragondelve.customdriversutil.model.DriverBase;
-import net.dragondelve.customdriversutil.model.GridGenerator;
 
 /**
  * Driver Editor is designed to edit a single driver or a single track specific override if it is put into
@@ -57,11 +56,10 @@ public class DriverEditor {
     private TextField blueFlagTextField;
 
     /**
-     * CheckBox that determines if the user wants to choose a livery from a List with a ChoiceBox or he wants to
-     * Type it in manually. If this checkbox is selected the user wishes to choose the livery from a list.
+     * Hybrid Choice Box for selecting or typing the driver's livery name.
      */
     @FXML
-    private CheckBox chooseLiveryCheckBox;
+    private HybridChoiceHBox<ChoiceBox<String>> chooseLiveryHBox;
 
     /**
      * Slider that determines the driver's consistency. Values range from 0.0 to 1.0.
@@ -94,12 +92,6 @@ public class DriverEditor {
      */
     @FXML
     private TextField driverCountryTextField;
-
-    /**
-     * TextField that allows the user to edit the livery name of the driver directly.
-     */
-    @FXML
-    private TextField driverLiveryNameTextField;
 
     /**
      * TextField that is bound to the driver's name property.
@@ -391,6 +383,12 @@ public class DriverEditor {
     private final BooleanProperty overrideMode = new SimpleBooleanProperty();
 
     /**
+     * Choice box that allows the user to choose the driver's livery from the list instead of typing it.
+     * Is a part of HybridChoiceHBox. it is only displayed if the CheckBox inside HybridChoiceHBox is selected.
+     */
+    private final ChoiceBox<String> liveryNameChoiceBox = new ChoiceBox<>();
+
+    /**
      * Initialize method initializes all the visual elements before they are displayed by the user.
      * initialize method is called automatically by JavaFX when this editor is being loaded from XML.
      */
@@ -447,6 +445,8 @@ public class DriverEditor {
         vehicleReliabilityTextField.setEditable(false);
 
         randomizeButton.setOnAction(e->randomizeDriverAction());
+
+        chooseLiveryHBox.initialize("Choose Livery", liveryNameChoiceBox);
     }
 
     /**
@@ -469,7 +469,7 @@ public class DriverEditor {
      */
     private void bindDriver(DriverBase driver) {
         if(!overrideMode.get())
-            driverLiveryNameTextField.textProperty()    .bindBidirectional(((Driver)driver).liveryNameProperty());
+            chooseLiveryHBox.getTextField().textProperty().bindBidirectional(((Driver)driver).liveryNameProperty());
         bindBaseProperties(driver);
     }
 
@@ -480,7 +480,7 @@ public class DriverEditor {
      */
     private void unbindDriver(DriverBase driver) {
         if(!overrideMode.get())
-            driverLiveryNameTextField.textProperty()    .unbindBidirectional(((Driver)driver).liveryNameProperty());
+            chooseLiveryHBox.getTextField().textProperty().unbindBidirectional(((Driver)driver).liveryNameProperty());
         unbindBaseProperties(driver);
     }
 
@@ -526,7 +526,7 @@ public class DriverEditor {
         overrideForcedMistakeAvoidanceCheckBox.selectedProperty()   .bindBidirectional(driver.getOverrideFlags().overrideAvoidanceOfForcedMistakesProperty());
         overrideVehicleReliabilityCheckBox.selectedProperty()       .bindBidirectional(driver.getOverrideFlags().overrideVehicleReliabilityProperty());
 
-        driverLiveryNameTextField.disableProperty().bind(overrideMode);
+        chooseLiveryHBox.disableProperty().bind(overrideMode);
     }
 
     /**

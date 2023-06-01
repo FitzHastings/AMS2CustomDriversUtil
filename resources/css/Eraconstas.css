@@ -343,6 +343,67 @@ ImageChooserButton: pressed {
     -fx-stroke: #7b868d;
 }
 
+.radio-button {
+    -fx-text-fill: #9aa2a6;
+    -fx-font: 10pt "Arial";
+}
+
+.radio-button .radio {
+    -fx-background-color: #343d44;
+    -fx-border-width: 1;
+    -fx-border-radius: 120px;
+    -fx-border-color: #9aa2a6;
+}
+
+.radio-button:hover .radio {
+    -fx-border-radius: 120px;
+    -fx-border-width: 1;
+    -fx-border-color: #a34097;
+}
+
+.radio-button:selected .radio .dot {
+    -fx-background-color: #a34097;
+}
+
+.separator .line {
+    -fx-background-color: #9aa2a6;
+     -fx-border-color: transparent;
+}
+
+.choice-box {
+    -fx-background-color: #343d44;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-border-color: #9aa2a6;
+    -fx-text-fill: #9aa2a6;
+    -fx-font: 10pt "Arial";
+}
+
+.choice-box {
+    -fx-background-color: #343d44;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-border-color: #9aa2a6;
+    -fx-text-fill: #9aa2a6;
+    -fx-font: 10pt "Arial";
+}
+
+.choice-box .arrow {
+    -fx-background-color: #a34097;
+}
+
+.choice-box:hover {
+    -fx-background-color: #343d44;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-border-color: #a34097;
+    -fx-text-fill: #9aa2a6;
+    -fx-font: 10pt "Arial";
+}
+
 VBox {
     -fx-background-color: #21282c;
 }
