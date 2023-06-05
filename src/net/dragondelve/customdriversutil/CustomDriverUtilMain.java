@@ -27,9 +27,6 @@ import net.dragondelve.customdriversutil.util.Configurator;
 import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
 
-//TODO: Stylesheet for RadioButton
-//TODO: Stylesheet for ChoiceBox
-//TODO: HybridChoiceHBox; (extends HBox)
 //TODO: VehicleClasses and choosing liveris from the list.
 //TODO: Grid Generator Controller
 //TODO: Driver Library

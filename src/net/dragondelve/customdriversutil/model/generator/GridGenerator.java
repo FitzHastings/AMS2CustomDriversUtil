@@ -12,7 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package net.dragondelve.customdriversutil.model;
+package net.dragondelve.customdriversutil.model.generator;
+
+import net.dragondelve.customdriversutil.model.Driver;
+import net.dragondelve.customdriversutil.model.Grid;
+import net.dragondelve.customdriversutil.model.VehicleClass;
 
 public class GridGenerator {
     VehicleClass vehicleClass;

@@ -24,6 +24,7 @@ import javafx.scene.layout.VBox;
 import net.dragondelve.customdriversutil.fx.HybridChoiceHBox;
 import net.dragondelve.customdriversutil.model.Driver;
 import net.dragondelve.customdriversutil.model.DriverBase;
+import net.dragondelve.customdriversutil.model.VehicleClass;
 
 /**
  * Driver Editor is designed to edit a single driver or a single track specific override if it is put into
@@ -389,6 +390,10 @@ public class DriverEditor {
     private final ChoiceBox<String> liveryNameChoiceBox = new ChoiceBox<>();
 
     /**
+     * Vehicle Class of the edited driver.
+     */
+    private final VehicleClass vehicleClass = new VehicleClass();
+    /**
      * Initialize method initializes all the visual elements before they are displayed by the user.
      * initialize method is called automatically by JavaFX when this editor is being loaded from XML.
      */
@@ -460,6 +465,17 @@ public class DriverEditor {
         overrideMode.set(!driver.getClass().equals(Driver.class));
         this.editedDriver = driver;
         bindDriver(editedDriver);
+    }
+
+    /**
+     * Semi-lightweight mutator method.
+     * @param vehicleClass Vehicle class of the edited driver/
+     */
+    public void setVehicleClass(VehicleClass vehicleClass) {
+        this.vehicleClass.setLiveryNames(vehicleClass.getLiveryNames());
+        this.vehicleClass.setName(vehicleClass.getName());
+        this.vehicleClass.setXmlName(vehicleClass.getXmlName());
+        chooseLiveryHBox.getChoiceBox().setItems(vehicleClass.getLiveryNames());
     }
 
     /**

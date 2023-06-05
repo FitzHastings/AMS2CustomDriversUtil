@@ -377,9 +377,13 @@ public class CustomDriverUtilController implements StageController {
      */
     private void importGridWithClassAction() {
         File file = chooseFileToOpen("Choose XML Grid File", "grids");
-        VehicleClass vehicleClass = XMLGridImporter.importVehicleClassFromXMLGrid(chooseFileToOpen("Choose XML Grid File", "grids"));
-        if(vehicleClass != null)
+        VehicleClass vehicleClass = null;
+        if (file != null)
+            vehicleClass = XMLGridImporter.importVehicleClassFromXMLGrid(file);
+        if(vehicleClass != null) {
             LibraryManager.getInstance().getVehicleClassLibrary().getVehicleClasses().add(vehicleClass);
+            driverEditor.setVehicleClass(vehicleClass);
+        }
         GridImporter importer = new XMLGridImporter();
         Grid importedGrid = importer.importFromFile(file);
          if(importedGrid != null) {
@@ -388,7 +392,6 @@ public class CustomDriverUtilController implements StageController {
             editedGrid.setVehicleClass(vehicleClass);
         }
         //TODO:Add this new class to the library and save it. Preferably allow user to rename it.
-
     }
 
     /**
