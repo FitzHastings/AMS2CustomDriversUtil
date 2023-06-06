@@ -404,6 +404,15 @@ ImageChooserButton: pressed {
     -fx-font: 10pt "Arial";
 }
 
+.choice-box .label {
+    -fx-text-fill: #9aa2a6;
+    -fx-font: 10pt "Arial";
+}
+
+.choice-box :hover .label {
+    -fx-text-fill: #fefffe;
+}
+
 VBox {
     -fx-background-color: #21282c;
 }

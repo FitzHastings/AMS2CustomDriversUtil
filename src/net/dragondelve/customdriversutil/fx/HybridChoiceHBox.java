@@ -26,7 +26,7 @@ import javafx.scene.layout.Priority;
  *  displayed. if the checkbox is not selected then it displays a TextField instead.
  * @param <T> Choice box that will be displayed if the CheckBox is selected.
  */
-public class HybridChoiceHBox<T extends ChoiceBox> extends HBox {
+public class HybridChoiceHBox<T extends ChoiceBox<?>> extends HBox {
     /**
      * Choice Box that is displayed to the user if the CheckBox is selected.
      */
@@ -54,8 +54,11 @@ public class HybridChoiceHBox<T extends ChoiceBox> extends HBox {
         HBox.setHgrow(textField, Priority.ALWAYS);
 
         this.getChildren().addAll(textField, checkBox);
+        choiceBox.setMaxWidth(Double.MAX_VALUE);
 
         checkBox.setText(checkBoxText);
+        //Makes it so the label of the checkbox should be always visible if it's possible in the current layout.
+        checkBox.setMinWidth(checkBox.getPrefWidth());
         checkBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue) {
                 this.getChildren().remove(textField);

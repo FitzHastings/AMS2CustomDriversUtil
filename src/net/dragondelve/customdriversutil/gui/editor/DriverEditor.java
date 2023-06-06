@@ -18,13 +18,14 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import net.dragondelve.customdriversutil.fx.FXObjectChooser;
 import net.dragondelve.customdriversutil.fx.HybridChoiceHBox;
 import net.dragondelve.customdriversutil.model.Driver;
 import net.dragondelve.customdriversutil.model.DriverBase;
 import net.dragondelve.customdriversutil.model.VehicleClass;
+import net.dragondelve.customdriversutil.util.LibraryManager;
 
 /**
  * Driver Editor is designed to edit a single driver or a single track specific override if it is put into
@@ -452,6 +453,21 @@ public class DriverEditor {
         randomizeButton.setOnAction(e->randomizeDriverAction());
 
         chooseLiveryHBox.initialize("Choose Livery", liveryNameChoiceBox);
+
+        chooseLiveryHBox.getCheckBox().selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue && vehicleClass.getLiveryNames().size() == 0) {
+                FXObjectChooser<VehicleClass> vehicleClassObjectChooser = new FXObjectChooser<>();
+                Stage chooserStage = new Stage();
+                chooserStage.setTitle("Choose Vehicle Class");
+                vehicleClassObjectChooser.setStage(chooserStage);
+                vehicleClassObjectChooser.setItems(LibraryManager.getInstance().getVehicleClassLibrary().getVehicleClasses());
+                TableColumn<VehicleClass, String> vehicleClassTableColumn = new TableColumn<>();
+                vehicleClassTableColumn.setText("Vehicle Class");
+                vehicleClassTableColumn.setCellValueFactory(param -> param.getValue().nameProperty());
+                vehicleClassObjectChooser.getTableView().getColumns().add(vehicleClassTableColumn);
+                setVehicleClass(vehicleClassObjectChooser.showChooseDialog());
+            }
+        });
     }
 
     /**
@@ -484,8 +500,10 @@ public class DriverEditor {
      * @param driver a driver whose properties are to be bind to the control elements of this editor.
      */
     private void bindDriver(DriverBase driver) {
-        if(!overrideMode.get())
-            chooseLiveryHBox.getTextField().textProperty().bindBidirectional(((Driver)driver).liveryNameProperty());
+        if(!overrideMode.get()) {
+            chooseLiveryHBox.getTextField().textProperty().bindBidirectional(((Driver) driver).liveryNameProperty());
+            chooseLiveryHBox.getChoiceBox().valueProperty().bindBidirectional(((Driver) driver).liveryNameProperty());
+        }
         bindBaseProperties(driver);
     }
 
@@ -495,8 +513,10 @@ public class DriverEditor {
      * @param driver a driver whose properties are to be unbound from the control elements of this editor.
      */
     private void unbindDriver(DriverBase driver) {
-        if(!overrideMode.get())
-            chooseLiveryHBox.getTextField().textProperty().unbindBidirectional(((Driver)driver).liveryNameProperty());
+        if(!overrideMode.get()) {
+            chooseLiveryHBox.getTextField().textProperty().unbindBidirectional(((Driver) driver).liveryNameProperty());
+            chooseLiveryHBox.getChoiceBox().valueProperty().unbindBidirectional(((Driver) driver).liveryNameProperty());
+        }
         unbindBaseProperties(driver);
     }
 
