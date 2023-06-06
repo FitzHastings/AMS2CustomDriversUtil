@@ -25,6 +25,7 @@ import net.dragondelve.customdriversutil.fx.HybridChoiceHBox;
 import net.dragondelve.customdriversutil.model.Driver;
 import net.dragondelve.customdriversutil.model.DriverBase;
 import net.dragondelve.customdriversutil.model.VehicleClass;
+import net.dragondelve.customdriversutil.util.Configurator;
 import net.dragondelve.customdriversutil.util.LibraryManager;
 
 /**
@@ -459,15 +460,21 @@ public class DriverEditor {
                 FXObjectChooser<VehicleClass> vehicleClassObjectChooser = new FXObjectChooser<>();
                 Stage chooserStage = new Stage();
                 chooserStage.setTitle("Choose Vehicle Class");
-                vehicleClassObjectChooser.setStage(chooserStage);
                 vehicleClassObjectChooser.setItems(LibraryManager.getInstance().getVehicleClassLibrary().getVehicleClasses());
                 TableColumn<VehicleClass, String> vehicleClassTableColumn = new TableColumn<>();
                 vehicleClassTableColumn.setText("Vehicle Class");
                 vehicleClassTableColumn.setCellValueFactory(param -> param.getValue().nameProperty());
                 vehicleClassObjectChooser.getTableView().getColumns().add(vehicleClassTableColumn);
-                setVehicleClass(vehicleClassObjectChooser.showChooseDialog());
+                VehicleClass chosenVehicleClass =  vehicleClassObjectChooser.showChooseDialog();
+
+                if(chosenVehicleClass != null)
+                    setVehicleClass(chosenVehicleClass);
+                else
+                    chooseLiveryHBox.getCheckBox().selectedProperty().set(false);
             }
         });
+
+        chooseLiveryHBox.getCheckBox().selectedProperty().set(Configurator.getInstance().getConfiguration().isChooseLivery());
     }
 
     /**

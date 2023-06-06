@@ -45,18 +45,14 @@ public class VehicleClassLibrary {
         return vehicleClasses;
     }
 
-    public VehicleClass findVehicleClassWithName(String name) {
+    /**
+     * Finds an unmodded grid with the XMLName that matches the xmlName provided.
+     * @param xmlName Name of the xmlFile of the vehicle class without the .xml
+     * @return Vanilla vehicle class with xmlName that matches the xmlName provided if it's found or null if it isn't found.
+     */
+    public VehicleClass findVanillaVehicleClass(String xmlName) {
         try {
-            return vehicleClasses.stream().filter(track -> track.getName().equals(name)).findFirst().get();
-        } catch (NoSuchElementException e) {
-            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Trying to find vehicle class with name '"+name+"' in the library but no such track found");
-            return null;
-        }
-    }
-
-    public VehicleClass findVehicleClassWithXmlName(String xmlName) {
-        try {
-            return vehicleClasses.stream().filter(track -> track.getName().equals(xmlName)).findFirst().get();
+            return vehicleClasses.stream().filter(track -> track.getXmlName().equals(xmlName) && !track.isModded()).findFirst().get();
         } catch (NoSuchElementException e) {
             DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Trying to find vehicle class with xml name '"+xmlName+"' in the library but no such track found");
             return null;

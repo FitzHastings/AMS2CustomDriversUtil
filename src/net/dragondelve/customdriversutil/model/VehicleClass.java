@@ -14,6 +14,8 @@
 
 package net.dragondelve.customdriversutil.model;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -38,6 +40,11 @@ public final class VehicleClass {
      * Vehicle Class name that is used in the XML when exporting.
      */
     private final StringProperty xmlName = new SimpleStringProperty();
+
+    /**
+     * Determines whether this vehicle class is a vanilla vehicle class or a modded vehicle class.
+     */
+    private final BooleanProperty isModded = new SimpleBooleanProperty();
     /**
      * Full list of liveries available for this class.
      */
@@ -91,6 +98,32 @@ public final class VehicleClass {
      */
     public void setXmlName(String xmlName) {
         this.xmlName.set(xmlName);
+    }
+
+
+    /**
+     * Lightweight accessor method.
+     * @return Flag that determines whether this vehicle class is a vanilla vehicle class or a modded vehicle class.
+     */
+    @XmlElement(name = "is_modded")
+    public boolean isModded() {
+        return isModded.get();
+    }
+
+    /**
+     * Lightweight accessor method.
+     * @return Flag that determines whether this vehicle class is a vanilla vehicle class or a modded vehicle class, as a property.
+     */
+    public BooleanProperty isModdedProperty() {
+        return this.isModded;
+    }
+
+    /**
+     * Lightweight accessor method.
+     * @param modded Flag that determines whether this vehicle class is a vanilla vehicle class or a modded vehicle class.
+     */
+    public void setModded(boolean modded) {
+        this.isModded.set(modded);
     }
 
     /**

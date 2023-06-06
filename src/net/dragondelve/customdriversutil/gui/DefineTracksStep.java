@@ -79,6 +79,9 @@ public class DefineTracksStep implements StageController {
      */
     private Stage stage;
 
+    /**
+     * Currently edited or newly created track override.
+     */
     private TrackOverride trackOverride;
 
     /**
@@ -89,6 +92,8 @@ public class DefineTracksStep implements StageController {
     public void initialize() {
         rootPane.getStylesheets().clear();
         rootPane.getStylesheets().add(DDUtil.MAIN_CSS_RESOURCE);
+
+        stage.setTitle("Choose Tracks");
 
         if(trackOverride == null) {
             DDUtil.DEFAULT_LOGGER.log(Level.SEVERE, "Define Track Step initialized without calling setTrackOverride() first.");
@@ -225,6 +230,7 @@ public class DefineTracksStep implements StageController {
             borderPane.getStylesheets().add(DDUtil.MAIN_CSS_RESOURCE);
             Scene scene = new Scene(borderPane);
             editorStage.setScene(scene);
+            editorStage.setTitle("Track Override Editor");
             stage.close();
             editor.setEditedDriver(trackOverride);
             editorStage.show();

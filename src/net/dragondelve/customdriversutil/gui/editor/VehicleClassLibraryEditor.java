@@ -17,12 +17,7 @@ package net.dragondelve.customdriversutil.gui.editor;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SplitPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldListCell;
 import javafx.stage.Stage;
 import net.dragondelve.customdriversutil.model.VehicleClass;
@@ -95,6 +90,13 @@ public class VehicleClassLibraryEditor implements Editor<VehicleClass> {
      */
     @FXML
     private TextField vehicleClassXMLNameTextField;
+
+    /**
+     * CheckBox that displays and allows the user to edit the isModded flag of the vehicle class that determines if it's
+     * a modded vehicle class or a vanilla vehicle class.
+     */
+    @FXML
+    private CheckBox isModdedCheckBox;
 
     /**
      * Flag that determines if the controls are currently being disabled.
@@ -247,6 +249,7 @@ public class VehicleClassLibraryEditor implements Editor<VehicleClass> {
     private void bindVehicleClass(VehicleClass vehicleClass) {
         vehicleClassNameTextField.textProperty().bindBidirectional(vehicleClass.nameProperty());
         vehicleClassXMLNameTextField.textProperty().bindBidirectional(vehicleClass.xmlNameProperty());
+        isModdedCheckBox.selectedProperty().bindBidirectional(vehicleClass.isModdedProperty());
 
         liveryNameListView.setItems(vehicleClass.getLiveryNames());
     }
@@ -260,6 +263,7 @@ public class VehicleClassLibraryEditor implements Editor<VehicleClass> {
     private void unbindVehicleCLass(VehicleClass vehicleClass) {
         vehicleClassNameTextField.textProperty().unbindBidirectional(vehicleClass.nameProperty());
         vehicleClassXMLNameTextField.textProperty().unbindBidirectional(vehicleClass.xmlNameProperty());
+        isModdedCheckBox.selectedProperty().unbindBidirectional(vehicleClass.isModdedProperty());
 
         liveryNameListView.setItems(FXCollections.emptyObservableList());
     }

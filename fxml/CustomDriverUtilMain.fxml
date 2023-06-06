@@ -55,7 +55,7 @@ limitations under the License. -->
                <MenuItem fx:id="newGridItem" mnemonicParsing="false" text="New"/>
                <MenuItem fx:id="exportGridItem" mnemonicParsing="false" text="Export"/>
                <MenuItem fx:id="importGridItem" mnemonicParsing="false" text="Import"/>
-               <MenuItem fx:id="importGridWithClassItem" mnemonicParsing="false" text="Import w/ Class"/>
+               <MenuItem fx:id="importGridWithClassItem" mnemonicParsing="false" text="Import Modded"/>
            </Menu>
            <Menu mnemonicParsing="false" text="Libraries">
                <Menu mnemonicParsing="false" text="Tracks">

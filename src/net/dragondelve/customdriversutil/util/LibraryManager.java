@@ -14,6 +14,7 @@
 
 package net.dragondelve.customdriversutil.util;
 
+import javafx.stage.FileChooser;
 import net.dragondelve.customdriversutil.model.TrackLibrary;
 import net.dragondelve.customdriversutil.model.VehicleClassLibrary;
 
@@ -161,5 +162,20 @@ public class LibraryManager {
             DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Vehicle Class Library saving failed to path: " + pathname);
             return false;
         }
+    }
+
+    /**
+     * Creates a new FileChooser, sets its extension filter to *.xml and sets its initial directory to the pathname provided,
+     * and the title of its Stage to the title provided.
+     * @param title Title of the Stage on which the FileChooser is going to be displayed.
+     * @param initialDirectory Pathname to an initial directory for the FileChooser.
+     * @return A new FileChooser that is ready to be displayed.
+     */
+    public static FileChooser createLibraryFileChooser(String title, String initialDirectory) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle(title);
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("xml library file", "*.xml"));
+        fileChooser.setInitialDirectory(new File(initialDirectory));
+        return fileChooser;
     }
 }

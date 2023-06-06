@@ -24,7 +24,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import net.dragondelve.customdriversutil.gui.editor.DriverEditor;
 import net.dragondelve.customdriversutil.gui.editor.Editor;
@@ -136,7 +135,6 @@ public class CustomDriverUtilController implements StageController {
      */
     @FXML
     private MenuItem configurationMenuItem;
-
 
     /**
      * Tableview That displays the drivers from the grid that is being edited.
@@ -401,10 +399,15 @@ public class CustomDriverUtilController implements StageController {
     private void importGridAction() {
         File file = chooseFileToOpen("Choose XML Grid File", "grids");
         XMLGridImporter importer = new XMLGridImporter();
-        if(file != null) {
+        if (file != null) {
             Grid importedGrid = importer.importFromFile(file);
             if (importedGrid != null) {
-                //TODO:Check for vehicleClass here
+                VehicleClass vehicleClass = LibraryManager.getInstance().getVehicleClassLibrary().findVanillaVehicleClass(file.getName().substring(0, file.getName().length()-4));
+                if (vehicleClass != null) {
+                    driverEditor.setVehicleClass(vehicleClass);
+                    editedGrid.setVehicleClass(vehicleClass);
+                } else
+                    driverEditor.setVehicleClass(new VehicleClass());
                 editedGrid.getDrivers().clear();
                 editedGrid.getDrivers().addAll(importedGrid.getDrivers());
             }
@@ -492,6 +495,7 @@ public class CustomDriverUtilController implements StageController {
         FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().CONFIGURATION_SCREEN_FXML_URL);
         StageController controller = new ConfigurationScreenController();
         Stage screenStage = new Stage();
+        screenStage.setTitle("Configuration");
         controller.setStage(screenStage);
         loader.setController(controller);
         try {
@@ -527,21 +531,6 @@ public class CustomDriverUtilController implements StageController {
     }
 
     /**
-     * Creates a new FileChooser, sets its extension filter to *.xml and sets its initial directory to the pathname provided,
-     * and the title of its Stage to the title provided.
-     * @param title Title of the Stage on which the FileChooser is going to be displayed.
-     * @param initialDirectory Pathname to an initial directory for the FileChooser.
-     * @return A new FileChooser that is ready to be displayed.
-     */
-    private FileChooser createLibraryFileChooser(String title, String initialDirectory) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle(title);
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("xml library file", "*.xml"));
-        fileChooser.setInitialDirectory(new File(initialDirectory));
-        return fileChooser;
-    }
-
-    /**
      * Creates a new FileChooser, sets its extension filter to *.xml and sets its initial directory to the pathname provided.
      * and the title of its Stage to the title provided. Displays the FileChooser to the user with showOpenDialog, waits
      * for a selection to be made and returns the File selected.
@@ -550,7 +539,7 @@ public class CustomDriverUtilController implements StageController {
      * @return File Chosen by the user. returns null if no file was chosen.
      */
     private File chooseFileToOpen(String title, String initialDirectory) {
-        return createLibraryFileChooser(title, initialDirectory).showOpenDialog(stage);
+        return LibraryManager.createLibraryFileChooser(title, initialDirectory).showOpenDialog(stage);
     }
 
     /**
@@ -562,6 +551,6 @@ public class CustomDriverUtilController implements StageController {
      * @return File Chosen by the user. returns null if no file was chosen.
      */
     private File chooseFileToSave(String title, String initialDirectory) {
-        return  createLibraryFileChooser(title, initialDirectory).showSaveDialog(stage);
+        return  LibraryManager.createLibraryFileChooser(title, initialDirectory).showSaveDialog(stage);
     }
 }

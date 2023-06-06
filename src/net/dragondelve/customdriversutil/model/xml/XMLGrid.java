@@ -28,6 +28,7 @@ import java.util.List;
  */
 @XmlRootElement (name = "custom_ai_drivers")
 final class XMLGrid {
+
     /**
      * List of all drivers and track overrides in the grid in their XML form.
      */
@@ -60,7 +61,8 @@ final class XMLGrid {
         VehicleClass vehicleClass = new VehicleClass();
         vehicleClass.setName(name);
         vehicleClass.setXmlName(xmlName);
-        xmlDrivers.forEach(e->vehicleClass.getLiveryNames().add(e.getLiveryName()));
+        vehicleClass.setModded(true);
+        xmlDrivers.stream().filter(xmlDriver -> xmlDriver.getTracks() == null).forEach(e->vehicleClass.getLiveryNames().add(e.getLiveryName()));
         return vehicleClass;
     }
 }

@@ -27,10 +27,9 @@ import net.dragondelve.customdriversutil.util.Configurator;
 import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
 
-//TODO: VehicleClasses and choosing liveris from the list.
 //TODO: Grid Generator Controller
-//TODO: Driver Library
 //TODO: Grid Generator.
+//TODO: Driver Library
 //TODO: Other Minor tweaks.
 //TODO: Clear all other TODOs.
 //TODO: Cleanup, test and publish.
@@ -52,10 +51,9 @@ public class CustomDriverUtilMain extends Application {
     /**
      * Application Start Method.
      * @param primaryStage primary stage that is used to display the GUI.
-     * @throws Exception any uncaught exception.
      */
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         if(!Configurator.getInstance().loadConfiguration()) {
             Configurator.getInstance().setConfiguration(generateDefaultConfiguration());
             Configurator.getInstance().saveConfiguration();

@@ -1,3 +1,17 @@
+// Copyright 2023 Prokhor Kalinin
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package net.dragondelve.customdriversutil.fx;
 
 import javafx.collections.ObservableList;
@@ -9,7 +23,7 @@ import javafx.scene.control.ToolBar;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import net.dragondelve.customdriversutil.gui.StageController;
+import javafx.stage.Window;
 import net.dragondelve.customdriversutil.util.DDUtil;
 
 /**
@@ -18,7 +32,7 @@ import net.dragondelve.customdriversutil.util.DDUtil;
  * not made then it will return null instead.
  * @param <T> Class of object that will chosen by the user from a list of objects.
  */
-public class FXObjectChooser<T> implements StageController {
+public class FXObjectChooser<T> {
     /**
      * TableView that displays the items chosen by the user.
      */
@@ -27,7 +41,7 @@ public class FXObjectChooser<T> implements StageController {
     /**
      * Stage on which FXObjectChooser is going to be displayed.
      */
-    private Stage stage;
+    private final Stage stage = new Stage();
 
     /**
      * Root pane of the scene of this stage. Used to apply the main css resource to the entire scene.
@@ -64,6 +78,11 @@ public class FXObjectChooser<T> implements StageController {
             } else if (newValue == null && okButton.getText().equals(OK_MESSAGE)) {
                 okButton.setText(CANCEL_MESSAGE);
             }
+        });
+
+        tableView.setOnMouseClicked(event -> {
+            if(event.getClickCount() == 2)
+                tableView.getSelectionModel().select(null);
         });
 
         rootPane.getChildren().addAll(tableView, toolBar);
@@ -103,11 +122,10 @@ public class FXObjectChooser<T> implements StageController {
     }
 
     /**
-     * Lightweight mutator method.
-     * @param stage Stage on which this controller is going to be displayed.
+     * Initializes the stage on which FXObjectChooser is going to be displayed to a given Window
+     * @param owner Owner of FXObjectChooser's stage.
      */
-    @Override
-    public void setStage(Stage stage) {
-        this.stage = stage;
+    public void initOwner(Window owner) {
+        stage.initOwner(owner);
     }
 }

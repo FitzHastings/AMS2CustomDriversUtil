@@ -42,19 +42,16 @@ limitations under the License. -->
         <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="1" GridPane.halignment="CENTER"
               GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER"
               GridPane.vgrow="SOMETIMES">
-            <TextField fx:id="vehicleClassLibraryTextField" GridPane.columnIndex="1" GridPane.rowIndex="1"
-                       HBox.hgrow="ALWAYS"/>
+            <TextField fx:id="vehicleClassLibraryTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" HBox.hgrow="ALWAYS"/>
             <Button fx:id="vehicleClassFileChooserButton" mnemonicParsing="false" text="..."/>
         </HBox>
         <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"
               GridPane.rowIndex="2">
-            <TextField fx:id="driverLibraryTextField" GridPane.columnIndex="1" GridPane.rowIndex="1"
-                       HBox.hgrow="ALWAYS"/>
+            <TextField fx:id="driverLibraryTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" HBox.hgrow="ALWAYS"/>
             <Button fx:id="driverLibraryFileChooserButton" mnemonicParsing="false" text="..."/>
         </HBox>
         <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
-            <TextField fx:id="trackLibraryTextField" GridPane.columnIndex="1" GridPane.rowIndex="1"
-                       HBox.hgrow="ALWAYS"/>
+            <TextField fx:id="trackLibraryTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" HBox.hgrow="ALWAYS"/>
             <Button fx:id="trackLibraryFileChooserButton" mnemonicParsing="false" text="..."/>
         </HBox>
         <CheckBox fx:id="chooseLiveryCheckBox" mnemonicParsing="false" text="Choose Livery" GridPane.rowIndex="3"/>
@@ -62,12 +59,10 @@ limitations under the License. -->
     </GridPane>
     <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
         <Tab text="Default New Driver">
-            <AnchorPane fx:id="defaultNewDriverAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0"
-                        prefWidth="200.0"/>
+            <AnchorPane fx:id="defaultNewDriverAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
         </Tab>
         <Tab text="Default New Override">
-            <AnchorPane fx:id="defaultNewOverrideAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0"
-                        prefWidth="200.0"/>
+            <AnchorPane fx:id="defaultNewOverrideAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
         </Tab>
     </TabPane>
     <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" VBox.vgrow="NEVER">
