@@ -143,4 +143,13 @@ public final class VehicleClass {
     public void setLiveryNames(ObservableList<String> liveryNames) {
         this.liveryNames = liveryNames;
     }
+
+    /**
+     * Converts vehicle class to String for visual representation of the object.
+     * @return Human-readable name of the vehicle class.
+     */
+    @Override
+    public String toString() {
+        return name.get();
+    }
 }

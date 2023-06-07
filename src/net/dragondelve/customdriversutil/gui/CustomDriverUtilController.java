@@ -50,6 +50,13 @@ public class CustomDriverUtilController implements StageController {
     private Button addDriverButton;
 
     /**
+     * Opens the NewGridWizard.
+     * Performs newGridAction on action.
+     */
+    @FXML
+    private MenuItem newGridItem;
+
+    /**
      * Button that performs removeDriverAction on action.
      */
     @FXML
@@ -230,6 +237,7 @@ public class CustomDriverUtilController implements StageController {
             e.printStackTrace();
         }
 
+        newGridItem.setOnAction(e -> newGridAction());
         exportGridItem.setOnAction(e -> exportGridAction());
         importGridItem.setOnAction(e -> importGridAction());
         importGridWithClassItem.setOnAction(e -> importGridWithClassAction());
@@ -351,6 +359,25 @@ public class CustomDriverUtilController implements StageController {
             stage.setScene(scene);
             stage.showAndWait();
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Loads the New Grid Wizard FXML and shows the New Grid wizard in this window by creating a new scene and setting
+     * this StageController's stage scene to the new scene that contains the new grid wizard.
+     * Performed by NewGridItem.
+     */
+    private void newGridAction() {
+        FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().NEW_GRID_WIZARD_FXML_URL);
+        NewGridWizardController controller = new NewGridWizardController();
+        controller.setStage(stage);
+        loader.setController(controller);
+
+        try {
+            Scene scene = new Scene(loader.load());
+            stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
         }

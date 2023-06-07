@@ -30,7 +30,7 @@
         <override_defending>false</override_defending>
         <override_fuel_management>false</override_fuel_management>
         <override_name>false</override_name>
-        <override_quali_skill>false</override_quali_skill>
+        <override_quali_skill>true</override_quali_skill>
         <override_race_skill>true</override_race_skill>
         <override_stamina>false</override_stamina>
         <override_start_reactions>false</override_start_reactions>
