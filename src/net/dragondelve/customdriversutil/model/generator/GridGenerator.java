@@ -14,31 +14,65 @@
 
 package net.dragondelve.customdriversutil.model.generator;
 
-import net.dragondelve.customdriversutil.model.Driver;
 import net.dragondelve.customdriversutil.model.Grid;
-import net.dragondelve.customdriversutil.model.VehicleClass;
 
+/**
+ * Grid Generator. Generates a new grid when the generateNewGrid() method is called. The grid is generated based on
+ * GeneratorSettings and the ValueGenerator provided. If no value generator is provided in the constructor it will
+ * generate a grid with empty values.
+ */
 public class GridGenerator {
-    VehicleClass vehicleClass;
 
-    public void setVehicleClass(VehicleClass vehicleClass) {
-        this.vehicleClass = vehicleClass;
+    /**
+     * GeneratorSettings that dictate the desired grid that is generated when the generateGrid method is called.
+     */
+    private final GeneratorSettings settings;
+
+    /**
+     * ValueGenerator used in generation of values for each driver in the grid.
+     */
+    private final ValueGenerator generator;
+
+    /**
+     * Creates a new instance of GridGenerator. If this constructor is used grids created with generateGrid() method will
+     * not contain any values set as ValueGenerator is not provided.
+     * @param settings Settings that dictate the desired grid that is generated when the generateGrid method is called.
+     */
+    public GridGenerator(GeneratorSettings settings) {
+        this.settings = settings;
+        this.generator = null;
     }
 
-    public Grid generateNewGrid() {
-        if (vehicleClass == null)
-            return null;
-        Grid grid = new Grid();
-        vehicleClass.getLiveryNames().forEach(liveryName->{
-                Driver driver = new Driver();
-                driver.nameProperty().set("drv2 "+liveryName.substring(liveryName.length()-8));
-                driver.countryProperty().set("USA");
-                driver.liveryNameProperty().set(liveryName);
-                driver.randomize();
-                driver.getOverrideFlags().setOverrideAll(true);
-                grid.getDrivers().add(driver);
-        });
+    /**
+     * Creates a new instance of GridGenerator.
+     * @param settings Settings that dictate the desired grid that is generated when the generateGrid method is called.
+     * @param generator ValueGenerator used in generation of values for each driver in the grid.
+     */
+    public GridGenerator(GeneratorSettings settings, ValueGenerator generator) {
+        this.settings = settings;
+        this.generator = generator;
+    }
 
-        return grid;
+
+    /**
+     * Generates a new Grid for the class set in GeneratorSettings using the ValueGenerator if one is provided.
+     * @return Newly generated grid.
+     */
+    public Grid generateNewGrid() {
+//        if (settings.getVehicleClass() == null)
+//            return null;
+//        Grid grid = new Grid();
+//        settings.getVehicleClass().getLiveryNames().forEach(liveryName->{
+//                Driver driver = new Driver();
+//                driver.nameProperty().set("drv2 "+liveryName.substring(liveryName.length()-8));
+//                driver.countryProperty().set("USA");
+//                driver.liveryNameProperty().set(liveryName);
+//                driver.randomize();
+//                driver.getOverrideFlags().setOverrideAll(true);
+//                grid.getDrivers().add(driver);
+//        });
+//
+//        return grid;
+        return null;
     }
 }
