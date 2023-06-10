@@ -14,9 +14,13 @@
 
 package net.dragondelve.customdriversutil.model.generator;
 
+import javafx.collections.ObservableList;
 import net.dragondelve.customdriversutil.model.Driver;
 import net.dragondelve.customdriversutil.model.Grid;
+import net.dragondelve.customdriversutil.model.Track;
+import net.dragondelve.customdriversutil.model.TrackOverride;
 import net.dragondelve.customdriversutil.util.Configurator;
+import net.dragondelve.customdriversutil.util.LibraryManager;
 
 /**
  * Grid Generator. Generates a new grid when the generateNewGrid() method is called. The grid is generated based on
@@ -55,7 +59,6 @@ public class GridGenerator {
         this.generator = generator;
     }
 
-
     /**
      * Generates a new Grid for the class set in GeneratorSettings using the ValueGenerator if one is provided.
      * @return Newly generated grid.
@@ -71,32 +74,68 @@ public class GridGenerator {
             if (settings.isFromLiveryNames()) {
                 String liveryName = driver.getLiveryName();
                 driver.nameProperty().set("drv"+ (i+1) + liveryName.substring(liveryName.length()-8));
+                driver.countryProperty().set("GBR");
             } else if (settings.isUseNAMeS()) {
                 driver.nameProperty().set("Names!");
+                driver.countryProperty().set("GBR");
             }
 
-            if(generator != null) {
-                driver.raceSkillProperty().set(generator.nextValue());
+            if (generator != null) {
                 driver.qualifyingSkillProperty().set(generator.nextValue());
+                if(settings.isBindQualiAndRaceSkills())
+                    driver.raceSkillProperty().set(Math.max(driver.getQualifyingSkill() - settings.getBoundSkillsGap(), 0.0));
+                else
+                    driver.raceSkillProperty().set(generator.nextValue());
+
+                if (settings.isLimitAggression())
+                    driver.aggressionProperty().setValue(Math.min(generator.nextValue(), settings.getAggressionLimit()));
+                else
+                    driver.aggressionProperty().setValue(generator.nextValue());
+
+                driver.defendingProperty().set(generator.nextValue());
+                driver.staminaProperty().set(generator.nextValue());
+                driver.startReactionsProperty().set(generator.nextValue());
+                driver.wetSkillProperty().set(generator.nextValue());
+                driver.tyreManagementProperty().set(generator.nextValue());
+                driver.fuelManagementProperty().set(generator.nextValue());
+                driver.blueFlagConcedingProperty().set(1.0 - generator.nextValue());
+                driver.weatherTyreChangeProperty().set(generator.nextValue());
+                driver.avoidanceOfMistakesProperty().set(generator.nextValue());
+                driver.avoidanceOfForcedMistakesProperty().set(generator.nextValue());
+                driver.vehicleReliabilityProperty().set(generator.nextValue());
+
+                generator.nexDriver();
             }
 
+            grid.getDrivers().add(driver);
             i++;
         }
 
-//        if (settings.getVehicleClass() == null)
-//            return null;
-//        Grid grid = new Grid();
-//        settings.getVehicleClass().getLiveryNames().forEach(liveryName->{
-//                Driver driver = new Driver();
-//                driver.nameProperty().set("drv2 "+liveryName.substring(liveryName.length()-8));
-//                driver.countryProperty().set("USA");
-//                driver.liveryNameProperty().set(liveryName);
-//                driver.randomize();
-//                driver.getOverrideFlags().setOverrideAll(true);
-//                grid.getDrivers().add(driver);
-//        });
-//
-//        return grid;
-        return null;
+        if (settings.isReduceGapsOnOvals()) {
+            double minRaceSkill = 1.0;
+            double maxRaceSkill = 0.0;
+
+            for (Driver driver : grid.getDrivers()) {
+                minRaceSkill = Math.min(minRaceSkill, driver.getRaceSkill());
+                maxRaceSkill = Math.max(maxRaceSkill, driver.getRaceSkill());
+            }
+
+            double delta = maxRaceSkill - minRaceSkill;
+
+            ObservableList<Track> ovals = LibraryManager.getInstance().getTrackLibrary().getTracks().filtered(Track::isOval);
+
+            for(Driver driver : grid.getDrivers()) {
+                TrackOverride trackOverride = new TrackOverride();
+                trackOverride.setOverrideFlags(Configurator.getInstance().getConfiguration().getDefaultTrackOverrideFlags());
+                double newRaceSkill = (maxRaceSkill - driver.getRaceSkill()) / delta * (delta / 0.5);
+                trackOverride.getOverrideFlags().overrideRaceSkillProperty().set(true);
+                trackOverride.raceSkillProperty().set(newRaceSkill);
+                trackOverride.getTrack().addAll(ovals);
+
+                driver.getTrackOverrides().add(trackOverride);
+            }
+        }
+
+        return grid;
     }
 }
