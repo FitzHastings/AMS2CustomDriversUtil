@@ -14,7 +14,9 @@
 
 package net.dragondelve.customdriversutil.model.generator;
 
+import net.dragondelve.customdriversutil.model.Driver;
 import net.dragondelve.customdriversutil.model.Grid;
+import net.dragondelve.customdriversutil.util.Configurator;
 
 /**
  * Grid Generator. Generates a new grid when the generateNewGrid() method is called. The grid is generated based on
@@ -59,6 +61,28 @@ public class GridGenerator {
      * @return Newly generated grid.
      */
     public Grid generateNewGrid() {
+        Grid grid = new Grid();
+        int i = 0;
+        while (i < settings.getnDrivers()) {
+            Driver driver = new Driver();
+            driver.setOverrideFlags(Configurator.getInstance().getConfiguration().getDefaultDriverFlags());
+            driver.liveryNameProperty().set(settings.getVehicleClass().getLiveryNames().get(i));
+
+            if (settings.isFromLiveryNames()) {
+                String liveryName = driver.getLiveryName();
+                driver.nameProperty().set("drv"+ (i+1) + liveryName.substring(liveryName.length()-8));
+            } else if (settings.isUseNAMeS()) {
+                driver.nameProperty().set("Names!");
+            }
+
+            if(generator != null) {
+                driver.raceSkillProperty().set(generator.nextValue());
+                driver.qualifyingSkillProperty().set(generator.nextValue());
+            }
+
+            i++;
+        }
+
 //        if (settings.getVehicleClass() == null)
 //            return null;
 //        Grid grid = new Grid();

@@ -25,8 +25,6 @@ public class GeneratorSettings {
 
     private ValueGenerator valueGenerator;
 
-    private final BooleanProperty blankNames = new SimpleBooleanProperty();
-
     private final BooleanProperty useNAMeS = new SimpleBooleanProperty();
 
     private final BooleanProperty fromLiveryNames = new SimpleBooleanProperty();
@@ -36,7 +34,7 @@ public class GeneratorSettings {
     private final BooleanProperty limitAggression = new SimpleBooleanProperty();
     private final IntegerProperty nDrivers = new SimpleIntegerProperty();
     private final DoubleProperty minValue = new SimpleDoubleProperty();
-    private final DoubleProperty  maxValue = new SimpleDoubleProperty();
+    private final DoubleProperty maxValue = new SimpleDoubleProperty();
     private final DoubleProperty aggressionLimit = new SimpleDoubleProperty();
     private final DoubleProperty boundSkillsGap = new SimpleDoubleProperty();
 
@@ -54,14 +52,6 @@ public class GeneratorSettings {
 
     public void setValueGenerator(ValueGenerator valueGenerator) {
         this.valueGenerator = valueGenerator;
-    }
-
-    public boolean isBlankNames() {
-        return blankNames.get();
-    }
-
-    public BooleanProperty blankNamesProperty() {
-        return blankNames;
     }
 
     public boolean isUseNAMeS() {
