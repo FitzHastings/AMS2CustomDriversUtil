@@ -475,6 +475,9 @@ public class DriverEditor {
         });
 
         chooseLiveryHBox.getCheckBox().selectedProperty().set(Configurator.getInstance().getConfiguration().isChooseLivery());
+
+        if (editedDriver == null)
+            rootPane.setDisable(true);
     }
 
     /**
@@ -488,6 +491,7 @@ public class DriverEditor {
         overrideMode.set(!driver.getClass().equals(Driver.class));
         this.editedDriver = driver;
         bindDriver(editedDriver);
+        rootPane.setDisable(false);
     }
 
     /**

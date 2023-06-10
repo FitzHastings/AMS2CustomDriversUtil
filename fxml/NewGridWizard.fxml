@@ -95,7 +95,7 @@
                       GridPane.columnIndex="2"/>
             <HBox alignment="CENTER" spacing="10.0" GridPane.columnIndex="3">
                 <PromptLabel prefHeight="17.0" prefWidth="118.0" text="Amount"/>
-                <TextField fx:id="amountCheckBox" GridPane.columnIndex="3" HBox.hgrow="ALWAYS"/>
+                <TextField fx:id="amountTextField" GridPane.columnIndex="3" HBox.hgrow="ALWAYS"/>
             </HBox>
             <CheckBox fx:id="reduceGapOnOvalsCheckBox" mnemonicParsing="false" text="Reduce gap on Ovals"
                       GridPane.columnIndex="3" GridPane.rowIndex="3"/>

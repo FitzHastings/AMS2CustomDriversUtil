@@ -27,8 +27,6 @@ import net.dragondelve.customdriversutil.util.Configurator;
 import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
 
-//TODO: Grid Generator Controller
-//TODO: Grid Generator
 //TODO: Driver Library
 //TODO: Other Minor tweaks.
 //TODO: Clear all other TODOs

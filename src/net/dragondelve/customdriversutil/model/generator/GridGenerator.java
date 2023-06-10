@@ -15,12 +15,19 @@
 package net.dragondelve.customdriversutil.model.generator;
 
 import javafx.collections.ObservableList;
+import net.dragondelve.customdriversutil.CustomDriverUtilMain;
 import net.dragondelve.customdriversutil.model.Driver;
 import net.dragondelve.customdriversutil.model.Grid;
 import net.dragondelve.customdriversutil.model.Track;
 import net.dragondelve.customdriversutil.model.TrackOverride;
+import net.dragondelve.customdriversutil.model.xml.XMLGridImporter;
 import net.dragondelve.customdriversutil.util.Configurator;
+import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
+
+import java.io.File;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
 
 /**
  * Grid Generator. Generates a new grid when the generateNewGrid() method is called. The grid is generated based on
@@ -66,6 +73,14 @@ public class GridGenerator {
     public Grid generateNewGrid() {
         Grid grid = new Grid();
         int i = 0;
+        Grid namesSource = null;
+        if(settings.isUseNAMeS()) {
+            try {
+                namesSource = (new XMLGridImporter().importFromFile(new File(CustomDriverUtilMain.class.getClassLoader().getResource("NAMeS/" + settings.getVehicleClass().getXmlName() + ".xml").toURI())));
+            } catch (URISyntaxException e) {
+                DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Grid Generator could not find NAMeS file for Class " + settings.getVehicleClass().getName());
+            }
+        }
         while (i < settings.getnDrivers()) {
             Driver driver = new Driver();
             driver.setOverrideFlags(Configurator.getInstance().getConfiguration().getDefaultDriverFlags());
@@ -76,8 +91,18 @@ public class GridGenerator {
                 driver.nameProperty().set("drv"+ (i+1) + liveryName.substring(liveryName.length()-8));
                 driver.countryProperty().set("GBR");
             } else if (settings.isUseNAMeS()) {
-                driver.nameProperty().set("Names!");
-                driver.countryProperty().set("GBR");
+                if(namesSource != null) {
+                    Driver name = namesSource.getDrivers().filtered(d -> d.getLiveryName().equals(driver.getLiveryName())).stream().findFirst().get();
+                    if (name != null) {
+                        driver.nameProperty().set(name.getName());
+                        driver.countryProperty().set(name.getCountry());
+                    } else {
+                        driver.countryProperty().set("GBR");
+                    }
+                } else {
+                    driver.countryProperty().set("GBR");
+                }
+
             }
 
             if (generator != null) {
@@ -94,6 +119,7 @@ public class GridGenerator {
 
                 driver.defendingProperty().set(generator.nextValue());
                 driver.staminaProperty().set(generator.nextValue());
+                driver.consistencyProperty().set(generator.nextValue());
                 driver.startReactionsProperty().set(generator.nextValue());
                 driver.wetSkillProperty().set(generator.nextValue());
                 driver.tyreManagementProperty().set(generator.nextValue());
@@ -129,7 +155,9 @@ public class GridGenerator {
                 trackOverride.setOverrideFlags(Configurator.getInstance().getConfiguration().getDefaultTrackOverrideFlags());
                 double newRaceSkill = (maxRaceSkill - driver.getRaceSkill()) / delta * (delta / 0.5);
                 trackOverride.getOverrideFlags().overrideRaceSkillProperty().set(true);
+                trackOverride.getOverrideFlags().overrideQualifyingSkillProperty().set(true);
                 trackOverride.raceSkillProperty().set(newRaceSkill);
+                trackOverride.qualifyingSkillProperty().set(newRaceSkill);
                 trackOverride.getTrack().addAll(ovals);
 
                 driver.getTrackOverrides().add(trackOverride);

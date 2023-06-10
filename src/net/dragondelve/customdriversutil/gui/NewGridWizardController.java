@@ -14,14 +14,23 @@
 
 package net.dragondelve.customdriversutil.gui;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.converter.NumberStringConverter;
+import net.dragondelve.customdriversutil.model.Grid;
 import net.dragondelve.customdriversutil.model.VehicleClass;
+import net.dragondelve.customdriversutil.model.generator.*;
 import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
+
+import java.io.IOException;
 
 /**
  * New Grid Wizard controller controls the fxml/NewGridWizard.fxml
@@ -104,7 +113,7 @@ public class NewGridWizardController implements StageController {
     private RadioButton lowNoiseRadioButton;
 
     @FXML
-    private TextField amountCheckBox;
+    private TextField amountTextField;
 
     @FXML
     private GridPane generateGridPane;
@@ -112,7 +121,12 @@ public class NewGridWizardController implements StageController {
     /**
      * Stage on which this StageController is going to be displayed.
      */
-    Stage stage;
+    private Stage stage;
+
+    DoubleProperty minValue = new SimpleDoubleProperty(0.0);
+    DoubleProperty maxValue = new SimpleDoubleProperty(1.0);
+
+    private final GeneratorSettings generatorSettings = new GeneratorSettings();
 
     /**
      * Initialize method initializes all the visual elements before they are displayed by the user.
@@ -124,7 +138,7 @@ public class NewGridWizardController implements StageController {
         rootPane.getStylesheets().add(DDUtil.MAIN_CSS_RESOURCE);
 
         generateGridPane.disableProperty().bind(generateGridCheckBox.selectedProperty().not());
-        amountCheckBox.disableProperty().bind(forEachLiveryCheckBox.selectedProperty());
+        amountTextField.disableProperty().bind(forEachLiveryCheckBox.selectedProperty());
 
         randomSkillRadioButton.disableProperty().bind(randomValuesCheckBox.selectedProperty().not());
         randomAllRadioButton.disableProperty().bind(randomValuesCheckBox.selectedProperty().not());
@@ -198,13 +212,23 @@ public class NewGridWizardController implements StageController {
         noValuesCheckBox.disableProperty().set(true);
         noValuesCheckBox.setStyle("-fx-opacity: 1");
 
+        vehicleClassChoiceBox.setItems(LibraryManager.getInstance().getVehicleClassLibrary().getVehicleClasses());
+
+        generateButton.setOnAction(e -> generateAction());
+
+        amountTextField.textProperty().bindBidirectional(generatorSettings.nDriversProperty(), new NumberStringConverter());
+        limitToTextField.textProperty().bindBidirectional(generatorSettings.aggressionLimitProperty(), new NumberStringConverter());
+        qualiExceedsTextField.textProperty().bindBidirectional(generatorSettings.boundSkillsGapProperty(), new NumberStringConverter());
+        minValueTextField.textProperty().bindBidirectional(minValue, new NumberStringConverter());
+        maxValueTextField.textProperty().bindBidirectional(maxValue, new NumberStringConverter());
+        reduceGapOnOvalsCheckBox.selectedProperty().bindBidirectional(generatorSettings.reduceGapsOnOvalsProperty());
+        bindQualiCheckBox.selectedProperty().bindBidirectional(generatorSettings.bindQualiAndRaceSkillsProperty());
+
         generateGridCheckBox.selectedProperty().set(true);
         forEachLiveryCheckBox.selectedProperty().set(true);
         rangeOfValuesCheckBox.selectedProperty().set(true);
         useNAMeSRadioButton.selectedProperty().set(true);
         lowNoiseRadioButton.selectedProperty().set(true);
-
-        vehicleClassChoiceBox.setItems(LibraryManager.getInstance().getVehicleClassLibrary().getVehicleClasses());
     }
 
     /**
@@ -214,5 +238,58 @@ public class NewGridWizardController implements StageController {
     @Override
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+
+
+    private void generateAction() {
+        if(emptyGridCheckBox.isSelected()) {
+            loadMainWindow(new Grid());
+            return;
+        }
+
+        generatorSettings.setVehicleClass(vehicleClassChoiceBox.valueProperty().get());
+
+        if (forEachLiveryCheckBox.isSelected())
+            generatorSettings.nDriversProperty().set(vehicleClassChoiceBox.valueProperty().get().getLiveryNames().size());
+
+        generatorSettings.useNAMeSProperty().set(useNAMeSRadioButton.isSelected());
+        generatorSettings.fromLiveryNamesProperty().set(fromLiveryNamesRadioButton.isSelected());
+
+        ValueGenerator generator = null;
+
+        if (rangeOfValuesCheckBox.isSelected()) {
+            int nDrivers = generatorSettings.getnDrivers();
+            if (nDrivers > generatorSettings.getVehicleClass().getLiveryNames().size())
+                nDrivers = generatorSettings.getVehicleClass().getLiveryNames().size();
+
+            if (noNoiseRadioButton.isSelected())
+                generator = new RangeValueGenerator(nDrivers, 0);
+            else if (lowNoiseRadioButton.isSelected())
+                generator = new RangeValueGenerator(nDrivers, 0.2);
+            else
+                generator = new RangeValueGenerator(nDrivers, 0.4);
+        } else if (randomValuesCheckBox.isSelected())
+            generator = new RandomValueGenerator();
+
+        if (generator != null)
+            generator.setLimits(minValue.get(), maxValue.get());
+
+        GridGenerator gridGenerator = new GridGenerator(generatorSettings, generator);
+
+        loadMainWindow(gridGenerator.generateNewGrid());
+    }
+
+    private void loadMainWindow(Grid generatorGrid) {
+        FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().MAIN_WINDOW_FXML_URL);
+        CustomDriverUtilController controller = new CustomDriverUtilController();
+        controller.setStage(stage);
+        controller.setEditedGrid(generatorGrid);
+        loader.setController(controller);
+        try {
+            Scene scene = new Scene(loader.load());
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
