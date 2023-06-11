@@ -89,8 +89,8 @@ public class DriverEditor {
     private TextField defendingTextField;
 
     /**
-     * TextField that displays the driver'a country code.
-     * This country code is used to dis[lau the flag in the game. Should use three letter codes
+     * TextField that displays the driver's country code.
+     * This country code is used to display the flag in the game. Should use three-letter codes
      * for the desired country.
      */
     @FXML
@@ -373,14 +373,14 @@ public class DriverEditor {
     private TextField wetSkillTextField;
 
     /**
-     * Driver that is currently being edited by this editor. His properties are bound bidirectionally to the controls
+     * Driver that is currently being edited by this editor. His properties are bound bidirectionally to the controls,
      * and they have to be unbound with unbindDriver(Driver driver) if the value changes.
      */
     private DriverBase editedDriver;
 
     /**
      * A flag that determines whether this editor is run in the trackOverride mode or not. This flag should be set to
-     * true if you want to edit a trackOverride. When setting this flag you have to already have set a driver and you
+     * true if you want to edit a trackOverride. When setting this flag you have to already have set a driver, and you
      * need to provide a track or a String value of an xmlName of the track that is going to be actually edited.
      */
     private final BooleanProperty overrideMode = new SimpleBooleanProperty();
@@ -467,7 +467,7 @@ public class DriverEditor {
                 vehicleClassObjectChooser.getTableView().getColumns().add(vehicleClassTableColumn);
                 VehicleClass chosenVehicleClass =  vehicleClassObjectChooser.showChooseDialog();
 
-                if(chosenVehicleClass != null)
+                if (chosenVehicleClass != null)
                     setVehicleClass(chosenVehicleClass);
                 else
                     chooseLiveryHBox.getCheckBox().selectedProperty().set(false);
@@ -488,10 +488,13 @@ public class DriverEditor {
     public void setEditedDriver(DriverBase driver) {
         if (this.editedDriver != null)
             unbindDriver(this.editedDriver);
-        overrideMode.set(!driver.getClass().equals(Driver.class));
-        this.editedDriver = driver;
-        bindDriver(editedDriver);
-        rootPane.setDisable(false);
+        if(driver != null) {
+            overrideMode.set(!driver.getClass().equals(Driver.class));
+            this.editedDriver = driver;
+            bindDriver(editedDriver);
+            rootPane.setDisable(false);
+        } else
+            rootPane.setDisable(true);
     }
 
     /**
@@ -511,7 +514,7 @@ public class DriverEditor {
      * @param driver a driver whose properties are to be bind to the control elements of this editor.
      */
     private void bindDriver(DriverBase driver) {
-        if(!overrideMode.get()) {
+        if (!overrideMode.get()) {
             chooseLiveryHBox.getTextField().textProperty().bindBidirectional(((Driver) driver).liveryNameProperty());
             chooseLiveryHBox.getChoiceBox().valueProperty().bindBidirectional(((Driver) driver).liveryNameProperty());
         }
@@ -524,7 +527,7 @@ public class DriverEditor {
      * @param driver a driver whose properties are to be unbound from the control elements of this editor.
      */
     private void unbindDriver(DriverBase driver) {
-        if(!overrideMode.get()) {
+        if (!overrideMode.get()) {
             chooseLiveryHBox.getTextField().textProperty().unbindBidirectional(((Driver) driver).liveryNameProperty());
             chooseLiveryHBox.getChoiceBox().valueProperty().unbindBidirectional(((Driver) driver).liveryNameProperty());
         }

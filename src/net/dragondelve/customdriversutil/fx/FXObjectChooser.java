@@ -30,7 +30,7 @@ import net.dragondelve.customdriversutil.util.DDUtil;
  * Stage controller that displays a list of items to the user on the stage provided to it. When the user presses the
  * okButton if a selection in the Table is made then it will return the item chosen if the selection in the table is
  * not made then it will return null instead.
- * @param <T> Class of object that will chosen by the user from a list of objects.
+ * @param <T> Class of object that will choose by the user from a list of objects.
  */
 public class FXObjectChooser<T> {
     /**
@@ -81,7 +81,7 @@ public class FXObjectChooser<T> {
         });
 
         tableView.setOnMouseClicked(event -> {
-            if(event.getClickCount() == 2)
+            if (event.getClickCount() == 2)
                 tableView.getSelectionModel().select(null);
         });
 
@@ -99,7 +99,7 @@ public class FXObjectChooser<T> {
         Scene scene = new Scene(rootPane);
         stage.setScene(scene);
         stage.showAndWait();
-        if(tableView.getSelectionModel().getSelectedItem() != null)
+        if (tableView.getSelectionModel().getSelectedItem() != null)
             return tableView.getSelectionModel().getSelectedItem();
         else
             return null;
@@ -107,7 +107,7 @@ public class FXObjectChooser<T> {
 
     /**
      * Sets items to the TableView should be called
-     * @param items items to be displayed to the user so he can make his selection
+     * @param items items to be displayed to the user, so he can make his selection
      */
     public void setItems(ObservableList<T> items) {
         tableView.setItems(items);

@@ -38,7 +38,7 @@ final class XMLDriver {
     private String name;
 
     /**
-     * 3 letter country code. This is used for displaying the country flag.
+     * 3-letter country code. This is used for displaying the country flag.
      */
     private String country;
 
@@ -50,7 +50,7 @@ final class XMLDriver {
     private Double raceSkill;
 
     /**
-     * Qualification Session driver skill. Its completely independent from the race_skill.
+     * Qualification Session driver skill. Its completely independent of the race_skill.
      * One detail is that a lower qualifying_skill value increases the likelihood of AI programmed mistakes during qualifying hotlaps.
      */
     private Double qualifyingSkill;
@@ -99,8 +99,8 @@ final class XMLDriver {
     private Double wetSkill;
 
     /**
-     * How good he is in preventing tyre wear (higher values means he will have less tyre wear and consequently
-     * he will be able do keep doing good laptimes for a longer period and pit later due to that).
+     * How good he is in preventing tyre wear (higher values means he will have less tyre wear, and consequently
+     * he will be able to do keep doing good lap times for a longer period and pit later due to that).
      * This doesn't change the behavior of the driver (i.e. he won't drive differently to try to save tires), just the tyre wear.
      */
     private Double tyreManagement;
@@ -108,9 +108,9 @@ final class XMLDriver {
     /**
      * For now this parameter works in oval tracks only (but in future it will be extended to all track types);
      * The higher the value, the more the AI will try to save fuel in some strategic situations instead of pushing,
-     * like when it sees it can maybe save a pitstop, it will try to stay in draft and coasting instead of overtaking
-     * while at the same time trying to not lose much distance to the race leader. It doesnt mean high value is better
-     * than low value, its just a characteristic of the driver.
+     * like when it sees it can maybe save a pit stop, it will try to stay in draft and coasting instead of overtaking
+     * while at the same time trying to not lose much distance to the race leader. It doesn't mean high value is better
+     * than low value, it's just a characteristic of the driver.
      */
     private Double fuelManagement;
 
@@ -120,8 +120,8 @@ final class XMLDriver {
     private Double blueFlagConceding;
 
     /**
-     * Drivers with high weather_tyre_changes are more likely to make pitstops for changing tyres when the track wetness state changes.
-     * It doesnt mean 1.0 is better than 0.0, its just a characteristic of the driver, not really a skill.
+     * Drivers with high weather_tyre_changes are more likely to make pit stops for changing tyres when the track wetness state changes.
+     * It doesn't mean 1.0 is better than 0.0, it's just a characteristic of the driver, not really a skill.
      * Sometimes staying longer on the track with the wrong tyres is better, sometimes its worse.
      */
     private Double weatherTyreChanges;
@@ -185,7 +185,7 @@ final class XMLDriver {
 
     /**
      * Lightweight accessor method.
-     * @return 3 letter country code. This is used for displaying the country flag.
+     * @return 3-letter country code. This is used for displaying the country flag.
      */
     @XmlElement(name = "country")
     public String getCountry() {
@@ -194,7 +194,7 @@ final class XMLDriver {
 
     /**
      * Lightweight mutator method.
-     * @param country 3 letter country code. This is used for displaying the country flag.
+     * @param country 3-letter country code. This is used for displaying the country flag.
      */
     public void setCountry(String country) {
         this.country = country;
@@ -219,7 +219,7 @@ final class XMLDriver {
 
     /**
      * Lightweight accessor method.
-     * @return Qualification Session driver skill. Its completely independent from the race_skill.
+     * @return Qualification Session driver skill. Its completely independent of the race_skill.
      */
     @XmlElement(name = "qualifying_skill")
     public Double getQualifyingSkill() {
@@ -228,7 +228,7 @@ final class XMLDriver {
 
     /**
      * Lightweight mutator method.
-     * @param qualifyingSkill Qualification Session driver skill. Its completely independent from the race_skill.
+     * @param qualifyingSkill Qualification Session driver skill. Its completely independent of the race_skill.
      */
     public void setQualifyingSkill(Double qualifyingSkill) {
         this.qualifyingSkill = qualifyingSkill;

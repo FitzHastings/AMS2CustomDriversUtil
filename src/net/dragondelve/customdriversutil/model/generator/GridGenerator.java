@@ -72,9 +72,10 @@ public class GridGenerator {
      */
     public Grid generateNewGrid() {
         Grid grid = new Grid();
+        grid.setVehicleClass(settings.getVehicleClass());
         int i = 0;
         Grid namesSource = null;
-        if(settings.isUseNAMeS()) {
+        if (settings.isUseNAMeS()) {
             try {
                 namesSource = (new XMLGridImporter().importFromFile(new File(CustomDriverUtilMain.class.getClassLoader().getResource("NAMeS/" + settings.getVehicleClass().getXmlName() + ".xml").toURI())));
             } catch (URISyntaxException e) {
@@ -91,7 +92,7 @@ public class GridGenerator {
                 driver.nameProperty().set("drv"+ (i+1) + liveryName.substring(liveryName.length()-8));
                 driver.countryProperty().set("GBR");
             } else if (settings.isUseNAMeS()) {
-                if(namesSource != null) {
+                if (namesSource != null) {
                     Driver name = namesSource.getDrivers().filtered(d -> d.getLiveryName().equals(driver.getLiveryName())).stream().findFirst().get();
                     if (name != null) {
                         driver.nameProperty().set(name.getName());
@@ -107,7 +108,7 @@ public class GridGenerator {
 
             if (generator != null) {
                 driver.qualifyingSkillProperty().set(generator.nextValue());
-                if(settings.isBindQualiAndRaceSkills())
+                if (settings.isBindQualiAndRaceSkills())
                     driver.raceSkillProperty().set(Math.max(driver.getQualifyingSkill() - settings.getBoundSkillsGap(), 0.0));
                 else
                     driver.raceSkillProperty().set(generator.nextValue());
@@ -153,7 +154,7 @@ public class GridGenerator {
             for(Driver driver : grid.getDrivers()) {
                 TrackOverride trackOverride = new TrackOverride();
                 trackOverride.setOverrideFlags(Configurator.getInstance().getConfiguration().getDefaultTrackOverrideFlags());
-                double newRaceSkill = (maxRaceSkill - driver.getRaceSkill()) / delta * (delta / 0.5);
+                double newRaceSkill = ((maxRaceSkill - driver.getRaceSkill()) / delta) * (delta * 0.5) + driver.getRaceSkill();
                 trackOverride.getOverrideFlags().overrideRaceSkillProperty().set(true);
                 trackOverride.getOverrideFlags().overrideQualifyingSkillProperty().set(true);
                 trackOverride.raceSkillProperty().set(newRaceSkill);

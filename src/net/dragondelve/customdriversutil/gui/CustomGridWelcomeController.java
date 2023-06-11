@@ -58,7 +58,7 @@ public class CustomGridWelcomeController implements StageController {
 
     /**
      * Button that performs the newEmptyGridAction on action.
-     * Shows the user the main window with the empty grid (the same as if he just skipped this screen.
+     * Shows the user the main window with the empty grid, same as if he just skipped this screen.
      */
     @FXML
     private Button newEmptyGridButton;
@@ -154,10 +154,14 @@ public class CustomGridWelcomeController implements StageController {
         File file = fileChooser.showOpenDialog(stage);
 
         XMLGridImporter importer = new XMLGridImporter();
-        if(file != null) {
+        if (file != null) {
             Grid importedGrid = importer.importFromFile(file);
             if (importedGrid != null) {
-                //TODO:Check for vehicleClass here
+                VehicleClass vehicleClass = LibraryManager.getInstance().getVehicleClassLibrary().findVanillaVehicleClass(file.getName().substring(0, file.getName().length()-4));
+                if (vehicleClass != null) {
+                    importedGrid.setVehicleClass(vehicleClass);
+                } else
+                    importedGrid.setVehicleClass(new VehicleClass());
                 controller.setEditedGrid(importedGrid);
                 nextScene(controller, DDUtil.getInstance().MAIN_WINDOW_FXML_URL);
             }
@@ -177,10 +181,10 @@ public class CustomGridWelcomeController implements StageController {
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("xml library file", "*.xml"));
         fileChooser.setInitialDirectory(new File("grids"));
         File file = fileChooser.showOpenDialog(stage);
-        if(file == null)
+        if (file == null)
             return;
         VehicleClass vehicleClass = XMLGridImporter.importVehicleClassFromXMLGrid(file);
-        if(vehicleClass == null)
+        if (vehicleClass == null)
             return;
 
         LibraryManager.getInstance().getVehicleClassLibrary().getVehicleClasses().add(vehicleClass);
@@ -210,7 +214,7 @@ public class CustomGridWelcomeController implements StageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if(skipWelcomeScreenCheckBox.isSelected()) {
+        if (skipWelcomeScreenCheckBox.isSelected()) {
             Configurator.getInstance().getConfiguration().setSkipWelcomeScreen(true);
             Configurator.getInstance().saveConfiguration();
         }

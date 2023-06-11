@@ -124,12 +124,12 @@ public class ConfigurationScreenController implements StageController {
     /**
      * Stage on which this StageController is displayed.
      */
-    Stage stage;
+    private Stage stage;
 
     /**
      * Buffer of the current configuration.
      */
-    Configuration buffer = new Configuration();
+    private final Configuration buffer = new Configuration();
 
     /**
      * Initialize method initializes all the visual elements before they are displayed by the user.
@@ -143,6 +143,7 @@ public class ConfigurationScreenController implements StageController {
 
         trackLibraryTextField.setText(buffer.getTrackLibraryPathname());
         vehicleClassLibraryTextField.setText(buffer.getVehicleClassLibraryPathname());
+        driverLibraryTextField.setText(buffer.getDriverLibraryPathname());
 
         okButton.setOnAction(e -> okAction());
         cancelButton.setOnAction(e -> cancelAction());
@@ -155,7 +156,7 @@ public class ConfigurationScreenController implements StageController {
 
         trackLibraryFileChooserButton.setOnAction(e -> {
             File file = LibraryManager.createLibraryFileChooser("Choose Track Library", "library/tracks").showOpenDialog(stage);
-            if(file != null) {
+            if (file != null) {
                 PathRelativisor relativisor = new PathRelativisor(file);
                 trackLibraryTextField.setText(relativisor.relativize());
             }
@@ -163,9 +164,17 @@ public class ConfigurationScreenController implements StageController {
 
         vehicleClassFileChooserButton.setOnAction(e -> {
             File file = LibraryManager.createLibraryFileChooser("Choose Vehicle Library", "library/vehicles").showOpenDialog(stage);
-            if(file != null) {
+            if (file != null) {
                 PathRelativisor relativisor = new PathRelativisor(file);
                 vehicleClassLibraryTextField.setText(relativisor.relativize());
+            }
+        });
+
+        driverLibraryFileChooserButton.setOnAction(e -> {
+            File file = LibraryManager.createLibraryFileChooser("Choose Driver Library", "library/drivers").showOpenDialog(stage);
+            if (file != null) {
+                PathRelativisor relativisor = new PathRelativisor(file);
+                driverLibraryTextField.setText(relativisor.relativize());
             }
         });
     }
@@ -185,6 +194,7 @@ public class ConfigurationScreenController implements StageController {
     private void createConfigurationBuffer() {
         buffer.setTrackLibraryPathname(Configurator.getInstance().getConfiguration().getTrackLibraryPathname());
         buffer.setVehicleClassLibraryPathname(Configurator.getInstance().getConfiguration().getVehicleClassLibraryPathname());
+        buffer.setDriverLibraryPathname(Configurator.getInstance().getConfiguration().getDriverLibraryPathname());
         buffer.setDefaultDriverFlags(Configurator.getInstance().getConfiguration().getDefaultDriverFlags());
         buffer.setDefaultTrackOverrideFlags(Configurator.getInstance().getConfiguration().getDefaultTrackOverrideFlags());
         buffer.setSkipWelcomeScreen(Configurator.getInstance().getConfiguration().isSkipWelcomeScreen());
@@ -199,6 +209,7 @@ public class ConfigurationScreenController implements StageController {
     private void okAction() {
         buffer.setTrackLibraryPathname(trackLibraryTextField.getText());
         buffer.setVehicleClassLibraryPathname(vehicleClassLibraryTextField.getText());
+        buffer.setDriverLibraryPathname(driverLibraryTextField.getText());
         buffer.setSkipWelcomeScreen(skipWelcomeScreenCheckBox.isSelected());
         buffer.setChooseLivery(chooseLiveryCheckBox.isSelected());
         Configurator.getInstance().setConfiguration(buffer);

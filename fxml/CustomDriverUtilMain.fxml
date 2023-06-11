@@ -69,8 +69,8 @@ limitations under the License. -->
                    <MenuItem fx:id="importVehicleClassesItem" mnemonicParsing="false" text="Import"/>
                </Menu>
                <Menu mnemonicParsing="false" text="Drivers">
-                   <MenuItem mnemonicParsing="false" text="Export"/>
-                   <MenuItem mnemonicParsing="false" text="Import"/>
+                   <MenuItem fx:id="exportDriverLibraryItem" mnemonicParsing="false" text="Export"/>
+                   <MenuItem fx:id="importDriverLibraryItem" mnemonicParsing="false" text="Import"/>
                </Menu>
            </Menu>
            <Menu mnemonicParsing="false" text="Settings">

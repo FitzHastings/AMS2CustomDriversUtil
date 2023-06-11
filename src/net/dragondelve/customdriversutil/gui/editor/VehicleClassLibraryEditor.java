@@ -67,7 +67,7 @@ public class VehicleClassLibraryEditor implements Editor<VehicleClass> {
     private SplitPane rootPane;
 
     /**
-     * TableColumn that is a part of VehicleClassTableView that displays the human readable name for the vehicle class.
+     * TableColumn that is a part of VehicleClassTableView that displays the human-readable name for the vehicle class.
      */
     @FXML
     private TableColumn<VehicleClass, String> vehicleClassNameTableColumn;
@@ -126,12 +126,12 @@ public class VehicleClassLibraryEditor implements Editor<VehicleClass> {
 
         vehicleClassTableView.setItems(items);
         vehicleClassTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if(oldValue != null)
+            if (oldValue != null)
                 unbindVehicleCLass(oldValue);
 
-            if(newValue != null) {
+            if (newValue != null) {
                 bindVehicleClass(newValue);
-                if(controlsAreDisabled)
+                if (controlsAreDisabled)
                     setDisableControls(false);
             } else if (!controlsAreDisabled)
                 setDisableControls(true);
@@ -220,7 +220,7 @@ public class VehicleClassLibraryEditor implements Editor<VehicleClass> {
     private void removeLiveryNameAction() {
         String selectedLiveryName = liveryNameListView.getSelectionModel().getSelectedItem();
         if (selectedLiveryName != null) {
-            if(!liveryNameListView.getSelectionModel().isSelected(liveryNameListView.getItems().size()))
+            if (!liveryNameListView.getSelectionModel().isSelected(liveryNameListView.getItems().size()))
                 liveryNameListView.getSelectionModel().selectNext();
             else
                 liveryNameListView.getSelectionModel().selectPrevious();

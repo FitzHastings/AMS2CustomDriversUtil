@@ -36,6 +36,11 @@ public class Configuration {
     private String vehicleClassLibraryPathname;
 
     /**
+     * Pathname to the last imported DriverLibrary
+     */
+    private String driverLibraryPathname;
+
+    /**
      * Default override flags that are set to every new Driver.
      */
     private OverrideFlags defaultDriverFlags;
@@ -92,6 +97,23 @@ public class Configuration {
      */
     public void setVehicleClassLibraryPathname(String vehicleClassLibraryPathname) {
         this.vehicleClassLibraryPathname = vehicleClassLibraryPathname;
+    }
+
+    /**
+     * Lightweight accessor method.
+     * @return Pathname to the last imported DriverLibrary
+     */
+    @XmlElement (name = "driver_library")
+    public String getDriverLibraryPathname() {
+        return driverLibraryPathname;
+    }
+
+    /**
+     * Lightweight mutator method.
+     * @param driverLibraryPathname Pathname to the last imported DriverLibrary
+     */
+    public void setDriverLibraryPathname(String driverLibraryPathname) {
+        this.driverLibraryPathname = driverLibraryPathname;
     }
 
     /**

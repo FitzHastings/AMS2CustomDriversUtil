@@ -21,7 +21,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 
 /**
- *  Hybrid Choice Box is a choice box with a checkbox inside an hbox. if the checkbox is set then Choice Box is
+ *  Hybrid Choice Box is a choice box with a checkbox inside an HBox. if the checkbox is set then Choice Box is
  *  displayed. if the checkbox is not selected then it displays a TextField instead.
  * @param <T> Choice box that will be displayed if the CheckBox is selected.
  */
@@ -59,7 +59,7 @@ public class HybridChoiceHBox<T extends ChoiceBox<?>> extends HBox {
         //Makes it so the label of the checkbox should be always visible if it's possible in the current layout.
         checkBox.setMinWidth(checkBox.getPrefWidth());
         checkBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue) {
+            if (newValue) {
                 this.getChildren().remove(textField);
                 this.getChildren().add(0, choiceBox);
             } else {

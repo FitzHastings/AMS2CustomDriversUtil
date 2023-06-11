@@ -80,7 +80,7 @@ public class RandomValueGenerator implements ValueGenerator {
      */
     @Override
     public void setLimits(double floor, double ceiling) {
-        if(floor > ceiling)
+        if (floor > ceiling)
             DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Random Value generator received floor that is larger than the ceiling, Limits will not be set");
         else if (floor < 0.0 || floor > 1.0)
             DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Random Value generator received floor '" + floor + "' that is an incorrect value");

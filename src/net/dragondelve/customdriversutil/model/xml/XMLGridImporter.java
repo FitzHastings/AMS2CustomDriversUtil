@@ -45,7 +45,7 @@ public class XMLGridImporter implements GridImporter {
     @Override
     public Grid importFromFile(File file) {
         XMLGrid xmlGrid = loadXMLGrid(file);
-        if(xmlGrid != null)
+        if (xmlGrid != null)
             return fromXMLGrid(xmlGrid);
         else
             return null;
@@ -79,7 +79,7 @@ public class XMLGridImporter implements GridImporter {
      */
     public static VehicleClass importVehicleClassFromXMLGrid(File file) {
         XMLGrid xmlGrid = loadXMLGrid(file);
-        if(xmlGrid != null)
+        if (xmlGrid != null)
             return xmlGrid.generateVehicleClass(file.getName(), file.getName());
         else
             return null;
@@ -91,7 +91,7 @@ public class XMLGridImporter implements GridImporter {
      * @return new instance of Grid from XMLGrid.
      */
     private Grid fromXMLGrid(XMLGrid xmlGrid) {
-        if(xmlGrid == null)
+        if (xmlGrid == null)
             return null;
 
         Grid grid = new Grid();
@@ -109,7 +109,7 @@ public class XMLGridImporter implements GridImporter {
         });
 
         xmlGrid.getXmlDrivers().forEach(xmlDriver -> {
-            if(xmlDriver.getTracks() == null)
+            if (xmlDriver.getTracks() == null)
                 return;
 
             TrackOverride override = new TrackOverride();
@@ -117,7 +117,7 @@ public class XMLGridImporter implements GridImporter {
             List<Track> tracks = new ArrayList<>();
             stringTracks.forEach(stringTrack-> {
                 Track track = LibraryManager.getInstance().getTrackLibrary().findTrackWithXmlName(stringTrack);
-                if(track != null)
+                if (track != null)
                     tracks.add(track);
                 else
                     tracks.add(new Track(stringTrack, stringTrack));
@@ -129,7 +129,7 @@ public class XMLGridImporter implements GridImporter {
 
             importBaseProperties(xmlDriver, override);
 
-            if(collect.size() == 1) {
+            if (collect.size() == 1) {
                 collect.get(0).getTrackOverrides().add(override);
             }
         });

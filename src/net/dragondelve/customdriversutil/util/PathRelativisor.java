@@ -91,13 +91,13 @@ public final class PathRelativisor {
      * @return Relative path of the path set in the PathRelativisor. If the path is not inside the file it returns absolute path instead.
      */
     public String relativizeTo(Path path) {
-        if(!this.path.isAbsolute())
+        if (!this.path.isAbsolute())
             return this.path.toString();
-        if(!path.isAbsolute())
+        if (!path.isAbsolute())
             return this.path.toString();
 
         Path relative = path.relativize(this.path);
-        if(relative.toString().contains(".."+File.separator))
+        if (relative.toString().contains(".."+File.separator))
             return this.path.toString();
         else
             return relative.toString();

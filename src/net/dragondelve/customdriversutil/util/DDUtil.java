@@ -23,7 +23,7 @@ import java.util.logging.Logger;
  * Non instatiable. in order to retrieve its only instance use getInstance.
  */
 public class DDUtil {
-    public static Logger DEFAULT_LOGGER = Logger.getLogger("AMS2 Custom Drivers Util");
+    public static final Logger DEFAULT_LOGGER = Logger.getLogger("AMS2 Custom Drivers Util");
 
     public static final String DEFAULT_UPDATE = "http://dragondelve.net";
 

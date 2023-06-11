@@ -126,8 +126,14 @@ public class NewGridWizardController implements StageController {
      */
     private Stage stage;
 
-    DoubleProperty minValue = new SimpleDoubleProperty(0.0);
-    DoubleProperty maxValue = new SimpleDoubleProperty(1.0);
+    /**
+     * Minimum value of all driver properties to be used in generating the new Grid.
+     */
+    private final DoubleProperty minValue = new SimpleDoubleProperty(0.0);
+    /**
+     * Maximum value of all driver properties to be used in generating the new Grid.
+     */
+    private final DoubleProperty maxValue = new SimpleDoubleProperty(1.0);
 
     private final GeneratorSettings generatorSettings = new GeneratorSettings();
 
@@ -185,7 +191,7 @@ public class NewGridWizardController implements StageController {
         generateGridCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 emptyGridCheckBox.selectedProperty().set(false);
-                if(vehicleClassChoiceBox.valueProperty().get() == null)
+                if (vehicleClassChoiceBox.valueProperty().get() == null)
                     generateButton.setDisable(true);
             }
         });
@@ -209,7 +215,7 @@ public class NewGridWizardController implements StageController {
         });
 
         vehicleClassChoiceBox.valueProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue != null)
+            if (newValue != null)
                 generateButton.setDisable(false);
         });
 
@@ -246,7 +252,7 @@ public class NewGridWizardController implements StageController {
 
 
     private void generateAction() {
-        if(emptyGridCheckBox.isSelected()) {
+        if (emptyGridCheckBox.isSelected()) {
             loadMainWindow(new Grid());
             return;
         }

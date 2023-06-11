@@ -27,8 +27,6 @@ import net.dragondelve.customdriversutil.util.Configurator;
 import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
 
-//TODO: Driver Library
-//TODO: Other Minor tweaks.
 //TODO: Clear all other TODOs
 //TODO: Cleanup, test and publish
 
@@ -52,19 +50,22 @@ public class CustomDriverUtilMain extends Application {
      */
     @Override
     public void start(Stage primaryStage) {
-        if(!Configurator.getInstance().loadConfiguration()) {
+        if (!Configurator.getInstance().loadConfiguration()) {
             Configurator.getInstance().setConfiguration(generateDefaultConfiguration());
             Configurator.getInstance().saveConfiguration();
         }
         LibraryManager.getInstance().importTrackLibrary(Configurator.getInstance().getConfiguration().getTrackLibraryPathname());
         LibraryManager.getInstance().importVehicleClassLibrary(Configurator.getInstance().getConfiguration().getVehicleClassLibraryPathname());
+        if (Configurator.getInstance().getConfiguration().getDriverLibraryPathname() != null && Configurator.getInstance().getConfiguration().getDriverLibraryPathname().length() > 0) {
+           LibraryManager.getInstance().importDriverLibrary(Configurator.getInstance().getConfiguration().getDriverLibraryPathname()); 
+        }
 
         primaryStage.setTitle("Custom Driver Utility V2.0");
         primaryStage.setMinWidth(880);
         primaryStage.setMinHeight(700);
         primaryStage.setHeight(700);
         primaryStage.setWidth(1200);
-        if(Configurator.getInstance().getConfiguration().isSkipWelcomeScreen()) {
+        if (Configurator.getInstance().getConfiguration().isSkipWelcomeScreen()) {
             try {
                 FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().MAIN_WINDOW_FXML_URL);
                 StageController stageController = new CustomDriverUtilController();

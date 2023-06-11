@@ -29,7 +29,7 @@ public abstract class DriverBase {
     private final StringProperty name = new SimpleStringProperty();
 
     /**
-     * 3 letter country code. This is used for displaying the country flag.
+     * 3-letter country code. This is used for displaying the country flag.
      */
     private final StringProperty country = new SimpleStringProperty();
 
@@ -90,8 +90,8 @@ public abstract class DriverBase {
     private final DoubleProperty wetSkill = new SimpleDoubleProperty();
 
     /**
-     * How good he is in preventing tyre wear (higher values means he will have less tyre wear and consequently
-     * he will be able do keep doing good laptimes for a longer period and pit later due to that).
+     * How good he is in preventing tyre wear (higher values means he will have less tyre wear, and consequently
+     * he will be able to do keep doing good lap times for a longer period and pit later due to that).
      * This doesn't change the behavior of the driver (i.e. he won't drive differently to try to save tires), just the tyre wear.
      */
     private final DoubleProperty tyreManagement = new SimpleDoubleProperty();
@@ -99,9 +99,9 @@ public abstract class DriverBase {
     /**
      * For now this parameter works in oval tracks only (but in future it will be extended to all track types);
      * The higher the value, the more the AI will try to save fuel in some strategic situations instead of pushing,
-     * like when it sees it can maybe save a pitstop, it will try to stay in draft and coasting instead of overtaking
-     * while at the same time trying to not lose much distance to the race leader. It doesnt mean high value is better
-     * than low value, its just a characteristic of the driver.
+     * like when it sees it can maybe save a pit stop, it will try to stay in draft and coasting instead of overtaking
+     * while at the same time trying to not lose much distance to the race leader. It doesn't mean high value is better
+     * than low value, it's just a characteristic of the driver.
      */
     private final DoubleProperty fuelManagement = new SimpleDoubleProperty();
 

@@ -191,7 +191,7 @@ public class OverrideFlagsEditor implements Editor<OverrideFlags> {
      */
     @Override
     public void setItems(ObservableList<OverrideFlags> items) {
-        if(items != null && items.size() == 1)
+        if (items != null && items.size() == 1)
             overrideFlags = items.get(0);
         else
             DDUtil.DEFAULT_LOGGER.log(Level.SEVERE, "ERROR: OverrideFlagsEditor received items incorrectly.");

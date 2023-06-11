@@ -28,7 +28,7 @@ public class RangeValueGenerator implements ValueGenerator {
     /**
      * Pseudo random generator used to generate noise values.
      */
-    Random random = new Random();
+    private final Random random = new Random();
 
     /**
      * Number of drivers in the range.
@@ -81,7 +81,7 @@ public class RangeValueGenerator implements ValueGenerator {
     @Override
     public double nextValue() {
         double noiseValue = random.nextDouble() * noise;
-        double rangeChange = 1.0 / nDrivers;
+        double rangeChange = 1.0 / (nDrivers - 1);
         double rangeValue = rangeChange*currentDriver * (1 - noise);
         return (noiseValue + rangeValue) * (ceiling - floor) + floor;
     }
@@ -93,7 +93,7 @@ public class RangeValueGenerator implements ValueGenerator {
      */
     @Override
     public void setLimits(double floor, double ceiling) {
-        if(floor > ceiling)
+        if (floor > ceiling)
             DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Range Value generator received floor that is larger than the ceiling, Limits will not be set");
         else if (floor < 0.0 || floor > 1.0)
             DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Range Value generator received floor '" + floor + "' that is an incorrect value");

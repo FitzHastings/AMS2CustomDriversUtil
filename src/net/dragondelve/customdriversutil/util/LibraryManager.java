@@ -15,14 +15,16 @@
 package net.dragondelve.customdriversutil.util;
 
 import javafx.stage.FileChooser;
-import net.dragondelve.customdriversutil.model.TrackLibrary;
-import net.dragondelve.customdriversutil.model.VehicleClassLibrary;
+import net.dragondelve.customdriversutil.model.*;
+import net.dragondelve.customdriversutil.model.xml.XMLGridExporter;
+import net.dragondelve.customdriversutil.model.xml.XMLGridImporter;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
+import java.util.List;
 import java.util.logging.Level;
 
 /**
@@ -41,6 +43,8 @@ public class LibraryManager {
      * Currently used VehicleClassLibrary. VehicleClassLibrary is used to allow players to select a livery from a list.
      */
     private VehicleClassLibrary vehicleClassLibrary = new VehicleClassLibrary();
+
+    private final DriverLibrary driverLibrary = new DriverLibrary();
 
     /**
      * The only instance of Library manager that exists, You should use getInstance() in order to get it.
@@ -85,7 +89,6 @@ public class LibraryManager {
             DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Track library loading successful from path: " + pathname);
             return true;
         } catch (JAXBException | IllegalArgumentException e) {
-            e.printStackTrace();
             DDUtil.DEFAULT_LOGGER.log(Level.WARNING,"Track library loading failed from path: " + pathname);
             return false;
         }
@@ -98,7 +101,7 @@ public class LibraryManager {
      */
     public boolean exportTrackLibrary(String pathname) {
         File library = new File(pathname);
-        DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Track Library saving initiated with path: " + pathname);
+        DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Track Library saving initiated to path: " + pathname);
         try {
             JAXBContext context = JAXBContext.newInstance(TrackLibrary.class);
             Marshaller marshaller = context.createMarshaller();
@@ -107,8 +110,7 @@ public class LibraryManager {
             DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Track Library successfully saved to path: " + pathname);
             return true;
         } catch (JAXBException | IllegalArgumentException e) {
-            e.printStackTrace();
-            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Track Library saving failed with path: " + pathname);
+            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Track Library saving failed to path: " + pathname);
             return false;
         }
     }
@@ -128,7 +130,7 @@ public class LibraryManager {
      */
     public boolean importVehicleClassLibrary(String pathname) {
         File library = new File(pathname);
-        DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Vehicle Class Library loading initiated with path: " + pathname);
+        DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Vehicle Class Library loading initiated from path: " + pathname);
         try {
             JAXBContext context = JAXBContext.newInstance(VehicleClassLibrary.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
@@ -136,15 +138,14 @@ public class LibraryManager {
             DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Vehicle Class Library loading successful from path: " + pathname);
             return true;
         } catch (JAXBException | IllegalArgumentException e) {
-            e.printStackTrace();
-            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Vehicle Class Library loading failed with path: " + pathname);
+            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Vehicle Class Library loading failed from path: " + pathname);
             return false;
         }
     }
 
     /**
      * Exports the currently loaded VehicleClassLibrary to an XML file located at a given pathname.
-     * @param pathname Pathname to an XML file that contains a Vehicle Class Library.
+     * @param pathname Pathname to a File to which the VehicleClassLibrary should be exported.
      * @return True if exporting has succeeded, false if it has failed.
      */
     public boolean exportVehicleClassLibrary(String pathname) {
@@ -155,13 +156,57 @@ public class LibraryManager {
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.marshal(vehicleClassLibrary, library);
-            DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Vehicle Class Library loading successful to path: " + pathname);
+            DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Vehicle Class Library saving successful to path: " + pathname);
             return true;
         } catch (JAXBException | IllegalArgumentException e) {
-            e.printStackTrace();
             DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Vehicle Class Library saving failed to path: " + pathname);
             return false;
         }
+    }
+
+    public DriverLibrary getDriverLibrary() {
+        return this.driverLibrary;
+    }
+
+    /**
+     * Imports the DriverLibrary from a File located at a given pathname.
+     * @param pathname Pathname to an XML file that contains a Driver Library.
+     * @return True if importing has succeeded, false if it has failed.
+     */
+    public boolean importDriverLibrary(String pathname) {
+        File library = new File(pathname);
+        DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Driver Library loading initiated from path: " + pathname);
+
+        List<Driver> importedDrivers = new XMLGridImporter().importFromFile(library).getDrivers();
+        if (importedDrivers.size() != 0) {
+            driverLibrary.getDrivers().clear();
+            driverLibrary.getDrivers().addAll(importedDrivers);
+            DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Driver Library loading successful from path: " + pathname);
+            return true;
+        }
+        else {
+            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Driver Library loading failed from path: " + pathname);
+            return false;
+        }
+    }
+
+    /**
+     * Exports the currently loaded driverLibrary to an XML file located at a given pathname.
+     * @param pathname pathname to a File to which the DriverLibrary should be exported.
+     * @return Always returns true.
+     */
+    public boolean exportDriverLibrary(String pathname) {
+        File library = new File(pathname);
+        DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Driver Library saving initiated to path: " + pathname);
+
+        //Removing all redundant livery names from the library before exporting.
+        driverLibrary.getDrivers().forEach(driver -> driver.liveryNameProperty().set(""));
+
+        XMLGridExporter exporter = new XMLGridExporter();
+        Grid grid = new Grid();
+        grid.getDrivers().addAll(driverLibrary.getDrivers());
+        exporter.exportToFile(grid, library);
+        return true;
     }
 
     /**

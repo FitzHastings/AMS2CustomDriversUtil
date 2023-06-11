@@ -95,7 +95,7 @@ public class DefineTracksStep implements StageController {
 
         stage.setTitle("Choose Tracks");
 
-        if(trackOverride == null) {
+        if (trackOverride == null) {
             DDUtil.DEFAULT_LOGGER.log(Level.SEVERE, "Define Track Step initialized without calling setTrackOverride() first.");
             return;
         }
@@ -108,7 +108,7 @@ public class DefineTracksStep implements StageController {
         //Handling Double Clicks
         trackLibraryListView.setOnMouseClicked(e-> {
             Track selectedTrack = trackLibraryListView.getSelectionModel().getSelectedItem();
-            if(e.getClickCount() == 2 && selectedTrack != null) {
+            if (e.getClickCount() == 2 && selectedTrack != null) {
                 selectedListView.getItems().add(selectedTrack);
                 trackLibraryListView.getItems().remove(selectedTrack);
             }
@@ -116,7 +116,7 @@ public class DefineTracksStep implements StageController {
 
         selectedListView.setOnMouseClicked(e-> {
             Track selectedTrack = selectedListView.getSelectionModel().getSelectedItem();
-            if(e.getClickCount() >= 2 && selectedTrack != null) {
+            if (e.getClickCount() >= 2 && selectedTrack != null) {
                 trackLibraryListView.getItems().add(selectedTrack);
                 selectedListView.getItems().remove(selectedTrack);
             }
@@ -124,7 +124,7 @@ public class DefineTracksStep implements StageController {
 
         //Handle Drag and drop from trackLibraryListView into selectedListView.
         trackLibraryListView.setOnDragDetected(event -> {
-            if(trackLibraryListView.getSelectionModel().getSelectedItem() != null) {
+            if (trackLibraryListView.getSelectionModel().getSelectedItem() != null) {
                 Dragboard db = trackLibraryListView.startDragAndDrop(TransferMode.ANY);
                 ClipboardContent content = new ClipboardContent();
                 content.putString(trackLibraryListView.getSelectionModel().getSelectedItem().getName());
@@ -142,7 +142,7 @@ public class DefineTracksStep implements StageController {
 
         selectedListView.setOnDragDropped((DragEvent event) -> {
             Track selectedTrack = trackLibraryListView.getSelectionModel().getSelectedItem();
-            if(trackLibraryListView.getSelectionModel().getSelectedItem() != null) {
+            if (trackLibraryListView.getSelectionModel().getSelectedItem() != null) {
                 selectedListView.getItems().add(selectedTrack);
                 trackLibraryListView.getItems().remove(selectedTrack);
             }
@@ -152,7 +152,7 @@ public class DefineTracksStep implements StageController {
 
         //Handle Drag and drop from selectedListView into trackLibraryListView.
         selectedListView.setOnDragDetected(event -> {
-            if(selectedListView.getSelectionModel().getSelectedItem() != null) {
+            if (selectedListView.getSelectionModel().getSelectedItem() != null) {
                 Dragboard db = selectedListView.startDragAndDrop(TransferMode.ANY);
                 ClipboardContent content = new ClipboardContent();
                 content.putString(selectedListView.getSelectionModel().getSelectedItem().getName());
@@ -171,7 +171,7 @@ public class DefineTracksStep implements StageController {
 
         trackLibraryListView.setOnDragDropped((DragEvent event) -> {
             Track selectedTrack = selectedListView.getSelectionModel().getSelectedItem();
-            if(selectedListView.getSelectionModel().getSelectedItem() != null) {
+            if (selectedListView.getSelectionModel().getSelectedItem() != null) {
                 trackLibraryListView.getItems().add(selectedTrack);
                 selectedListView.getItems().remove(selectedTrack);
             }
@@ -190,7 +190,7 @@ public class DefineTracksStep implements StageController {
     @FXML
     public void setTrackOverride(TrackOverride trackOverride) {
         this.trackOverride = trackOverride;
-        if(selectedListView != null)
+        if (selectedListView != null)
             selectedListView.getItems().addAll(this.trackOverride.getTrack());
     }
 

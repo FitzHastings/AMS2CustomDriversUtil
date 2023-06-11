@@ -107,11 +107,11 @@ public class TrackLibraryEditor implements Editor<Track> {
         trackTableView.setItems(items);
         trackNameColumn.setCellValueFactory(e-> e.getValue().nameProperty());
         trackTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if(oldValue != null)
+            if (oldValue != null)
                 unbindTrack(oldValue);
 
-            if(newValue != null) {
-                if(controlsAreDisabled)
+            if (newValue != null) {
+                if (controlsAreDisabled)
                     setDisableControls(false);
                 bindTrack(newValue);
             } else if (!controlsAreDisabled) {
@@ -176,8 +176,8 @@ public class TrackLibraryEditor implements Editor<Track> {
      */
     private void removeTrackAction() {
         Track selectedTrack = trackTableView.getSelectionModel().getSelectedItem();
-        if(selectedTrack != null) {
-            if(!trackTableView.getSelectionModel().isSelected(trackTableView.getItems().size()))
+        if (selectedTrack != null) {
+            if (!trackTableView.getSelectionModel().isSelected(trackTableView.getItems().size()))
                 trackTableView.getSelectionModel().selectNext();
             else
                 trackTableView.getSelectionModel().selectPrevious();

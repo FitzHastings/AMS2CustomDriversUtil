@@ -22,8 +22,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import net.dragondelve.customdriversutil.gui.editor.DriverEditor;
 import net.dragondelve.customdriversutil.gui.editor.Editor;
@@ -48,6 +53,36 @@ public class CustomDriverUtilController implements StageController {
      */
     @FXML
     private Button addDriverButton;
+
+    /**
+     * Button that performs addLibraryDriverAction on action;
+     */
+    @FXML
+    private Button addLibraryDriverButton;
+
+    /**
+     * TableView that displays the Drivers in the currently loaded  DriverLibrary.
+     */
+    @FXML
+    private TableView<Driver> libraryDriverTableView;
+
+    /**
+     * Table column in the libraryDriverTableView that displays the nameProperty of the Drivers in the table.
+     */
+    @FXML
+    private TableColumn<Driver, String> libraryDriverNameColumn;
+
+    /**
+     * Table column in the libraryDriverTableView that displays the countryProperty  of the Drivers in the table.
+     */
+    @FXML
+    private TableColumn<Driver, String> libraryDriverCountryColumn;
+
+    /**
+     * Button that performs removeLibraryDriverAction on action.
+     */
+    @FXML
+    private Button removeLibraryDriverButton;
 
     /**
      * Opens the NewGridWizard.
@@ -144,13 +179,27 @@ public class CustomDriverUtilController implements StageController {
     private MenuItem configurationMenuItem;
 
     /**
+     * Shows a FileChooser and if a selection is made attempts to export a driver library from the file chosen.
+     * Performs exportDriverLibraryAction on action.
+     */
+    @FXML
+    private MenuItem exportDriverLibraryItem;
+
+    /**
+     * Shows a FileChooser and if a selection is made attempts to import a driver library form the file chosen.
+     * Performs importDriverLibraryAction on action.
+     */
+    @FXML
+    private MenuItem importDriverLibraryItem;
+
+    /**
      * Tableview That displays the drivers from the grid that is being edited.
      */
     @FXML
     private TableView<Driver> driversTableView;
 
     /**
-     * TableView that displays the trackOverrides for the driver selected int the driversTableView
+     * TableView that displays the trackOverrides for the driver selected in the driversTableView.
      */
     @FXML
     private TableView<TrackOverride> trackOverrideTableView;
@@ -168,7 +217,7 @@ public class CustomDriverUtilController implements StageController {
     private TableColumn<Driver, String> driverNameColumn;
 
     /**
-     * TableColumn in driver driversTableView that displays the three letter code for the driver's country.
+     * TableColumn in driver driversTableView that displays the three-letter code for the driver's country.
      */
     @FXML
     private TableColumn<Driver, String> driverCountryColumn;
@@ -215,15 +264,6 @@ public class CustomDriverUtilController implements StageController {
     public void initialize() {
         rootPane.getStylesheets().clear();
         rootPane.getStylesheets().add(DDUtil.MAIN_CSS_RESOURCE);
-
-        trackNameColumn.setCellValueFactory(e-> e.getValue().getTrack().get(0).nameProperty());
-//        GridGenerator gridGenerator = new GridGenerator();
-//        VehicleClass vehicleClass = LibraryManager.getInstance().getVehicleClassLibrary().findVehicleClassWithXmlName("F-Inter");
-//        if (vehicleClass != null) {
-//            gridGenerator.setVehicleClass(vehicleClass);
-//            editedGrid = gridGenerator.generateNewGrid();
-//        }
-
         try {
             FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().DRIVER_EDITOR_FXML_URL);
             loader.setController(driverEditor);
@@ -250,23 +290,79 @@ public class CustomDriverUtilController implements StageController {
         exportVehicleClassesItem.setOnAction(e -> exportVehicleClassesAction());
         importVehicleClassesItem.setOnAction(e -> importVehicleClassesAction());
 
+        exportDriverLibraryItem.setOnAction(e -> exportDriverLibraryAction());
+        importDriverLibraryItem.setOnAction(e -> importDriverLibraryAction());
+
         configurationMenuItem.setOnAction(e -> configurationAction());
 
         driversTableView.setItems(editedGrid.getDrivers());
         driverNameColumn.setCellValueFactory(e -> e.getValue().nameProperty());
         driverCountryColumn.setCellValueFactory(e -> e.getValue().countryProperty());
         driversTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue != null) {
+            if (newValue != null) {
                 driverEditor.setEditedDriver(newValue);
                 trackOverrideTableView.setItems(newValue.getTrackOverrides());
+                addLibraryDriverButton.setDisable(false);
+                addTrackOverrideButton.setDisable(false);
+                editTrackOverrideButton.setDisable(false);
+                removeTrackOverrideButton.setDisable(false);
+                removeDriverButton.setDisable(false);
+            } else {
+                driverEditor.setEditedDriver(null);
+                addLibraryDriverButton.setDisable(true);
+                addTrackOverrideButton.setDisable(true);
+                editTrackOverrideButton.setDisable(true);
+                removeTrackOverrideButton.setDisable(true);
+                removeDriverButton.setDisable(true);
             }
         });
+
+        libraryDriverTableView.setItems(LibraryManager.getInstance().getDriverLibrary().getDrivers());
+        libraryDriverNameColumn.setCellValueFactory(e -> e.getValue().nameProperty());
+        libraryDriverCountryColumn.setCellValueFactory(e -> e.getValue().countryProperty());
+        libraryDriverTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> removeLibraryDriverButton.setDisable(newValue == null));
+
+        trackNameColumn.setCellValueFactory(e-> e.getValue().getTrack().get(0).nameProperty());
+
+        removeDriverButton.setDisable(true);
+        addLibraryDriverButton.setDisable(true);
+        removeLibraryDriverButton.setDisable(true);
+        addTrackOverrideButton.setDisable(true);
+        editTrackOverrideButton.setDisable(true);
+        removeTrackOverrideButton.setDisable(true);
 
         addDriverButton.setOnAction(e -> addDriverAction());
         removeDriverButton.setOnAction(e -> removeDriverAction());
         addTrackOverrideButton.setOnAction(e -> addTrackOverrideAction());
         removeTrackOverrideButton.setOnAction(e -> removeTrackOverrideAction());
         editTrackOverrideButton.setOnAction(e -> editTrackOverrideAction());
+        addLibraryDriverButton.setOnAction(e -> addLibraryDriverAction());
+        removeLibraryDriverButton.setOnAction(e -> removeLibraryDriverAction());
+
+        //Handle Drag and drop from libraryDriverTableView to driversTableView
+        libraryDriverTableView.setOnDragDetected(event -> {
+            if (libraryDriverTableView.getSelectionModel().getSelectedItem() != null) {
+                Dragboard db = libraryDriverTableView.startDragAndDrop(TransferMode.ANY);
+                ClipboardContent content = new ClipboardContent();
+                content.putString(libraryDriverTableView.getSelectionModel().getSelectedItem().getName());
+                db.setContent(content);
+            }
+            event.consume();
+        });
+
+        driversTableView.setOnMouseDragged(event -> event.setDragDetect(true));
+        driversTableView.setOnDragOver((DragEvent event) ->  {
+            if (event.getGestureSource() != driversTableView && event.getDragboard().hasString())
+                event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+            event.consume();
+        });
+
+        driversTableView.setOnDragDropped((DragEvent event) -> {
+            Driver selectedDriver = libraryDriverTableView.getSelectionModel().getSelectedItem();
+            if (libraryDriverTableView.getSelectionModel().getSelectedItem() != null)
+                driversTableView.getItems().add(selectedDriver);
+            event.consume();
+        });
     }
 
     /**
@@ -293,6 +389,8 @@ public class CustomDriverUtilController implements StageController {
      */
     private void addDriverAction() {
         Driver driver = new Driver();
+        driver.nameProperty().set("New Driver");
+        driver.countryProperty().set("GBR");
         driver.setOverrideFlags(Configurator.getInstance().getConfiguration().getDefaultDriverFlags());
         editedGrid.getDrivers().add(driver);
     }
@@ -302,8 +400,23 @@ public class CustomDriverUtilController implements StageController {
      */
     private void removeDriverAction() {
         Driver editedDriver = driversTableView.getSelectionModel().getSelectedItem();
-        if(editedDriver != null)
+        if (editedDriver != null)
             driversTableView.getItems().remove(editedDriver);
+    }
+
+    /**
+     * Adds the driver currently selected in driversTableView to the Driver Library
+     * Performed by addLibraryDriverButton on action.
+     */
+    private void addLibraryDriverAction() {
+        LibraryManager.getInstance().getDriverLibrary().getDrivers().add(driversTableView.getSelectionModel().getSelectedItem());
+    }
+
+    /**
+     * Removes the driver currently selected in the libraryTableView
+     */
+    public void removeLibraryDriverAction() {
+        LibraryManager.getInstance().getDriverLibrary().getDrivers().remove(libraryDriverTableView.getSelectionModel().getSelectedItem());
     }
 
     /**
@@ -320,15 +433,6 @@ public class CustomDriverUtilController implements StageController {
     }
 
     /**
-     * if a track override is chosen in the trackOverrideTableView removes the selected track.
-     */
-    private void removeTrackOverrideAction() {
-        TrackOverride selectedTrackOverride = trackOverrideTableView.getSelectionModel().getSelectedItem();
-        if(selectedTrackOverride != null)
-            trackOverrideTableView.getItems().remove(selectedTrackOverride);
-    }
-
-    /**
      * if a track override is chosen in the trackOverrideTalbeView it opens the defineTrackStep window and passes it the
      * currently selected track override for editing.
      */
@@ -339,13 +443,22 @@ public class CustomDriverUtilController implements StageController {
     }
 
     /**
+     * if a track override is chosen in the trackOverrideTableView removes the selected track.
+     */
+    private void removeTrackOverrideAction() {
+        TrackOverride selectedTrackOverride = trackOverrideTableView.getSelectionModel().getSelectedItem();
+        if (selectedTrackOverride != null)
+            trackOverrideTableView.getItems().remove(selectedTrackOverride);
+    }
+
+    /**
      * Initializes the Track Override Editor by opening the defineTrackStep and passing it the trackOverride that
      * is passed as an argument.
      * @param override Track specific override that is going to be edited by the trackOverrideEditor.
      */
     private void initTrackOverrideEditor(TrackOverride override) {
         Driver editedDriver = driversTableView.getSelectionModel().getSelectedItem();
-        if(editedDriver == null)
+        if (editedDriver == null)
             return;
         FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().DEFINE_TRACKS_STEP_FXML_URL);
         DefineTracksStep stageController = new DefineTracksStep();
@@ -389,9 +502,12 @@ public class CustomDriverUtilController implements StageController {
      * selected.
      */
     private void exportGridAction() {
-        File file = chooseFileToSave("Choose XML Grid File", "grids");
+        FileChooser fileChooser = LibraryManager.createLibraryFileChooser("Choose XML Grid File", "grids");
+        if (editedGrid.getVehicleClass().getXmlName() != null)
+            fileChooser.setInitialFileName(editedGrid.getVehicleClass().getXmlName()+".xml");
+        File file = fileChooser.showSaveDialog(stage);
         GridExporter exporter = new XMLGridExporter();
-        if(file != null)
+        if (file != null)
             exporter.exportToFile(editedGrid, file);
 
     }
@@ -405,18 +521,17 @@ public class CustomDriverUtilController implements StageController {
         VehicleClass vehicleClass = null;
         if (file != null)
             vehicleClass = XMLGridImporter.importVehicleClassFromXMLGrid(file);
-        if(vehicleClass != null) {
+        if (vehicleClass != null) {
             LibraryManager.getInstance().getVehicleClassLibrary().getVehicleClasses().add(vehicleClass);
             driverEditor.setVehicleClass(vehicleClass);
         }
         GridImporter importer = new XMLGridImporter();
         Grid importedGrid = importer.importFromFile(file);
-         if(importedGrid != null) {
+         if (importedGrid != null) {
             editedGrid.getDrivers().clear();
             editedGrid.getDrivers().addAll(importedGrid.getDrivers());
             editedGrid.setVehicleClass(vehicleClass);
         }
-        //TODO:Add this new class to the library and save it. Preferably allow user to rename it.
     }
 
     /**
@@ -459,7 +574,7 @@ public class CustomDriverUtilController implements StageController {
      */
     private void exportTracksAction() {
         File selectedFile = chooseFileToSave("Export Track Library", "library/tracks");
-        if(selectedFile != null)
+        if (selectedFile != null)
             LibraryManager.getInstance().exportTrackLibrary(selectedFile.getPath());
     }
 
@@ -471,7 +586,7 @@ public class CustomDriverUtilController implements StageController {
      */
     private void importTracksAction() {
         File selectedFile = chooseFileToOpen("Import Track Library", "library/tracks");
-        if(selectedFile != null && LibraryManager.getInstance().importTrackLibrary(selectedFile.getPath())) {
+        if (selectedFile != null && LibraryManager.getInstance().importTrackLibrary(selectedFile.getPath())) {
             PathRelativisor relativisor = new PathRelativisor(selectedFile.toPath());
             Configurator.getInstance().getConfiguration().setTrackLibraryPathname(relativisor.relativize());
             Configurator.getInstance().saveConfiguration();
@@ -495,8 +610,8 @@ public class CustomDriverUtilController implements StageController {
      * VehicleClassLibrary to the chosen file.
      */
     private void exportVehicleClassesAction() {
-        File selectedFile = chooseFileToSave("Import Vehicle Class Library", "library/vehicles");
-        if(selectedFile != null) {
+        File selectedFile = chooseFileToSave("Export Vehicle Class Library", "library/vehicles");
+        if (selectedFile != null) {
             LibraryManager.getInstance().exportVehicleClassLibrary(selectedFile.getPath());
         }
     }
@@ -507,10 +622,39 @@ public class CustomDriverUtilController implements StageController {
      * the chosen file.
      */
     private void importVehicleClassesAction() {
-        File selectedFile = chooseFileToOpen("Export Vehicle Class Library", "library/vehicles");
-        if(selectedFile != null && LibraryManager.getInstance().importVehicleClassLibrary(selectedFile.getPath())) {
+        File selectedFile = chooseFileToOpen("Import Vehicle Class Library", "library/vehicles");
+        if (selectedFile != null && LibraryManager.getInstance().importVehicleClassLibrary(selectedFile.getPath())) {
             PathRelativisor relativisor = new PathRelativisor(selectedFile.toPath());
             Configurator.getInstance().getConfiguration().setVehicleClassLibraryPathname(relativisor.relativize());
+            Configurator.getInstance().saveConfiguration();
+        }
+    }
+
+    /**
+     * Action that is performed by exportDriverLibraryItem.
+     * Opens a FileChooser with the *.xml extension filter, displays the FileChooser to the user and allows them to make
+     * a selection. When the FileChooser is closed if a file was selected it attempts to export the currently loaded
+     * DriverLibrary to the chosen file.
+     */
+    private void exportDriverLibraryAction() {
+        File selectedFile = chooseFileToSave("Export Driver Library", "library/drivers");
+        if (selectedFile != null && LibraryManager.getInstance().exportDriverLibrary(selectedFile.getPath())) {
+            PathRelativisor relativisor = new PathRelativisor(selectedFile.toPath());
+            Configurator.getInstance().getConfiguration().setDriverLibraryPathname(relativisor.relativize());
+            Configurator.getInstance().saveConfiguration();
+        }
+    }
+
+    /**
+     * Opens a FileChooser with the *.xml extension filter, displays the FileChooser to the user and allows them to make
+     * a selection. When the FileChooser is closed if a file was selected it attempts to import a DriverLibrary from
+     * the chosen file.
+     */
+    private void importDriverLibraryAction() {
+        File selectedFile = chooseFileToSave("Import Driver Library", "library/drivers");
+        if (selectedFile != null && LibraryManager.getInstance().importDriverLibrary(selectedFile.getPath())) {
+            PathRelativisor relativisor = new PathRelativisor(selectedFile.toPath());
+            Configurator.getInstance().getConfiguration().setDriverLibraryPathname(relativisor.relativize());
             Configurator.getInstance().saveConfiguration();
         }
     }
