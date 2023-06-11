@@ -118,6 +118,9 @@ public class NewGridWizardController implements StageController {
     @FXML
     private GridPane generateGridPane;
 
+    @FXML
+    private Label namesNoticeLabel;
+
     /**
      * Stage on which this StageController is going to be displayed.
      */
@@ -136,6 +139,7 @@ public class NewGridWizardController implements StageController {
     public void initialize() {
         rootPane.getStylesheets().clear();
         rootPane.getStylesheets().add(DDUtil.MAIN_CSS_RESOURCE);
+        namesNoticeLabel.visibleProperty().bind(useNAMeSRadioButton.selectedProperty());
 
         generateGridPane.disableProperty().bind(generateGridCheckBox.selectedProperty().not());
         amountTextField.disableProperty().bind(forEachLiveryCheckBox.selectedProperty());

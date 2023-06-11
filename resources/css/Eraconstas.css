@@ -435,6 +435,11 @@ PromptLabel {
     -fx-font: 10pt "Arial";
 }
 
+InfoLabel {
+    -fx-text-fill: #7b868d;
+    -fx-font: 10pt "Arial";
+}
+
 StabilityPane {
     -fx-background-color: #181e21;
     -fx-background-radius: 15;

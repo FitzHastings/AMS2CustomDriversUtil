@@ -14,10 +14,10 @@
 
 package net.dragondelve.customdriversutil.fx.css;
 
-import javafx.scene.layout.VBox;
+import javafx.scene.control.Label;
 
 /**
  * This class only exists for css styling.
  */
-public class DarkerVBox extends VBox {
+public class InfoLabel extends Label {
 }
