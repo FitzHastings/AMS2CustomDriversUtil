@@ -67,6 +67,7 @@ public class Configurator {
      * Attempts to load the configuration from the default pathname.
      * If it fails to load the configuration it will return false, if it succeeds in loading the configuration it will return true, allowing
      * the GUI to alert the user of configuration file becoming corrupted or missing.
+     * @return True if loading succeeded, false if the configuration loading failed.
      */
     public boolean loadConfiguration() {
         return loadConfiguration(CONFIGURATION_DEFAULT_PATHNAME);
@@ -77,6 +78,7 @@ public class Configurator {
      * If it fails to load the configuration it will return false, if it succeeds in loading the configuration it will return true, allowing
      * the GUI to alert the user of configuration file becoming corrupted or missing.
      * @param pathname pathnamne to an XML file that contains a configuration.
+     * @return True if loading succeeded, false if the configuration loading failed.
      */
     public boolean loadConfiguration(String pathname) {
         File config = new File(pathname);

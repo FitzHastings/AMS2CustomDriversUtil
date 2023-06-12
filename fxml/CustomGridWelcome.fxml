@@ -58,6 +58,6 @@ limitations under the License. -->
    <ToolBar>
       <PromptLabel prefHeight="25.0" prefWidth="182.0" text="New AMS 2 Version Out? "/>
       <Button fx:id="manualUpdateButton" mnemonicParsing="false" text="Manual Update"/>
-      <PromptLabel prefHeight="25.0" text=" This software is going to be updated within 72 hours of the new AMS2 Version to include new tracks, vehicles, bug fixes and new features."/>
+      <PromptLabel prefHeight="25.0" text=" This software is going to be updated within 1 week of the new AMS2 Version to include new tracks, vehicles, bug fixes and new features."/>
    </ToolBar>
 </DarkerVBox>

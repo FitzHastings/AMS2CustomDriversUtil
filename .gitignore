@@ -24,6 +24,7 @@ hs_err_pid*
 /out/
 /resources/META-INF/
 /resources/NAMeS/
+/docs/
 /.idea/.gitignore
 /AMS2CustomDriversUtil2.iml
 /.idea/artifacts/AMS2CustomDriversUtil2_jar.xml

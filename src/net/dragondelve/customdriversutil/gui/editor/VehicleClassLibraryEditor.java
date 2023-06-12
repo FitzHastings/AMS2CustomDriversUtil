@@ -24,7 +24,7 @@ import net.dragondelve.customdriversutil.model.VehicleClass;
 import net.dragondelve.customdriversutil.util.DDUtil;
 
 /**
- * Editor that can edit a VehicleLibrary's List<VehicleClass>.
+ * Editor that can edit a VehicleLibrary's List of VehicleClass.
  * Allows the user to create new instances of VehicleClass, remove tracks from the list and to edit
  * each item on the list. The Editor should be displayed on a separate decorated stage as there is no
  * way to close the stage from inside the editor.

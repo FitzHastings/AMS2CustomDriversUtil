@@ -23,7 +23,7 @@ import net.dragondelve.customdriversutil.model.Track;
 import net.dragondelve.customdriversutil.util.DDUtil;
 
 /**
- * Editor that can edit a TrackLibrary's List<Track>.
+ * Editor that can edit a TrackLibrary's List of Track.
  * Allows the user to create new instances of track, remove tracks from the list and to edit
  * each item on the list. The Editor should be displayed on a seperate decorated stage as there is no
  * way to close the stage from inside the editor.
