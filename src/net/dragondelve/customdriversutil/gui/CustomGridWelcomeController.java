@@ -77,7 +77,7 @@ public class CustomGridWelcomeController implements StageController {
     private Button loadModdedGridButton;
 
     /**
-     * The root pane of this window, used to apply the CSS resource to this entire screen.
+     * The root pane of this window, used to apply the CSS resource to this entire scene.
      */
     @FXML
     private VBox rootPane;

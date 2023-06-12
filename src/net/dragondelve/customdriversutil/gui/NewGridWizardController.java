@@ -37,87 +37,182 @@ import java.io.IOException;
  * NewGridWizard allows the user to create a new Grid or to generate a new grid using the GridGenerator.
  */
 public class NewGridWizardController implements StageController {
+    /**
+     * Radio button that determines if the generated grid is going to use blank names as a source.
+     */
     @FXML
     private RadioButton blankNamesRadioButton;
 
+    /**
+     * Button that erforms generateAction() on action.
+     */
     @FXML
     private Button generateButton;
 
+    /**
+     * choiceBox that determines what vehicleClass is going to be used when generating a new grid.
+     */
     @FXML
     private ChoiceBox<VehicleClass> vehicleClassChoiceBox;
 
+    /**
+     * Radio button that determines if noNoise should be used when generating values for a grid when using rangeValueGenerator.
+     */
     @FXML
     private RadioButton noNoiseRadioButton;
 
+    /**
+     * CheckBox that determines if the user wants to start with a blank grid.
+     */
     @FXML
     private CheckBox emptyGridCheckBox;
 
+    /**
+     * CheckBox that determines if QualiSkill should exceed raceSkill if those values are bound.
+     */
     @FXML
     private CheckBox qualiExceedsRaceSkillCheckBox;
 
+    /**
+     * CheckBox that determines if the GridGenerator will generate trackOverrides for ovals, reducing the gap in
+     * race skill and quali skill in half.
+     */
     @FXML
     private CheckBox reduceGapOnOvalsCheckBox;
 
+    /**
+     * CheckBox that determines if the raceskill and qualiSkill properties of every Driver in the grid should be bound
+     * instead of being generated independently.
+     */
     @FXML
     private CheckBox bindQualiCheckBox;
 
+    /**
+     * CheckBox that determines if aggression should be limited to a particular value set by the limitToTextField.
+     */
     @FXML
     private CheckBox limitAggressionCheckBox;
 
+    /**
+     * TextField that displays and allows the user to edit the aggressionLimit property that determines tha maximum
+     * value that each driver's aggression property can have.
+     */
     @FXML
     private TextField limitToTextField;
 
+    /**
+     * CheckBox that determines if no values should be set to the grid when generating it.
+     */
     @FXML
     private CheckBox noValuesCheckBox;
 
+    /**
+     * TextField that displays and allows the user to edit the values of maxValue doubleProperty. maxValue determines the
+     * max value that can be set on any property.
+     */
     @FXML
     private TextField maxValueTextField;
 
+    /**
+     * CheckBox that determines if the user wants a grid to be generated using GridGenerator.
+     */
     @FXML
     private CheckBox generateGridCheckBox;
 
+    /**
+     * The root pane of this window, used to apply the CSS resource to this entire scene.
+     */
     @FXML
     private VBox rootPane;
 
+    /**
+     * CheckBox that determines if the RandomValuesGenerator is going to be used to generate the values of the new
+     * grid.
+     */
     @FXML
     private CheckBox randomValuesCheckBox;
 
+    /**
+     * TextField that determines by how much the quali skill will exceed race skill if those values are bound.
+     */
     @FXML
     private TextField qualiExceedsTextField;
 
+    /**
+     * RadioButton that determines if all properties of generated drivers are going to be provided with RandomValueGenerator.
+     */
     @FXML
     private RadioButton randomAllRadioButton;
 
+    /**
+     * CheckBox that determines if the amount of drivers generated is going to be equal to how many liveries there are in
+     * the class.
+     */
     @FXML
     private CheckBox forEachLiveryCheckBox;
 
+    /**
+     * RadioButton that determines if drivers in the generated grid should have generated names based on their livery name.
+     */
     @FXML
     private RadioButton fromLiveryNamesRadioButton;
 
+    /**
+     * CheckBox that determines if RangeValueGenerator should be used to generate values for the generated grid.
+     */
     @FXML
     private CheckBox rangeOfValuesCheckBox;
 
+    /**
+     * TextField that displays and allows the user to edit the values of minValue doubleProperty. maxValue determines the
+     * minimum value that can be set on any property.
+     */
     @FXML
     private TextField minValueTextField;
 
+    /**
+     * Radio button that determines if high noise should be used when generating values for a grid when using rangeValueGenerator.
+     */
     @FXML
     private RadioButton highNoiseRadioButton;
 
+    /**
+     * RadioButton that determines if drivers in the generated grid should have names borrowed from NAMeS resources if such
+     * resources are available for this VehicleClass..
+     */
     @FXML
     private RadioButton useNAMeSRadioButton;
 
+    /**
+     * RadioButton that determines if RandomValueGenerator should be only determinning the race skill of all drivers generated
+     * by this item.
+     */
     @FXML
     private RadioButton randomSkillRadioButton;
 
+    /**
+     * Radio button that determines if low noise should be used when generating values for a grid when using rangeValueGenerator.
+     */
     @FXML
     private RadioButton lowNoiseRadioButton;
 
+    /**
+     * TextField that displays and allows user to edit the nDrivers property of GeneratorSettings that will be passed to
+     * the GridGenerator. This value only matters if forEachLiveryCheckBox is not selecteed.
+     */
     @FXML
     private TextField amountTextField;
 
+    /**
+     * Pane that contains the settings for grid generation. Used for disabling all generator settings if empty grid is
+     * selected by the user.
+     */
     @FXML
     private GridPane generateGridPane;
 
+    /**
+     * Label that displays the notice for NAMeS files if useNAMeS radioButton is selected.
+     */
     @FXML
     private Label namesNoticeLabel;
 
@@ -135,6 +230,9 @@ public class NewGridWizardController implements StageController {
      */
     private final DoubleProperty maxValue = new SimpleDoubleProperty(1.0);
 
+    /**
+     * Generator settings that are passed to the grid generator if the user wants to generate a new grid.
+     */
     private final GeneratorSettings generatorSettings = new GeneratorSettings();
 
     /**
@@ -251,6 +349,11 @@ public class NewGridWizardController implements StageController {
     }
 
 
+    /**
+     * Performed by the GenerateButton.
+     * Uses the currently set GeneratorSettings to generate a new grid and advance to the main window passing that grid
+     * to the controller of the main window.
+     */
     private void generateAction() {
         if (emptyGridCheckBox.isSelected()) {
             loadMainWindow(new Grid());
@@ -267,11 +370,11 @@ public class NewGridWizardController implements StageController {
 
         ValueGenerator generator = null;
 
-        if (rangeOfValuesCheckBox.isSelected()) {
-            int nDrivers = generatorSettings.getnDrivers();
-            if (nDrivers > generatorSettings.getVehicleClass().getLiveryNames().size())
-                nDrivers = generatorSettings.getVehicleClass().getLiveryNames().size();
+        if (generatorSettings.getnDrivers() > generatorSettings.getVehicleClass().getLiveryNames().size())
+            generatorSettings.nDriversProperty().set(generatorSettings.getVehicleClass().getLiveryNames().size());
 
+        int nDrivers = generatorSettings.getnDrivers();
+        if (rangeOfValuesCheckBox.isSelected()) {
             if (noNoiseRadioButton.isSelected())
                 generator = new RangeValueGenerator(nDrivers, 0);
             else if (lowNoiseRadioButton.isSelected())
@@ -289,6 +392,10 @@ public class NewGridWizardController implements StageController {
         loadMainWindow(gridGenerator.generateNewGrid());
     }
 
+    /**
+     * Loads the main window and sets the provided grid as the edited grid in the main window.
+     * @param generatorGrid Grid generated by the GridGenerator or a new empty grid if the user wants to start with an empty grid.
+     */
     private void loadMainWindow(Grid generatorGrid) {
         FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().MAIN_WINDOW_FXML_URL);
         CustomDriverUtilController controller = new CustomDriverUtilController();

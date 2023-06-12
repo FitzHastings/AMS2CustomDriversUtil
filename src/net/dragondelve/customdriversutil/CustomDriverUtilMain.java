@@ -17,6 +17,7 @@ package net.dragondelve.customdriversutil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import net.dragondelve.customdriversutil.gui.CustomDriverUtilController;
 import net.dragondelve.customdriversutil.gui.CustomGridWelcomeController;
@@ -27,8 +28,7 @@ import net.dragondelve.customdriversutil.util.Configurator;
 import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
 
-//TODO: Clear all other TODOs
-//TODO: Cleanup, test and publish
+import java.util.Objects;
 
 /**
  * CustomDriverUtility's main class.
@@ -49,7 +49,7 @@ public class CustomDriverUtilMain extends Application {
      * @param primaryStage primary stage that is used to display the GUI.
      */
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws Exception {
         if (!Configurator.getInstance().loadConfiguration()) {
             Configurator.getInstance().setConfiguration(generateDefaultConfiguration());
             Configurator.getInstance().saveConfiguration();
@@ -65,6 +65,9 @@ public class CustomDriverUtilMain extends Application {
         primaryStage.setMinHeight(700);
         primaryStage.setHeight(700);
         primaryStage.setWidth(1200);
+
+        Image image = new Image(Objects.requireNonNull(CustomDriverUtilMain.class.getClassLoader().getResourceAsStream("ams2CDU.png")));
+        primaryStage.getIcons().add(image);
         if (Configurator.getInstance().getConfiguration().isSkipWelcomeScreen()) {
             try {
                 FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().MAIN_WINDOW_FXML_URL);

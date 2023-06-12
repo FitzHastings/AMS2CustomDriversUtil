@@ -23,6 +23,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -51,6 +52,20 @@ public class XMLGridImporter implements GridImporter {
             return null;
     }
 
+    /**
+     * Imports a grid from a given input stream.
+     * @param inputStream an input stream that contains the Grid in an xml format;
+     * @return New instance of a Grid from the source, or null if the import has failed.
+     */
+    @Override
+    public Grid importFromStream(InputStream inputStream) {
+        XMLGrid xmlGrid = loadXMLGrid(inputStream);
+        if (xmlGrid != null)
+            return fromXMLGrid(xmlGrid);
+        else
+            return null;
+    }
+
 
     /**
      * Imports a grid from a given File and generates a new VehicleClass if a vehicle class is not present in the given
@@ -64,7 +79,6 @@ public class XMLGridImporter implements GridImporter {
         XMLGrid xmlGrid = loadXMLGrid(file);
         if (xmlGrid != null) {
             VehicleClass vehicleClass = xmlGrid.generateVehicleClass(file.getName(), file.getName());
-            //TODO: Check if VehicleClassLibrary Already contains a Vehicle Class with the same livery names.
             library.getVehicleClasses().add(vehicleClass);
             return fromXMLGrid(xmlGrid);
         }
@@ -153,6 +167,26 @@ public class XMLGridImporter implements GridImporter {
         } catch (JAXBException e) {
             e.printStackTrace();
             DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "XML Grid loading failed from path: " + file.getPath());
+            return null;
+        }
+    }
+
+    /**
+     * Unmarshals xml grid from a given input stream.
+     * @param stream inputStream that contains XMLGrid formatted with XML.
+     * @return New instance of XMLGrid.
+     */
+    private static XMLGrid loadXMLGrid(InputStream stream) {
+        try {
+            DDUtil.DEFAULT_LOGGER.log(Level.FINE, "XML Grid loading initiated from stream: " + stream.toString());
+            JAXBContext context = JAXBContext.newInstance(XMLGrid.class);
+            Unmarshaller unmarshaller = context.createUnmarshaller();
+            XMLGrid xmlGrid = (XMLGrid) unmarshaller.unmarshal(stream);
+            DDUtil.DEFAULT_LOGGER.log(Level.FINE, "XML Grid loading successful from stream: " + stream);
+            return xmlGrid;
+        } catch (JAXBException e) {
+            e.printStackTrace();
+            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "XML Grid loading failed from from stream: " + stream);
             return null;
         }
     }

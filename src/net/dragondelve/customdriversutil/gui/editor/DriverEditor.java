@@ -517,6 +517,9 @@ public class DriverEditor {
         if (!overrideMode.get()) {
             chooseLiveryHBox.getTextField().textProperty().bindBidirectional(((Driver) driver).liveryNameProperty());
             chooseLiveryHBox.getChoiceBox().valueProperty().bindBidirectional(((Driver) driver).liveryNameProperty());
+            if (((Driver) driver).liveryNameProperty().get() == null) {
+                chooseLiveryHBox.getChoiceBox().valueProperty().set("");
+            }
         }
         bindBaseProperties(driver);
     }

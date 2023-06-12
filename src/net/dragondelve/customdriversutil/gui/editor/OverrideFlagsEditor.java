@@ -134,12 +134,12 @@ public class OverrideFlagsEditor implements Editor<OverrideFlags> {
     /**
      * Stage on which this StageController is going to be displayed.
      */
-    Stage stage;
+    private Stage stage;
 
     /**
      * Edited OverrideFlags.
      */
-    OverrideFlags overrideFlags;
+    private OverrideFlags overrideFlags;
 
     /**
      * Initialize method initializes all the visual elements before they are displayed by the user.

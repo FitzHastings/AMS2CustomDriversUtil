@@ -22,12 +22,7 @@ import net.dragondelve.customdriversutil.model.Track;
 import net.dragondelve.customdriversutil.model.TrackOverride;
 import net.dragondelve.customdriversutil.model.xml.XMLGridImporter;
 import net.dragondelve.customdriversutil.util.Configurator;
-import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
-
-import java.io.File;
-import java.net.URISyntaxException;
-import java.util.logging.Level;
 
 /**
  * Grid Generator. Generates a new grid when the generateNewGrid() method is called. The grid is generated based on
@@ -76,11 +71,7 @@ public class GridGenerator {
         int i = 0;
         Grid namesSource = null;
         if (settings.isUseNAMeS()) {
-            try {
-                namesSource = (new XMLGridImporter().importFromFile(new File(CustomDriverUtilMain.class.getClassLoader().getResource("NAMeS/" + settings.getVehicleClass().getXmlName() + ".xml").toURI())));
-            } catch (URISyntaxException e) {
-                DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Grid Generator could not find NAMeS file for Class " + settings.getVehicleClass().getName());
-            }
+            namesSource = (new XMLGridImporter().importFromStream(CustomDriverUtilMain.class.getClassLoader().getResourceAsStream("NAMeS/" + settings.getVehicleClass().getXmlName() + ".xml")));
         }
         while (i < settings.getnDrivers()) {
             Driver driver = new Driver();
@@ -164,7 +155,6 @@ public class GridGenerator {
                 driver.getTrackOverrides().add(trackOverride);
             }
         }
-
         return grid;
     }
 }

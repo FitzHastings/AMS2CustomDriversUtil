@@ -40,10 +40,14 @@ public class LibraryManager {
     private TrackLibrary trackLibrary = new TrackLibrary();
 
     /**
-     * Currently used VehicleClassLibrary. VehicleClassLibrary is used to allow players to select a livery from a list.
+     * Currently used VehicleClassLibrary. VehicleClassLibrary is used to allow users to select a livery from a list.
      */
     private VehicleClassLibrary vehicleClassLibrary = new VehicleClassLibrary();
 
+    /**
+     * Currently loaded DriverLibrary. DriverLibrary is used to allow users to store their drivers in an arbitrary library
+     * without an association to any grid.
+     */
     private final DriverLibrary driverLibrary = new DriverLibrary();
 
     /**
@@ -164,6 +168,10 @@ public class LibraryManager {
         }
     }
 
+    /**
+     * lightweight accessor method.
+     * @return Currently loaded DriverLibrary.
+     */
     public DriverLibrary getDriverLibrary() {
         return this.driverLibrary;
     }

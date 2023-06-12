@@ -36,6 +36,7 @@ public final class VehicleClass {
      * Vehicle Class name that is human-readable, it's used for display purposes.
      */
     private final StringProperty name = new SimpleStringProperty();
+
     /**
      * Vehicle Class name that is used in the XML when exporting.
      */
@@ -45,6 +46,7 @@ public final class VehicleClass {
      * Determines whether this vehicle class is a vanilla vehicle class or a modded vehicle class.
      */
     private final BooleanProperty isModded = new SimpleBooleanProperty();
+
     /**
      * Full list of liveries available for this class.
      */
@@ -99,7 +101,6 @@ public final class VehicleClass {
     public void setXmlName(String xmlName) {
         this.xmlName.set(xmlName);
     }
-
 
     /**
      * Lightweight accessor method.

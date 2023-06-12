@@ -25,7 +25,7 @@ public final class PathRelativisor {
     /**
      * The Path that is to be relativized.
      */
-    Path path;
+    private Path path;
 
     /**
      * Default constructor. does not provide the path to be relativized.
@@ -34,7 +34,7 @@ public final class PathRelativisor {
     public PathRelativisor() { super();}
 
     /**
-     *
+     * Creates a new instance of PathRelativisor.
      * @param path Path to be relativized as a Path.
      */
     public PathRelativisor(Path path) {
@@ -42,7 +42,7 @@ public final class PathRelativisor {
     }
 
     /**
-     *
+     * Creates a new instance of PathRelativisor.
      * @param file File, a path to which you want to relativize.
      */
     public PathRelativisor(File file) {
@@ -50,7 +50,7 @@ public final class PathRelativisor {
     }
 
     /**
-     *
+     * Creates a new instance of PathRelativisor.
      * @param pathname Pathname which you want to relativize.
      */
     public PathRelativisor(String pathname) {

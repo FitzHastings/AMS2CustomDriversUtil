@@ -34,10 +34,12 @@ public final class Track {
      * Track name that is human-readable, it's used for display purposes.
      */
     private final StringProperty name = new SimpleStringProperty();
+
     /**
      * Track name that is used in the XML when exporting.
      */
     private final StringProperty xmlName = new SimpleStringProperty();
+
     /**
      * Flag that determines if the track is an oval track or a road course.
      * If set to true the track is an oval track.
@@ -53,7 +55,7 @@ public final class Track {
     }
 
     /**
-     *
+     * Creates a new instance of track
      * @param name Track name that is human-readable, it's used for display purposes.
      * @param xmlName Track name that is used in the XML when exporting.
      */

@@ -21,3 +21,14 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/out/
+/resources/META-INF/
+/resources/NAMeS/
+/.idea/.gitignore
+/AMS2CustomDriversUtil2.iml
+/.idea/artifacts/AMS2CustomDriversUtil2_jar.xml
+/conf.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/uiDesigner.xml
+/.idea/vcs.xml

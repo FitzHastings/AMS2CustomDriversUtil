@@ -126,6 +126,6 @@ public class Configurator {
      * only one instance of configurator exists per program.
      */
     private Configurator() {
-
+        super();
     }
 }
