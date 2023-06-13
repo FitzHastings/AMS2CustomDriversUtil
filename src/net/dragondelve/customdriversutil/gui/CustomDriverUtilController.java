@@ -98,6 +98,12 @@ public class CustomDriverUtilController implements StageController {
     private Button removeDriverButton;
 
     /**
+     * Button that performs exportGridCation on action
+     */
+    @FXML
+    private Button saveGridButton;
+
+    /**
      * Root Pane of the main screen. Is used to display everything inside the main window.
      * The main css style is applied to the rootPane.
      */
@@ -333,6 +339,7 @@ public class CustomDriverUtilController implements StageController {
 
         addDriverButton.setOnAction(e -> addDriverAction());
         removeDriverButton.setOnAction(e -> removeDriverAction());
+        saveGridButton.setOnAction(e -> exportGridAction());
         addTrackOverrideButton.setOnAction(e -> addTrackOverrideAction());
         removeTrackOverrideButton.setOnAction(e -> removeTrackOverrideAction());
         editTrackOverrideButton.setOnAction(e -> editTrackOverrideAction());
@@ -485,6 +492,7 @@ public class CustomDriverUtilController implements StageController {
     private void newGridAction() {
         FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().NEW_GRID_WIZARD_FXML_URL);
         NewGridWizardController controller = new NewGridWizardController();
+        controller.setPreviousScene(stage.getScene());
         controller.setStage(stage);
         loader.setController(controller);
 

@@ -137,7 +137,9 @@ public class CustomGridWelcomeController implements StageController {
      * Shows the new grid wizard to the user in the same stage as the welcome screen.
      */
     private void newGeneratedGridAction() {
-        nextScene(new NewGridWizardController(), DDUtil.getInstance().NEW_GRID_WIZARD_FXML_URL);
+        NewGridWizardController controller = new NewGridWizardController();
+        controller.setPreviousScene(stage.getScene());
+        nextScene(controller, DDUtil.getInstance().NEW_GRID_WIZARD_FXML_URL);
     }
 
     /**

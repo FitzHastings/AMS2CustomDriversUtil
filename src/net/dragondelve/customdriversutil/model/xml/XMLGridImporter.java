@@ -78,7 +78,7 @@ public class XMLGridImporter implements GridImporter {
     public Grid importWithVehicleClass(File file, VehicleClassLibrary library) {
         XMLGrid xmlGrid = loadXMLGrid(file);
         if (xmlGrid != null) {
-            VehicleClass vehicleClass = xmlGrid.generateVehicleClass(file.getName(), file.getName());
+            VehicleClass vehicleClass = xmlGrid.generateVehicleClass(file.getName().substring(0, file.getName().length() - 4), file.getName().substring(0, file.getName().length() - 4));
             library.getVehicleClasses().add(vehicleClass);
             return fromXMLGrid(xmlGrid);
         }
@@ -94,7 +94,7 @@ public class XMLGridImporter implements GridImporter {
     public static VehicleClass importVehicleClassFromXMLGrid(File file) {
         XMLGrid xmlGrid = loadXMLGrid(file);
         if (xmlGrid != null)
-            return xmlGrid.generateVehicleClass(file.getName(), file.getName());
+            return xmlGrid.generateVehicleClass(file.getName().substring(0, file.getName().length() - 4), file.getName().substring(0, file.getName().length() - 4));
         else
             return null;
     }

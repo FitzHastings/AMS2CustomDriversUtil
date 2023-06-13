@@ -44,10 +44,16 @@ public class NewGridWizardController implements StageController {
     private RadioButton blankNamesRadioButton;
 
     /**
-     * Button that erforms generateAction() on action.
+     * Button that performs generateAction() on action.
      */
     @FXML
     private Button generateButton;
+
+    /**
+     * Button that shows the previous scene from which this screen was called. Performs back action on action.
+     */
+    @FXML
+    private Button backButton;
 
     /**
      * choiceBox that determines what vehicleClass is going to be used when generating a new grid.
@@ -217,6 +223,11 @@ public class NewGridWizardController implements StageController {
     private Label namesNoticeLabel;
 
     /**
+     * Scene that was displayed on the primaryStage before this scene. Used for Back button.
+     */
+    Scene previousScene;
+
+    /**
      * Stage on which this StageController is going to be displayed.
      */
     private Stage stage;
@@ -313,8 +324,15 @@ public class NewGridWizardController implements StageController {
         });
 
         vehicleClassChoiceBox.valueProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null)
+            if (newValue != null) {
                 generateButton.setDisable(false);
+                if (newValue.isModded()) {
+                    if (useNAMeSRadioButton.isSelected())
+                        fromLiveryNamesRadioButton.selectedProperty().set(true);
+                } else
+                    useNAMeSRadioButton.visibleProperty().set(true);
+                useNAMeSRadioButton.visibleProperty().set(!newValue.isModded());
+            }
         });
 
         noValuesCheckBox.disableProperty().set(true);
@@ -323,6 +341,7 @@ public class NewGridWizardController implements StageController {
         vehicleClassChoiceBox.setItems(LibraryManager.getInstance().getVehicleClassLibrary().getVehicleClasses());
 
         generateButton.setOnAction(e -> generateAction());
+        backButton.setOnAction(e -> backAction());
 
         amountTextField.textProperty().bindBidirectional(generatorSettings.nDriversProperty(), new NumberStringConverter());
         limitToTextField.textProperty().bindBidirectional(generatorSettings.aggressionLimitProperty(), new NumberStringConverter());
@@ -348,6 +367,13 @@ public class NewGridWizardController implements StageController {
         this.stage = stage;
     }
 
+    /**
+     * Lightweight mutator method.
+     * @param previousScene Previous scene that was displayed in the primaryStage before this scene.
+     */
+    public void setPreviousScene(Scene previousScene) {
+        this.previousScene = previousScene;
+    }
 
     /**
      * Performed by the GenerateButton.
@@ -390,6 +416,11 @@ public class NewGridWizardController implements StageController {
         GridGenerator gridGenerator = new GridGenerator(generatorSettings, generator);
 
         loadMainWindow(gridGenerator.generateNewGrid());
+    }
+
+    private void backAction() {
+        if (previousScene != null)
+            stage.setScene(previousScene);
     }
 
     /**
