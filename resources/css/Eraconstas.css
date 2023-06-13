@@ -331,6 +331,10 @@ ImageChooserButton: pressed {
     -fx-background-color: #181e21;
 }
 
+.slider .axis {
+    -fx-tick-label-fill: #9aa2a6;;
+}
+
 .slider .track {
     -fx-background-color: #7b868d;
 }
@@ -470,7 +474,7 @@ MaximizeButton:hover {
 }
 
 ExitButton:hover {
--fx-border-color: #a34097;
+    -fx-border-color: #a34097;
     -fx-background-color: #a34097;
     -fx-text-fill: #fefffe;
 }

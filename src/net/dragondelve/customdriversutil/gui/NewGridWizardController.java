@@ -62,12 +62,6 @@ public class NewGridWizardController implements StageController {
     private ChoiceBox<VehicleClass> vehicleClassChoiceBox;
 
     /**
-     * Radio button that determines if noNoise should be used when generating values for a grid when using rangeValueGenerator.
-     */
-    @FXML
-    private RadioButton noNoiseRadioButton;
-
-    /**
      * CheckBox that determines if the user wants to start with a blank grid.
      */
     @FXML
@@ -107,10 +101,10 @@ public class NewGridWizardController implements StageController {
     private TextField limitToTextField;
 
     /**
-     * CheckBox that determines if no values should be set to the grid when generating it.
+     * RadioButton that determines if no values should be set to the grid when generating it.
      */
     @FXML
-    private CheckBox noValuesCheckBox;
+    private RadioButton noValuesRadioButton;
 
     /**
      * TextField that displays and allows the user to edit the values of maxValue doubleProperty. maxValue determines the
@@ -177,12 +171,6 @@ public class NewGridWizardController implements StageController {
     private TextField minValueTextField;
 
     /**
-     * Radio button that determines if high noise should be used when generating values for a grid when using rangeValueGenerator.
-     */
-    @FXML
-    private RadioButton highNoiseRadioButton;
-
-    /**
      * RadioButton that determines if drivers in the generated grid should have names borrowed from NAMeS resources if such
      * resources are available for this VehicleClass..
      */
@@ -197,14 +185,20 @@ public class NewGridWizardController implements StageController {
     private RadioButton randomSkillRadioButton;
 
     /**
-     * Radio button that determines if low noise should be used when generating values for a grid when using rangeValueGenerator.
+     * Slider that determines the amount of noise used to generate these items.
      */
     @FXML
-    private RadioButton lowNoiseRadioButton;
+    private Slider noiseSlider;
+
+    /**
+     * Text field that displays the noise value set in the noiseValueSlider
+     */
+    @FXML
+    private TextField noiseTextField;
 
     /**
      * TextField that displays and allows user to edit the nDrivers property of GeneratorSettings that will be passed to
-     * the GridGenerator. This value only matters if forEachLiveryCheckBox is not selecteed.
+     * the GridGenerator. This value only matters if forEachLiveryCheckBox is not selected.
      */
     @FXML
     private TextField amountTextField;
@@ -236,6 +230,7 @@ public class NewGridWizardController implements StageController {
      * Minimum value of all driver properties to be used in generating the new Grid.
      */
     private final DoubleProperty minValue = new SimpleDoubleProperty(0.0);
+
     /**
      * Maximum value of all driver properties to be used in generating the new Grid.
      */
@@ -262,15 +257,14 @@ public class NewGridWizardController implements StageController {
         randomSkillRadioButton.disableProperty().bind(randomValuesCheckBox.selectedProperty().not());
         randomAllRadioButton.disableProperty().bind(randomValuesCheckBox.selectedProperty().not());
 
-        noNoiseRadioButton.disableProperty().bind(rangeOfValuesCheckBox.selectedProperty().not());
-        lowNoiseRadioButton.disableProperty().bind(rangeOfValuesCheckBox.selectedProperty().not());
-        highNoiseRadioButton.disableProperty().bind(rangeOfValuesCheckBox.selectedProperty().not());
+        noiseSlider.disableProperty().bind(rangeOfValuesCheckBox.selectedProperty().not());
+        noiseTextField.disableProperty().bind(rangeOfValuesCheckBox.selectedProperty().not());
 
-        minValueTextField.disableProperty().bind(noValuesCheckBox.selectedProperty());
-        maxValueTextField.disableProperty().bind(noValuesCheckBox.selectedProperty());
-        limitAggressionCheckBox.disableProperty().bind(noValuesCheckBox.selectedProperty());
-        reduceGapOnOvalsCheckBox.disableProperty().bind(noValuesCheckBox.selectedProperty());
-        bindQualiCheckBox.disableProperty().bind(noValuesCheckBox.selectedProperty());
+        minValueTextField.disableProperty().bind(noValuesRadioButton.selectedProperty());
+        maxValueTextField.disableProperty().bind(noValuesRadioButton.selectedProperty());
+        limitAggressionCheckBox.disableProperty().bind(noValuesRadioButton.selectedProperty());
+        reduceGapOnOvalsCheckBox.disableProperty().bind(noValuesRadioButton.selectedProperty());
+        bindQualiCheckBox.disableProperty().bind(noValuesRadioButton.selectedProperty());
         limitToTextField.disableProperty().bind(limitAggressionCheckBox.selectedProperty().not());
 
         qualiExceedsTextField.disableProperty().bind(qualiExceedsRaceSkillCheckBox.selectedProperty().not());
@@ -284,11 +278,6 @@ public class NewGridWizardController implements StageController {
         ToggleGroup randomGroup = new ToggleGroup();
         randomAllRadioButton.setToggleGroup(randomGroup);
         randomSkillRadioButton.setToggleGroup(randomGroup);
-
-        ToggleGroup noiseGroup = new ToggleGroup();
-        noNoiseRadioButton.setToggleGroup(noiseGroup);
-        lowNoiseRadioButton.setToggleGroup(noiseGroup);
-        highNoiseRadioButton.setToggleGroup(noiseGroup);
 
         emptyGridCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
@@ -308,16 +297,16 @@ public class NewGridWizardController implements StageController {
         randomValuesCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue && rangeOfValuesCheckBox.isSelected())
                 rangeOfValuesCheckBox.selectedProperty().set(false);
-            else noValuesCheckBox.selectedProperty().set(!newValue && !rangeOfValuesCheckBox.isSelected());
+            else noValuesRadioButton.selectedProperty().set(!newValue && !rangeOfValuesCheckBox.isSelected());
         });
 
         rangeOfValuesCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue && randomValuesCheckBox.isSelected())
                 randomValuesCheckBox.selectedProperty().set(false);
-            else noValuesCheckBox.selectedProperty().set(!newValue && !randomValuesCheckBox.isSelected());
+            else noValuesRadioButton.selectedProperty().set(!newValue && !randomValuesCheckBox.isSelected());
         });
 
-        noValuesCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+        noValuesRadioButton.selectedProperty().addListener((observable, oldValue, newValue) -> {
             limitAggressionCheckBox.selectedProperty().set(false);
             bindQualiCheckBox.selectedProperty().set(false);
             qualiExceedsRaceSkillCheckBox.selectedProperty().set(false);
@@ -335,8 +324,11 @@ public class NewGridWizardController implements StageController {
             }
         });
 
-        noValuesCheckBox.disableProperty().set(true);
-        noValuesCheckBox.setStyle("-fx-opacity: 1");
+        noValuesRadioButton.disableProperty().set(true);
+        noValuesRadioButton.setStyle("-fx-opacity: 1");
+
+        noiseTextField.textProperty().bind(noiseSlider.valueProperty().asString("%.2f"));
+        noiseTextField.setEditable(false);
 
         vehicleClassChoiceBox.setItems(LibraryManager.getInstance().getVehicleClassLibrary().getVehicleClasses());
 
@@ -355,7 +347,7 @@ public class NewGridWizardController implements StageController {
         forEachLiveryCheckBox.selectedProperty().set(true);
         rangeOfValuesCheckBox.selectedProperty().set(true);
         useNAMeSRadioButton.selectedProperty().set(true);
-        lowNoiseRadioButton.selectedProperty().set(true);
+        noiseSlider.setValue(0.2);
     }
 
     /**
@@ -399,15 +391,9 @@ public class NewGridWizardController implements StageController {
         if (generatorSettings.getnDrivers() > generatorSettings.getVehicleClass().getLiveryNames().size())
             generatorSettings.nDriversProperty().set(generatorSettings.getVehicleClass().getLiveryNames().size());
 
-        int nDrivers = generatorSettings.getnDrivers();
-        if (rangeOfValuesCheckBox.isSelected()) {
-            if (noNoiseRadioButton.isSelected())
-                generator = new RangeValueGenerator(nDrivers, 0);
-            else if (lowNoiseRadioButton.isSelected())
-                generator = new RangeValueGenerator(nDrivers, 0.2);
-            else
-                generator = new RangeValueGenerator(nDrivers, 0.4);
-        } else if (randomValuesCheckBox.isSelected())
+        if (rangeOfValuesCheckBox.isSelected())
+            generator = new RangeValueGenerator(generatorSettings.getnDrivers(), noiseSlider.getValue());
+        else if (randomValuesCheckBox.isSelected())
             generator = new RandomValueGenerator();
 
         if (generator != null)

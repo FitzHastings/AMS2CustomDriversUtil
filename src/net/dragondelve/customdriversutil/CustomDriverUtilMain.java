@@ -34,12 +34,12 @@ import java.util.Objects;
 // v Update Vehicle Class Library
 // v Update Track Library
 //   Mass Modify function
-//   Restyle No Values Check Box.
+// V Restyle No Values Check Box.
 //   Add Tooltips to the main screen and Generate Grid Window
 // V Add a Save Button to the screen.
 // V Fix the .xml.xml bug for importing modded grids.
 // V Add a back button to the new grid wizard.
-//   Replace Noise CheckBoxes with a Noise Slider.
+// V Replace Noise CheckBoxes with a Noise Slider.
 //   Try to deploy 2.1 by the 17th
 //   Rounding of random values (?)
 

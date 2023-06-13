@@ -41,7 +41,7 @@ public class DriverEditor {
     private Slider aggressionSlider;
 
     /**
-     * Textfield that displays the value of the Driver's Aggression.
+     * TextField that displays the value of the Driver's Aggression.
      */
     @FXML
     private TextField aggressionTextField;
