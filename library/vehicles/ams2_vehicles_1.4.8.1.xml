@@ -1,20 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-
-<!-- Copyright 2022-2023 John B. Ellis
-     Copyright 2023 Prokhor Kalinin
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License. -->
-
 <vehicle_class_library>
     <vehicle_classes>
         <vehicle_class name="ARC Camaro" xml_name="ARC_Cam">
@@ -42,6 +26,7 @@ limitations under the License. -->
                 <livery>Mobius Autosports #98</livery>
                 <livery>Mobius Autosports #99</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Carrera Cup" xml_name="Carrera Cup">
             <liveries>
@@ -68,6 +53,7 @@ limitations under the License. -->
                 <livery>Porsche 911 GT3 Cup 3.8 #97</livery>
                 <livery>Porsche 911 GT3 Cup 3.8 #98</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Caterham 620R" xml_name="Cat620R">
             <liveries>
@@ -98,6 +84,7 @@ limitations under the License. -->
                 <livery>Caterham 620R - Gyda Marvik #25</livery>
                 <livery>Caterham 620R - Chris Shire #26</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Caterham Academy" xml_name="Cat_Academy">
             <liveries>
@@ -126,6 +113,7 @@ limitations under the License. -->
                 <livery>Caterham Academy - Paul Brady #98</livery>
                 <livery>Caterham Academy - Darin Phillips #99</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Caterham Superlight" xml_name="Cat_Superlight">
             <liveries>
@@ -156,6 +144,7 @@ limitations under the License. -->
                 <livery>Caterham Superlight #61 G.Zupan Skin</livery>
                 <livery>Caterham Superlight #83 A.Nenes Skin</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Caterham Supersport" xml_name="Cat_Supersport">
             <liveries>
@@ -184,6 +173,7 @@ limitations under the License. -->
                 <livery>Caterham Supersport #76</livery>
                 <livery>Caterham Supersport #98</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Copa Classic B" xml_name="CopaClassicB">
             <liveries>
@@ -228,6 +218,7 @@ limitations under the License. -->
                 <livery>Puma GTE #79</livery>
                 <livery>Puma GTE #100</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Copa Classic FL" xml_name="CopaClassicFL">
             <liveries>
@@ -256,6 +247,7 @@ limitations under the License. -->
                 <livery>Puma GTB #93</livery>
                 <livery>Puma GTB #94</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Copa Fusca" xml_name="CopaFusca">
             <liveries>
@@ -286,6 +278,7 @@ limitations under the License. -->
                 <livery>Copa Fusca #888 - F.Goncalves Skin </livery>
                 <livery>Copa Fusca #3422 - T.Emilsen Skin</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Copa Truck" xml_name="CopaTruck">
             <liveries>
@@ -306,6 +299,7 @@ limitations under the License. -->
                 <livery>Paulo Salustiano #55</livery>
                 <livery>Beto Monteiro #88</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Copa Uno" xml_name="CopaUno">
             <liveries>
@@ -338,6 +332,7 @@ limitations under the License. -->
                 <livery>Copa Uno #88</livery>
                 <livery>Copa Uno #99</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="DPI" xml_name="DPI">
             <liveries>
@@ -359,6 +354,7 @@ limitations under the License. -->
                 <livery>Cadillac DPi-V.R #86</livery>
                 <livery>Cadillac DPi-V.R #87</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="F-3" xml_name="F-3">
             <liveries>
@@ -392,6 +388,7 @@ limitations under the License. -->
                 <livery>HighSport Racing #84</livery>
                 <livery>Power On Racing #86</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="F-Classic Gen 1" xml_name="F-Classic_Gen1">
             <liveries>
@@ -422,6 +419,7 @@ limitations under the License. -->
                 <livery>Team Lotus 98T #11</livery>
                 <livery>Team Lotus 98T #12</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="F-Classic Gen 2" xml_name="F-Classic_Gen2">
             <liveries>
@@ -452,6 +450,7 @@ limitations under the License. -->
                 <livery>McLaren MP4/4 #11</livery>
                 <livery>McLaren MP4/4 #12</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="F-Classic Gen 3" xml_name="F-Classic_Gen3">
             <liveries>
@@ -482,6 +481,7 @@ limitations under the License. -->
                 <livery>McLaren MP4/5B #27</livery>
                 <livery>McLaren MP4/5B #28</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="F-Classic Gen 4" xml_name="F-Classic_Gen4">
             <liveries>
@@ -512,6 +512,32 @@ limitations under the License. -->
                 <livery>McLaren MP4/6 #1</livery>
                 <livery>McLaren MP4/6 #2</livery>
             </liveries>
+            <is_modded>false</is_modded>
+        </vehicle_class>
+        <vehicle_class name="F Junior" xml_name="F-Junior">
+            <liveries>
+                <livery>F-Junior #1</livery>
+                <livery>F-Junior #2</livery>
+                <livery>F-Junior #3</livery>
+                <livery>F-Junior #4</livery>
+                <livery>F-Junior #5</livery>
+                <livery>F-Junior #6</livery>
+                <livery>F-Junior #7</livery>
+                <livery>F-Junior #8</livery>
+                <livery>F-Junior #9</livery>
+                <livery>F-Junior #10</livery>
+                <livery>F-Junior #22</livery>
+                <livery>F-Junior #33</livery>
+                <livery>F-Junior #44</livery>
+                <livery>F-Junior #55</livery>
+                <livery>F-Junior #66</livery>
+                <livery>F-Junior #71</livery>
+                <livery>F-Junior #82</livery>
+                <livery>F-Junior #93</livery>
+                <livery>F-Junior #104</livery>
+                <livery>F-Junior #205</livery>
+            </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="F-Inter" xml_name="F-Inter">
             <liveries>
@@ -537,6 +563,7 @@ limitations under the License. -->
                 <livery>F.Inter MG-15 #91</livery>
                 <livery>F.Inter MG-15 #99</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="F-Reiza" xml_name="F-Reiza">
             <liveries>
@@ -561,6 +588,7 @@ limitations under the License. -->
                 <livery>energyX Racing #20</livery>
                 <livery>energyX Racing #21</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="F-Retro Gen 1" xml_name="F-Retro_Gen1">
             <liveries>
@@ -592,6 +620,7 @@ limitations under the License. -->
                 <livery>McLaren M23 #6</livery>
                 <livery>McLaren M23 #33</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="F-Retro Gen2" xml_name="F-Retro_Gen2">
             <liveries>
@@ -618,6 +647,7 @@ limitations under the License. -->
                 <livery>Team Lotus 79 #3</livery>
                 <livery>Team Lotus 79 #4</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="F-Retro Gen3" xml_name="F-Retro_Gen3.">
             <liveries>
@@ -646,6 +676,7 @@ limitations under the License. -->
                 <livery>McLaren MP4/1C #7</livery>
                 <livery>McLaren MP4/1C #8</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="F-Trainer" xml_name="F-Trainer">
             <liveries>
@@ -677,6 +708,7 @@ limitations under the License. -->
                 <livery>Formula Trainer #26</livery>
                 <livery>Formula Trainer #33</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="F-Trainer Advanced" xml_name="F-Trainer_A">
             <liveries>
@@ -708,6 +740,7 @@ limitations under the License. -->
                 <livery>Formula Trainer Advance #26</livery>
                 <livery>Formula Trainer Advance #33</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="F-Ultimate" xml_name="F-Ultimate">
             <liveries>
@@ -732,6 +765,7 @@ limitations under the License. -->
                 <livery>McLean G.P. #98</livery>
                 <livery>McLean G.P. #99</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="F-Ultimate Gen 2" xml_name="F-Ultimate_Gen2">
             <liveries>
@@ -760,6 +794,7 @@ limitations under the License. -->
                 <livery>Strike G.P. #63</livery>
                 <livery>Strike G.P. #85</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="F-USA Gen 1" xml_name="F-USA_Gen1">
             <liveries>
@@ -792,6 +827,7 @@ limitations under the License. -->
                 <livery>Reynard 95i Mercedes-Benz #21</livery>
                 <livery>Reynard 95i Mercedes-Benz #23</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="F-USA Gen 2" xml_name="F-USA_Gen2">
             <liveries>
@@ -821,6 +857,7 @@ limitations under the License. -->
                 <livery>Swift 009c Ford-Cosworth #10</livery>
                 <livery>Swift 009c Ford-Cosworth #11</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="F-USA Gen 3" xml_name="F-USA_Gen3">
             <liveries>
@@ -855,6 +892,36 @@ limitations under the License. -->
                 <livery>Reynard 2Ki Toyota #95</livery>
                 <livery>Reynard 2Ki Toyota #96</livery>
             </liveries>
+            <is_modded>false</is_modded>
+        </vehicle_class>
+        <vehicle_class name="F USA 2023" xml_name="F-USA_2023">
+            <liveries>
+                <livery>F-USA 2023 #00</livery>
+                <livery>F-USA 2023 #01</livery>
+                <livery>F-USA 2023 #02</livery>
+                <livery>F-USA 2023 #03</livery>
+                <livery>F-USA 2023 #04</livery>
+                <livery>F-USA 2023 #05</livery>
+                <livery>F-USA 2023 #06</livery>
+                <livery>F-USA 2023 #07</livery>
+                <livery>F-USA 2023 #08</livery>
+                <livery>F-USA 2023 #09</livery>
+                <livery>F-USA 2023 #10</livery>
+                <livery>F-USA 2023 #11</livery>
+                <livery>F-USA 2023 #12</livery>
+                <livery>F-USA 2023 #13</livery>
+                <livery>F-USA 2023 #14</livery>
+                <livery>F-USA 2023 #15</livery>
+                <livery>F-USA 2023 #16</livery>
+                <livery>F-USA 2023 #17</livery>
+                <livery>F-USA 2023 #20</livery>
+                <livery>F-USA 2023 #21</livery>
+                <livery>F-USA 2023 #45</livery>
+                <livery>F-USA 2023 #51</livery>
+                <livery>F-USA 2023 #62</livery>
+                <livery>F-USA 2023 #85</livery>
+            </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="F-V10 Gen 1" xml_name="F-V10_Gen1">
             <liveries>
@@ -883,6 +950,7 @@ limitations under the License. -->
                 <livery>McLaren MP4/12 Testcar #9</livery>
                 <livery>McLaren MP4/12 Testcar #10</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="F-V10 Gen 2" xml_name="F-V10_Gen2">
             <liveries>
@@ -911,6 +979,7 @@ limitations under the License. -->
                 <livery>United Racing #26</livery>
                 <livery>United Racing #27</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="F-V12" xml_name="F-V12">
             <liveries>
@@ -941,6 +1010,7 @@ limitations under the License. -->
                 <livery>Zir-Win Motorsport #66 - Community Skin</livery>
                 <livery>Zir-Win Motorsport #69 - Community Skin</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="F-Vee" xml_name="F-Vee">
             <liveries>
@@ -966,6 +1036,7 @@ limitations under the License. -->
                 <livery>Francisco Costa #57</livery>
                 <livery>Lucas Veloso #96</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="F-Vintage Gen 1" xml_name="F-Vintage_Gen1">
             <liveries>
@@ -990,6 +1061,7 @@ limitations under the License. -->
                 <livery>Pheonix West Racing #11</livery>
                 <livery>Pheonix West Racing #12</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="F-Vintage Gen 2" xml_name="F-Vintage_Gen2">
             <liveries>
@@ -1020,6 +1092,7 @@ limitations under the License. -->
                 <livery>Team Lotus #15</livery>
                 <livery>Team Lotus #16</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Ginetta G40 Cup" xml_name="G40Cup">
             <liveries>
@@ -1047,6 +1120,7 @@ limitations under the License. -->
                 <livery>Ginetta G40 Cup #88</livery>
                 <livery>Ginetta G40 Cup #92</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Ginetta G55 Supercup" xml_name="G55Supercup">
             <liveries>
@@ -1075,6 +1149,7 @@ limitations under the License. -->
                 <livery>Firenze Autosports #116</livery>
                 <livery>Firenze Autosports #117</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Group A" xml_name="Group A">
             <liveries>
@@ -1105,6 +1180,7 @@ limitations under the License. -->
                 <livery>FR ZeeZitrone #57</livery>
                 <livery>FR ZeeZitrone #58</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Group C" xml_name="Group C">
             <liveries>
@@ -1145,6 +1221,7 @@ limitations under the License. -->
                 <livery>Bremen Mototsport #60</livery>
                 <livery>BRS Auto #65</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="GT1" xml_name="GT1">
             <liveries>
@@ -1189,6 +1266,7 @@ limitations under the License. -->
                 <livery>Nissan R390 GT1 #38</livery>
                 <livery>Nissan R390 GT1 #39</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="GT3" xml_name="GT3">
             <liveries>
@@ -1226,6 +1304,7 @@ limitations under the License. -->
                 <livery>BMW M6 GT3 #91</livery>
                 <livery>BMW M6 GT3 #96</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="GT4" xml_name="GT4">
             <liveries>
@@ -1264,6 +1343,7 @@ limitations under the License. -->
                 <livery>BMW M4 GT4 #11</livery>
                 <livery>BMW M4 GT4 #1</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="GT5" xml_name="GT5">
             <liveries>
@@ -1308,6 +1388,7 @@ limitations under the License. -->
                 <livery>Puma P052 #96</livery>
                 <livery>Puma P052 #99</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="GTE" xml_name="GTE">
             <liveries>
@@ -1338,6 +1419,7 @@ limitations under the License. -->
                 <livery>Porsche 911 RSR GTE #55</livery>
                 <livery>Porsche 911 RSR GTE #79</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="GT Open" xml_name="GTOpen">
             <liveries>
@@ -1368,6 +1450,7 @@ limitations under the License. -->
                 <livery>Parkway Racing #99</livery>
                 <livery>Team NorthStar Cars #82</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Hot Cars" xml_name="Hot Cars">
             <liveries>
@@ -1394,6 +1477,7 @@ limitations under the License. -->
                 <livery>Passat HC #63</livery>
                 <livery>Passat HC #78</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Hypercars" xml_name="Hypercars">
             <liveries>
@@ -1416,6 +1500,7 @@ limitations under the License. -->
                 <livery>McLaren Senna #09</livery>
                 <livery>McLaren Senna #10</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Kart 125cc" xml_name="Kart125cc">
             <liveries>
@@ -1440,6 +1525,7 @@ limitations under the License. -->
                 <livery>Kart 125cc 2STROKE #98</livery>
                 <livery>Kart 125cc 2STROKE #99</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Kart GX390" xml_name="KartGX390">
             <liveries>
@@ -1468,6 +1554,7 @@ limitations under the License. -->
                 <livery>Kart GX390 Race #60</livery>
                 <livery>Kart GX390 Race #61</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Kart Rental" xml_name="KartRental">
             <liveries>
@@ -1482,6 +1569,7 @@ limitations under the License. -->
                 <livery>Kart GX390 Rental #08</livery>
                 <livery>Kart GX390 Rental #09</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Kart Shifter" xml_name="KartShifter">
             <liveries>
@@ -1510,6 +1598,7 @@ limitations under the License. -->
                 <livery>Kart 125cc Shifter #60</livery>
                 <livery>Kart 125cc Shifter #61</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Lancer Cup" xml_name="LancerCup">
             <liveries>
@@ -1546,6 +1635,7 @@ limitations under the License. -->
                 <livery>Cardius Motorsport #87</livery>
                 <livery>Phobes #96</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Mini Challenge" xml_name="MiniChallenge">
             <liveries>
@@ -1574,6 +1664,7 @@ limitations under the License. -->
                 <livery>MINI Cooper JCW #97</livery>
                 <livery>MINI Cooper JCW #99</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Montana" xml_name="Montana">
             <liveries>
@@ -1602,6 +1693,7 @@ limitations under the License. -->
                 <livery>Copa Montana #98</livery>
                 <livery>Copa Montana #99</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Old Stock" xml_name="OldStock">
             <liveries>
@@ -1627,6 +1719,7 @@ limitations under the License. -->
                 <livery>Opala Old Stock Race #113</livery>
                 <livery>Opala Old Stock Race #909</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Opala 79" xml_name="Opala79">
             <liveries>
@@ -1651,6 +1744,7 @@ limitations under the License. -->
                 <livery>Mauro Sa Motta #98</livery>
                 <livery>Sidney Alves #163</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Opala 86" xml_name="Opala86">
             <liveries>
@@ -1675,6 +1769,7 @@ limitations under the License. -->
                 <livery>Havolion-Texaco - Marcos Gracia  #67</livery>
                 <livery>Dudacar - Regina Calderoni #64</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="P1" xml_name="P1">
             <liveries>
@@ -1718,6 +1813,7 @@ limitations under the License. -->
                 <livery>Ginetta G58 #53</livery>
                 <livery>Ginetta G58 #54</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="P2" xml_name="P2">
             <liveries>
@@ -1737,6 +1833,7 @@ limitations under the License. -->
                 <livery>Sigma P1 #15</livery>
                 <livery>Sigma P1 #16</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="P3" xml_name="P3">
             <liveries>
@@ -1763,6 +1860,7 @@ limitations under the License. -->
                 <livery>Roco 001 #71</livery>
                 <livery>Roco 001 #98</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="P4" xml_name="P4">
             <liveries>
@@ -1804,6 +1902,7 @@ limitations under the License. -->
                 <livery>Metalmoro MRX P4 #44</livery>
                 <livery>Metalmoro MRX P4 #56</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Procar" xml_name="Procar">
             <liveries>
@@ -1834,6 +1933,7 @@ limitations under the License. -->
                 <livery>Apex Motorsports #86</livery>
                 <livery>Apex Motorsports #87</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Sprint Race" xml_name="SprintRace">
             <liveries>
@@ -1858,6 +1958,7 @@ limitations under the License. -->
                 <livery>Rubens Barrichello #111</livery>
                 <livery>Joao Rosate #858</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Stock Car 99" xml_name="StockCar99">
             <liveries>
@@ -1882,6 +1983,7 @@ limitations under the License. -->
                 <livery>NASCAR Motorsport - Marcelo Tedesco #91</livery>
                 <livery>Carlos Neto #0</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Stock Car V8" xml_name="StockCarV8.">
             <liveries>
@@ -1914,6 +2016,7 @@ limitations under the License. -->
                 <livery>Crown Racing - G.Casagrande #83</livery>
                 <livery>Crown Racing - M.Colleta #177</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Stock Car V8 2020" xml_name="StockCarV8_2020">
             <liveries>
@@ -1950,6 +2053,7 @@ limitations under the License. -->
                 <livery>KTF Sports - V.Baptista #120</livery>
                 <livery>Crown Racing - B.Monteiro #188</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="StockCar V8 2021" xml_name="StockCarV8_2021">
             <liveries>
@@ -1989,6 +2093,7 @@ limitations under the License. -->
                 <livery>Eurofarma RC - R.Mauricio #90</livery>
                 <livery>Hot Car New Gen - F.Lapenna #110</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="StockCar V8 2022" xml_name="StockCarV8_2022">
             <liveries>
@@ -2026,6 +2131,7 @@ limitations under the License. -->
                 <livery>AMM Vogel - G.Casagrande #83</livery>
                 <livery>RKL Competicoes - G.Frigotto #86</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="StockCarV8 2023" xml_name="StockCarV8_2023.xml">
             <liveries>
@@ -2061,6 +2167,7 @@ limitations under the License. -->
                 <livery>KTF Racing - G.Salas #85</livery>
                 <livery>KTF Racing - F.Baptista #121</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Street" xml_name="Street">
             <liveries>
@@ -2085,6 +2192,7 @@ limitations under the License. -->
                 <livery>Chevrolet Camaro SS #19</livery>
                 <livery>Chevrolet Camaro SS #20</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Supercars" xml_name="Supercars">
             <liveries>
@@ -2127,6 +2235,7 @@ limitations under the License. -->
                 <livery>Laguna Blue Metallic</livery>
                 <livery>Long Beach Red Metallic</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Super Kart" xml_name="SuperKart">
             <liveries>
@@ -2151,6 +2260,7 @@ limitations under the License. -->
                 <livery>Superkart 250cc - Sptcar #98</livery>
                 <livery>Superkart 250cc - Machuca #99</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="Super V8" xml_name="SuperV8">
             <liveries>
@@ -2185,6 +2295,7 @@ limitations under the License. -->
                 <livery>Team Avalone #98</livery>
                 <livery>Team Avalone #99</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="TC 60S" xml_name="TC60S">
             <liveries>
@@ -2217,6 +2328,7 @@ limitations under the License. -->
                 <livery>Chevrolet Corvette C3 #46</livery>
                 <livery>Chevrolet Corvette C3 #47</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="TC 60S2 - Reiza grid" xml_name="TC60S2 - Reiza grid">
             <liveries>
@@ -2241,6 +2353,7 @@ limitations under the License. -->
                 <livery>Lotus 23 #50</livery>
                 <livery>Lotus 23 #52</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="TC 60S2" xml_name="TC60S2">
             <liveries>
@@ -2265,6 +2378,7 @@ limitations under the License. -->
                 <livery>Lotus 23 #50</livery>
                 <livery>Lotus 23 #52</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="TC 70S" xml_name="TC70S">
             <liveries>
@@ -2303,6 +2417,7 @@ limitations under the License. -->
                 <livery>Chevrolet Corvette C3-R #32</livery>
                 <livery>Chevrolet Corvette C3-R #50</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
         <vehicle_class name="TSICup" xml_name="TSICup">
             <liveries>
@@ -2331,6 +2446,7 @@ limitations under the License. -->
                 <livery>VW Virtus GTS #5</livery>
                 <livery>VW Virtus GTS #6</livery>
             </liveries>
+            <is_modded>false</is_modded>
         </vehicle_class>
     </vehicle_classes>
 </vehicle_class_library>

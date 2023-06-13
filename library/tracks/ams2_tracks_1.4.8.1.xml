@@ -67,6 +67,12 @@
         <tracks name="Cleveland GP" xml_name="Cleveland_GP">
             <is_oval>false</is_oval>
         </tracks>
+        <tracks name="Circuit de Catalunya GP" xml_name="Circuit_de_Catalunya_GP">
+            <is_oval>false</is_oval>
+        </tracks>
+        <tracks name="Circuit de Catalunya GP (No Chicane)" xml_name="Circuit_de_Catalunya_GP_NC">
+            <is_oval>false</is_oval>
+        </tracks>
         <tracks name="Cordoba GP" xml_name="Cordoba_GP">
             <is_oval>false</is_oval>
         </tracks>

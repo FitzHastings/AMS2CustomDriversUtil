@@ -37,8 +37,8 @@ public class DDUtil {
     public static final String NEW_GRID_WIZARD_FXML_PATHNAME = "fxml/NewGridWizard.fxml";
     public static final String CUSTOM_GRID_WELCOME_FXML_PATHNAME = "fxml/CustomGridWelcome.fxml";
 
-    public static final String TRACK_LIBRARY_DEFAULT_PATHNAME = "library/tracks/ams2_tracks_1.4.7.2.xml";
-    public static final String VEHICLE_CLASS_LIBRARY_DEFAULT_PATHNAME = "library/vehicles/ams2_vehicles_1.4.7.2.xml";
+    public static final String TRACK_LIBRARY_DEFAULT_PATHNAME = "library/tracks/ams2_tracks_1.4.8.1.xml";
+    public static final String VEHICLE_CLASS_LIBRARY_DEFAULT_PATHNAME = "library/vehicles/ams2_vehicles_1.4.8.1.xml";
 
     public static final String MAIN_CSS_RESOURCE = "css/Eraconstas.css";
 
