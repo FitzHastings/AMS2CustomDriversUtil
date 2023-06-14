@@ -29,7 +29,7 @@ limitations under the License. -->
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
    </padding>
    <BorderLabel alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="48.0" prefWidth="620.0"
-          text="AMS2 Custom Driver Utility version 2.0" textAlignment="CENTER"/>
+          text="AMS2 Custom Driver Utility version 2.1" textAlignment="CENTER"/>
    <ToolBar>
       <HBox spacing="10.0">
          <PromptLabel prefHeight="25.0" prefWidth="210.0" text="Create a New Custom AI Grid"/>
@@ -54,7 +54,7 @@ limitations under the License. -->
       <Separator prefWidth="200.0"/>
    </DarkerVBox>
    <BorderLabel alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="48.0" prefWidth="620.0"
-          text="For AMS2 1.4.7.2" textAlignment="CENTER"/>
+          text="For AMS2 1.4.8.1" textAlignment="CENTER"/>
    <ToolBar>
       <PromptLabel prefHeight="25.0" prefWidth="182.0" text="New AMS 2 Version Out? "/>
       <Button fx:id="manualUpdateButton" mnemonicParsing="false" text="Manual Update"/>

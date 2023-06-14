@@ -1,20 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-
-<!-- Copyright 2022-2023 John B. Ellis
-     Copyright 2023 Prokhor Kalinin
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License. -->
-
 <vehicle_class_library>
     <vehicle_classes>
         <vehicle_class name="ARC Camaro" xml_name="ARC_Cam">
@@ -638,7 +622,7 @@ limitations under the License. -->
             </liveries>
             <is_modded>false</is_modded>
         </vehicle_class>
-        <vehicle_class name="F-Retro Gen2" xml_name="F-Retro_Gen2">
+        <vehicle_class name="F-Retro Gen 2" xml_name="F-Retro_Gen2">
             <liveries>
                 <livery>Brabham BT46B #11</livery>
                 <livery>Brabham BT46B #22</livery>
@@ -665,7 +649,7 @@ limitations under the License. -->
             </liveries>
             <is_modded>false</is_modded>
         </vehicle_class>
-        <vehicle_class name="F-Retro Gen3" xml_name="F-Retro_Gen3.">
+        <vehicle_class name="F-Retro Gen 3" xml_name="F-Retro_Gen3.">
             <liveries>
                 <livery>Brabham BT52 #5</livery>
                 <livery>Brabham BT52 #6</livery>
@@ -2001,7 +1985,7 @@ limitations under the License. -->
             </liveries>
             <is_modded>false</is_modded>
         </vehicle_class>
-        <vehicle_class name="Stock Car V8" xml_name="StockCarV8.">
+        <vehicle_class name="Stock Car V8" xml_name="StockCarV8">
             <liveries>
                 <livery>CIMED Racing - C.Bueno #00</livery>
                 <livery>CIMED Racing - F.Fraga #88</livery>

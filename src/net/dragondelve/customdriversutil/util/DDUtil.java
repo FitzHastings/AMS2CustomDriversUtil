@@ -40,11 +40,13 @@ public class DDUtil {
     public static final String CONFIGURATION_SCREEN_FXML_PATHNAME = "fxml/ConfigurationScreen.fxml";
     public static final String NEW_GRID_WIZARD_FXML_PATHNAME = "fxml/NewGridWizard.fxml";
     public static final String CUSTOM_GRID_WELCOME_FXML_PATHNAME = "fxml/CustomGridWelcome.fxml";
+    public static final String MASS_MODIFY_TOOL_FXML_PATHNAME = "fxml/MassModifyTool.fxml";
 
     public static final String TRACK_LIBRARY_DEFAULT_PATHNAME = "library/tracks/ams2_tracks_1.4.8.1.xml";
     public static final String VEHICLE_CLASS_LIBRARY_DEFAULT_PATHNAME = "library/vehicles/ams2_vehicles_1.4.8.1.xml";
 
     public static final String MAIN_CSS_RESOURCE = "css/Eraconstas.css";
+
 
     public static final Image MAIN_ICON_IMAGE = new Image(Objects.requireNonNull(CustomDriverUtilMain.class.getClassLoader().getResourceAsStream("ams2CDU.png")));
 
@@ -57,6 +59,7 @@ public class DDUtil {
     public URL CONFIGURATION_SCREEN_FXML_URL;
     public URL NEW_GRID_WIZARD_FXML_URL;
     public URL CUSTOM_GRID_WELCOME_FXML_URL;
+    public URL MASS_MODIFY_TOOL_FXML_URL;
 
     private final static DDUtil instance = new DDUtil();
 
@@ -120,6 +123,12 @@ public class DDUtil {
 
         try {
             CUSTOM_GRID_WELCOME_FXML_URL = new URL("file:" + CUSTOM_GRID_WELCOME_FXML_PATHNAME);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            MASS_MODIFY_TOOL_FXML_URL = new URL("file:" + MASS_MODIFY_TOOL_FXML_PATHNAME);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

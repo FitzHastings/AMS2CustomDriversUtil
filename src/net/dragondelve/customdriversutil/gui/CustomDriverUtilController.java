@@ -196,6 +196,13 @@ public class CustomDriverUtilController implements StageController {
     private MenuItem exportDriverLibraryItem;
 
     /**
+     * Opens the MassModifyTool Window and allows the user to modify the grid.
+     * Perfomrs massModifyAction on action.
+     */
+    @FXML
+    private MenuItem massModifyItem;
+
+    /**
      * Shows a FileChooser and if a selection is made attempts to import a driver library form the file chosen.
      * Performs importDriverLibraryAction on action.
      */
@@ -302,6 +309,8 @@ public class CustomDriverUtilController implements StageController {
 
         exportDriverLibraryItem.setOnAction(e -> exportDriverLibraryAction());
         importDriverLibraryItem.setOnAction(e -> importDriverLibraryAction());
+
+        massModifyItem.setOnAction(e -> massModifyAction());
 
         configurationMenuItem.setOnAction(e -> configurationAction());
 
@@ -633,6 +642,24 @@ public class CustomDriverUtilController implements StageController {
         File selectedFile = chooseFileToSave("Export Vehicle Class Library", "library/vehicles");
         if (selectedFile != null) {
             LibraryManager.getInstance().exportVehicleClassLibrary(selectedFile.getPath());
+        }
+    }
+
+    private void massModifyAction() {
+        Stage stage = new Stage();
+        stage.getIcons().add(DDUtil.MAIN_ICON_IMAGE);
+        MassModifyToolController controller = new MassModifyToolController();
+        try {
+            FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().MASS_MODIFY_TOOL_FXML_URL);
+            loader.setController(controller);
+            controller.setStage(stage);
+            Scene scene = new Scene(loader.load());
+            stage.setScene(scene);
+            stage.initOwner(this.stage);
+            stage.setTitle("Mass Modify Tool");
+            stage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

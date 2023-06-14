@@ -36,7 +36,7 @@ limitations under the License. -->
       </VBox>
    </HBox>
    <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" VBox.vgrow="NEVER">
-      <Button fx:id="nextButton" mnemonicParsing="false" text="Next"/>
       <Button fx:id="cancelButton" mnemonicParsing="false" text="Cancel"/>
+      <Button fx:id="nextButton" mnemonicParsing="false" text="Next"/>
    </ToolBar>
 </VBox>

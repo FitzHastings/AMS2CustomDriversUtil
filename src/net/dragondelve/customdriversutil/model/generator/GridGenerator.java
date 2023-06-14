@@ -22,7 +22,11 @@ import net.dragondelve.customdriversutil.model.Track;
 import net.dragondelve.customdriversutil.model.TrackOverride;
 import net.dragondelve.customdriversutil.model.xml.XMLGridImporter;
 import net.dragondelve.customdriversutil.util.Configurator;
+import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
+
+import java.util.NoSuchElementException;
+import java.util.logging.Level;
 
 /**
  * Grid Generator. Generates a new grid when the generateNewGrid() method is called. The grid is generated based on
@@ -84,13 +88,15 @@ public class GridGenerator {
                 driver.countryProperty().set("GBR");
             } else if (settings.isUseNAMeS()) {
                 if (namesSource != null) {
-                    Driver name = namesSource.getDrivers().filtered(d -> d.getLiveryName().equals(driver.getLiveryName())).stream().findFirst().get();
-                    if (name != null) {
+                    try {
+                        Driver name = namesSource.getDrivers().filtered(d -> d.getLiveryName().equals(driver.getLiveryName())).stream().findFirst().get();
                         driver.nameProperty().set(name.getName());
                         driver.countryProperty().set(name.getCountry());
-                    } else {
+                    } catch (NoSuchElementException e) {
+                        DDUtil.DEFAULT_LOGGER.log(Level.SEVERE, "No such Livery in NAMeS: " + driver.getLiveryName() );
                         driver.countryProperty().set("GBR");
                     }
+
                 } else {
                     driver.countryProperty().set("GBR");
                 }

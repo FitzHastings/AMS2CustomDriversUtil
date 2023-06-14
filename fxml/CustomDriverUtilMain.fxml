@@ -74,6 +74,9 @@ limitations under the License. -->
                    <MenuItem fx:id="importDriverLibraryItem" mnemonicParsing="false" text="Import"/>
                </Menu>
            </Menu>
+           <Menu mnemonicParsing="false" text="Tools">
+               <MenuItem fx:id="massModifyItem" mnemonicParsing="false" text="Mass Modify"/>
+           </Menu>
            <Menu mnemonicParsing="false" text="Settings">
                <MenuItem fx:id="configurationMenuItem" mnemonicParsing="false" text="Configuration"/>
            </Menu>
