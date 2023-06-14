@@ -14,6 +14,7 @@
 
 package net.dragondelve.customdriversutil.gui;
 
+import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -178,9 +179,13 @@ public class DefineTracksStep implements StageController {
             event.consume();
         });
 
+        selectedListView.getItems().addListener((ListChangeListener<? super Track>) c -> nextButton.setDisable(c.getList().isEmpty()));
+
         //setting up the buttons
         nextButton.setOnAction(e -> nextAction());
         cancelButton.setOnAction(e -> cancelAction());
+
+        nextButton.setDisable(true);
     }
 
     /**
@@ -216,11 +221,14 @@ public class DefineTracksStep implements StageController {
      * Action that is performed by the nextButton. Opens a driver editor in a new window
      */
     private void nextAction() {
+        if (selectedListView.getItems().isEmpty())
+            return;
         FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().DRIVER_EDITOR_FXML_URL);
         DriverEditor editor = new DriverEditor();
         loader.setController(editor);
         try {
             Stage editorStage = new Stage();
+            editorStage.getIcons().add(DDUtil.MAIN_ICON_IMAGE);
             editorStage.setTitle(stage.getTitle());
             BorderPane borderPane = new BorderPane();
             borderPane.setCenter(loader.load());

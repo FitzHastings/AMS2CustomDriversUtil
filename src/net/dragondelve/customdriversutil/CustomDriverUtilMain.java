@@ -40,6 +40,7 @@ import java.util.Objects;
 // V Fix the .xml.xml bug for importing modded grids.
 // V Add a back button to the new grid wizard.
 // V Replace Noise CheckBoxes with a Noise Slider.
+//   Make Names and Country editable in the Drivers table directly.
 //   Try to deploy 2.1 by the 17th
 //   Rounding of random values (?)
 
@@ -73,14 +74,13 @@ public class CustomDriverUtilMain extends Application {
            LibraryManager.getInstance().importDriverLibrary(Configurator.getInstance().getConfiguration().getDriverLibraryPathname()); 
         }
 
-        primaryStage.setTitle("Custom Driver Utility V2.0");
+        primaryStage.setTitle("Custom Driver Utility V2.1");
         primaryStage.setMinWidth(880);
         primaryStage.setMinHeight(700);
         primaryStage.setHeight(700);
         primaryStage.setWidth(1200);
 
-        Image image = new Image(Objects.requireNonNull(CustomDriverUtilMain.class.getClassLoader().getResourceAsStream("ams2CDU.png")));
-        primaryStage.getIcons().add(image);
+        primaryStage.getIcons().add(DDUtil.MAIN_ICON_IMAGE);
         if (Configurator.getInstance().getConfiguration().isSkipWelcomeScreen()) {
             try {
                 FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().MAIN_WINDOW_FXML_URL);

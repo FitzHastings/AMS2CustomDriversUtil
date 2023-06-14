@@ -14,13 +14,17 @@
 
 package net.dragondelve.customdriversutil.util;
 
+import javafx.scene.image.Image;
+import net.dragondelve.customdriversutil.CustomDriverUtilMain;
+
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.logging.Logger;
 
 /**
  * General Utility class that provides some useful static values for default file locations.
- * Non instatiable. in order to retrieve its only instance use getInstance.
+ * Non instantiable. in order to retrieve its only instance use getInstance.
  */
 public class DDUtil {
     public static final Logger DEFAULT_LOGGER = Logger.getLogger("AMS2 Custom Drivers Util");
@@ -42,6 +46,8 @@ public class DDUtil {
 
     public static final String MAIN_CSS_RESOURCE = "css/Eraconstas.css";
 
+    public static final Image MAIN_ICON_IMAGE = new Image(Objects.requireNonNull(CustomDriverUtilMain.class.getClassLoader().getResourceAsStream("ams2CDU.png")));
+
     public URL TRACK_EDITOR_FXML_URL;
     public URL VEHICLE_CLASS_EDITOR_FXML_URL;
     public URL DRIVER_EDITOR_FXML_URL;
@@ -59,7 +65,7 @@ public class DDUtil {
     }
 
     /**
-     * Private Constructor. It is used to make this class non-instatiable. Attempts to form URLs to all FXML files.
+     * Private Constructor. It is used to make this class non-instantiable. Attempts to form URLs to all FXML files.
      */
     private DDUtil() {
         super();

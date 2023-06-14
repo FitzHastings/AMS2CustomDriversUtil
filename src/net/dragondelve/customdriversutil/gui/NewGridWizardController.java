@@ -29,6 +29,7 @@ import net.dragondelve.customdriversutil.model.VehicleClass;
 import net.dragondelve.customdriversutil.model.generator.*;
 import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
+import net.dragondelve.customdriversutil.util.TooltipUtil;
 
 import java.io.IOException;
 
@@ -321,6 +322,7 @@ public class NewGridWizardController implements StageController {
                 } else
                     useNAMeSRadioButton.visibleProperty().set(true);
                 useNAMeSRadioButton.visibleProperty().set(!newValue.isModded());
+                generatorSettings.nDriversProperty().set(newValue.getLiveryNames().size());
             }
         });
 
@@ -348,6 +350,10 @@ public class NewGridWizardController implements StageController {
         rangeOfValuesCheckBox.selectedProperty().set(true);
         useNAMeSRadioButton.selectedProperty().set(true);
         noiseSlider.setValue(0.2);
+        generatorSettings.aggressionLimitProperty().set(0.8);
+        generatorSettings.boundSkillsGapProperty().set(0.1);
+
+        initTooltips();
     }
 
     /**
@@ -425,5 +431,44 @@ public class NewGridWizardController implements StageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Initializes all tooltips for the control elements
+     */
+    private void initTooltips() {
+        emptyGridCheckBox.setTooltip(TooltipUtil.emptyGridTooltip);
+        generateGridCheckBox.setTooltip(TooltipUtil.generateGridTooltip);
+        reduceGapOnOvalsCheckBox.setTooltip(TooltipUtil.reduceGapOnOvalsTooltip);
+
+        vehicleClassChoiceBox.setTooltip(TooltipUtil.chooseVehicleClassTooltip);
+        forEachLiveryCheckBox.setTooltip(TooltipUtil.forEachLiveryTooltip);
+        amountTextField.setTooltip(TooltipUtil.nDriversTooltip);
+
+        randomValuesCheckBox.setTooltip(TooltipUtil.randomValuesTooltip);
+        randomSkillRadioButton.setTooltip(TooltipUtil.randomSkillTooltip);
+        randomAllRadioButton.setTooltip(TooltipUtil.randomAllTooltip);
+
+        rangeOfValuesCheckBox.setTooltip(TooltipUtil.rangeOfValuesTooltip);
+        noiseSlider.setTooltip(TooltipUtil.noiseTooltip);
+        noiseTextField.setTooltip(TooltipUtil.noiseTooltip);
+
+        noValuesRadioButton.setTooltip(TooltipUtil.noValuesTooltip);
+
+        minValueTextField.setTooltip(TooltipUtil.minGeneratedValueTooltip);
+        maxValueTextField.setTooltip(TooltipUtil.maxGeneratedValueTooltip);
+        limitAggressionCheckBox.setTooltip(TooltipUtil.limitAggressionTooltip);
+        limitToTextField.setTooltip(TooltipUtil.limitAggressionToTooltip);
+
+        bindQualiCheckBox.setTooltip(TooltipUtil.bindQualiSkillTooltip);
+        qualiExceedsRaceSkillCheckBox.setTooltip(TooltipUtil.qualiSkillExceedsTooltip);
+        qualiExceedsTextField.setTooltip(TooltipUtil.exceedsByAmountTooltip);
+
+        blankNamesRadioButton.setTooltip(TooltipUtil.blankNamesTooltip);
+        useNAMeSRadioButton.setTooltip(TooltipUtil.useNAMeSTooltip);
+        fromLiveryNamesRadioButton.setTooltip(TooltipUtil.fromLiveryNameTooltip);
+
+        backButton.setTooltip(TooltipUtil.backTooltip);
+        generateButton.setTooltip(TooltipUtil.generateTooltip);
     }
 }

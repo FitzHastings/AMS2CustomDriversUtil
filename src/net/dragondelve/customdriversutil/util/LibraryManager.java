@@ -30,7 +30,7 @@ import java.util.logging.Level;
 /**
  * Manages all the libraries that are used in this program as a reference.
  * Manages the active instances of TrackLibrary VehicleClassLibrary, and DriverLibrary
- * THis class is non-instatiable, in order to get its only instance you should use the getInstance() method.
+ * THis class is non-instantiable, in order to get its only instance you should use the getInstance() method.
  * Library manager is also responsible for importing and exporting of libraries.
  */
 public class LibraryManager {
@@ -56,7 +56,7 @@ public class LibraryManager {
     private static final LibraryManager instance = new LibraryManager();
 
     /**
-     * Private constructor. Used to make this class non instatiable.
+     * Private constructor. Used to make this class non instantiable.
      */
     private LibraryManager() {
         super();
@@ -186,7 +186,7 @@ public class LibraryManager {
         DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Driver Library loading initiated from path: " + pathname);
 
         List<Driver> importedDrivers = new XMLGridImporter().importFromFile(library).getDrivers();
-        if (importedDrivers.size() != 0) {
+        if (!importedDrivers.isEmpty()) {
             driverLibrary.getDrivers().clear();
             driverLibrary.getDrivers().addAll(importedDrivers);
             DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Driver Library loading successful from path: " + pathname);

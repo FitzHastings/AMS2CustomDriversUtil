@@ -26,7 +26,9 @@ import net.dragondelve.customdriversutil.model.Driver;
 import net.dragondelve.customdriversutil.model.DriverBase;
 import net.dragondelve.customdriversutil.model.VehicleClass;
 import net.dragondelve.customdriversutil.util.Configurator;
+import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
+import net.dragondelve.customdriversutil.util.TooltipUtil;
 
 /**
  * Driver Editor is designed to edit a single driver or a single track specific override if it is put into
@@ -329,13 +331,6 @@ public class DriverEditor {
     private TextField tyreManagementTextField;
 
     /**
-     * CheckBox that determines whether the vehicleReliability value of the default driver should be
-     * overridden or not.
-     */
-    @FXML
-    private CheckBox vehicleReliabilityCheckBox;
-
-    /**
      * TextField that displays the value of the driver's vehicleReliability.
      */
     @FXML
@@ -456,9 +451,10 @@ public class DriverEditor {
         chooseLiveryHBox.initialize("Choose Livery", liveryNameChoiceBox);
 
         chooseLiveryHBox.getCheckBox().selectedProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue && vehicleClass.getLiveryNames().size() == 0) {
+            if (newValue && vehicleClass.getLiveryNames().isEmpty()) {
                 FXObjectChooser<VehicleClass> vehicleClassObjectChooser = new FXObjectChooser<>();
                 Stage chooserStage = new Stage();
+                chooserStage.getIcons().add(DDUtil.MAIN_ICON_IMAGE);
                 chooserStage.setTitle("Choose Vehicle Class");
                 vehicleClassObjectChooser.setItems(LibraryManager.getInstance().getVehicleClassLibrary().getVehicleClasses());
                 TableColumn<VehicleClass, String> vehicleClassTableColumn = new TableColumn<>();
@@ -478,6 +474,8 @@ public class DriverEditor {
 
         if (editedDriver == null)
             rootPane.setDisable(true);
+        
+        initTooltips();
     }
 
     /**
@@ -632,5 +630,70 @@ public class DriverEditor {
             return;
 
         editedDriver.randomize();
+    }
+
+
+    /**
+     * Initializes all tooltips for the control elements
+     */
+    private void initTooltips() {
+        driverNameTextField.setTooltip(TooltipUtil.driverNameTooltip);
+        driverCountryTextField.setTooltip(TooltipUtil.driverCountryTooltip);
+
+        chooseLiveryHBox.getChoiceBox().setTooltip(TooltipUtil.driverLiveryTooltip);
+        chooseLiveryHBox.getTextField().setTooltip(TooltipUtil.driverLiveryTooltip);
+        chooseLiveryHBox.getCheckBox().setTooltip(TooltipUtil.chooseLiveryTooltip);
+
+        racingSkillSlider       .setTooltip(TooltipUtil.raceSkillTooltip);
+        qualiSkillSlider        .setTooltip(TooltipUtil.qualiSkillTooltip);
+        aggressionSlider        .setTooltip(TooltipUtil.aggressionTooltip);
+        defendingSlider         .setTooltip(TooltipUtil.defendingTooltip);
+        staminaSlider           .setTooltip(TooltipUtil.staminaTooltip);
+        consistencySlider       .setTooltip(TooltipUtil.consistencyTooltip);
+        startReactionsSlider    .setTooltip(TooltipUtil.startReactionsTooltip);
+        wetSkillSlider          .setTooltip(TooltipUtil.wetSkillTooltip);
+        tyreManagementSlider    .setTooltip(TooltipUtil.tyreManagementTooltip);
+        fuelManagementSlider    .setTooltip(TooltipUtil.fuelManagementTooltip);
+        blueFlagSlider          .setTooltip(TooltipUtil.blueFlagConcedingTooltip);
+        weatherPitSlider        .setTooltip(TooltipUtil.weatherPitTooltip);
+        mistakeAvoidanceSlider  .setTooltip(TooltipUtil.mistakeAvoidanceTooltip);
+        forcedMistakeSlider     .setTooltip(TooltipUtil.forcedMistakeAvoidanceTooltip);
+        vehicleReliabilitySlider.setTooltip(TooltipUtil.vehicleReliabilityTooltip);
+
+        racingSkillTextField        .setTooltip(TooltipUtil.raceSkillTooltip);
+        qualiSkillTextField         .setTooltip(TooltipUtil.qualiSkillTooltip);
+        aggressionTextField         .setTooltip(TooltipUtil.aggressionTooltip);
+        defendingTextField          .setTooltip(TooltipUtil.defendingTooltip);
+        staminaTextField            .setTooltip(TooltipUtil.staminaTooltip);
+        consistencyTextField        .setTooltip(TooltipUtil.consistencyTooltip);
+        startReactionsTextField     .setTooltip(TooltipUtil.startReactionsTooltip);
+        wetSkillTextField           .setTooltip(TooltipUtil.wetSkillTooltip);
+        tyreManagementTextField     .setTooltip(TooltipUtil.tyreManagementTooltip);
+        fuelManagementTextField     .setTooltip(TooltipUtil.fuelManagementTooltip);
+        blueFlagTextField           .setTooltip(TooltipUtil.blueFlagConcedingTooltip);
+        weatherPitTextField         .setTooltip(TooltipUtil.weatherPitTooltip);
+        mistakeAvoidanceTextField   .setTooltip(TooltipUtil.mistakeAvoidanceTooltip);
+        forcedMistakeTextField      .setTooltip(TooltipUtil.forcedMistakeAvoidanceTooltip);
+        vehicleReliabilityTextField .setTooltip(TooltipUtil.vehicleReliabilityTooltip);
+
+        overrideDriverNameCheckBox              .setTooltip(TooltipUtil.overrideTooltip);
+        overrideCountryCheckBox                 .setTooltip(TooltipUtil.overrideTooltip);
+        overrideRacingSkillCheckBox             .setTooltip(TooltipUtil.overrideTooltip);
+        overrideQualiSkillCheckBox              .setTooltip(TooltipUtil.overrideTooltip);
+        overrideAggressionCheckBox              .setTooltip(TooltipUtil.overrideTooltip);
+        overrideDefendingCheckBox               .setTooltip(TooltipUtil.overrideTooltip);
+        overrideStaminaCheckBox                 .setTooltip(TooltipUtil.overrideTooltip);
+        overrideConsistencyCheckBox             .setTooltip(TooltipUtil.overrideTooltip);
+        overrideStartReactions                  .setTooltip(TooltipUtil.overrideTooltip);
+        overrideWetSkillCheckbox                .setTooltip(TooltipUtil.overrideTooltip);
+        overrideTyreManagementCheckBox          .setTooltip(TooltipUtil.overrideTooltip);
+        overrideFuelManagementCheckBox          .setTooltip(TooltipUtil.overrideTooltip);
+        overrideBlueFlagCheckBox                .setTooltip(TooltipUtil.overrideTooltip);
+        overrideWeatherPitCheckBox              .setTooltip(TooltipUtil.overrideTooltip);
+        overrideMistakeAvoidanceCheckBox        .setTooltip(TooltipUtil.overrideTooltip);
+        overrideForcedMistakeAvoidanceCheckBox  .setTooltip(TooltipUtil.overrideTooltip);
+        overrideVehicleReliabilityCheckBox      .setTooltip(TooltipUtil.overrideTooltip);
+
+        randomizeButton.setTooltip(TooltipUtil.randomizDriverTooltip);
     }
 }

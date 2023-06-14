@@ -18,10 +18,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
@@ -83,6 +81,12 @@ public class CustomDriverUtilController implements StageController {
      */
     @FXML
     private Button removeLibraryDriverButton;
+
+    /**
+     * Button that performs the exportDriverLibraryAction() on action.
+     */
+    @FXML
+    private Button saveDriverLibraryButton;
 
     /**
      * Opens the NewGridWizard.
@@ -301,9 +305,12 @@ public class CustomDriverUtilController implements StageController {
 
         configurationMenuItem.setOnAction(e -> configurationAction());
 
+        driversTableView.setEditable(true);
         driversTableView.setItems(editedGrid.getDrivers());
         driverNameColumn.setCellValueFactory(e -> e.getValue().nameProperty());
+        driverNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         driverCountryColumn.setCellValueFactory(e -> e.getValue().countryProperty());
+        driverCountryColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         driversTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 driverEditor.setEditedDriver(newValue);
@@ -345,6 +352,7 @@ public class CustomDriverUtilController implements StageController {
         editTrackOverrideButton.setOnAction(e -> editTrackOverrideAction());
         addLibraryDriverButton.setOnAction(e -> addLibraryDriverAction());
         removeLibraryDriverButton.setOnAction(e -> removeLibraryDriverAction());
+        saveDriverLibraryButton.setOnAction(e -> exportDriverLibraryAction());
 
         //Handle Drag and drop from libraryDriverTableView to driversTableView
         libraryDriverTableView.setOnDragDetected(event -> {
@@ -370,6 +378,8 @@ public class CustomDriverUtilController implements StageController {
                 driversTableView.getItems().add(selectedDriver);
             event.consume();
         });
+
+        initTooltips();
     }
 
     /**
@@ -435,7 +445,7 @@ public class CustomDriverUtilController implements StageController {
         TrackOverride override = new TrackOverride();
         override.setOverrideFlags(Configurator.getInstance().getConfiguration().getDefaultTrackOverrideFlags());
         initTrackOverrideEditor(override);
-        if (override.getTrack().size() > 0)
+        if (!override.getTrack().isEmpty())
             editedDriver.getTrackOverrides().add(override);
     }
 
@@ -472,6 +482,8 @@ public class CustomDriverUtilController implements StageController {
         stageController.setTrackOverride(override);
         loader.setController(stageController);
         Stage stage = new Stage();
+        stage.getIcons().add(DDUtil.MAIN_ICON_IMAGE);
+
         stageController.setStage(stage);
         stage.initOwner(this.stage);
         try {
@@ -674,6 +686,7 @@ public class CustomDriverUtilController implements StageController {
         FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().CONFIGURATION_SCREEN_FXML_URL);
         StageController controller = new ConfigurationScreenController();
         Stage screenStage = new Stage();
+        screenStage.getIcons().add(DDUtil.MAIN_ICON_IMAGE);
         screenStage.setTitle("Configuration");
         controller.setStage(screenStage);
         loader.setController(controller);
@@ -695,6 +708,7 @@ public class CustomDriverUtilController implements StageController {
      */
     private void openEditor(URL editorFXMLURL, StageController controller, String title) {
         Stage stage = new Stage();
+        stage.getIcons().add(DDUtil.MAIN_ICON_IMAGE);
         try {
             FXMLLoader loader = new FXMLLoader(editorFXMLURL);
             loader.setController(controller);
@@ -731,5 +745,21 @@ public class CustomDriverUtilController implements StageController {
      */
     private File chooseFileToSave(String title, String initialDirectory) {
         return  LibraryManager.createLibraryFileChooser(title, initialDirectory).showSaveDialog(stage);
+    }
+
+    /**
+     * Initializes all tooltips for the control elements
+     */
+    private void initTooltips() {
+        addDriverButton.setTooltip(TooltipUtil.addDriverTooltip);
+        removeDriverButton.setTooltip(TooltipUtil.removeDriverTooltip);
+        saveGridButton.setTooltip(TooltipUtil.saveGridTooltip);
+
+        addTrackOverrideButton.setTooltip(TooltipUtil.addTrackOverrideTooltip);
+        removeTrackOverrideButton.setTooltip(TooltipUtil.removeTrackOverrideTooltip);
+
+        addLibraryDriverButton.setTooltip(TooltipUtil.addLibraryDriverTooltip);
+        removeLibraryDriverButton.setTooltip(TooltipUtil.removeLibraryDriverTooltip);
+        saveDriverLibraryButton.setTooltip(TooltipUtil.saveDriverLibraryTooltip);
     }
 }
