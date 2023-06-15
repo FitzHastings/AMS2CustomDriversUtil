@@ -645,10 +645,14 @@ public class CustomDriverUtilController implements StageController {
         }
     }
 
+    /**
+     * Creates a new stage on which the MassModifyTool scene is going to be displayed.
+     * performed by massModifyItem on action.
+     */
     private void massModifyAction() {
         Stage stage = new Stage();
         stage.getIcons().add(DDUtil.MAIN_ICON_IMAGE);
-        MassModifyToolController controller = new MassModifyToolController();
+        MassModifyToolController controller = new MassModifyToolController(editedGrid.getDrivers());
         try {
             FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().MASS_MODIFY_TOOL_FXML_URL);
             loader.setController(controller);

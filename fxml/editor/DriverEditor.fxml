@@ -186,7 +186,7 @@ limitations under the License. -->
       <PromptLabel text="Blue Flag" GridPane.rowIndex="10" />
       <PromptLabel text="Weather Pit" GridPane.rowIndex="11" />
       <PromptLabel text="Mistake Avoidance" GridPane.rowIndex="12" />
-      <PromptLabel text="Forced Mistake Avoid." GridPane.rowIndex="13" />
+      <PromptLabel text="Forced Mistakes" GridPane.rowIndex="13" />
       <TextField fx:id="racingSkillTextField" GridPane.columnIndex="2" />
       <TextField fx:id="qualiSkillTextField" GridPane.columnIndex="2" GridPane.rowIndex="1" />
       <TextField fx:id="aggressionTextField" GridPane.columnIndex="2" GridPane.rowIndex="2" />

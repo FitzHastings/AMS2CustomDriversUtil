@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package net.dragondelve.customdriversutil.model.generator;
+package net.dragondelve.customdriversutil.tools.generator;
 
 import javafx.collections.ObservableList;
 import net.dragondelve.customdriversutil.CustomDriverUtilMain;

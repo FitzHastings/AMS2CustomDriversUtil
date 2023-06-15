@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package net.dragondelve.customdriversutil.model.generator;
+package net.dragondelve.customdriversutil.tools.generator;
 
 /**
  * Generates values for each of the double parameters of the driver ranging from 0 to 1, or a floor and ceiling values

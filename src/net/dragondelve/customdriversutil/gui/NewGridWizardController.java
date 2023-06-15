@@ -26,7 +26,7 @@ import javafx.stage.Stage;
 import javafx.util.converter.NumberStringConverter;
 import net.dragondelve.customdriversutil.model.Grid;
 import net.dragondelve.customdriversutil.model.VehicleClass;
-import net.dragondelve.customdriversutil.model.generator.*;
+import net.dragondelve.customdriversutil.tools.generator.*;
 import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
 import net.dragondelve.customdriversutil.util.TooltipUtil;

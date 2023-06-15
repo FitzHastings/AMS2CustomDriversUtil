@@ -37,7 +37,7 @@ import net.dragondelve.customdriversutil.util.LibraryManager;
 // V Fix the .xml.xml bug for importing modded grids.
 // V Add a back button to the new grid wizard.
 // V Replace Noise CheckBoxes with a Noise Slider.
-//   Make Names and Country editable in the Drivers table directly.
+// V Make Names and Country editable in the Drivers table directly.
 //   Try to deploy 2.1 by the 17th
 //   Rounding of random values (?)
 
