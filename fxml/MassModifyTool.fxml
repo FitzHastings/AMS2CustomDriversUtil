@@ -96,7 +96,7 @@ limitations under the License. -->
                 </rowConstraints>
                 <RadioButton fx:id="bringCloserFloorRadioButton" mnemonicParsing="false"
                              text="Bring Closer (floor)"/>
-                <RadioButton fx:id="bringCloserCielingRadioButton" mnemonicParsing="false"
+                <RadioButton fx:id="bringCloserCeilingRadioButton" mnemonicParsing="false"
                              text="Bring Closer (ceiling)" GridPane.columnIndex="1"/>
                 <RadioButton fx:id="increaseDistanceFloorRadioButton" mnemonicParsing="false"
                              text="Increase Distance (floor)" GridPane.rowIndex="1"/>

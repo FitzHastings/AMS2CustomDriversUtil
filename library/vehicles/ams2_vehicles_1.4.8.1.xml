@@ -649,7 +649,7 @@
             </liveries>
             <is_modded>false</is_modded>
         </vehicle_class>
-        <vehicle_class name="F-Retro Gen 3" xml_name="F-Retro_Gen3.">
+        <vehicle_class name="F-Retro Gen 3" xml_name="F-Retro_Gen3">
             <liveries>
                 <livery>Brabham BT52 #5</livery>
                 <livery>Brabham BT52 #6</livery>

@@ -14,7 +14,7 @@
 
 package net.dragondelve.customdriversutil.tools.modifier;
 
-import net.dragondelve.customdriversutil.model.Driver;
+import net.dragondelve.customdriversutil.model.DriverBase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +49,17 @@ public class GridModifier {
     public void performModifications() {
         if (settings == null || modifierAction == null)
             return;
-        List<Driver> grid = settings.getGrid();
+        List<? extends DriverBase> grid = settings.getGrid();
+
+        if (settings.isOverrideRaceSkill()) {
+            List<Double> values = new ArrayList<>();
+            grid.forEach(driver -> values.add(driver.getRaceSkill()));
+            if (SmartAction.class.isAssignableFrom(modifierAction.getClass()))
+                ((SmartAction) modifierAction).analyzeValues(values);
+            for(int i = 0; i < values.size(); i++) {
+                grid.get(i).raceSkillProperty().set(modifierAction.performAction(values.get(i)));
+            }
+        }
 
         if (settings.isOverrideQualifyingSkill()) {
             List<Double> values = new ArrayList<>();

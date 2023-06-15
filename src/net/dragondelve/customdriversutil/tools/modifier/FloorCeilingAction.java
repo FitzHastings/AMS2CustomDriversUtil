@@ -14,33 +14,31 @@
 
 package net.dragondelve.customdriversutil.tools.modifier;
 
-import net.dragondelve.customdriversutil.model.DriverBase;
-import net.dragondelve.customdriversutil.model.OverrideFlags;
-
 import java.util.List;
 
 /**
- * Encapsulates settings that can be passed to a GridModifier.
+ * Any Action that requires knowing floor and ceiling of values being modified.
  */
-public class ModifierSettings extends OverrideFlags {
+abstract class FloorCeilingAction implements SmartAction {
     /**
-     * List of drivers who need to be modified.
+     * Minimum value in modified values.
      */
-    private final List<? extends DriverBase> grid;
+    protected double floor = 1.0;
 
     /**
-     * Creates a new instance of ModifierSettings.
-     * @param grid List of drivers who need to be modified.
+     * Maximum value in modified values.
      */
-    public ModifierSettings(List<? extends DriverBase> grid) {
-        this.grid = grid;
-    }
+    protected double ceiling = 0.0;
 
     /**
-     * Lightweight accessor method.
-     * @return List of drivers who need to be modified.
+     * Analuzes the given list of values to find the floor (minimum value) and ceiling (maximum value)
+     * @param modifiedValues List of values that are going to be modified by this action.
      */
-    public List<? extends DriverBase> getGrid() {
-        return grid;
+    @Override
+    public final void analyzeValues(List<Double> modifiedValues) {
+        modifiedValues.forEach(v -> {
+            floor = Math.min(floor, v);
+            ceiling = Math.max(ceiling, v);
+        });
     }
 }

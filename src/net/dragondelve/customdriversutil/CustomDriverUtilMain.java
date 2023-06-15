@@ -30,7 +30,7 @@ import net.dragondelve.customdriversutil.util.LibraryManager;
 // Milestones for 2.1
 // v Update Vehicle Class Library
 // v Update Track Library
-//   Mass Modify function
+// V Mass Modify function
 // V Restyle No Values Check Box.
 // V Add Tooltips to the main screen and Generate Grid Window
 // V Add a Save Button to the screen.
@@ -38,7 +38,7 @@ import net.dragondelve.customdriversutil.util.LibraryManager;
 // V Add a back button to the new grid wizard.
 // V Replace Noise CheckBoxes with a Noise Slider.
 // V Make Names and Country editable in the Drivers table directly.
-//   Try to deploy 2.1 by the 17th
+// V Try to deploy 2.1 by the 17th
 //   Rounding of random values (?)
 
 /**
