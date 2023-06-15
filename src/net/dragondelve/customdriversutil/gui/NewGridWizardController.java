@@ -437,38 +437,38 @@ public class NewGridWizardController implements StageController {
      * Initializes all tooltips for the control elements
      */
     private void initTooltips() {
-        emptyGridCheckBox.setTooltip(TooltipUtil.emptyGridTooltip);
-        generateGridCheckBox.setTooltip(TooltipUtil.generateGridTooltip);
-        reduceGapOnOvalsCheckBox.setTooltip(TooltipUtil.reduceGapOnOvalsTooltip);
+        emptyGridCheckBox       .setTooltip(TooltipUtil.EMPTY_GRID_TOOLTIP);
+        generateGridCheckBox    .setTooltip(TooltipUtil.GENERATE_GRID_TOOLTIP);
+        reduceGapOnOvalsCheckBox.setTooltip(TooltipUtil.REDUCE_GAP_ON_OVALS_TOOLTIP);
 
-        vehicleClassChoiceBox.setTooltip(TooltipUtil.chooseVehicleClassTooltip);
-        forEachLiveryCheckBox.setTooltip(TooltipUtil.forEachLiveryTooltip);
-        amountTextField.setTooltip(TooltipUtil.nDriversTooltip);
+        vehicleClassChoiceBox   .setTooltip(TooltipUtil.CHOOSE_VEHICLE_CLASS_TOOLTIP);
+        forEachLiveryCheckBox   .setTooltip(TooltipUtil.FOR_EACH_LIVERY_TOOLTIP);
+        amountTextField         .setTooltip(TooltipUtil.N_DRIVERS_TOOLTIP);
 
-        randomValuesCheckBox.setTooltip(TooltipUtil.randomValuesTooltip);
-        randomSkillRadioButton.setTooltip(TooltipUtil.randomSkillTooltip);
-        randomAllRadioButton.setTooltip(TooltipUtil.randomAllTooltip);
+        randomValuesCheckBox    .setTooltip(TooltipUtil.RANDOM_VALUES_TOOLTIP);
+        randomSkillRadioButton  .setTooltip(TooltipUtil.RANDOM_SKILL_TOOLTIP);
+        randomAllRadioButton    .setTooltip(TooltipUtil.RANDOM_ALL_TOOLTIP);
 
-        rangeOfValuesCheckBox.setTooltip(TooltipUtil.rangeOfValuesTooltip);
-        noiseSlider.setTooltip(TooltipUtil.noiseTooltip);
-        noiseTextField.setTooltip(TooltipUtil.noiseTooltip);
+        rangeOfValuesCheckBox   .setTooltip(TooltipUtil.RANGE_OF_VALUES_TOOLTIP);
+        noiseSlider             .setTooltip(TooltipUtil.NOISE_TOOLTIP);
+        noiseTextField          .setTooltip(TooltipUtil.NOISE_TOOLTIP);
 
-        noValuesRadioButton.setTooltip(TooltipUtil.noValuesTooltip);
+        noValuesRadioButton     .setTooltip(TooltipUtil.NO_VALUES_TOOLTIP);
 
-        minValueTextField.setTooltip(TooltipUtil.minGeneratedValueTooltip);
-        maxValueTextField.setTooltip(TooltipUtil.maxGeneratedValueTooltip);
-        limitAggressionCheckBox.setTooltip(TooltipUtil.limitAggressionTooltip);
-        limitToTextField.setTooltip(TooltipUtil.limitAggressionToTooltip);
+        minValueTextField       .setTooltip(TooltipUtil.MIN_GENERATED_VALUE_TOOLTIP);
+        maxValueTextField       .setTooltip(TooltipUtil.MAX_GENERATED_VALUE_TOOLTIP);
+        limitAggressionCheckBox .setTooltip(TooltipUtil.LIMIT_AGGRESSION_TOOLTIP);
+        limitToTextField        .setTooltip(TooltipUtil.LIMIT_AGGRESSION_TO_TOOLTIP);
 
-        bindQualiCheckBox.setTooltip(TooltipUtil.bindQualiSkillTooltip);
-        qualiExceedsRaceSkillCheckBox.setTooltip(TooltipUtil.qualiSkillExceedsTooltip);
-        qualiExceedsTextField.setTooltip(TooltipUtil.exceedsByAmountTooltip);
+        bindQualiCheckBox               .setTooltip(TooltipUtil.BIND_QUALI_SKILL_TOOLTIP);
+        qualiExceedsRaceSkillCheckBox   .setTooltip(TooltipUtil.QUALI_SKILL_EXCEEDS_TOOLTIP);
+        qualiExceedsTextField           .setTooltip(TooltipUtil.EXCEEDS_BY_AMOUNT_TOOLTIP);
 
-        blankNamesRadioButton.setTooltip(TooltipUtil.blankNamesTooltip);
-        useNAMeSRadioButton.setTooltip(TooltipUtil.useNAMeSTooltip);
-        fromLiveryNamesRadioButton.setTooltip(TooltipUtil.fromLiveryNameTooltip);
+        blankNamesRadioButton       .setTooltip(TooltipUtil.BLANK_NAMES_TOOLTIP);
+        useNAMeSRadioButton         .setTooltip(TooltipUtil.USE_NAMES_TOOLTIP);
+        fromLiveryNamesRadioButton  .setTooltip(TooltipUtil.FROM_LIVERY_NAME_TOOLTIP);
 
-        backButton.setTooltip(TooltipUtil.backTooltip);
-        generateButton.setTooltip(TooltipUtil.generateTooltip);
+        backButton      .setTooltip(TooltipUtil.BACK_TOOLTIP);
+        generateButton  .setTooltip(TooltipUtil.GENERATE_TOOLTIP);
     }
 }

@@ -185,7 +185,7 @@ public class DefineTracksStep implements StageController {
         nextButton.setOnAction(e -> nextAction());
         cancelButton.setOnAction(e -> cancelAction());
 
-        nextButton.setDisable(true);
+        nextButton.setDisable(trackOverride == null || trackOverride.getTrack().isEmpty());
     }
 
     /**
@@ -214,6 +214,7 @@ public class DefineTracksStep implements StageController {
      * Action that is performed by the cancelButton. Closes this editor's Stage.
      */
     private void cancelAction() {
+        trackOverride.getTrack().clear();
         stage.close();
     }
 

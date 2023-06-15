@@ -315,20 +315,36 @@ public class MassModifyToolController implements StageController{
      * Initializes all tooltips for the control elements
      */
     private void initTooltips() {
-        racingSkillCheckBox             .setTooltip(TooltipUtil.raceSkillTooltip);
-        qualiSkillCheckBox              .setTooltip(TooltipUtil.qualiSkillTooltip);
-        aggressionCheckBox              .setTooltip(TooltipUtil.aggressionTooltip);
-        defendingCheckBox               .setTooltip(TooltipUtil.defendingTooltip);
-        staminaCheckBox                 .setTooltip(TooltipUtil.staminaTooltip);
-        consistencyCheckBox             .setTooltip(TooltipUtil.consistencyTooltip);
-        startReactionsCheckBox          .setTooltip(TooltipUtil.startReactionsTooltip);
-        wetSkillCheckBox                .setTooltip(TooltipUtil.wetSkillTooltip);
-        tyreManagementCheckBox          .setTooltip(TooltipUtil.tyreManagementTooltip);
-        fuelManagementCheckBox          .setTooltip(TooltipUtil.fuelManagementTooltip);
-        blueFlagConcedingCheckBox       .setTooltip(TooltipUtil.blueFlagConcedingTooltip);
-        weatherPitCheckBox              .setTooltip(TooltipUtil.weatherPitTooltip);
-        mistakeAvoidanceCheckBox        .setTooltip(TooltipUtil.mistakeAvoidanceTooltip);
-        forcedMistakeAvoidanceCheckbox  .setTooltip(TooltipUtil.forcedMistakeAvoidanceTooltip);
-        vehicleReliabilityCheckBox      .setTooltip(TooltipUtil.vehicleReliabilityTooltip);
+        racingSkillCheckBox             .setTooltip(TooltipUtil.RACE_SKILL_TOOLTIP);
+        qualiSkillCheckBox              .setTooltip(TooltipUtil.QUALI_SKILL_TOOLTIP);
+        aggressionCheckBox              .setTooltip(TooltipUtil.AGGRESSION_TOOLTIP);
+        defendingCheckBox               .setTooltip(TooltipUtil.DEFENDING_TOOLTIP);
+        staminaCheckBox                 .setTooltip(TooltipUtil.STAMINA_TOOLTIP);
+        consistencyCheckBox             .setTooltip(TooltipUtil.CONSISTENCY_TOOLTIP);
+        startReactionsCheckBox          .setTooltip(TooltipUtil.START_REACTIONS_TOOLTIP);
+        wetSkillCheckBox                .setTooltip(TooltipUtil.WET_SKILL_TOOLTIP);
+        tyreManagementCheckBox          .setTooltip(TooltipUtil.TYRE_MANAGEMENT_TOOLTIP);
+        fuelManagementCheckBox          .setTooltip(TooltipUtil.FUEL_MANAGEMENT_TOOLTIP);
+        blueFlagConcedingCheckBox       .setTooltip(TooltipUtil.BLUE_FLAG_CONCEDING_TOOLTIP);
+        weatherPitCheckBox              .setTooltip(TooltipUtil.WEATHER_PIT_TOOLTIP);
+        mistakeAvoidanceCheckBox        .setTooltip(TooltipUtil.MISTAKE_AVOIDANCE_TOOLTIP);
+        forcedMistakeAvoidanceCheckbox  .setTooltip(TooltipUtil.FORCED_MISTAKE_AVOIDANCE_TOOLTIP);
+        vehicleReliabilityCheckBox      .setTooltip(TooltipUtil.VEHICLE_RELIABILITY_TOOLTIP);
+
+        increaseFlatRadioButton     .setTooltip(TooltipUtil.INCREASE_FLAT_TOOLTIP);
+        decreaseFlatRadioButton     .setTooltip(TooltipUtil.DECREASE_FLAT_TOOLTIP);
+        increasePercentRadioButton  .setTooltip(TooltipUtil.INCREASE_PERCENT_TOOLTIP);
+        decreasePercentRadioButton  .setTooltip(TooltipUtil.DECREASE_PERCENT_TOOLTIP);
+
+        bringCloserFloorRadioButton         .setTooltip(TooltipUtil.BRING_CLOSER_FLOOR_TOOLTIP);
+        bringCloserCeilingRadioButton       .setTooltip(TooltipUtil.BRING_CLOSER_CEILING_TOOLTIP);
+        increaseDistanceFloorRadioButton    .setTooltip(TooltipUtil.INCREASE_DISTANCE_FLOOR_TOOLTIP);
+        increaseDistanceCeilingRadioButton  .setTooltip(TooltipUtil.INCREASE_DISTANCE_CEILING_TOOLTIP);
+
+        modificationValueSlider     .setTooltip(TooltipUtil.MODIFICATION_VALUE_TOOLTIP);
+        modificationValueTextField  .setTooltip(TooltipUtil.MODIFICATION_VALUE_TOOLTIP);
+
+        modifyButton.setTooltip(TooltipUtil.MODIFY_TOOLTIP);
+        cancelButton.setTooltip(TooltipUtil.CANCEL_TOOLTIP);
     }
 }

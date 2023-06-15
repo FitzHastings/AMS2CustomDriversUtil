@@ -326,8 +326,6 @@ public class CustomDriverUtilController implements StageController {
                 trackOverrideTableView.setItems(newValue.getTrackOverrides());
                 addLibraryDriverButton.setDisable(false);
                 addTrackOverrideButton.setDisable(false);
-                editTrackOverrideButton.setDisable(false);
-                removeTrackOverrideButton.setDisable(false);
                 removeDriverButton.setDisable(false);
             } else {
                 driverEditor.setEditedDriver(null);
@@ -336,6 +334,16 @@ public class CustomDriverUtilController implements StageController {
                 editTrackOverrideButton.setDisable(true);
                 removeTrackOverrideButton.setDisable(true);
                 removeDriverButton.setDisable(true);
+            }
+        });
+
+        trackOverrideTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                editTrackOverrideButton.setDisable(false);
+                removeTrackOverrideButton.setDisable(false);
+            } else {
+                editTrackOverrideButton.setDisable(true);
+                removeTrackOverrideButton.setDisable(true);
             }
         });
 
@@ -387,6 +395,9 @@ public class CustomDriverUtilController implements StageController {
                 driversTableView.getItems().add(selectedDriver);
             event.consume();
         });
+
+        if (!editedGrid.getVehicleClass().getLiveryNames().isEmpty())
+            driverEditor.setVehicleClass(editedGrid.getVehicleClass());
 
         initTooltips();
     }
@@ -782,15 +793,16 @@ public class CustomDriverUtilController implements StageController {
      * Initializes all tooltips for the control elements
      */
     private void initTooltips() {
-        addDriverButton.setTooltip(TooltipUtil.addDriverTooltip);
-        removeDriverButton.setTooltip(TooltipUtil.removeDriverTooltip);
-        saveGridButton.setTooltip(TooltipUtil.saveGridTooltip);
+        addDriverButton     .setTooltip(TooltipUtil.ADD_DRIVER_TOOLTIP);
+        removeDriverButton  .setTooltip(TooltipUtil.REMOVE_DRIVER_TOOLTIP);
+        saveGridButton      .setTooltip(TooltipUtil.SAVE_GRID_TOOLTIP);
 
-        addTrackOverrideButton.setTooltip(TooltipUtil.addTrackOverrideTooltip);
-        removeTrackOverrideButton.setTooltip(TooltipUtil.removeTrackOverrideTooltip);
+        addTrackOverrideButton      .setTooltip(TooltipUtil.ADD_TRACK_OVERRIDE_TOOLTIP);
+        removeTrackOverrideButton   .setTooltip(TooltipUtil.REMOVE_TRACK_OVERRIDE_TOOLTIP);
+        editTrackOverrideButton     .setTooltip(TooltipUtil.EDIT_TRACK_OVERRIDE_TOOLTIP);
 
-        addLibraryDriverButton.setTooltip(TooltipUtil.addLibraryDriverTooltip);
-        removeLibraryDriverButton.setTooltip(TooltipUtil.removeLibraryDriverTooltip);
-        saveDriverLibraryButton.setTooltip(TooltipUtil.saveDriverLibraryTooltip);
+        addLibraryDriverButton      .setTooltip(TooltipUtil.ADD_LIBRARY_DRIVER_TOOLTIP);
+        removeLibraryDriverButton   .setTooltip(TooltipUtil.REMOVE_LIBRARY_DRIVER_TOOLTIP);
+        saveDriverLibraryButton     .setTooltip(TooltipUtil.SAVE_DRIVER_LIBRARY_TOOLTIP);
     }
 }
