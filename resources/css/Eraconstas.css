@@ -125,6 +125,10 @@ AnchorPane {
     -fx-background-color: #21282e;
 }
 
+.light-tool-bar {
+    -fx-background-color: #2b3439;
+}
+
 .list-view {
     -fx-padding: 8px;
     -fx-background-color: #2b3439;
@@ -421,7 +425,7 @@ VBox {
     -fx-background-color: #21282c;
 }
 
-BorderLabel {
+.border-label {
     -fx-background-color: #343d44;
     -fx-border-width: 1;
     -fx-border-color: #7b868d;
@@ -429,22 +433,22 @@ BorderLabel {
     -fx-font: 12pt "Arial";
 }
 
-TitleLabel {
+.title-label {
     -fx-text-fill: #fefffe;
     -fx-font: 16pt "Arial";
 }
 
-PromptLabel {
+.prompt-label {
     -fx-text-fill: #9aa2a6;
     -fx-font: 10pt "Arial";
 }
 
-InfoLabel {
+.info-label {
     -fx-text-fill: #7b868d;
     -fx-font: 10pt "Arial";
 }
 
-StabilityPane {
+.stability-pane {
     -fx-background-color: #181e21;
     -fx-background-radius: 15;
     -fx-border-radius: 15;
@@ -452,15 +456,15 @@ StabilityPane {
     -fx-border-color: #9aa2a6;
 }
 
-HighlightPane {
+.highlight-pane {
     -fx-background-color: #181e21;
     -fx-border-width: 1;
     -fx-border-color: #9aa2a6;
 }
 
-MinimizeButton,
-MaximizeButton,
-ExitButton {
+.minimize-button,
+.maximize-button,
+.exit-button {
     -fx-background-color: #181e21;
     -fx-text-fill: #9aa2a6;
     -fx-font: 10pt "Arial";
@@ -468,21 +472,21 @@ ExitButton {
     -fx-border-color: transparent;
 }
 
-MinimizeButton:hover,
-MaximizeButton:hover {
+.minimize-button,
+.maximize-button {
     -fx-border-color: #a34097;
 }
 
-ExitButton:hover {
+.exit-button:hover {
     -fx-border-color: #a34097;
     -fx-background-color: #a34097;
     -fx-text-fill: #fefffe;
 }
 
-DarkerVBox {
+.darker-vbox {
     -fx-background-color: #181e21;
 }
 
-DarkerHBox {
+.darker-hbox {
     -fx-background-color: #181e21;
 }

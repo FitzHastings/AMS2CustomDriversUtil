@@ -27,9 +27,7 @@ limitations under the License. -->
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-
-<?import net.dragondelve.customdriversutil.fx.css.BorderLabel?>
-<?import net.dragondelve.customdriversutil.fx.css.PromptLabel?>
+<?import javafx.scene.control.Label?>
 
 <SplitPane fx:id="rootPane" dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
            minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1"
@@ -56,7 +54,7 @@ limitations under the License. -->
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
         <VBox layoutX="10.0" layoutY="14.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"
               AnchorPane.topAnchor="14.0">
-            <BorderLabel alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+            <Label styleClass="border-label" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
                          prefHeight="17.0" prefWidth="517.0" text="Track Library Editor"
                          textAlignment="CENTER"/>
             <GridPane hgap="10.0" vgap="10.0">
@@ -74,9 +72,9 @@ limitations under the License. -->
                     <Insets top="10.0"/>
                 </VBox.margin>
                 <TextField fx:id="trackNameTextField" GridPane.columnIndex="1"/>
-                <PromptLabel text="Track Name"/>
+                <Label styleClass="prompt-label" text="Track Name"/>
                 <TextField fx:id="trackXMLNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                <PromptLabel text="Track XML Name" GridPane.rowIndex="1"/>
+                <Label styleClass="prompt-label" text="Track XML Name" GridPane.rowIndex="1"/>
                 <CheckBox fx:id="isOvalCheckBox" mnemonicParsing="false" text="Is Oval"
                           GridPane.rowIndex="2"/>
             </GridPane>

@@ -27,14 +27,13 @@ limitations under the License. -->
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
-
-<?import net.dragondelve.customdriversutil.fx.css.PromptLabel?>
+<?import javafx.scene.control.Label?>
 
 <BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="10.0" minWidth="10.0" prefHeight="802.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <left>
        <VBox BorderPane.alignment="CENTER">
            <ToolBar prefHeight="40.0" prefWidth="200.0">
-               <PromptLabel text="Drivers"/>
+               <Label styleClass="prompt-label" text="Drivers"/>
                <Button fx:id="addDriverButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" text="+"/>
                <Button fx:id="removeDriverButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" text="-"/>
                <Button fx:id="saveGridButton"  mnemonicParsing="false" prefHeight="26.0" prefWidth="104.0" text="Save"/>

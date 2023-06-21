@@ -17,25 +17,23 @@ limitations under the License. -->
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import net.dragondelve.customdriversutil.fx.css.PromptLabel?>
-
 <VBox fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
       prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
       <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
          <ToolBar prefHeight="40.0" prefWidth="200.0">
-            <PromptLabel text="Track Library"/>
+            <Label styleClass="prompt-label" text="Track Library"/>
          </ToolBar>
          <ListView fx:id="trackLibraryListView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS"/>
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
          <ToolBar prefHeight="40.0" prefWidth="200.0">
-            <PromptLabel text="Drag and Drop Tracks to override"/>
+            <Label styleClass="prompt-label" text="Drag and Drop Tracks to override"/>
          </ToolBar>
          <ListView fx:id="selectedListView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS"/>
       </VBox>
    </HBox>
-   <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" VBox.vgrow="NEVER">
+   <ToolBar styleClass="light-tool-bar" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" VBox.vgrow="NEVER">
       <Button fx:id="cancelButton" mnemonicParsing="false" text="Cancel"/>
       <Button fx:id="nextButton" mnemonicParsing="false" text="Next"/>
    </ToolBar>

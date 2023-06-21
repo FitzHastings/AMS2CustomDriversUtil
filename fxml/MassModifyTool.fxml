@@ -17,7 +17,6 @@ limitations under the License. -->
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import net.dragondelve.customdriversutil.fx.css.BorderLabel?>
 
 <VBox fx:id="rootPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
       xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
@@ -56,12 +55,12 @@ limitations under the License. -->
             <HBox.margin>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
             </HBox.margin>
-            <BorderLabel alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="394.0"
+            <Label styleClass="border-label" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="394.0"
                    text="Simple Modify">
                 <VBox.margin>
                     <Insets bottom="20.0"/>
                 </VBox.margin>
-            </BorderLabel>
+            </Label>
             <GridPane>
                 <columnConstraints>
                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
@@ -79,12 +78,12 @@ limitations under the License. -->
                 <RadioButton fx:id="decreasePercentRadioButton" mnemonicParsing="false" text="Decrease (%)"
                              GridPane.columnIndex="1" GridPane.rowIndex="1"/>
             </GridPane>
-            <BorderLabel alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="394.0"
+            <Label styleClass="border-label" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="394.0"
                    text="Smart Modify">
                 <VBox.margin>
                     <Insets bottom="20.0" top="20.0"/>
                 </VBox.margin>
-            </BorderLabel>
+            </Label>
             <GridPane>
                 <columnConstraints>
                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
@@ -104,12 +103,12 @@ limitations under the License. -->
                              text="Increase Distance (ceiling)" GridPane.columnIndex="1"
                              GridPane.rowIndex="1"/>
             </GridPane>
-            <BorderLabel alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="394.0"
+            <Label styleClass="border-label" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="394.0"
                    text="Modifiication Value">
                 <VBox.margin>
                     <Insets bottom="20.0" top="20.0"/>
                 </VBox.margin>
-            </BorderLabel>
+            </Label>
             <HBox VBox.vgrow="NEVER">
                 <Slider fx:id="modificationValueSlider" majorTickUnit="0.1" max="1.0" minorTickCount="20"
                         showTickLabels="true" showTickMarks="true" HBox.hgrow="ALWAYS">
@@ -122,7 +121,7 @@ limitations under the License. -->
             </HBox>
         </VBox>
     </HBox>
-    <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0">
+    <ToolBar styleClass="light-tool-bar" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0">
         <Button fx:id="cancelButton" mnemonicParsing="false" text="Cancel"/>
         <Button fx:id="modifyButton" mnemonicParsing="false" text="Modify"/>
     </ToolBar>
