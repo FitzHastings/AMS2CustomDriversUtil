@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package net.dragondelve.customdriversutil.fx;
+package net.dragondelve.mabelfx;
 
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;

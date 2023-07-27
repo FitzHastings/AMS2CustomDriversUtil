@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package net.dragondelve.customdriversutil.fx;
+package net.dragondelve.mabelfx;
 
 import javafx.collections.ObservableList;
 import javafx.geometry.NodeOrientation;
@@ -24,7 +24,6 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import net.dragondelve.customdriversutil.util.DDUtil;
 
 /**
  * Stage controller that displays a list of items to the user on the stage provided to it. When the user presses the
@@ -63,7 +62,6 @@ public class FXObjectChooser<T> {
      */
     public FXObjectChooser() {
         rootPane.getStylesheets().clear();
-        rootPane.getStylesheets().add(DDUtil.MAIN_CSS_RESOURCE);
         ToolBar toolBar = new ToolBar();
         Button okButton = new Button();
         toolBar.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
@@ -89,6 +87,15 @@ public class FXObjectChooser<T> {
         VBox.setVgrow(tableView, Priority.ALWAYS);
 
         okButton.setOnAction(e -> stage.close());
+    }
+
+    /**
+     * Creates a new instance of FXObjectChooser.
+     * @param stylesheet pathname to a stylesheet that will be passed to the rootPane of this stage.
+     */
+    FXObjectChooser(String stylesheet) {
+        this();
+        rootPane.getStylesheets().add(stylesheet);
     }
 
     /**

@@ -12,19 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package net.dragondelve.customdriversutil.gui;
-
-import javafx.stage.Stage;
+package net.dragondelve.mabelfx.fetcher;
 
 /**
- * A JavaFX entity that controls the stage on which it is displayed should implement StageController. This interface
- * is used when the given Controller must have an ability to create its own pop-up windows, alerts and so on, or
- * if this Controller needs a way to close itself.
+ * A simple interface for any class that returns an instance of T on request
+ * @param <T> class of an instance to be returned by the retrieve method
  */
-public interface StageController {
+public interface Fetcher<T> {
     /**
-     * Lightweight mutator method.
-     * @param stage Stage on which this controller is going to be displayed.
+     * This method is used to return an instance of T on request. It is not necessarily lightweight, don't use it as a get method.
+     * @return an instance of T that can be selected from a pre generated list or newly created
      */
-    void setStage(Stage stage);
+    T retrieve();
 }
