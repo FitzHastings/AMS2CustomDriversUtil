@@ -27,6 +27,23 @@ import net.dragondelve.customdriversutil.util.Configurator;
 import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
 
+//TODO: Update CSS resource
+//TODO: Refactor for MabelFX
+//TODO: Refactor the XML Grid loading procedure for compatibility with jusk's custom AI Files
+//TODO: Refactor the XML Model to allow rounding of generated values
+//TODO: Add "Round Generated Values Checkbox" in the Configuration window set it to true as a default option
+//TODO: Eraconstas CSS: Add Warning and Highlight style classes for TableView, TextField and ChoiceBOx
+//TODO: Warn users that a Livery has not yet been assigned, or if a livery has been assigned twice.
+//TODO: MabelFX - List to List Chooser
+//TODO: Custom Modify Option
+//TODO: Add Tooltips to the Configuration Screen
+//TODO: Add Tooltips to Tracks Library Screen
+//TODO: Add Tooltips to Vehicle Library Screen
+//TODO: Change logo and icons to those provided by THK84
+//TODO: Add explicit credits for NAMeS and logos to John B. Ellis and THK84 to the welcome screen
+//TODO: Vehicle library for AMS2 1.5
+//TODO: Update Track Library for AMS 1.5
+
 /**
  * CustomDriverUtility's main class.
  * Responsible for launching the application, making sure the Configurator loads the Configuration and the

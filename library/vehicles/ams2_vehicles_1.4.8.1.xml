@@ -894,7 +894,7 @@
             </liveries>
             <is_modded>false</is_modded>
         </vehicle_class>
-        <vehicle_class name="F USA 2023" xml_name="F-USA_2023">
+        <vehicle_class name="F-USA_2023" xml_name="F-USA_2023">
             <liveries>
                 <livery>F-USA 2023 #00</livery>
                 <livery>F-USA 2023 #01</livery>
@@ -916,10 +916,18 @@
                 <livery>F-USA 2023 #17</livery>
                 <livery>F-USA 2023 #20</livery>
                 <livery>F-USA 2023 #21</livery>
+                <livery>F-USA 2023 #22</livery>
+                <livery>F-USA 2023 #23</livery>
+                <livery>F-USA 2023 #24</livery>
+                <livery>F-USA 2023 #25</livery>
+                <livery>F-USA 2023 #34</livery>
                 <livery>F-USA 2023 #45</livery>
                 <livery>F-USA 2023 #51</livery>
+                <livery>F-USA 2023 #55</livery>
                 <livery>F-USA 2023 #62</livery>
+                <livery>F-USA 2023 #74</livery>
                 <livery>F-USA 2023 #85</livery>
+                <livery>F-USA 2023 #92</livery>
             </liveries>
             <is_modded>false</is_modded>
         </vehicle_class>

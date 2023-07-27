@@ -112,7 +112,7 @@ limitations under the License. -->
       <Label styleClass="prompt-label" text="Stamina" GridPane.rowIndex="4"/>
       <Label styleClass="prompt-label" text="Consistency" GridPane.rowIndex="5"/>
       <Label styleClass="prompt-label" text="Start Reactions" GridPane.rowIndex="6"/>
-      <Label text="Wet Skill" GridPane.rowIndex="7"/>
+      <Label styleClass="prompt-label" text="Wet Skill" GridPane.rowIndex="7"/>
       <Label styleClass="prompt-label" text="Tyre Management" GridPane.rowIndex="8"/>
       <Slider fx:id="racingSkillSlider" majorTickUnit="0.1" max="1.0" minorTickCount="10" prefHeight="14.0"
               prefWidth="412.0" showTickMarks="true" snapToTicks="true" GridPane.columnIndex="1">
@@ -300,7 +300,7 @@ limitations under the License. -->
             <Insets left="10.0"/>
          </GridPane.margin>
       </CheckBox>
-      <Label text="Fuel Management" GridPane.rowIndex="9"/>
+      <Label styleClass="prompt-label" text="Fuel Management" GridPane.rowIndex="9"/>
       <Slider fx:id="fuelManagementSlider" majorTickUnit="0.1" max="1.0" minorTickCount="10" showTickMarks="true"
               snapToTicks="true" GridPane.columnIndex="1" GridPane.rowIndex="9">
          <GridPane.margin>
