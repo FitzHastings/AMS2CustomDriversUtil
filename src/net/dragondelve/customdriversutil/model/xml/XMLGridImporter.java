@@ -22,8 +22,8 @@ import net.dragondelve.customdriversutil.util.LibraryManager;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
-import java.io.File;
-import java.io.InputStream;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -157,18 +157,7 @@ public class XMLGridImporter implements GridImporter {
      * @return New instance of XMLGrid.
      */
     private static XMLGrid loadXMLGrid(File file) {
-        try {
-            DDUtil.DEFAULT_LOGGER.log(Level.FINE, "XML Grid loading initiated from path: " + file.getPath());
-            JAXBContext context = JAXBContext.newInstance(XMLGrid.class);
-            Unmarshaller unmarshaller = context.createUnmarshaller();
-            XMLGrid xmlGrid = (XMLGrid) unmarshaller.unmarshal(file);
-            DDUtil.DEFAULT_LOGGER.log(Level.FINE, "XML Grid loading successful from path: " + file.getPath());
-            return xmlGrid;
-        } catch (JAXBException e) {
-            e.printStackTrace();
-            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "XML Grid loading failed from path: " + file.getPath());
-            return null;
-        }
+        return parseXMLGrid(preParseFile(file));
     }
 
     /**
@@ -177,16 +166,25 @@ public class XMLGridImporter implements GridImporter {
      * @return New instance of XMLGrid.
      */
     private static XMLGrid loadXMLGrid(InputStream stream) {
+        return parseXMLGrid(preParseInputStream(stream));
+    }
+
+    /**
+     * Parses the xml grid from a given pre-Parsed String containing the XML grid.
+     * @param xml xml grid pre-parsed to remove weird discrepancies between AMS2's loader and JAXB unmarshaller
+     * @return new Instance of XMLGrid loaded from the String.
+     */
+    private static XMLGrid parseXMLGrid(String xml) {
         try {
-            DDUtil.DEFAULT_LOGGER.log(Level.FINE, "XML Grid loading initiated from stream: " + stream.toString());
+            DDUtil.DEFAULT_LOGGER.log(Level.FINE, "XML Grid loading initiated from String");
             JAXBContext context = JAXBContext.newInstance(XMLGrid.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
-            XMLGrid xmlGrid = (XMLGrid) unmarshaller.unmarshal(stream);
-            DDUtil.DEFAULT_LOGGER.log(Level.FINE, "XML Grid loading successful from stream: " + stream);
+            XMLGrid xmlGrid = (XMLGrid) unmarshaller.unmarshal(new StringReader(xml));
+            DDUtil.DEFAULT_LOGGER.log(Level.FINE, "XML Grid loading successful from String");
             return xmlGrid;
         } catch (JAXBException e) {
             e.printStackTrace();
-            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "XML Grid loading failed from from stream: " + stream);
+            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "XML Grid loading failed from from String");
             return null;
         }
     }
@@ -299,4 +297,52 @@ public class XMLGridImporter implements GridImporter {
         } else
             target.getOverrideFlags().overrideVehicleReliabilityProperty().set(false);
     }
+
+    /**
+     * Removes things from the XML file that are technically not allowed but AMS2 will ignore and still load the file
+     * For example comments containing multiple --- and multiple xml header declarations.
+     * @param inputStream InputStream that contains the xml grid.
+     * @return String containing the XMLGrid
+     */
+    private static String preParseInputStream(InputStream inputStream) {
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
+            StringBuilder stringBuilder = new StringBuilder();
+            char[] buffer = new char[10];
+            while (bufferedReader.read(buffer) != -1) {
+                stringBuilder.append(new String(buffer));
+                buffer = new char[10];
+            }
+            bufferedReader.close();
+
+            //Fixes dropped characters at the beginning of the stream
+            String xml = stringBuilder.toString().trim().replaceFirst("^([\\W]+)<","<");
+            //Removes any comments left in the xml
+            xml = xml.replaceAll("<!--[\\s\\S]*?-->", "");
+            //Removes redundant xml header declarations (don't ask, there are sometimes 2 headers in the same file
+            xml = xml.replaceAll("<\\?xml.*\\?>", "");
+            //Adding a fixed header after all other headers have been removed.
+            return "<?xml version=\"1.0\" encoding=\"UTF-8\"?> " + xml;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    /**
+     * Removes things from the XML file that are technically not allowed but AMS2 will ignore and still load the file
+     * For example comments containing multiple --- and multiple xml header declarations.
+     * @param file File that contains the xml grid.
+     * @return String containing the XMLGrid
+     */
+    private static String preParseFile(File file) {
+        try {
+            return preParseInputStream(new FileInputStream(file));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

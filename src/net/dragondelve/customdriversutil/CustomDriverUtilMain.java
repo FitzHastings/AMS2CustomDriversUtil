@@ -27,7 +27,6 @@ import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
 import net.dragondelve.mabelfx.StageController;
 
-//TODO: Refactor the XML Grid loading procedure for compatibility with jusk's custom AI Files
 //TODO: Refactor the XML Model to allow rounding of generated values
 //TODO: Add "Round Generated Values Checkbox" in the Configuration window set it to true as a default option
 //TODO: Eraconstas CSS: Add Warning and Highlight style classes for TableView, TextField and ChoiceBOx
