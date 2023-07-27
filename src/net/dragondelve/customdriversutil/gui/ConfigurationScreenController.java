@@ -28,6 +28,7 @@ import net.dragondelve.customdriversutil.gui.editor.Editor;
 import net.dragondelve.customdriversutil.gui.editor.OverrideFlagsEditor;
 import net.dragondelve.customdriversutil.model.OverrideFlags;
 import net.dragondelve.customdriversutil.util.*;
+import net.dragondelve.mabelfx.StageController;
 
 import java.io.File;
 import java.io.IOException;

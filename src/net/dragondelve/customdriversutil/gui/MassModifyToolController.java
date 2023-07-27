@@ -22,13 +22,14 @@ import net.dragondelve.customdriversutil.model.Driver;
 import net.dragondelve.customdriversutil.tools.modifier.*;
 import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.TooltipUtil;
+import net.dragondelve.mabelfx.StageController;
 
 import java.util.List;
 
 /**
  * Controller for a tool that allows the user to modify the Grid of drivers and their property in mass way.
  */
-public class MassModifyToolController implements StageController{
+public class MassModifyToolController implements StageController {
 
     /**
      * CheckBox that determines if blueFlagConceding property should be modified.

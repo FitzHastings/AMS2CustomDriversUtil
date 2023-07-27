@@ -17,8 +17,8 @@ limitations under the License. -->
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import net.dragondelve.mabelfx.HybridChoiceHBox?>
 
-<?import net.dragondelve.customdriversutil.fx.HybridChoiceHBox?>
 <VBox fx:id="rootPane" prefHeight="502.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/8"
       xmlns:fx="http://javafx.com/fxml/1">
    <GridPane minHeight="10.0" minWidth="10.0" prefHeight="70.0" prefWidth="638.0">

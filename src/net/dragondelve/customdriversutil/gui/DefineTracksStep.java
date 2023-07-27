@@ -32,6 +32,7 @@ import net.dragondelve.customdriversutil.model.Track;
 import net.dragondelve.customdriversutil.model.TrackOverride;
 import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
+import net.dragondelve.mabelfx.StageController;
 
 import java.io.IOException;
 import java.util.logging.Level;

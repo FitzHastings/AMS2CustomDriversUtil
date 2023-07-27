@@ -30,6 +30,7 @@ import net.dragondelve.customdriversutil.tools.generator.*;
 import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
 import net.dragondelve.customdriversutil.util.TooltipUtil;
+import net.dragondelve.mabelfx.StageController;
 
 import java.io.IOException;
 

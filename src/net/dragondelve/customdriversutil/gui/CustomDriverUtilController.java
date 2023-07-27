@@ -36,6 +36,7 @@ import net.dragondelve.customdriversutil.model.*;
 import net.dragondelve.customdriversutil.model.xml.XMLGridExporter;
 import net.dragondelve.customdriversutil.model.xml.XMLGridImporter;
 import net.dragondelve.customdriversutil.util.*;
+import net.dragondelve.mabelfx.StageController;
 
 import java.io.File;
 import java.io.IOException;

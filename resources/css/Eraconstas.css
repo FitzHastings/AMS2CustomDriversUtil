@@ -221,13 +221,18 @@ AnchorPane {
     -fx-background-color: #7b868d;
 }
 
-.text-field {
+.text-field, .text-area .content {
     -fx-text-fill: #9aa2a6;
     -fx-background-color: #343d44;
     -fx-border-width: 1;
     -fx-border-color: #9aa2a6;
     -fx-font: 10pt "Arial";
     -fx-prompt-text-fill: #7b868d;
+}
+
+.text-area {
+    -fx-font: 10pt "Arial";
+    -fx-text-fill: #9aa2a6;
 }
 
 .text-field:focused {
@@ -299,6 +304,14 @@ ImageChooserButton: pressed {
 
 .check-box:selected .mark {
     -fx-background-color: #a34097;
+}
+
+.list-check-box:selected .box {
+    -fx-background-color: #a34097;
+}
+
+.list-check-box:selected .mark {
+    -fx-background-color: #fefffe;
 }
 
 .scroll-bar:vertical,
@@ -425,6 +438,11 @@ VBox {
     -fx-background-color: #21282c;
 }
 
+
+HBox {
+    -fx-background-color: #21282c;
+}
+
 .border-label {
     -fx-background-color: #343d44;
     -fx-border-width: 1;
@@ -472,8 +490,8 @@ VBox {
     -fx-border-color: transparent;
 }
 
-.minimize-button,
-.maximize-button {
+.minimize-button:hover,
+.maximize-button:hover {
     -fx-border-color: #a34097;
 }
 
