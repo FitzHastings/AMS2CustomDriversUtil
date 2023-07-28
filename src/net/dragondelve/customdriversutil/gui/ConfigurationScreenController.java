@@ -15,6 +15,8 @@
 package net.dragondelve.customdriversutil.gui;
 
 import com.sun.javafx.collections.ImmutableObservableList;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -24,6 +26,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.converter.NumberStringConverter;
 import net.dragondelve.customdriversutil.gui.editor.Editor;
 import net.dragondelve.customdriversutil.gui.editor.OverrideFlagsEditor;
 import net.dragondelve.customdriversutil.model.OverrideFlags;
@@ -122,6 +125,12 @@ public class ConfigurationScreenController implements StageController {
     @FXML
     private Button cancelButton;
 
+    @FXML
+    private TextField roundingTextField;
+
+    @FXML
+    private CheckBox roundGeneratedCheckBox;
+
     /**
      * Stage on which this StageController is displayed.
      */
@@ -131,6 +140,11 @@ public class ConfigurationScreenController implements StageController {
      * Buffer of the current configuration.
      */
     private final Configuration buffer = new Configuration();
+
+    /**
+     * Buffer that contains the rounding Decimal Points Value
+     */
+    private final IntegerProperty roundingBuffer = new SimpleIntegerProperty();
 
     /**
      * Initialize method initializes all the visual elements before they are displayed by the user.
@@ -154,6 +168,12 @@ public class ConfigurationScreenController implements StageController {
 
         skipWelcomeScreenCheckBox.selectedProperty().set(buffer.isSkipWelcomeScreen());
         chooseLiveryCheckBox.selectedProperty().set(buffer.isChooseLivery());
+
+        roundGeneratedCheckBox.setSelected(buffer.isRoundGeneratedValues());
+
+        roundingBuffer.setValue(buffer.getRoundingDecimalPlaces());
+        roundingTextField.textProperty().bindBidirectional(roundingBuffer, new NumberStringConverter());
+        roundingTextField.disableProperty().bind(roundGeneratedCheckBox.selectedProperty().not());
 
         trackLibraryFileChooserButton.setOnAction(e -> {
             File file = LibraryManager.createLibraryFileChooser("Choose Track Library", "library/tracks").showOpenDialog(stage);
@@ -193,14 +213,18 @@ public class ConfigurationScreenController implements StageController {
      * Sets all fields of the buffer configuration to be equal to the current configuration's fields.
      */
     private void createConfigurationBuffer() {
-        buffer.setTrackLibraryPathname(Configurator.getInstance().getConfiguration().getTrackLibraryPathname());
-        buffer.setVehicleClassLibraryPathname(Configurator.getInstance().getConfiguration().getVehicleClassLibraryPathname());
-        buffer.setDriverLibraryPathname(Configurator.getInstance().getConfiguration().getDriverLibraryPathname());
-        buffer.setDefaultDriverFlags(Configurator.getInstance().getConfiguration().getDefaultDriverFlags());
-        buffer.setDefaultTrackOverrideFlags(Configurator.getInstance().getConfiguration().getDefaultTrackOverrideFlags());
-        buffer.setSkipWelcomeScreen(Configurator.getInstance().getConfiguration().isSkipWelcomeScreen());
-        buffer.setChooseLivery(Configurator.getInstance().getConfiguration().isChooseLivery());
-        buffer.setUpdateURL(Configurator.getInstance().getConfiguration().getUpdateURL());
+        Configuration configuration = Configurator.getInstance().getConfiguration();
+
+        buffer.setTrackLibraryPathname(configuration        .getTrackLibraryPathname());
+        buffer.setVehicleClassLibraryPathname(configuration .getVehicleClassLibraryPathname());
+        buffer.setDriverLibraryPathname(configuration       .getDriverLibraryPathname());
+        buffer.setDefaultDriverFlags(configuration          .getDefaultDriverFlags());
+        buffer.setDefaultTrackOverrideFlags(configuration   .getDefaultTrackOverrideFlags());
+        buffer.setSkipWelcomeScreen(configuration           .isSkipWelcomeScreen());
+        buffer.setChooseLivery(configuration                .isChooseLivery());
+        buffer.setUpdateURL(configuration                   .getUpdateURL());
+        buffer.setRoundGeneratedValues(configuration        .isRoundGeneratedValues());
+        buffer.setRoundingDecimalPlaces(configuration       .getRoundingDecimalPlaces());
     }
 
     /**
@@ -213,6 +237,8 @@ public class ConfigurationScreenController implements StageController {
         buffer.setDriverLibraryPathname(driverLibraryTextField.getText());
         buffer.setSkipWelcomeScreen(skipWelcomeScreenCheckBox.isSelected());
         buffer.setChooseLivery(chooseLiveryCheckBox.isSelected());
+        buffer.setRoundGeneratedValues(roundGeneratedCheckBox.isSelected());
+        buffer.setRoundingDecimalPlaces(roundingBuffer.getValue());
         Configurator.getInstance().setConfiguration(buffer);
         Configurator.getInstance().saveConfiguration();
         stage.close();

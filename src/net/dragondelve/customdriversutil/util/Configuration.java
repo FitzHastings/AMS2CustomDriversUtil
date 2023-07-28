@@ -66,6 +66,16 @@ public class Configuration {
     private boolean skipWelcomeScreen = false;
 
     /**
+     * Flag that determines if during export phase the generated values should be rounded or not.
+     */
+    private boolean roundGeneratedValues = true;
+
+    /**
+     * Value that determines how many decimal places should be kept for each property during Grid exporting.
+     */
+    private int roundingDecimalPlaces = 2;
+
+    /**
      * Lightweight accessor method.
      * @return Pathname to the last imported TrackLibrary.
      */
@@ -199,5 +209,38 @@ public class Configuration {
      */
     public void setUpdateURL(String updateURL) {
         this.updateURL = updateURL;
+    }
+
+    /**
+     * Lightweight accessor method.
+     * @return Flag that determines if during export phase the generated values should be rounded or not.
+     */
+    @XmlElement (name = "override_generated_values")
+    public boolean isRoundGeneratedValues() {
+        return roundGeneratedValues;
+    }
+
+    /**
+     * Lightweight mutator method.
+     * @param roundGeneratedValues Flag that determines if during export phase the generated values should be rounded or not.
+     */
+    public void setRoundGeneratedValues(boolean roundGeneratedValues) {
+        this.roundGeneratedValues = roundGeneratedValues;
+    }
+
+    /**
+     * Lightweight accessor method.
+     * @return Value that determines how many decimal places should be kept for each property during Grid exporting.
+     */
+    public int getRoundingDecimalPlaces() {
+        return roundingDecimalPlaces;
+    }
+
+    /**
+     * Lightweight mutator method.
+     * @param roundingDecimalPlaces Value that determines how many decimal places should be kept for each property during Grid exporting.
+     */
+    public void setRoundingDecimalPlaces(int roundingDecimalPlaces) {
+        this.roundingDecimalPlaces = roundingDecimalPlaces;
     }
 }

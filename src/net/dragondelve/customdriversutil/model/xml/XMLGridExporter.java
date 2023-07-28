@@ -16,6 +16,8 @@ package net.dragondelve.customdriversutil.model.xml;
 
 import net.dragondelve.customdriversutil.model.DriverBase;
 import net.dragondelve.customdriversutil.model.Grid;
+import net.dragondelve.customdriversutil.util.Configurator;
+import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.GridExporter;
 
 import javax.xml.bind.JAXBContext;
@@ -135,7 +137,10 @@ public class XMLGridExporter implements GridExporter {
      * @return same property converted to a String
      */
     private String convertProperty(double property) {
-        return Double.toString(property).substring(0, 4);
+        if (Configurator.getInstance().getConfiguration().isRoundGeneratedValues())
+            return Double.toString(property).substring(0, DDUtil.DECIMAL_POINT_CONSTANT + Configurator.getInstance().getConfiguration().getRoundingDecimalPlaces());
+        else
+            return Double.toString(property);
     }
 
 }
