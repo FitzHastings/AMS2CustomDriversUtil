@@ -98,34 +98,44 @@ public class XMLGridExporter implements GridExporter {
         if (source.getOverrideFlags().isOverrideCountry())
             target.setCountry(source.getCountry());
         if (source.getOverrideFlags().isOverrideRaceSkill())
-            target.setRaceSkill(source.getRaceSkill());
+            target.setRaceSkill(convertProperty(source.getRaceSkill()));
         if (source.getOverrideFlags().isOverrideQualifyingSkill())
-            target.setQualifyingSkill(source.getQualifyingSkill());
+            target.setQualifyingSkill(convertProperty(source.getQualifyingSkill()));
         if (source.getOverrideFlags().isOverrideAggression())
-            target.setAggression(source.getAggression());
+            target.setAggression(convertProperty(source.getAggression()));
         if (source.getOverrideFlags().isOverrideDefending())
-            target.setDefending(source.getDefending());
+            target.setDefending(convertProperty(source.getDefending()));
         if (source.getOverrideFlags().isOverrideStamina())
-            target.setStamina(source.getStamina());
+            target.setStamina(convertProperty(source.getStamina()));
         if (source.getOverrideFlags().isOverrideConsistency())
-            target.setConsistency(source.getConsistency());
+            target.setConsistency(convertProperty(source.getConsistency()));
         if (source.getOverrideFlags().isOverrideStartReactions())
-            target.setStartReactions(source.getStartReactions());
+            target.setStartReactions(convertProperty(source.getStartReactions()));
         if (source.getOverrideFlags().isOverrideWetSkill())
-            target.setWetSkill(source.getWetSkill());
+            target.setWetSkill(convertProperty(source.getWetSkill()));
         if (source.getOverrideFlags().isOverrideTyreManagement())
-            target.setTyreManagement(source.getTyreManagement());
+            target.setTyreManagement(convertProperty(source.getTyreManagement()));
         if (source.getOverrideFlags().isOverrideFuelManagement())
-            target.setFuelManagement(source.getFuelManagement());
+            target.setFuelManagement(convertProperty(source.getFuelManagement()));
         if (source.getOverrideFlags().isOverrideBlueFlagConceding())
-            target.setBlueFlagConceding(source.getBlueFlagConceding());
+            target.setBlueFlagConceding(convertProperty(source.getBlueFlagConceding()));
         if (source.getOverrideFlags().isOverrideWeatherTyreChange())
-            target.setWeatherTyreChanges(source.getWeatherTyreChange());
+            target.setWeatherTyreChanges(convertProperty(source.getWeatherTyreChange()));
         if (source.getOverrideFlags().isOverrideAvoidanceOfMistakes())
-            target.setAvoidanceOfMistakes(source.getAvoidanceOfMistakes());
+            target.setAvoidanceOfMistakes(convertProperty(source.getAvoidanceOfMistakes()));
         if (source.getOverrideFlags().isOverrideAvoidanceOfForcedMistakes())
-            target.setAvoidanceOfForcedMistakes(source.getAvoidanceOfForcedMistakes());
+            target.setAvoidanceOfForcedMistakes(convertProperty(source.getAvoidanceOfForcedMistakes()));
         if (source.getOverrideFlags().isOverrideVehicleReliability())
-            target.setVehicleReliability(source.getVehicleReliability());
+            target.setVehicleReliability(convertProperty(source.getVehicleReliability()));
     }
+
+    /**
+     * Converts the given driver's property to a String according to the current Export Rules
+     * @param property property to be converted
+     * @return same property converted to a String
+     */
+    private String convertProperty(double property) {
+        return Double.toString(property).substring(0, 4);
+    }
+
 }

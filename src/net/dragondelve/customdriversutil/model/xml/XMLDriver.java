@@ -47,13 +47,13 @@ final class XMLDriver {
      * For example, at 90% "Opponent Skill Level" slider setting: it builds a range from 85% to 95% (just example, the exact numbers vary for each vehicle model),
      * so a 1.0 race skill driver would be 95% skill and a 0.0 race skill driver would be 85% skill in this example.
      */
-    private Double raceSkill;
+    private String raceSkill;
 
     /**
      * Qualification Session driver skill. Its completely independent of the race_skill.
      * One detail is that a lower qualifying_skill value increases the likelihood of AI programmed mistakes during qualifying hotlaps.
      */
-    private Double qualifyingSkill;
+    private String qualifyingSkill;
 
     /**
      * Driver aggression. It is scaled by the "Opponent Aggression" setting:
@@ -62,19 +62,19 @@ final class XMLDriver {
      * At High "Opponent Aggression" setting, the 0-1 aggression value is mapped into a 0.6-1.0 range.
      * At Max "Opponent Aggression" setting, all drivers have 1.0 aggression.
      */
-    private Double aggression;
+    private String aggression;
 
     /**
      * How much the driver will try to defend his position. Is also scaled by the "Opponent Aggression" slider setting.
      * One detail is that a lower defending value increases the likelihood of AI programmed mistakes when under pressure.
      */
-    private Double defending;
+    private String defending;
 
     /**
      * Lower stamina value means the driver loses more of his skill during the session,
      * and also makes the driver to become tired earlier (which increases the likelihood of AI programmed mistakes)
      */
-    private Double stamina;
+    private String stamina;
 
     /**
      * Lower consistency value means the driver skill can be randomly reduced more (basically, the lower the consistency
@@ -83,27 +83,27 @@ final class XMLDriver {
      * (determined upon loading of a track) and also a per-lap effect (determined every new lap or so). One detail is that
      * a lower consistency value slightly increases the likelihood of AI programmed mistakes during the session.
      */
-    private Double consistency;
+    private String consistency;
 
     /**
      * Lower start_reactions value means the driver will take more time to react to the race green flag and is more likely to make race start
      * programmed mistakes at the moment of the race green flag (like losing rear grip with some smoke).
      */
-    private Double startReactions;
+    private String startReactions;
 
     /**
      * How good he is on a wet track. Controls how much he will slow down in curves as the track gets wet
      * (lower wet_skill values means he will slow down more), and how likely he will make programmed mistakes related to wetness,
      * like losing grip in puddles or in wet surface (lower wet_skill values increases the likelihood of those mistakes).
      */
-    private Double wetSkill;
+    private String wetSkill;
 
     /**
      * How good he is in preventing tyre wear (higher values means he will have less tyre wear, and consequently
      * he will be able to do keep doing good lap times for a longer period and pit later due to that).
      * This doesn't change the behavior of the driver (i.e. he won't drive differently to try to save tires), just the tyre wear.
      */
-    private Double tyreManagement;
+    private String tyreManagement;
 
     /**
      * For now this parameter works in oval tracks only (but in future it will be extended to all track types);
@@ -112,37 +112,37 @@ final class XMLDriver {
      * while at the same time trying to not lose much distance to the race leader. It doesn't mean high value is better
      * than low value, it's just a characteristic of the driver.
      */
-    private Double fuelManagement;
+    private String fuelManagement;
 
     /**
      * Drivers with high blue_flag_conceding will work harder to concede the position when under blue flag.
      */
-    private Double blueFlagConceding;
+    private String blueFlagConceding;
 
     /**
      * Drivers with high weather_tyre_changes are more likely to make pit stops for changing tyres when the track wetness state changes.
      * It doesn't mean 1.0 is better than 0.0, it's just a characteristic of the driver, not really a skill.
      * Sometimes staying longer on the track with the wrong tyres is better, sometimes its worse.
      */
-    private Double weatherTyreChanges;
+    private String weatherTyreChanges;
 
     /**
      * Drivers with lower avoidance_of_mistakes value are more likely to make AI programmed mistakes during the session in general
      * (like understeer, oversteer, recoverable and non-recoverable mistakes).
      */
-    private Double avoidanceOfMistakes;
+    private String avoidanceOfMistakes;
 
     /**
      *  Drivers with 1.0 value for avoidance_of_forced_mistakes won't have their chances of mistakes increased when under pressure (when defending position).
      *  Drivers with lower value for avoidance_of_forced_mistakes will have their chances of mistakes increased when under pressure (compared to their chances
      *  of mistakes when not under pressure).
      */
-    private Double avoidanceOfForcedMistakes;
+    private String avoidanceOfForcedMistakes;
 
     /**
      * Ratio between the lowest and highest possible reliability for the car/class in question.
      */
-    private Double vehicleReliability;
+    private String vehicleReliability;
 
     /**
      * Comma separated list of track names. If this XML attribute is present in the XML it indicates that this driver is a track specific override of another driver.
@@ -205,7 +205,7 @@ final class XMLDriver {
      * @return Race session driver skill. It is mapped into a smaller range based on the "Opponent Skill Level" slider setting.
      */
     @XmlElement(name = "race_skill")
-    public Double getRaceSkill() {
+    public String getRaceSkill() {
         return raceSkill;
     }
 
@@ -213,7 +213,7 @@ final class XMLDriver {
      * Lightweight mutator method.
      * @param raceSkill  Race session driver skill. It is mapped into a smaller range based on the "Opponent Skill Level" slider setting.
      */
-    public void setRaceSkill(Double raceSkill) {
+    public void setRaceSkill(String raceSkill) {
         this.raceSkill = raceSkill;
     }
 
@@ -222,7 +222,7 @@ final class XMLDriver {
      * @return Qualification Session driver skill. Its completely independent of the race_skill.
      */
     @XmlElement(name = "qualifying_skill")
-    public Double getQualifyingSkill() {
+    public String getQualifyingSkill() {
         return qualifyingSkill;
     }
 
@@ -230,7 +230,7 @@ final class XMLDriver {
      * Lightweight mutator method.
      * @param qualifyingSkill Qualification Session driver skill. Its completely independent of the race_skill.
      */
-    public void setQualifyingSkill(Double qualifyingSkill) {
+    public void setQualifyingSkill(String qualifyingSkill) {
         this.qualifyingSkill = qualifyingSkill;
     }
 
@@ -239,7 +239,7 @@ final class XMLDriver {
      * @return Driver aggression. It is scaled by the "Opponent Aggression".
      */
     @XmlElement(name = "aggression")
-    public Double getAggression() {
+    public String getAggression() {
         return aggression;
     }
 
@@ -247,7 +247,7 @@ final class XMLDriver {
      * Lightweight mutator method.
      * @param aggression Driver aggression. It is scaled by the "Opponent Aggression".
      */
-    public void setAggression(Double aggression) {
+    public void setAggression(String aggression) {
         this.aggression = aggression;
     }
 
@@ -256,7 +256,7 @@ final class XMLDriver {
      * @return How much the driver will try to defend his position.
      */
     @XmlElement(name = "defending")
-    public Double getDefending() {
+    public String getDefending() {
         return defending;
     }
 
@@ -264,7 +264,7 @@ final class XMLDriver {
      * Lightweight mutator method.
      * @param defending How much the driver will try to defend his position.
      */
-    public void setDefending(Double defending) {
+    public void setDefending(String defending) {
         this.defending = defending;
     }
 
@@ -273,7 +273,7 @@ final class XMLDriver {
      * @return Lower stamina value means the driver loses more of his skill during the session.
      */
     @XmlElement(name = "stamina")
-    public Double getStamina() {
+    public String getStamina() {
         return stamina;
     }
 
@@ -281,7 +281,7 @@ final class XMLDriver {
      * Lightweight mutator method.
      * @param stamina Lower stamina value means the driver loses more of his skill during the session.
      */
-    public void setStamina(Double stamina) {
+    public void setStamina(String stamina) {
         this.stamina = stamina;
     }
 
@@ -290,7 +290,7 @@ final class XMLDriver {
      * @return Lower consistency value means the driver skill can be randomly reduced more.
      */
     @XmlElement(name = "consistency")
-    public Double getConsistency() {
+    public String getConsistency() {
         return consistency;
     }
 
@@ -298,7 +298,7 @@ final class XMLDriver {
      * Lightweight mutator method.
      * @param consistency Lower consistency value means the driver skill can be randomly reduced more.
      */
-    public void setConsistency(Double consistency) {
+    public void setConsistency(String consistency) {
         this.consistency = consistency;
     }
 
@@ -307,7 +307,7 @@ final class XMLDriver {
      * @return Lower start_reactions value means the driver will take more time to react to the race green flag
      */
     @XmlElement(name = "start_reactions")
-    public Double getStartReactions() {
+    public String getStartReactions() {
         return startReactions;
     }
 
@@ -315,7 +315,7 @@ final class XMLDriver {
      * Lightweight mutator method.
      * @param startReactions Lower start_reactions value means the driver will take more time to react to the race green flag
      */
-    public void setStartReactions(Double startReactions) {
+    public void setStartReactions(String startReactions) {
         this.startReactions = startReactions;
     }
 
@@ -324,7 +324,7 @@ final class XMLDriver {
      * @return How good the driver is on a wet track.
      */
     @XmlElement(name = "wet_skill")
-    public Double getWetSkill() {
+    public String getWetSkill() {
         return wetSkill;
     }
 
@@ -332,7 +332,7 @@ final class XMLDriver {
      * Lightweight mutator method.
      * @param wetSkill How good the driver is on a wet track.
      */
-    public void setWetSkill(Double wetSkill) {
+    public void setWetSkill(String wetSkill) {
         this.wetSkill = wetSkill;
     }
 
@@ -341,7 +341,7 @@ final class XMLDriver {
      * @return How good the driver is in preventing tyre wear.
      */
     @XmlElement(name = "tyre_management")
-    public Double getTyreManagement() {
+    public String getTyreManagement() {
         return tyreManagement;
     }
 
@@ -349,7 +349,7 @@ final class XMLDriver {
      * Lightweight mutator method.
      * @param tyreManagement How good the driver is in preventing tyre wear.
      */
-    public void setTyreManagement(Double tyreManagement) {
+    public void setTyreManagement(String tyreManagement) {
         this.tyreManagement = tyreManagement;
     }
 
@@ -358,7 +358,7 @@ final class XMLDriver {
      * @return The higher the value, the more the AI will try to save fuel in some strategic situations instead of pushing.
      */
     @XmlElement(name = "fuel_management")
-    public Double getFuelManagement() {
+    public String getFuelManagement() {
         return fuelManagement;
     }
 
@@ -366,7 +366,7 @@ final class XMLDriver {
      * Lightweight mutator method.
      * @param fuelManagement The higher the value, the more the AI will try to save fuel in some strategic situations instead of pushing.
      */
-    public void setFuelManagement(Double fuelManagement) {
+    public void setFuelManagement(String fuelManagement) {
         this.fuelManagement = fuelManagement;
     }
 
@@ -375,7 +375,7 @@ final class XMLDriver {
      * @return Drivers with high blue_flag_conceding will work harder to concede the position when under blue flag.
      */
     @XmlElement (name = "blue_flag_conceding")
-    public Double getBlueFlagConceding() {
+    public String getBlueFlagConceding() {
         return blueFlagConceding;
     }
 
@@ -383,7 +383,7 @@ final class XMLDriver {
      * Lightweight mutator method.
      * @param blueFlagConceding Drivers with high blue_flag_conceding will work harder to concede the position when under blue flag.
      */
-    public void setBlueFlagConceding(Double blueFlagConceding) {
+    public void setBlueFlagConceding(String blueFlagConceding) {
         this.blueFlagConceding = blueFlagConceding;
     }
 
@@ -392,7 +392,7 @@ final class XMLDriver {
      * @return Drivers with high weather_tyre_changes are more likely to make pitstops for changing tyres when the track wetness state changes.
      */
     @XmlElement (name = "weather_tyre_changes")
-    public Double getWeatherTyreChanges() {
+    public String getWeatherTyreChanges() {
         return weatherTyreChanges;
     }
 
@@ -400,7 +400,7 @@ final class XMLDriver {
      * Lightweight mutator method.
      * @param weatherTyreChanges Drivers with high weather_tyre_changes are more likely to make pitstops for changing tyres when the track wetness state changes.
      */
-    public void setWeatherTyreChanges(Double weatherTyreChanges) {
+    public void setWeatherTyreChanges(String weatherTyreChanges) {
         this.weatherTyreChanges = weatherTyreChanges;
     }
 
@@ -409,7 +409,7 @@ final class XMLDriver {
      * @return Drivers with lower avoidance_of_mistakes value are more likely to make AI programmed mistakes
      */
     @XmlElement (name = "avoidance_of_mistakes")
-    public Double getAvoidanceOfMistakes() {
+    public String getAvoidanceOfMistakes() {
         return avoidanceOfMistakes;
     }
 
@@ -417,7 +417,7 @@ final class XMLDriver {
      * Lightweight mutator method.
      * @param avoidanceOfMistakes Drivers with lower avoidance_of_mistakes value are more likely to make AI programmed mistakes
      */
-    public void setAvoidanceOfMistakes(Double avoidanceOfMistakes) {
+    public void setAvoidanceOfMistakes(String avoidanceOfMistakes) {
         this.avoidanceOfMistakes = avoidanceOfMistakes;
     }
 
@@ -426,7 +426,7 @@ final class XMLDriver {
      * @return Drivers with lower value for avoidance_of_forced_mistakes will have their chances of mistakes increased when under pressure.
      */
     @XmlElement (name = "avoidance_of_forced_mistakes")
-    public Double getAvoidanceOfForcedMistakes() {
+    public String getAvoidanceOfForcedMistakes() {
         return avoidanceOfForcedMistakes;
     }
 
@@ -434,7 +434,7 @@ final class XMLDriver {
      * Lightweight mutator method.
      * @param avoidanceOfForcedMistakes  Drivers with lower value for avoidance_of_forced_mistakes will have their chances of mistakes increased when under pressure.
      */
-    public void setAvoidanceOfForcedMistakes(Double avoidanceOfForcedMistakes) {
+    public void setAvoidanceOfForcedMistakes(String avoidanceOfForcedMistakes) {
         this.avoidanceOfForcedMistakes = avoidanceOfForcedMistakes;
     }
 
@@ -443,7 +443,7 @@ final class XMLDriver {
      * @return Ratio between the lowest and highest possible reliability for the car/class in question.
      */
     @XmlElement (name = "vehicle_reliability")
-    public Double getVehicleReliability() {
+    public String getVehicleReliability() {
         return vehicleReliability;
     }
 
@@ -451,7 +451,7 @@ final class XMLDriver {
      * Lightweight mutator method.
      * @param vehicleReliability Ratio between the lowest and highest possible reliability for the car/class in question.
      */
-    public void setVehicleReliability(Double vehicleReliability) {
+    public void setVehicleReliability(String vehicleReliability) {
         this.vehicleReliability = vehicleReliability;
     }
 

@@ -208,91 +208,91 @@ public class XMLGridImporter implements GridImporter {
             target.getOverrideFlags().overrideCountryProperty().set(false);
 
         if (source.getRaceSkill() != null) {
-            target.raceSkillProperty().set(source.getRaceSkill());
+            target.raceSkillProperty().set(Double.parseDouble(source.getRaceSkill()));
             target.getOverrideFlags().overrideRaceSkillProperty().set(true);
         } else
             target.getOverrideFlags().overrideRaceSkillProperty().set(false);
 
         if (source.getQualifyingSkill() != null) {
-            target.qualifyingSkillProperty().set(source.getQualifyingSkill());
+            target.qualifyingSkillProperty().set(Double.parseDouble(source.getQualifyingSkill()));
             target.getOverrideFlags().overrideQualifyingSkillProperty().set(true);
         } else
             target.getOverrideFlags().overrideQualifyingSkillProperty().set(false);
 
         if (source.getAggression() != null) {
-            target.aggressionProperty().set(source.getAggression());
+            target.aggressionProperty().set(Double.parseDouble(source.getAggression()));
             target.getOverrideFlags().overrideAggressionProperty().set(true);
         } else
             target.getOverrideFlags().overrideAggressionProperty().set(false);
 
         if (source.getDefending() != null) {
-            target.defendingProperty().set(source.getDefending());
+            target.defendingProperty().set(Double.parseDouble(source.getDefending()));
             target.getOverrideFlags().overrideDefendingProperty().set(true);
         } else
             target.getOverrideFlags().overrideDefendingProperty().set(false);
 
         if (source.getStamina() != null) {
-            target.staminaProperty().set(source.getStamina());
+            target.staminaProperty().set(Double.parseDouble(source.getStamina()));
             target.getOverrideFlags().overrideStaminaProperty().set(true);
         } else
             target.getOverrideFlags().overrideStaminaProperty().set(false);
 
         if (source.getConsistency() != null) {
-            target.consistencyProperty().set(source.getConsistency());
+            target.consistencyProperty().set(Double.parseDouble(source.getConsistency()));
             target.getOverrideFlags().overrideConsistencyProperty().set(true);
         } else
             target.getOverrideFlags().overrideConsistencyProperty().set(false);
 
         if (source.getStartReactions() != null) {
-            target.startReactionsProperty().set(source.getStartReactions());
+            target.startReactionsProperty().set(Double.parseDouble(source.getStartReactions()));
             target.getOverrideFlags().overrideStartReactionsProperty().set(true);
         } else
             target.getOverrideFlags().overrideStartReactionsProperty().set(false);
 
         if (source.getWetSkill() != null) {
-            target.wetSkillProperty().set(source.getWetSkill());
+            target.wetSkillProperty().set(Double.parseDouble(source.getWetSkill()));
             target.getOverrideFlags().overrideWetSkillProperty().set(true);
         } else
             target.getOverrideFlags().overrideWetSkillProperty().set(false);
 
         if (source.getTyreManagement() != null) {
-            target.tyreManagementProperty().set(source.getTyreManagement());
+            target.tyreManagementProperty().set(Double.parseDouble(source.getTyreManagement()));
             target.getOverrideFlags().overrideTyreManagementProperty().set(true);
         } else
             target.getOverrideFlags().overrideTyreManagementProperty().set(false);
 
         if (source.getFuelManagement() != null) {
-            target.fuelManagementProperty().set(source.getFuelManagement());
+            target.fuelManagementProperty().set(Double.parseDouble(source.getFuelManagement()));
             target.getOverrideFlags().overrideFuelManagementProperty().set(true);
         } else
             target.getOverrideFlags().overrideFuelManagementProperty().set(false);
 
         if (source.getBlueFlagConceding() != null) {
-            target.blueFlagConcedingProperty().set(source.getBlueFlagConceding());
+            target.blueFlagConcedingProperty().set(Double.parseDouble(source.getBlueFlagConceding()));
             target.getOverrideFlags().overrideBlueFlagConcedingProperty().set(true);
         } else
             target.getOverrideFlags().overrideBlueFlagConcedingProperty().set(false);
 
         if (source.getWeatherTyreChanges() != null) {
-            target.weatherTyreChangeProperty().set(source.getWeatherTyreChanges());
+            target.weatherTyreChangeProperty().set(Double.parseDouble(source.getWeatherTyreChanges()));
             target.getOverrideFlags().overrideWeatherTyreChangeProperty().set(true);
         } else
             target.getOverrideFlags().overrideWeatherTyreChangeProperty().set(false);
 
         if (source.getAvoidanceOfMistakes() != null) {
-            target.avoidanceOfMistakesProperty().set(source.getAvoidanceOfForcedMistakes());
+            target.avoidanceOfMistakesProperty().set(Double.parseDouble(source.getAvoidanceOfForcedMistakes()));
             target.getOverrideFlags().overrideAvoidanceOfMistakesProperty().set(true);
         } else
             target.getOverrideFlags().overrideAvoidanceOfMistakesProperty().set(false);
 
         if (source.getAvoidanceOfForcedMistakes() != null) {
-            target.avoidanceOfForcedMistakesProperty().set(source.getAvoidanceOfForcedMistakes());
+            target.avoidanceOfForcedMistakesProperty().set(Double.parseDouble(source.getAvoidanceOfForcedMistakes()));
             target.getOverrideFlags().overrideAvoidanceOfForcedMistakesProperty().set(true);
         } else
             target.getOverrideFlags().overrideAvoidanceOfForcedMistakesProperty().set(false);
 
         if (source.getVehicleReliability() != null) {
-            target.vehicleReliabilityProperty().set(source.getVehicleReliability());
+            target.vehicleReliabilityProperty().set(Double.parseDouble(source.getVehicleReliability()));
             target.getOverrideFlags().overrideVehicleReliabilityProperty().set(true);
         } else
             target.getOverrideFlags().overrideVehicleReliabilityProperty().set(false);
