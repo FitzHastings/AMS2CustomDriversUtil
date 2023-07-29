@@ -466,6 +466,14 @@ HBox {
     -fx-font: 10pt "Arial";
 }
 
+.attention-text {
+    -fx-text-fill: #a34097;
+}
+
+.warning-text {
+    -fx-text-fill: #97a340;
+}
+
 .stability-pane {
     -fx-background-color: #181e21;
     -fx-background-radius: 15;

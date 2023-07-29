@@ -27,8 +27,6 @@ import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
 import net.dragondelve.mabelfx.StageController;
 
-//TODO: Add "Round Generated Values Checkbox" in the Configuration window set it to true as a default option
-//TODO: Eraconstas CSS: Add Warning and Highlight style classes for TableView, TextField and ChoiceBOx
 //TODO: Warn users that a Livery has not yet been assigned, or if a livery has been assigned twice.
 //TODO: MabelFX - List to List Chooser
 //TODO: Custom Modify Option
