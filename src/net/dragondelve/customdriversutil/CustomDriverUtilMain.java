@@ -36,7 +36,6 @@ import net.dragondelve.mabelfx.StageController;
 //TODO: Change logo and icons to those provided by THK84
 //TODO: Add explicit credits for NAMeS and logos to John B. Ellis and THK84 to the welcome screen
 //TODO: Vehicle library for AMS2 1.5
-//TODO: Update Track Library for AMS 1.5
 
 /**
  * CustomDriverUtility's main class.

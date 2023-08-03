@@ -117,7 +117,7 @@ public class OverrideFlags {
      * Lightweight accessor method.
      * @return Flag that determines whether you should override driver name or not.
      */
-    @XmlElement(name = "override_name")
+    @XmlElement (name = "override_name")
     public final boolean isOverrideName() {
         return overrideName.get();
     }

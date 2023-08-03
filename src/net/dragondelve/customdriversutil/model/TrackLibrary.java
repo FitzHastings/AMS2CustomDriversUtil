@@ -18,6 +18,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import net.dragondelve.customdriversutil.util.DDUtil;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.NoSuchElementException;
@@ -38,7 +39,8 @@ public class TrackLibrary {
      * Lightweight accessor method.
      * @return List of all tracks in the Track Library.
      */
-    @XmlElementWrapper(name = "tracks")
+    @XmlElementWrapper (name = "tracks")
+    @XmlElement (name = "track")
     public ObservableList<Track> getTracks() {
         return tracks;
     }

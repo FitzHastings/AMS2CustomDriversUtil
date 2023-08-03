@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * Stores all properties to allow an automatic generation of track specific overrides.
  * This class is fully annotated with JAXB for easy XML conversion.
  */
-@XmlRootElement(name = "track")
+@XmlRootElement (name = "track")
 public final class Track {
     /**
      * Track name that is human-readable, it's used for display purposes.
@@ -46,6 +46,15 @@ public final class Track {
      * If set to false the track is a road course.
      */
     private final BooleanProperty isOval = new SimpleBooleanProperty();
+
+    /**
+     * Flag that determines if the track is a RallyCross track or not.
+     * This is a placeholder tag that isn't used anywhere in the code for any purpose as RallyCross stages are still new
+     * and thus still require testing.
+     * If set to true the track is an RX stage
+     * If set to false the track is NOT an RX stage
+     */
+    private final BooleanProperty isRX = new SimpleBooleanProperty();
 
     /**
      * Default constructor does not provide default values
@@ -68,7 +77,7 @@ public final class Track {
      * Lightweight accessor method.
      * @return Track name that is human-readable, it's used for display purposes.
      */
-    @XmlAttribute(name = "name")
+    @XmlAttribute (name = "name")
     public String getName() {
         return name.get();
     }
@@ -93,7 +102,7 @@ public final class Track {
      * Lightweight accessor method.
      * @return Track name that is used in the XML when exporting.
      */
-    @XmlAttribute(name = "xml_name")
+    @XmlAttribute (name = "xml_name")
     public String getXmlName() {
         return xmlName.get();
     }
@@ -118,7 +127,7 @@ public final class Track {
      * Lightweight accessor method.
      * @return Flag that determines if the track is an oval track or a road course.
      */
-    @XmlElement(name = "is_oval")
+    @XmlElement (name = "is_oval")
     public boolean isOval() {
         return isOval.get();
     }
@@ -137,6 +146,31 @@ public final class Track {
      */
     public void setOval(boolean isOval) {
         this.isOval.set(isOval);
+    }
+
+    /**
+     * Lightweight accessor method.
+     * @return Flag that determines if the track is a RallyCross track or not.
+     */
+    @XmlElement (name = "is_rx")
+    public boolean isRX() {
+        return isRX.get();
+    }
+
+    /**
+     * Lightweight accessor method.
+     * @return Flag that determines if the track is a RallyCross track or not as a property.
+     */
+    public BooleanProperty isRXProperty() {
+        return isRX;
+    }
+
+    /**
+     * Lightweight mutator method
+     * @param isRX Flag that determines if the track is a RallyCross track or not.
+     */
+    public void setRX(boolean isRX) {
+        this.isRX.set(isRX);
     }
 
     /**
