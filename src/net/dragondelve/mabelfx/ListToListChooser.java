@@ -28,6 +28,10 @@ import net.dragondelve.mabelfx.util.MabelUtil;
 import java.io.IOException;
 import java.util.logging.Level;
 
+/**
+ *
+ * @param <T>
+ */
 public class ListToListChooser<T> extends HBox {
     /**
      * ListView that displays the tracks selected by the user. Items of this list are going to be passed forward to the
@@ -58,6 +62,7 @@ public class ListToListChooser<T> extends HBox {
 
     @FXML
     public void initialize() {
+        rootPane.getStylesheets().add(MabelUtil.DEFAULT_STYLESHEET);
 
         HBox.setHgrow(rootPane, Priority.ALWAYS);
         //Handling Double Clicks

@@ -129,7 +129,8 @@ AnchorPane {
     -fx-background-color: #2b3439;
 }
 
-.normal-list-view {
+.normal-list-view,
+.inactive-list-view {
     -fx-padding: 8px;
     -fx-background-color: #2b3439;
 }
@@ -140,7 +141,8 @@ AnchorPane {
 }
 
 
-normal-list-view .list-cell {
+.normal-list-view .list-cell,
+.inactive-list-view .list-cell {
     -fx-text-fill: #9aa2a6;
     -fx-background-color: #21282c;
     -fx-background-insets: 4;
@@ -160,7 +162,7 @@ normal-list-view .list-cell {
     -fx-padding: 4;
 }
 
-normal-list-view .list-cell:selected {
+.normal-list-view .list-cell:selected {
     -fx-text-fill: #fefffe;
     -fx-background-color: #a34097;
     -fx-background-insets: 4;
