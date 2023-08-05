@@ -24,13 +24,13 @@ limitations under the License. -->
          <ToolBar prefHeight="40.0" prefWidth="200.0">
             <Label styleClass="prompt-label" text="Track Library"/>
          </ToolBar>
-         <ListView fx:id="trackLibraryListView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS"/>
+         <ListView styleClass="normal-list-view" fx:id="trackLibraryListView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS"/>
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
          <ToolBar prefHeight="40.0" prefWidth="200.0">
             <Label styleClass="prompt-label" text="Drag and Drop Tracks to override"/>
          </ToolBar>
-         <ListView fx:id="selectedListView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS"/>
+         <ListView styleClass="normal-list-view" fx:id="selectedListView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS"/>
       </VBox>
    </HBox>
    <ToolBar styleClass="light-tool-bar" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" VBox.vgrow="NEVER">

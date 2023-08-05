@@ -43,6 +43,8 @@ public class DDUtil {
     public static final String TRACK_LIBRARY_DEFAULT_PATHNAME = "library/tracks/ams2_tracks_1.5.0.2.xml";
     public static final String VEHICLE_CLASS_LIBRARY_DEFAULT_PATHNAME = "library/vehicles/ams2_vehicles_1.4.8.1.xml";
     public static final String MAIN_CSS_RESOURCE = "css/Eraconstas.css";
+    public static final String ATTENTION_CSS_RESOURCE = "css/EraconstasAttention.css";
+    public static final String WARNING_CSS_RESOURCE = "css/EraconstasWarning.css";
 
     public static final Image MAIN_ICON_IMAGE = new Image(Objects.requireNonNull(CustomDriverUtilMain.class.getClassLoader().getResourceAsStream("ams2CDU.png")));
 

@@ -16,12 +16,13 @@ package net.dragondelve.customdriversutil.gui.editor;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import net.dragondelve.mabelfx.FXObjectChooser;
-import net.dragondelve.mabelfx.HybridChoiceHBox;
+import javafx.util.Callback;
+import net.dragondelve.customdriversutil.gui.CustomDriverUtilController;
 import net.dragondelve.customdriversutil.model.Driver;
 import net.dragondelve.customdriversutil.model.DriverBase;
 import net.dragondelve.customdriversutil.model.VehicleClass;
@@ -29,6 +30,9 @@ import net.dragondelve.customdriversutil.util.Configurator;
 import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
 import net.dragondelve.customdriversutil.util.TooltipUtil;
+import net.dragondelve.mabelfx.FXObjectChooser;
+import net.dragondelve.mabelfx.HybridComboBox;
+import net.dragondelve.mabelfx.util.FXTableRefresher;
 
 /**
  * Driver Editor is designed to edit a single driver or a single track specific override if it is put into
@@ -64,7 +68,7 @@ public class DriverEditor {
      * Hybrid Choice Box for selecting or typing the driver's livery name.
      */
     @FXML
-    private HybridChoiceHBox<ChoiceBox<String>> chooseLiveryHBox;
+    private HybridComboBox<ComboBox<String>> chooseLiveryHBox;
 
     /**
      * Slider that determines the driver's consistency. Values range from 0.0 to 1.0.
@@ -384,12 +388,30 @@ public class DriverEditor {
      * Choice box that allows the user to choose the driver's livery from the list instead of typing it.
      * Is a part of HybridChoiceHBox. it is only displayed if the CheckBox inside HybridChoiceHBox is selected.
      */
-    private final ChoiceBox<String> liveryNameChoiceBox = new ChoiceBox<>();
+    private final ComboBox<String> liveryNameComboBox = new ComboBox<>();
 
     /**
      * Vehicle Class of the edited driver.
      */
     private final VehicleClass vehicleClass = new VehicleClass();
+
+    /**
+     * Refresher for the driver table
+     */
+    private FXTableRefresher<TableView<Driver>> refresher;
+
+    private CustomDriverUtilController.LiveryValidator liveryValidator;
+
+    /**
+     * Change listener that refreshes the refresher it was set if a change event is emitted.
+     */
+    private final ChangeListener<String> driverChangeListener = (observable, oldValue, newValue) -> {
+        if(refresher != null)
+            refresher.refresh();
+    };
+
+    //TODO: Remove This crutch
+    private ListView<String> crutchListView;
     /**
      * Initialize method initializes all the visual elements before they are displayed by the user.
      * initialize method is called automatically by JavaFX when this editor is being loaded from XML.
@@ -448,7 +470,7 @@ public class DriverEditor {
 
         randomizeButton.setOnAction(e->randomizeDriverAction());
 
-        chooseLiveryHBox.initialize("Choose Livery", liveryNameChoiceBox);
+        chooseLiveryHBox.initialize("Choose Livery", liveryNameComboBox);
 
         chooseLiveryHBox.getCheckBox().selectedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue && vehicleClass.getLiveryNames().isEmpty()) {
@@ -471,6 +493,37 @@ public class DriverEditor {
         });
 
         chooseLiveryHBox.getCheckBox().selectedProperty().set(Configurator.getInstance().getConfiguration().isChooseLivery());
+
+
+        chooseLiveryHBox.getComboBox().setCellFactory( new Callback<ListView<String>, ListCell<String>>() {
+            @Override
+            public ListCell<String> call(ListView<String> param) {
+                crutchListView = param;
+                final ListCell<String> cell = new ListCell<String>() {
+                    @Override
+                    public void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null) {
+                            setText(item);
+                            if (item.equals(chooseLiveryHBox.getComboBox().getValue())) {
+                                this.getStylesheets().clear();
+                                this.getStylesheets().add(DDUtil.ATTENTION_CSS_RESOURCE);
+                            } else if (!liveryValidator.validate(item)) {
+                                this.getStylesheets().clear();
+                                this.getStylesheets().add(DDUtil.WARNING_CSS_RESOURCE);
+                            } else
+                                this.getStylesheets().clear();
+                        } else {
+                            setText(null);
+                        }
+                    }
+                };
+                return cell;
+            }
+        });
+
+        //TODO: Remove this crutch call to refresh.
+        chooseLiveryHBox.getComboBox().setOnAction(e-> crutchListView.refresh());
 
         if (editedDriver == null)
             rootPane.setDisable(true);
@@ -503,9 +556,20 @@ public class DriverEditor {
         this.vehicleClass.setLiveryNames(vehicleClass.getLiveryNames());
         this.vehicleClass.setName(vehicleClass.getName());
         this.vehicleClass.setXmlName(vehicleClass.getXmlName());
-        chooseLiveryHBox.getChoiceBox().setItems(vehicleClass.getLiveryNames());
+        chooseLiveryHBox.getComboBox().setItems(vehicleClass.getLiveryNames());
     }
 
+    /**
+     * Lightweight Mutator Method
+     * @param driverTableRefresher Refresher for the table that contains drivers
+     */
+    public void setDriverTableRefresher(FXTableRefresher<TableView<Driver>> driverTableRefresher) {
+        this.refresher = driverTableRefresher;
+    }
+
+    public void setLiveryValidator(CustomDriverUtilController.LiveryValidator liveryValidator) {
+        this.liveryValidator = liveryValidator;
+    }
     /**
      * Binds the given driver's properties to the control elements that are supposed to edit them. The bind will be done
      * bidirectionally, and you should call unbindDriver on the same driver after it is no longer being edited.
@@ -514,9 +578,10 @@ public class DriverEditor {
     private void bindDriver(DriverBase driver) {
         if (!overrideMode.get()) {
             chooseLiveryHBox.getTextField().textProperty().bindBidirectional(((Driver) driver).liveryNameProperty());
-            chooseLiveryHBox.getChoiceBox().valueProperty().bindBidirectional(((Driver) driver).liveryNameProperty());
-            if (((Driver) driver).liveryNameProperty().get() == null) {
-                chooseLiveryHBox.getChoiceBox().valueProperty().set("");
+            chooseLiveryHBox.getComboBox().valueProperty().bindBidirectional(((Driver) driver).liveryNameProperty());
+            addDriverChangeListener((Driver) driver);
+            if (((Driver) driver).liveryNameProperty().get() == null || ((Driver) driver).liveryNameProperty().get().equals("")) {
+                chooseLiveryHBox.getComboBox().valueProperty().set(null);
             }
         }
         bindBaseProperties(driver);
@@ -530,7 +595,8 @@ public class DriverEditor {
     private void unbindDriver(DriverBase driver) {
         if (!overrideMode.get()) {
             chooseLiveryHBox.getTextField().textProperty().unbindBidirectional(((Driver) driver).liveryNameProperty());
-            chooseLiveryHBox.getChoiceBox().valueProperty().unbindBidirectional(((Driver) driver).liveryNameProperty());
+            chooseLiveryHBox.getComboBox().valueProperty().unbindBidirectional(((Driver) driver).liveryNameProperty());
+            removeDriverChangeListener((Driver) driver);
         }
         unbindBaseProperties(driver);
     }
@@ -558,7 +624,6 @@ public class DriverEditor {
         forcedMistakeSlider.valueProperty()         .bindBidirectional(driver.avoidanceOfForcedMistakesProperty());
         vehicleReliabilitySlider.valueProperty()    .bindBidirectional(driver.vehicleReliabilityProperty());
 
-
         overrideDriverNameCheckBox.selectedProperty()               .bindBidirectional(driver.getOverrideFlags().overrideNameProperty());
         overrideCountryCheckBox.selectedProperty()                  .bindBidirectional(driver.getOverrideFlags().overrideCountryProperty());
         overrideRacingSkillCheckBox.selectedProperty()              .bindBidirectional(driver.getOverrideFlags().overrideRaceSkillProperty());
@@ -578,6 +643,14 @@ public class DriverEditor {
         overrideVehicleReliabilityCheckBox.selectedProperty()       .bindBidirectional(driver.getOverrideFlags().overrideVehicleReliabilityProperty());
 
         chooseLiveryHBox.disableProperty().bind(overrideMode);
+    }
+
+    /**
+     * adds the driverChangeListener to some properties of the driver.
+     * @param driver Driver whose properties need to be listened to.
+     */
+    private void addDriverChangeListener(Driver driver) {
+        driver.liveryNameProperty().addListener(driverChangeListener);
     }
 
     /**
@@ -623,6 +696,14 @@ public class DriverEditor {
     }
 
     /**
+     * Removes the change listener from a given driver
+     * @param driver driver whose properties no longer need to be listened to
+     */
+    private void removeDriverChangeListener(Driver driver) {
+        driver.liveryNameProperty().removeListener(driverChangeListener);
+    }
+
+    /**
      * Randomizes the traits of the driver selected.
      */
     private void randomizeDriverAction() {
@@ -640,7 +721,7 @@ public class DriverEditor {
         driverNameTextField.setTooltip(TooltipUtil.DRIVER_NAME_TOOLTIP);
         driverCountryTextField.setTooltip(TooltipUtil.DRIVER_COUNTRY_TOOLTIP);
 
-        chooseLiveryHBox.getChoiceBox().setTooltip(TooltipUtil.DRIVER_LIVERY_TOOLTIP);
+        chooseLiveryHBox.getComboBox().setTooltip(TooltipUtil.DRIVER_LIVERY_TOOLTIP);
         chooseLiveryHBox.getTextField().setTooltip(TooltipUtil.DRIVER_LIVERY_TOOLTIP);
         chooseLiveryHBox.getCheckBox().setTooltip(TooltipUtil.CHOOSE_LIVERY_TOOLTIP);
 

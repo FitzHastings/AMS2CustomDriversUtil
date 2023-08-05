@@ -129,12 +129,18 @@ AnchorPane {
     -fx-background-color: #2b3439;
 }
 
-.list-view {
+.normal-list-view {
     -fx-padding: 8px;
     -fx-background-color: #2b3439;
 }
 
-.list-cell {
+.combo-box-popup .list-view {
+    -fx-padding: 8px;
+    -fx-background-color: #2b3439;
+}
+
+
+normal-list-view .list-cell {
     -fx-text-fill: #9aa2a6;
     -fx-background-color: #21282c;
     -fx-background-insets: 4;
@@ -144,7 +150,27 @@ AnchorPane {
     -fx-padding: 4;
 }
 
-.list-cell:selected {
+.combo-box-popup .list-view .list-cell {
+    -fx-text-fill: #9aa2a6;
+    -fx-background-color: #21282c;
+    -fx-background-insets: 4;
+    -fx-border-insets: 4;
+    -fx-border-color: #7b868d;
+    -fx-border-width: 1;
+    -fx-padding: 4;
+}
+
+normal-list-view .list-cell:selected {
+    -fx-text-fill: #fefffe;
+    -fx-background-color: #a34097;
+    -fx-background-insets: 4;
+    -fx-border-insets: 4;
+    -fx-border-color: #fefffe;
+    -fx-border-width: 1;
+    -fx-padding: 4;
+}
+
+.combo-box-popup .list-view .list-cell:hover {
     -fx-text-fill: #fefffe;
     -fx-background-color: #a34097;
     -fx-background-insets: 4;
@@ -194,13 +220,7 @@ AnchorPane {
 }
 
 .table-view .table-row-cell:hover .table-cell {
-    -fx-text-fill: #9aa2a6;
-    -fx-background-color: #21282e;
-    -fx-background-insets: 4;
-    -fx-border-insets: 4;
     -fx-border-color: #a34097;
-    -fx-border-width: 1;
-    -fx-padding: 4;
 }
 
 .table-view .table-row-cell {
@@ -391,7 +411,8 @@ ImageChooserButton: pressed {
      -fx-border-color: transparent;
 }
 
-.choice-box {
+.choice-box,
+.combo-box {
     -fx-background-color: #343d44;
     -fx-background-radius: 10;
     -fx-border-radius: 10;
@@ -401,7 +422,8 @@ ImageChooserButton: pressed {
     -fx-font: 10pt "Arial";
 }
 
-.choice-box {
+.choice-box,
+.combo-box {
     -fx-background-color: #343d44;
     -fx-background-radius: 10;
     -fx-border-radius: 10;
@@ -411,11 +433,13 @@ ImageChooserButton: pressed {
     -fx-font: 10pt "Arial";
 }
 
-.choice-box .arrow {
+.choice-box .arrow,
+.combo-box .arrow {
     -fx-background-color: #a34097;
 }
 
-.choice-box:hover {
+.choice-box:hover,
+.combo-box:hover {
     -fx-background-color: #343d44;
     -fx-background-radius: 10;
     -fx-border-radius: 10;
@@ -430,7 +454,13 @@ ImageChooserButton: pressed {
     -fx-font: 10pt "Arial";
 }
 
-.choice-box :hover .label {
+.combo-box .cell:selected {
+    -fx-text-fill: #9aa2a6;
+    -fx-font: 10pt "Arial";
+}
+
+.choice-box :hover .label,
+.combo-box :hover .label {
     -fx-text-fill: #fefffe;
 }
 
@@ -464,14 +494,6 @@ HBox {
 .info-label {
     -fx-text-fill: #7b868d;
     -fx-font: 10pt "Arial";
-}
-
-.attention-text {
-    -fx-text-fill: #a34097;
-}
-
-.warning-text {
-    -fx-text-fill: #97a340;
 }
 
 .stability-pane {

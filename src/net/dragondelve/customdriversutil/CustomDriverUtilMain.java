@@ -27,7 +27,6 @@ import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
 import net.dragondelve.mabelfx.StageController;
 
-//TODO: Warn users that a Livery has not yet been assigned, or if a livery has been assigned twice.
 //TODO: MabelFX - List to List Chooser
 //TODO: Custom Modify Option
 //TODO: Add Tooltips to the Configuration Screen

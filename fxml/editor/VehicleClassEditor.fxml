@@ -81,7 +81,7 @@ limitations under the License. -->
                 <Button fx:id="removeLiveryNameButton" mnemonicParsing="false" prefHeight="28.0"
                         prefWidth="28.0" text="-"/>
             </ToolBar>
-            <ListView fx:id="liveryNameListView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS"/>
+            <ListView styleClass="normal-list-view" fx:id="liveryNameListView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS"/>
         </VBox>
     </AnchorPane>
 </SplitPane>

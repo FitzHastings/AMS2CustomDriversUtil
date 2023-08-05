@@ -24,6 +24,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import net.dragondelve.mabelfx.util.MabelUtil;
 
 /**
  * Stage controller that displays a list of items to the user on the stage provided to it. When the user presses the
@@ -62,6 +63,7 @@ public class FXObjectChooser<T> {
      */
     public FXObjectChooser() {
         rootPane.getStylesheets().clear();
+        rootPane.getStylesheets().add(MabelUtil.DEFAULT_STYLESHEET);
         ToolBar toolBar = new ToolBar();
         Button okButton = new Button();
         toolBar.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);

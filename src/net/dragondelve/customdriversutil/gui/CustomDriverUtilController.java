@@ -14,6 +14,7 @@
 
 package net.dragondelve.customdriversutil.gui;
 
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -37,6 +38,7 @@ import net.dragondelve.customdriversutil.model.xml.XMLGridExporter;
 import net.dragondelve.customdriversutil.model.xml.XMLGridImporter;
 import net.dragondelve.customdriversutil.util.*;
 import net.dragondelve.mabelfx.StageController;
+import net.dragondelve.mabelfx.util.FXTableRefresher;
 
 import java.io.File;
 import java.io.IOException;
@@ -198,7 +200,7 @@ public class CustomDriverUtilController implements StageController {
 
     /**
      * Opens the MassModifyTool Window and allows the user to modify the grid.
-     * Perfomrs massModifyAction on action.
+     * Performs massModifyAction on action.
      */
     @FXML
     private MenuItem massModifyItem;
@@ -295,6 +297,9 @@ public class CustomDriverUtilController implements StageController {
             e.printStackTrace();
         }
 
+        driverEditor.setDriverTableRefresher(new FXTableRefresher<>(driversTableView));
+        driverEditor.setLiveryValidator(new LiveryValidator());
+
         newGridItem.setOnAction(e -> newGridAction());
         exportGridItem.setOnAction(e -> exportGridAction());
         importGridItem.setOnAction(e -> importGridAction());
@@ -318,9 +323,51 @@ public class CustomDriverUtilController implements StageController {
         driversTableView.setEditable(true);
         driversTableView.setItems(editedGrid.getDrivers());
         driverNameColumn.setCellValueFactory(e -> e.getValue().nameProperty());
-        driverNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        driverNameColumn.setCellFactory(col -> new TextFieldTableCell<Driver, String>() {
+            @Override
+            public void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    this.setText(item);
+                    if (hasValidLivery((Driver) this.getTableRow().getItem())) {
+                        this.getStylesheets().clear();
+                    }
+                    else {
+                        this.getStylesheets().clear();
+                        this.getStylesheets().add(DDUtil.WARNING_CSS_RESOURCE);
+                    }
+                }
+
+            }
+        });
+
+        driversTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            driversTableView.refresh();
+        });
+
         driverCountryColumn.setCellValueFactory(e -> e.getValue().countryProperty());
-        driverCountryColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        driverCountryColumn.setCellFactory(col -> new TextFieldTableCell<Driver, String>() {
+            @Override
+            public void updateItem(String item, boolean empty) {
+            super.updateItem(item, empty);
+            if (empty || item == null) {
+                setText(null);
+                setGraphic(null);
+            } else {
+                this.setText(item);
+                if (hasValidLivery((Driver) this.getTableRow().getItem())) {
+                    this.getStylesheets().clear();
+                } else {
+                    this.getStylesheets().clear();
+                    this.getStylesheets().add(DDUtil.WARNING_CSS_RESOURCE);
+                }
+            }
+            }
+        });
+
         driversTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 driverEditor.setEditedDriver(newValue);
@@ -779,6 +826,20 @@ public class CustomDriverUtilController implements StageController {
     }
 
     /**
+     * Filters the editedFrid to drivers whose livery matches driver's livery name, and checks if it is unique;
+     * @param driver Driver whose livery is to be checked for uniqueness
+     * @return true if driver has a unique livery name, false if the driver does not
+     */
+    private boolean hasValidLivery(Driver driver) {
+        if (driver == null)
+            return true;
+        if (driver.getLiveryName() == null || driver.getLiveryName().equals(""))
+            return false;
+        FilteredList<Driver> drivers = editedGrid.getDrivers().filtered(d -> driver.getLiveryName().equals(d.getLiveryName()));
+        return drivers.size() == 1;
+    }
+
+    /**
      * Creates a new FileChooser, sets its extension filter to *.xml and sets its initial directory to the pathname provided.
      * and the title of its Stage to the title provided. Displays the FileChooser to the user with showSaveDialog, waits
      * for a selection to be made and returns the File selected.
@@ -805,5 +866,14 @@ public class CustomDriverUtilController implements StageController {
         addLibraryDriverButton      .setTooltip(TooltipUtil.ADD_LIBRARY_DRIVER_TOOLTIP);
         removeLibraryDriverButton   .setTooltip(TooltipUtil.REMOVE_LIBRARY_DRIVER_TOOLTIP);
         saveDriverLibraryButton     .setTooltip(TooltipUtil.SAVE_DRIVER_LIBRARY_TOOLTIP);
+    }
+
+    public class LiveryValidator {
+        public boolean validate(String liveryName) {
+            if (liveryName == null)
+                return false;
+            FilteredList<Driver> filteredList = editedGrid.getDrivers().filtered(driver ->liveryName.equals(driver.getLiveryName()));
+            return filteredList == null || filteredList.size() == 0;
+        }
     }
 }

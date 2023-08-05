@@ -17,7 +17,7 @@ limitations under the License. -->
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import net.dragondelve.mabelfx.HybridChoiceHBox?>
+<?import net.dragondelve.mabelfx.HybridComboBox?>
 
 <VBox fx:id="rootPane" prefHeight="502.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/8"
       xmlns:fx="http://javafx.com/fxml/1">
@@ -47,12 +47,12 @@ limitations under the License. -->
             <Insets left="10.0" right="10.0"/>
          </GridPane.margin>
       </TextField>
-      <HybridChoiceHBox fx:id="chooseLiveryHBox" alignment="CENTER" spacing="10.0" GridPane.columnIndex="1"
+      <HybridComboBox fx:id="chooseLiveryHBox" alignment="CENTER" spacing="10.0" GridPane.columnIndex="1"
             GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets left="10.0" right="10.0"/>
          </GridPane.margin>
-      </HybridChoiceHBox>
+      </HybridComboBox>
       <Label styleClass="prompt-label" text="Country" GridPane.columnIndex="3"/>
       <TextField fx:id="driverCountryTextField" prefHeight="25.0" prefWidth="109.0" promptText="GBR"
                  GridPane.columnIndex="4">
