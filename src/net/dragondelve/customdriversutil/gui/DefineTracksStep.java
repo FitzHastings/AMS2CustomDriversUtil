@@ -32,6 +32,7 @@ import net.dragondelve.customdriversutil.model.Track;
 import net.dragondelve.customdriversutil.model.TrackOverride;
 import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
+import net.dragondelve.mabelfx.ListToListChooser;
 import net.dragondelve.mabelfx.StageController;
 
 import java.io.IOException;
@@ -56,25 +57,14 @@ public class DefineTracksStep implements StageController {
     @FXML
     private Button cancelButton;
 
+    @FXML
+    private ListToListChooser<Track> listToListChooser;
+
     /**
      * The root pane of the entire scene. Used to assign the css style to the controls and containers.
      */
     @FXML
     private VBox rootPane;
-
-    /**
-     * ListView that displays the tracks selected by the user. Items of this list are going to be passed forward to the
-     * DriverEditor to edit the override for the chosen tracks
-     */
-    @FXML
-    private ListView<Track> selectedListView;
-
-    /**
-     * ListView that displays all tracks in the current track library, minus the tracks that are already selected in the
-     * selectedListView
-     */
-    @FXML
-    private ListView<Track> trackLibraryListView;
 
     /**
      * Stage on which this editor is displayed.
@@ -102,85 +92,10 @@ public class DefineTracksStep implements StageController {
             return;
         }
 
-        selectedListView.setItems(trackOverride.getTrack());
-        trackLibraryListView.setItems(LibraryManager.getInstance().getTrackLibrary().getTracks());
-        //Remove everything that is already selected in the Selected List view.
-        trackLibraryListView.getItems().removeAll(selectedListView.getItems());
+        listToListChooser.getSelectedListView().setItems(trackOverride.getTrack());
+        listToListChooser.getLibraryListView().setItems(LibraryManager.getInstance().getTrackLibrary().getTracks());
 
-        //Handling Double Clicks
-        trackLibraryListView.setOnMouseClicked(e-> {
-            Track selectedTrack = trackLibraryListView.getSelectionModel().getSelectedItem();
-            if (e.getClickCount() == 2 && selectedTrack != null) {
-                selectedListView.getItems().add(selectedTrack);
-                trackLibraryListView.getItems().remove(selectedTrack);
-            }
-        });
-
-        selectedListView.setOnMouseClicked(e-> {
-            Track selectedTrack = selectedListView.getSelectionModel().getSelectedItem();
-            if (e.getClickCount() >= 2 && selectedTrack != null) {
-                trackLibraryListView.getItems().add(selectedTrack);
-                selectedListView.getItems().remove(selectedTrack);
-            }
-        });
-
-        //Handle Drag and drop from trackLibraryListView into selectedListView.
-        trackLibraryListView.setOnDragDetected(event -> {
-            if (trackLibraryListView.getSelectionModel().getSelectedItem() != null) {
-                Dragboard db = trackLibraryListView.startDragAndDrop(TransferMode.ANY);
-                ClipboardContent content = new ClipboardContent();
-                content.putString(trackLibraryListView.getSelectionModel().getSelectedItem().getName());
-                db.setContent(content);
-            }
-            event.consume();
-        });
-
-        trackLibraryListView.setOnMouseDragged(event -> event.setDragDetect(true));
-        selectedListView.setOnDragOver((DragEvent event) ->  {
-                if (event.getGestureSource() != selectedListView && event.getDragboard().hasString())
-                    event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
-                event.consume();
-        });
-
-        selectedListView.setOnDragDropped((DragEvent event) -> {
-            Track selectedTrack = trackLibraryListView.getSelectionModel().getSelectedItem();
-            if (trackLibraryListView.getSelectionModel().getSelectedItem() != null) {
-                selectedListView.getItems().add(selectedTrack);
-                trackLibraryListView.getItems().remove(selectedTrack);
-            }
-            event.consume();
-
-        });
-
-        //Handle Drag and drop from selectedListView into trackLibraryListView.
-        selectedListView.setOnDragDetected(event -> {
-            if (selectedListView.getSelectionModel().getSelectedItem() != null) {
-                Dragboard db = selectedListView.startDragAndDrop(TransferMode.ANY);
-                ClipboardContent content = new ClipboardContent();
-                content.putString(selectedListView.getSelectionModel().getSelectedItem().getName());
-                db.setContent(content);
-            }
-
-            event.consume();
-        });
-
-        selectedListView.setOnMouseDragged(event -> event.setDragDetect(true));
-        trackLibraryListView.setOnDragOver((DragEvent event) ->  {
-            if (event.getGestureSource() != trackLibraryListView && event.getDragboard().hasString())
-                event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
-            event.consume();
-        });
-
-        trackLibraryListView.setOnDragDropped((DragEvent event) -> {
-            Track selectedTrack = selectedListView.getSelectionModel().getSelectedItem();
-            if (selectedListView.getSelectionModel().getSelectedItem() != null) {
-                trackLibraryListView.getItems().add(selectedTrack);
-                selectedListView.getItems().remove(selectedTrack);
-            }
-            event.consume();
-        });
-
-        selectedListView.getItems().addListener((ListChangeListener<? super Track>) c -> nextButton.setDisable(c.getList().isEmpty()));
+        listToListChooser.getSelectedListView().getItems().addListener((ListChangeListener<? super Track>) c -> nextButton.setDisable(c.getList().isEmpty()));
 
         //setting up the buttons
         nextButton.setOnAction(e -> nextAction());
@@ -196,8 +111,8 @@ public class DefineTracksStep implements StageController {
     @FXML
     public void setTrackOverride(TrackOverride trackOverride) {
         this.trackOverride = trackOverride;
-        if (selectedListView != null)
-            selectedListView.getItems().addAll(this.trackOverride.getTrack());
+        if (listToListChooser != null)
+            listToListChooser.getSelectedListView().getItems().addAll(this.trackOverride.getTrack());
     }
 
     /**
@@ -223,7 +138,7 @@ public class DefineTracksStep implements StageController {
      * Action that is performed by the nextButton. Opens a driver editor in a new window
      */
     private void nextAction() {
-        if (selectedListView.getItems().isEmpty())
+        if (listToListChooser.getSelectedListView().getItems().isEmpty())
             return;
         FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().DRIVER_EDITOR_FXML_URL);
         DriverEditor editor = new DriverEditor();
@@ -234,8 +149,8 @@ public class DefineTracksStep implements StageController {
             editorStage.setTitle(stage.getTitle());
             BorderPane borderPane = new BorderPane();
             borderPane.setCenter(loader.load());
-            borderPane.setLeft(selectedListView);
-            selectedListView.setDisable(true);
+            borderPane.setLeft(listToListChooser.getSelectedListView());
+            listToListChooser.getSelectedListView().setDisable(true);
             borderPane.getStylesheets().clear();
             borderPane.getStylesheets().add(DDUtil.MAIN_CSS_RESOURCE);
             Scene scene = new Scene(borderPane);

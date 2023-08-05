@@ -14,6 +14,9 @@
 
 package net.dragondelve.mabelfx.util;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -22,6 +25,22 @@ import java.util.logging.Logger;
 public final class MabelUtil {
     public static final Logger DEFAULT_LOGGER = Logger.getLogger("MabelFX");
 
+    public static final String LIST_TO_LIST_FXML_PATHNAME = "fxml/mabelfx/ListToList.fxml";
+
+    public static final URL LIST_TO_LIST_FXML_URL = toURL(LIST_TO_LIST_FXML_PATHNAME);
+
     public static final String DEFAULT_STYLESHEET = "css/Eraconstas.css";
 
+    public static URL toURL(String url) {
+        try {
+            return new URL("file:"+url);
+        } catch (MalformedURLException e) {
+            DEFAULT_LOGGER.log(Level.SEVERE, "URL: '" + url + "could not be parsed as a URL");
+            return null;
+        }
+    }
+
+    private MabelUtil() {
+        super();
+    }
 }

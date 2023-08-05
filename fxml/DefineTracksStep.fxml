@@ -16,23 +16,11 @@ limitations under the License. -->
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import net.dragondelve.mabelfx.ListToListChooser?>
 
 <VBox fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
       prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-      <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
-         <ToolBar prefHeight="40.0" prefWidth="200.0">
-            <Label styleClass="prompt-label" text="Track Library"/>
-         </ToolBar>
-         <ListView styleClass="normal-list-view" fx:id="trackLibraryListView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS"/>
-      </VBox>
-      <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
-         <ToolBar prefHeight="40.0" prefWidth="200.0">
-            <Label styleClass="prompt-label" text="Drag and Drop Tracks to override"/>
-         </ToolBar>
-         <ListView styleClass="normal-list-view" fx:id="selectedListView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS"/>
-      </VBox>
-   </HBox>
+   <ListToListChooser fx:id="listToListChooser" prefHeight="100.0" prefWidth="900.0" maxWidth="-Infinity" minHeight="-Infinity" VBox.vgrow="ALWAYS"/>
    <ToolBar styleClass="light-tool-bar" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" VBox.vgrow="NEVER">
       <Button fx:id="cancelButton" mnemonicParsing="false" text="Cancel"/>
       <Button fx:id="nextButton" mnemonicParsing="false" text="Next"/>

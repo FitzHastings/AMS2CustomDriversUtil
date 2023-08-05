@@ -16,6 +16,7 @@ package net.dragondelve.customdriversutil.util;
 
 import javafx.scene.image.Image;
 import net.dragondelve.customdriversutil.CustomDriverUtilMain;
+import net.dragondelve.mabelfx.util.MabelUtil;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -48,16 +49,16 @@ public class DDUtil {
 
     public static final Image MAIN_ICON_IMAGE = new Image(Objects.requireNonNull(CustomDriverUtilMain.class.getClassLoader().getResourceAsStream("ams2CDU.png")));
 
-    public URL TRACK_EDITOR_FXML_URL;
-    public URL VEHICLE_CLASS_EDITOR_FXML_URL;
-    public URL DRIVER_EDITOR_FXML_URL;
-    public URL OVERRIDE_FLAGS_EDITOR_FXML_URL;
-    public URL MAIN_WINDOW_FXML_URL;
-    public URL DEFINE_TRACKS_STEP_FXML_URL;
-    public URL CONFIGURATION_SCREEN_FXML_URL;
-    public URL NEW_GRID_WIZARD_FXML_URL;
-    public URL CUSTOM_GRID_WELCOME_FXML_URL;
-    public URL MASS_MODIFY_TOOL_FXML_URL;
+    public URL TRACK_EDITOR_FXML_URL = MabelUtil.toURL(TRACK_EDITOR_FXML_PATHNAME);
+    public URL VEHICLE_CLASS_EDITOR_FXML_URL = MabelUtil.toURL(VEHICLE_CLASS_EDITOR_FXML_PATHNAME);
+    public URL DRIVER_EDITOR_FXML_URL = MabelUtil.toURL(DRIVER_EDITOR_FXML_PATHNAME);
+    public URL OVERRIDE_FLAGS_EDITOR_FXML_URL = MabelUtil.toURL(OVERRIDE_FLAGS_EDITOR_FXML_PATHNAME);
+    public URL MAIN_WINDOW_FXML_URL = MabelUtil.toURL(MAIN_WINDOW_FXML_PATHNAME);
+    public URL DEFINE_TRACKS_STEP_FXML_URL = MabelUtil.toURL(DEFINE_TRACKS_STEP_FXML_PATHNAME);
+    public URL CONFIGURATION_SCREEN_FXML_URL = MabelUtil.toURL(CONFIGURATION_SCREEN_FXML_PATHNAME);
+    public URL NEW_GRID_WIZARD_FXML_URL = MabelUtil.toURL(NEW_GRID_WIZARD_FXML_PATHNAME);
+    public URL CUSTOM_GRID_WELCOME_FXML_URL = MabelUtil.toURL(CUSTOM_GRID_WELCOME_FXML_PATHNAME);
+    public URL MASS_MODIFY_TOOL_FXML_URL = MabelUtil.toURL(MASS_MODIFY_TOOL_FXML_PATHNAME);
 
     public static int DECIMAL_POINT_CONSTANT = 2;
 
@@ -72,65 +73,5 @@ public class DDUtil {
      */
     private DDUtil() {
         super();
-
-        try {
-            TRACK_EDITOR_FXML_URL = new URL("file:" + TRACK_EDITOR_FXML_PATHNAME);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            VEHICLE_CLASS_EDITOR_FXML_URL = new URL("file:" + VEHICLE_CLASS_EDITOR_FXML_PATHNAME);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            DRIVER_EDITOR_FXML_URL = new URL("file:" + DRIVER_EDITOR_FXML_PATHNAME);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            OVERRIDE_FLAGS_EDITOR_FXML_URL = new URL("file:" + OVERRIDE_FLAGS_EDITOR_FXML_PATHNAME);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            MAIN_WINDOW_FXML_URL = new URL("file:" + MAIN_WINDOW_FXML_PATHNAME);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            DEFINE_TRACKS_STEP_FXML_URL = new URL("file:" + DEFINE_TRACKS_STEP_FXML_PATHNAME);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            CONFIGURATION_SCREEN_FXML_URL = new URL("file:" + CONFIGURATION_SCREEN_FXML_PATHNAME);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            NEW_GRID_WIZARD_FXML_URL = new URL("file:" + NEW_GRID_WIZARD_FXML_PATHNAME);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            CUSTOM_GRID_WELCOME_FXML_URL = new URL("file:" + CUSTOM_GRID_WELCOME_FXML_PATHNAME);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            MASS_MODIFY_TOOL_FXML_URL = new URL("file:" + MASS_MODIFY_TOOL_FXML_PATHNAME);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
     }
 }
