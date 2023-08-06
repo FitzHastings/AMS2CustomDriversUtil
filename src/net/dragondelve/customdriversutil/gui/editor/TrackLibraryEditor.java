@@ -21,6 +21,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import net.dragondelve.customdriversutil.model.Track;
 import net.dragondelve.customdriversutil.util.DDUtil;
+import net.dragondelve.customdriversutil.util.TooltipUtil;
 
 /**
  * Editor that can edit a TrackLibrary's List of Track.
@@ -124,6 +125,8 @@ public class TrackLibraryEditor implements Editor<Track> {
         removeTrackButton.setOnAction(e->removeTrackAction());
 
         setDisableControls(true);
+
+        initTooltips();
     }
 
     /**
@@ -216,5 +219,16 @@ public class TrackLibraryEditor implements Editor<Track> {
         trackXMLNameTextField.setDisable(disable);
         isOvalCheckBox.setDisable(disable);
         controlsAreDisabled = disable;
+    }
+
+    /**
+     * Initializes all tooltips for the control elements
+     */
+    private void initTooltips() {
+        addTrackButton.setTooltip(TooltipUtil.ADD_TRACK_TOOLTIP);
+        removeTrackButton.setTooltip(TooltipUtil.REMOVE_TRACK_TOOLTIP);
+        trackNameTextField.setTooltip(TooltipUtil.TRACK_NAME_TOOLTIP);
+        trackXMLNameTextField.setTooltip(TooltipUtil.TRACK_XMLNAME_TOOLTIP);
+        isOvalCheckBox.setTooltip(TooltipUtil.IS_OVAL_TOOLTIP);
     }
 }

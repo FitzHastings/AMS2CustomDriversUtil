@@ -151,6 +151,30 @@ public class TooltipUtil {
 
     public static final Tooltip CANCEL_TOOLTIP = new Tooltip("Closes this window without modifying the grid");
 
+    public static final Tooltip ADD_TRACK_TOOLTIP = new Tooltip("Add a new track to the library");
+
+    public static final Tooltip REMOVE_TRACK_TOOLTIP = new Tooltip("Remove the currently selected track from the library");
+
+    public static final Tooltip TRACK_NAME_TOOLTIP = new Tooltip("Human Readable name for the track");
+
+    public static final Tooltip TRACK_XMLNAME_TOOLTIP = new Tooltip("XML name used for track overrides");
+
+    public static final Tooltip IS_OVAL_TOOLTIP = new Tooltip("Flag used in grid generation. Tick if the track is an oval track");
+
+    public static final Tooltip ADD_VEHICLE_CLASS_TOOLTIP = new Tooltip("Add a new vehicle class to a library");
+
+    public static final Tooltip REMOVE_VEHICLE_CLASS_TOOLTIP = new Tooltip("Remove the currently selected vehicle class from a library");
+
+    public static final Tooltip ADD_LIVERY_TOOLTIP = new Tooltip("Add a new Livery to this class");
+
+    public static final Tooltip REMOVE_LIVERY_TOOLTIP = new Tooltip("Remove the currently selected livery from this vehicle class");
+
+    public static final Tooltip VEHICLE_CLASS_NAME_TOOLTIP = new Tooltip("Human Readable name of the vehicle class");
+
+    public static final Tooltip VEHICLE_CLASS_XMLNAME_TOOLTIP = new Tooltip("Name of the xml file that AMS2 uses to look for this class's AI override file");
+
+    public static final Tooltip IS_MODDED_TOOLTIP = new Tooltip("Determines if the vehicle class a modded or a modded file. Used in grid generation");
+
     private TooltipUtil() {
         super();
     }
