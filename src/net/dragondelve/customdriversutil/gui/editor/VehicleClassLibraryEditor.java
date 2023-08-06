@@ -22,6 +22,7 @@ import javafx.scene.control.cell.TextFieldListCell;
 import javafx.stage.Stage;
 import net.dragondelve.customdriversutil.model.VehicleClass;
 import net.dragondelve.customdriversutil.util.DDUtil;
+import net.dragondelve.customdriversutil.util.TooltipUtil;
 
 /**
  * Editor that can edit a VehicleLibrary's List of VehicleClass.
@@ -148,6 +149,7 @@ public class VehicleClassLibraryEditor implements Editor<VehicleClass> {
         addLiveryNameButton.setOnAction(e->addLiveryNameAction());
         removeLiveryNameButton.setOnAction(e-> removeLiveryNameAction());
 
+        initTooltips();
     }
 
     /**
@@ -266,5 +268,18 @@ public class VehicleClassLibraryEditor implements Editor<VehicleClass> {
         isModdedCheckBox.selectedProperty().unbindBidirectional(vehicleClass.isModdedProperty());
 
         liveryNameListView.setItems(FXCollections.emptyObservableList());
+    }
+
+    /**
+     * Initializes all tooltips for the control elements
+     */
+    private void initTooltips() {
+            addVehicleClassButton.setTooltip(TooltipUtil.ADD_VEHICLE_CLASS_TOOLTIP);
+            removeVehicleClassButton.setTooltip(TooltipUtil.REMOVE_VEHICLE_CLASS_TOOLTIP);
+            addLiveryNameButton.setTooltip(TooltipUtil.ADD_LIVERY_TOOLTIP);
+            removeLiveryNameButton.setTooltip(TooltipUtil.REMOVE_LIVERY_TOOLTIP);
+            vehicleClassNameTextField.setTooltip(TooltipUtil.VEHICLE_CLASS_NAME_TOOLTIP);
+            vehicleClassXMLNameTextField.setTooltip(TooltipUtil.VEHICLE_CLASS_XMLNAME_TOOLTIP);
+            isModdedCheckBox.setTooltip(TooltipUtil.IS_MODDED_TOOLTIP);
     }
 }
