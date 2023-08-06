@@ -16,6 +16,7 @@ package net.dragondelve.mabelfx;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
@@ -29,28 +30,54 @@ import java.io.IOException;
 import java.util.logging.Level;
 
 /**
- *
- * @param <T>
+ * Displays two listviews that can be dragged or dropped from one to another the left list is labeled as a "library" list view,
+ * the right list is labeled as a "selected" list view. They are labeled by their respective labels.
+ * @param <T> Type that will be contained by each List within ListToList
  */
 public class ListToListChooser<T> extends HBox {
     /**
-     * ListView that displays the tracks selected by the user. Items of this list are going to be passed forward to the
-     * DriverEditor to edit the override for the chosen tracks
+     * ListView that displays the items selected by the user.
      */
     @FXML
     private ListView<T> selectedListView;
 
     /**
-     * ListView that displays all tracks in the current track library, minus the tracks that are already selected in the
+     * ListView that displays all tracks in the current track library, minus the items that are already selected in the
      * selectedListView
      */
     @FXML
     private ListView<T> libraryListView;
 
+    /**
+     * Label that labels the selectedListView
+     */
+    @FXML
+    private Label selectedLabel;
+
+    /**
+     * Label that labels the libraryListView
+     */
+    @FXML
+    private Label libraryLabel;
+
+    /**
+     * rootPane of this element. It is used to apply the stylesheet to this element
+     */
     @FXML
     private HBox rootPane;
 
+    /**
+     * Default Constructor.
+     */
     public ListToListChooser() {
+        this(MabelUtil.DEFAULT_STYLESHEET);
+    }
+
+    /**
+     * Creates a new instance of ListToListChooser
+     * @param stylesheet path to a css resource to be used for styling this element.
+     */
+    public ListToListChooser(String stylesheet) {
         FXMLLoader loader = new FXMLLoader(MabelUtil.LIST_TO_LIST_FXML_URL);
         loader.setController(this);
         try {
@@ -58,11 +85,16 @@ public class ListToListChooser<T> extends HBox {
         } catch (IOException e) {
             MabelUtil.DEFAULT_LOGGER.log(Level.SEVERE, "Could not load List to List FXML");
         }
+
+        rootPane.getStylesheets().add(stylesheet);
     }
 
+    /**
+     * Initialize method initializes all the visual elements before they are displayed by the user.
+     * initialize method is called automatically by JavaFX when this editor is being loaded from XML.
+     */
     @FXML
     public void initialize() {
-        rootPane.getStylesheets().add(MabelUtil.DEFAULT_STYLESHEET);
 
         HBox.setHgrow(rootPane, Priority.ALWAYS);
         //Handling Double Clicks
@@ -139,11 +171,35 @@ public class ListToListChooser<T> extends HBox {
         });
     }
 
+    /**
+     * Lightweight accessor method.
+     * @return Label that labels the selectedListView
+     */
     public ListView<T> getSelectedListView() {
         return selectedListView;
     }
 
+    /**
+     * Lightweight accessor method.
+     * @return ListView that displays all tracks in the current track library
+     */
     public ListView<T> getLibraryListView() {
         return libraryListView;
+    }
+
+    /**
+     * Lightweight accessor method.
+     * @return Label that labels the selectedListView
+     */
+    public Label getSelectedLabel() {
+        return selectedLabel;
+    }
+
+    /**
+     * Lightweight accessor method.
+     * @return Label that labels the libraryListView
+     */
+    public Label getLibraryLabel() {
+        return libraryLabel;
     }
 }

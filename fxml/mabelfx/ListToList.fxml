@@ -22,7 +22,7 @@ limitations under the License. -->
     <VBox maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="200.0" prefWidth="100.0"
           HBox.hgrow="ALWAYS">
         <ToolBar prefHeight="40.0" prefWidth="200.0">
-            <Label styleClass="prompt-label" text="Track Library"/>
+            <Label fx:id="libraryLabel" styleClass="prompt-label" text="Library"/>
         </ToolBar>
         <ListView fx:id="libraryListView" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="200.0"
                   prefWidth="200.0" styleClass="normal-list-view" VBox.vgrow="ALWAYS"/>
@@ -30,7 +30,7 @@ limitations under the License. -->
     <VBox maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="200.0" prefWidth="100.0"
           HBox.hgrow="ALWAYS">
         <ToolBar maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="200.0">
-            <Label styleClass="prompt-label" text="Drag and Drop Tracks to override"/>
+            <Label fx:id="selectedLabel" styleClass="prompt-label" text="Drag and Drop to override"/>
         </ToolBar>
         <ListView fx:id="selectedListView" maxWidth="1.7976931348623157E308" minHeight="-Infinity"
                   prefHeight="200.0" prefWidth="200.0" styleClass="normal-list-view" VBox.vgrow="ALWAYS"/>

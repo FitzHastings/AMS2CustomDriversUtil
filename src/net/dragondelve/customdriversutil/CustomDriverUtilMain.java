@@ -27,8 +27,6 @@ import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
 import net.dragondelve.mabelfx.StageController;
 
-//TODO: MabelFX - List to List Chooser
-//TODO: Custom Modify Option
 //TODO: Add Tooltips to the Configuration Screen
 //TODO: Add Tooltips to Tracks Library Screen
 //TODO: Add Tooltips to Vehicle Library Screen

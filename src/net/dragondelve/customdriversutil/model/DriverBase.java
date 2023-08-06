@@ -441,6 +441,15 @@ public abstract class DriverBase {
     }
 
     /**
+     * Gives a String representation of the driver
+     * @return name of the driver.
+     */
+    @Override
+    public String toString() {
+        return name.get();
+    }
+
+    /**
      * Randomizes all base properties to a range between 0.0 and 1.0 where 0.0 is included and 1.0 is not included.
      */
     public void randomize() {

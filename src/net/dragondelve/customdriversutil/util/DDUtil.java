@@ -18,7 +18,6 @@ import javafx.scene.image.Image;
 import net.dragondelve.customdriversutil.CustomDriverUtilMain;
 import net.dragondelve.mabelfx.util.MabelUtil;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.logging.Logger;
@@ -36,13 +35,14 @@ public class DDUtil {
     public static final String DRIVER_EDITOR_FXML_PATHNAME = "fxml/editor/DriverEditor.fxml";
     public static final String OVERRIDE_FLAGS_EDITOR_FXML_PATHNAME = "fxml/editor/OverrideFlagsEditor.fxml";
     public static final String MAIN_WINDOW_FXML_PATHNAME = "fxml/CustomDriverUtilMain.fxml";
-    public static final String DEFINE_TRACKS_STEP_FXML_PATHNAME = "fxml/DefineTracksStep.fxml";
+    public static final String DEFINE_TRACKS_STEP_FXML_PATHNAME = "fxml/DefineStep.fxml";
     public static final String CONFIGURATION_SCREEN_FXML_PATHNAME = "fxml/ConfigurationScreen.fxml";
     public static final String NEW_GRID_WIZARD_FXML_PATHNAME = "fxml/NewGridWizard.fxml";
     public static final String CUSTOM_GRID_WELCOME_FXML_PATHNAME = "fxml/CustomGridWelcome.fxml";
     public static final String MASS_MODIFY_TOOL_FXML_PATHNAME = "fxml/MassModifyTool.fxml";
     public static final String TRACK_LIBRARY_DEFAULT_PATHNAME = "library/tracks/ams2_tracks_1.5.0.2.xml";
     public static final String VEHICLE_CLASS_LIBRARY_DEFAULT_PATHNAME = "library/vehicles/ams2_vehicles_1.4.8.1.xml";
+
     public static final String MAIN_CSS_RESOURCE = "css/Eraconstas.css";
     public static final String ATTENTION_CSS_RESOURCE = "css/EraconstasAttention.css";
     public static final String WARNING_CSS_RESOURCE = "css/EraconstasWarning.css";

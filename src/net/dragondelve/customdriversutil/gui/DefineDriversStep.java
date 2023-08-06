@@ -12,9 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+
 package net.dragondelve.customdriversutil.gui;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -23,24 +26,14 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import net.dragondelve.customdriversutil.gui.editor.DriverEditor;
-import net.dragondelve.customdriversutil.model.Track;
-import net.dragondelve.customdriversutil.model.TrackOverride;
+import net.dragondelve.customdriversutil.model.Driver;
 import net.dragondelve.customdriversutil.util.DDUtil;
-import net.dragondelve.customdriversutil.util.LibraryManager;
 import net.dragondelve.mabelfx.ListToListChooser;
 import net.dragondelve.mabelfx.StageController;
 
 import java.io.IOException;
-import java.util.logging.Level;
 
-/**
- * DefineTracksStep is an intermediate step between pressing the addTrackOverrideButton and the Driver Editor opening
- * in the Override mode to allow the user to set all the tracks on which the newly created override will be overriding
- * the base driver properties. This is a controller class for  fxml/DefineStep.fxml.
- */
-public class DefineTracksStep implements StageController {
-
+public class DefineDriversStep implements StageController {
     /**
      * Button that performs nextAction on action.
      */
@@ -57,7 +50,7 @@ public class DefineTracksStep implements StageController {
      * List to List chooser for user choice
      */
     @FXML
-    private ListToListChooser<Track> listToListChooser;
+    private ListToListChooser<Driver> listToListChooser;
 
     /**
      * The root pane of the entire scene. Used to assign the css style to the controls and containers.
@@ -71,9 +64,17 @@ public class DefineTracksStep implements StageController {
     private Stage stage;
 
     /**
-     * Currently edited or newly created track override.
+     * Drivers from the currently edited grid
      */
-    private TrackOverride trackOverride;
+    private final ObservableList<Driver> drivers = FXCollections.observableArrayList();
+
+    /**
+     * creates a new instance of DefineDriversStep.
+     * @param drivers All drivers from the currently edited grid
+     */
+    public DefineDriversStep(ObservableList<Driver> drivers) {
+        this.drivers.addAll(drivers);
+    }
 
     /**
      * Initialize method initializes all the visual elements before they are displayed by the user.
@@ -86,32 +87,13 @@ public class DefineTracksStep implements StageController {
 
         stage.setTitle("Choose Tracks");
 
-        if (trackOverride == null) {
-            DDUtil.DEFAULT_LOGGER.log(Level.SEVERE, "Define Track Step initialized without calling setTrackOverride() first.");
-            return;
-        }
+        listToListChooser.getLibraryListView().setItems(drivers);
 
-        listToListChooser.getSelectedListView().setItems(trackOverride.getTrack());
-        listToListChooser.getLibraryListView().setItems(LibraryManager.getInstance().getTrackLibrary().getTracks());
-
-        listToListChooser.getSelectedListView().getItems().addListener((ListChangeListener<? super Track>) c -> nextButton.setDisable(c.getList().isEmpty()));
+        listToListChooser.getSelectedListView().getItems().addListener((ListChangeListener<? super Driver>) c -> nextButton.setDisable(c.getList().isEmpty()));
 
         //setting up the buttons
         nextButton.setOnAction(e -> nextAction());
         cancelButton.setOnAction(e -> cancelAction());
-
-        nextButton.setDisable(trackOverride == null || trackOverride.getTrack().isEmpty());
-    }
-
-    /**
-     * Lightweight mutator method. Used when editing a trackOverride.
-     * @param trackOverride trackOverride that is being edited if this editor is performing the edit action
-     */
-    @FXML
-    public void setTrackOverride(TrackOverride trackOverride) {
-        this.trackOverride = trackOverride;
-        if (listToListChooser != null)
-            listToListChooser.getSelectedListView().getItems().addAll(this.trackOverride.getTrack());
     }
 
     /**
@@ -129,26 +111,25 @@ public class DefineTracksStep implements StageController {
      * Action that is performed by the cancelButton. Closes this editor's Stage.
      */
     private void cancelAction() {
-        trackOverride.getTrack().clear();
         stage.close();
     }
 
     /**
-     * Action that is performed by the nextButton. Opens a driver editor in a new window
+     * Action that is performed by the nextButton. Opens the mass modify tool in a new window
      */
     private void nextAction() {
         if (listToListChooser.getSelectedListView().getItems().isEmpty())
             return;
-        FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().DRIVER_EDITOR_FXML_URL);
-        DriverEditor editor = new DriverEditor();
-        loader.setController(editor);
+        FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().MASS_MODIFY_TOOL_FXML_URL);
+        MassModifyToolController controller = new MassModifyToolController(listToListChooser.getSelectedListView().getItems());
+        loader.setController(controller);
         try {
             Stage editorStage = new Stage();
             editorStage.getIcons().add(DDUtil.MAIN_ICON_IMAGE);
-            editorStage.setTitle(stage.getTitle());
+            controller.setStage(editorStage);
             BorderPane borderPane = new BorderPane();
             borderPane.setCenter(loader.load());
-            ListView<Track> listView = new ListView<>();
+            ListView<Driver> listView = new ListView<>();
             listView.setItems(listToListChooser.getSelectedListView().getItems());
             listView.getStyleClass().add("inactive-list-view");
             borderPane.setLeft(listView);
@@ -156,9 +137,8 @@ public class DefineTracksStep implements StageController {
             borderPane.getStylesheets().add(DDUtil.MAIN_CSS_RESOURCE);
             Scene scene = new Scene(borderPane);
             editorStage.setScene(scene);
-            editorStage.setTitle("Track Override Editor");
+            editorStage.setTitle("Custom Mass Modify Tool");
             stage.close();
-            editor.setEditedDriver(trackOverride);
             editorStage.show();
         } catch (IOException e) {
             e.printStackTrace();

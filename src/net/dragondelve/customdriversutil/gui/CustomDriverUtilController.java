@@ -206,6 +206,13 @@ public class CustomDriverUtilController implements StageController {
     private MenuItem massModifyItem;
 
     /**
+     * Opens the DefineDrivers Step, which then opens the  MassModifyTool Window and allows the user to modify drivers selected..
+     * Performs customModifyAction on action.
+     */
+    @FXML
+    private MenuItem customModifyItem;
+
+    /**
      * Shows a FileChooser and if a selection is made attempts to import a driver library form the file chosen.
      * Performs importDriverLibraryAction on action.
      */
@@ -317,6 +324,7 @@ public class CustomDriverUtilController implements StageController {
         importDriverLibraryItem.setOnAction(e -> importDriverLibraryAction());
 
         massModifyItem.setOnAction(e -> massModifyAction());
+        customModifyItem.setOnAction(e -> customModifyAction());
 
         configurationMenuItem.setOnAction(e -> configurationAction());
 
@@ -334,19 +342,15 @@ public class CustomDriverUtilController implements StageController {
                     this.setText(item);
                     if (hasValidLivery((Driver) this.getTableRow().getItem())) {
                         this.getStylesheets().clear();
-                    }
-                    else {
+                    } else {
                         this.getStylesheets().clear();
                         this.getStylesheets().add(DDUtil.WARNING_CSS_RESOURCE);
                     }
                 }
-
             }
         });
 
-        driversTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            driversTableView.refresh();
-        });
+        driversTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> driversTableView.refresh());
 
         driverCountryColumn.setCellValueFactory(e -> e.getValue().countryProperty());
         driverCountryColumn.setCellFactory(col -> new TextFieldTableCell<Driver, String>() {
@@ -724,6 +728,28 @@ public class CustomDriverUtilController implements StageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Action that is performed by the customModifyItem
+     */
+    private void customModifyAction() {
+        Stage stage = new Stage();
+        stage.getIcons().add(DDUtil.MAIN_ICON_IMAGE);
+        DefineDriversStep controller = new DefineDriversStep(editedGrid.getDrivers());
+        try {
+            FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().DEFINE_TRACKS_STEP_FXML_URL);
+            loader.setController(controller);
+            controller.setStage(stage);
+            Scene scene = new Scene(loader.load());
+            stage.setScene(scene);
+            stage.initOwner(this.stage);
+            stage.setTitle("Select Drivers");
+            stage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     /**

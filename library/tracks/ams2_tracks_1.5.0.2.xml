@@ -24,11 +24,11 @@ limitations under the License. -->
             <is_oval>false</is_oval>
             <is_rx>false</is_rx>
         </track>
-        <track name="Ascurra_Dirt" xml_name="Ascurra_Dirt">
+        <track name="Ascurra Dirt" xml_name="Ascurra_Dirt">
             <is_oval>false</is_oval>
             <is_rx>true</is_rx>
         </track>
-        <track name="Ascurra_RX" xml_name="Ascurra_RX">
+        <track name="Ascurra RX" xml_name="Ascurra_RX">
             <is_oval>false</is_oval>
             <is_rx>true</is_rx>
         </track>
@@ -157,7 +157,7 @@ limitations under the License. -->
             <is_rx>false</is_rx>
         </track>
         <track name="Daytona Road Course" xml_name="Daytona_Road_Course">
-            <iszoval>false</iszoval>
+            <is_oval>false</is_oval>
             <is_rx>false</is_rx>
         </track>
         <track name="Daytona Nascar Road Course" xml_name="Daytona_Nascar_Road_Course">
