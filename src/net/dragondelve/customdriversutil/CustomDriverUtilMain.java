@@ -27,9 +27,6 @@ import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
 import net.dragondelve.mabelfx.StageController;
 
-//TODO: Add Tooltips to the Configuration Screen
-//TODO: Add Tooltips to Tracks Library Screen
-//TODO: Add Tooltips to Vehicle Library Screen
 //TODO: Change logo and icons to those provided by THK84
 //TODO: Add explicit credits for NAMeS and logos to John B. Ellis and THK84 to the welcome screen
 //TODO: Vehicle library for AMS2 1.5

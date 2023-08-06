@@ -175,6 +175,26 @@ public class TooltipUtil {
 
     public static final Tooltip IS_MODDED_TOOLTIP = new Tooltip("Determines if the vehicle class a modded or a modded file. Used in grid generation");
 
+    public static final Tooltip FILE_CHOOSER_TOOLTIP = new Tooltip("Choose a file");
+
+    public static final Tooltip PATH_TO_TRACK_LIBRARY_TOOLTIP = new Tooltip("Path to the default track library");
+
+    public static final Tooltip PATH_TO_VEHICLE_CLASS_LIBRARY_TOOLTIP = new Tooltip("Path to the default vehicle class library");
+
+    public static final Tooltip PATH_TO_DRIVER_LIBRARY_TOOLTIP = new Tooltip("Path to the last loaded driver library");
+
+    public static final Tooltip ROUND_GENERATED_VALUE_TOOLTIP = new Tooltip("Determines if generated values should be rounded (floored) before exporting");
+
+    public static final Tooltip ROUND_DECIMAL_POINTS_TOOLTIP = new Tooltip("Determines the number of decimal places after the . that will be left after rounding");
+
+    public static final Tooltip CONFIG_CHOOSE_LIVERY_TOOLTIP = new Tooltip("Tick if you want to have the 'Choose Livery' checkbox ticked by default on the driver editor");
+
+    public static final Tooltip SKIP_WELCOME_SCREEN_TOOLTIP = new Tooltip("Tick if you want to skip the welcome screen shown on startup");
+
+    public static final Tooltip CONFIG_OK_BUTTON = new Tooltip("Confirm and save the configuration");
+
+    public static final Tooltip CONFIG_CANCEL_BUTTON = new Tooltip("Discard changes and exit");
+
     private TooltipUtil() {
         super();
     }

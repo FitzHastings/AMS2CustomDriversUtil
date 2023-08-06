@@ -198,6 +198,8 @@ public class ConfigurationScreenController implements StageController {
                 driverLibraryTextField.setText(relativisor.relativize());
             }
         });
+
+        initTooltips();
     }
 
     /**
@@ -274,5 +276,23 @@ public class ConfigurationScreenController implements StageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Initializes all tooltips for the control elements
+     */
+    private void initTooltips() {
+        trackLibraryTextField.setTooltip(TooltipUtil.PATH_TO_TRACK_LIBRARY_TOOLTIP);
+        vehicleClassLibraryTextField.setTooltip(TooltipUtil.PATH_TO_VEHICLE_CLASS_LIBRARY_TOOLTIP);
+        driverLibraryTextField.setTooltip(TooltipUtil.PATH_TO_DRIVER_LIBRARY_TOOLTIP);
+        trackLibraryFileChooserButton.setTooltip(TooltipUtil.FILE_CHOOSER_TOOLTIP);
+        vehicleClassFileChooserButton.setTooltip(TooltipUtil.FILE_CHOOSER_TOOLTIP);
+        driverLibraryFileChooserButton.setTooltip(TooltipUtil.FILE_CHOOSER_TOOLTIP);
+        roundGeneratedCheckBox.setTooltip(TooltipUtil.ROUND_GENERATED_VALUE_TOOLTIP);
+        roundingTextField.setTooltip(TooltipUtil.ROUND_DECIMAL_POINTS_TOOLTIP);
+        chooseLiveryCheckBox.setTooltip(TooltipUtil.CONFIG_CHOOSE_LIVERY_TOOLTIP);
+        skipWelcomeScreenCheckBox.setTooltip(TooltipUtil.SKIP_WELCOME_SCREEN_TOOLTIP);
+        okButton.setTooltip(TooltipUtil.CONFIG_OK_BUTTON);
+        cancelButton.setTooltip(TooltipUtil.CONFIG_CANCEL_BUTTON);
     }
 }
