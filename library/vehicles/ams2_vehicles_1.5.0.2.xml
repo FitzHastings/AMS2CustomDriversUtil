@@ -275,7 +275,7 @@
                 <livery>Copa Fusca #99</livery>
                 <livery>Copa Fusca #777</livery>
                 <livery>Copa Fusca #00 - F.Silva Skin</livery>
-                <livery>Copa Fusca #888 - F.Goncalves Skin </livery>
+                <livery>Copa Fusca #888 - F.Goncalves Skin</livery>
                 <livery>Copa Fusca #3422 - T.Emilsen Skin</livery>
             </liveries>
             <is_modded>false</is_modded>
@@ -511,6 +511,31 @@
                 <livery>Bolt-Work G.P. #51</livery>
                 <livery>McLaren MP4/6 #1</livery>
                 <livery>McLaren MP4/6 #2</livery>
+            </liveries>
+            <is_modded>false</is_modded>
+        </vehicle_class>
+        <vehicle_class name="F-Dirt" xml_name="F-Dirt">
+            <liveries>
+                <livery>Formula Dirt #001</livery>
+                <livery>Formula Dirt #05</livery>
+                <livery>Formula Dirt #32</livery>
+                <livery>Formula Dirt #65</livery>
+                <livery>Formula Dirt #71</livery>
+                <livery>Formula Dirt #93</livery>
+                <livery>Formula Dirt #99</livery>
+                <livery>Formula Dirt #170</livery>
+                <livery>Formula Dirt #234</livery>
+                <livery>Formula Dirt #301</livery>
+                <livery>Formula Dirt #360</livery>
+                <livery>Formula Dirt #373</livery>
+                <livery>Formula Dirt #445</livery>
+                <livery>Formula Dirt #495</livery>
+                <livery>Formula Dirt #508</livery>
+                <livery>Formula Dirt #555</livery>
+                <livery>Formula Dirt #665</livery>
+                <livery>Formula Dirt #720</livery>
+                <livery>Formula Dirt #737</livery>
+                <livery>Formula Dirt #934</livery>
             </liveries>
             <is_modded>false</is_modded>
         </vehicle_class>
@@ -1489,14 +1514,14 @@
         </vehicle_class>
         <vehicle_class name="Hypercars" xml_name="Hypercars">
             <liveries>
-                <livery>#Brabham BT62 #01</livery>
-                <livery>#Brabham BT62 #02</livery>
-                <livery>#Brabham BT62 #03</livery>
-                <livery>#Brabham BT62 #04</livery>
-                <livery>#Brabham BT62 #05</livery>
-                <livery>#Brabham BT62 #06</livery>
-                <livery>#Brabham BT62 #07</livery>
-                <livery>#Brabham BT62 #08</livery>
+                <livery>Brabham BT62 #01</livery>
+                <livery>Brabham BT62 #02</livery>
+                <livery>Brabham BT62 #03</livery>
+                <livery>Brabham BT62 #04</livery>
+                <livery>Brabham BT62 #05</livery>
+                <livery>Brabham BT62 #06</livery>
+                <livery>Brabham BT62 #07</livery>
+                <livery>Brabham BT62 #08</livery>
                 <livery>McLaren Senna #01</livery>
                 <livery>McLaren Senna #02</livery>
                 <livery>McLaren Senna #03</livery>
@@ -1532,6 +1557,31 @@
                 <livery>Kart 125cc 2STROKE #97</livery>
                 <livery>Kart 125cc 2STROKE #98</livery>
                 <livery>Kart 125cc 2STROKE #99</livery>
+            </liveries>
+            <is_modded>false</is_modded>
+        </vehicle_class>
+        <vehicle_class name="KartCross" xml_name="KartCross">
+            <liveries>
+                <livery>Kart Cross #1</livery>
+                <livery>Kart Cross #2</livery>
+                <livery>Kart Cross #3</livery>
+                <livery>Kart Cross #4</livery>
+                <livery>Kart Cross #5</livery>
+                <livery>Kart Cross #6</livery>
+                <livery>Kart Cross #7</livery>
+                <livery>Kart Cross #8</livery>
+                <livery>Kart Cross #9</livery>
+                <livery>Kart Cross #10</livery>
+                <livery>Kart Cross #012</livery>
+                <livery>Kart Cross #014</livery>
+                <livery>Kart Cross #020</livery>
+                <livery>Kart Cross #23</livery>
+                <livery>Kart Cross #033</livery>
+                <livery>Kart Cross #42</livery>
+                <livery>Kart Cross #43</livery>
+                <livery>Kart Cross #57</livery>
+                <livery>Kart Cross #66</livery>
+                <livery>Kart Cross #77</livery>
             </liveries>
             <is_modded>false</is_modded>
         </vehicle_class>
@@ -1823,6 +1873,34 @@
             </liveries>
             <is_modded>false</is_modded>
         </vehicle_class>
+        <vehicle_class name="P1 Gen2" xml_name="P1Gen2">
+            <liveries>
+                <livery>Mottin Racing #46</livery>
+                <livery>MM AJR Chev Gen2 #55</livery>
+                <livery>FTR Motorsport #175</livery>
+                <livery>MM AJR Chev Gen2 #232</livery>
+                <livery>JLM Racing #28</livery>
+                <livery>ADS Racing #72</livery>
+                <livery>MM AJR Honda Gen2 #30</livery>
+                <livery>MM AJR Honda Gen2 #52</livery>
+                <livery>Power Imports #80</livery>
+                <livery>Box 99 Racing #99</livery>
+                <livery>MM AJR Nissan Gen2 #36</livery>
+                <livery>MM AJR Nissan Gen2 #66</livery>
+                <livery>Sigma Motorsport #02</livery>
+                <livery>Sigma P1 G5 #5</livery>
+                <livery>Sigma P1 G5 #13</livery>
+                <livery>Sigma P1 G5 #85</livery>
+                <livery>Motorcar Racing #444</livery>
+                <livery>Ginetta G58 Gen2 #1</livery>
+                <livery>Ginetta G58 Gen2 #20</livery>
+                <livery>Ginetta G58 Gen2 #21</livery>
+                <livery>Ginetta G58 Gen2 #22</livery>
+                <livery>Ginetta G58 Gen2 #53</livery>
+                <livery>Ginetta G58 Gen2 #54</livery>
+            </liveries>
+            <is_modded>false</is_modded>
+        </vehicle_class>
         <vehicle_class name="P2" xml_name="P2">
             <liveries>
                 <livery>MetalMoro MRX P2 #05</livery>
@@ -1943,6 +2021,28 @@
             </liveries>
             <is_modded>false</is_modded>
         </vehicle_class>
+        <vehicle_class name="RX" xml_name="RX">
+            <liveries>
+                <livery>Citroen DS3 RX #10</livery>
+                <livery>Citroen DS3 RX #18</livery>
+                <livery>Citroen DS3 RX #303</livery>
+                <livery>Citroen DS3 RX #444</livery>
+                <livery>Mini R60 RX #88</livery>
+                <livery>Mini R60 RX #59</livery>
+                <livery>Mini R60 RX #725</livery>
+                <livery>Mini R60 RX #931</livery>
+                <livery>Mitsubishi Lancer RX #56</livery>
+                <livery>Mitsubishi Lancer RX #61</livery>
+                <livery>Mitsubishi Lancer RX #111</livery>
+                <livery>Mitsubishi Lancer RX #242</livery>
+                <livery>VW Polo RX #25</livery>
+                <livery>VW Polo RX #74</livery>
+                <livery>VW Polo RX #324</livery>
+                <livery>VW Polo RX #888</livery>
+            </liveries>
+            <is_modded>false</is_modded>
+        </vehicle_class>
+    </vehicle_classes>
         <vehicle_class name="Sprint Race" xml_name="SprintRace">
             <liveries>
                 <livery>Marcelo Henriques #03</livery>
@@ -2141,7 +2241,7 @@
             </liveries>
             <is_modded>false</is_modded>
         </vehicle_class>
-        <vehicle_class name="StockCarV8 2023" xml_name="StockCarV8_2023.xml">
+        <vehicle_class name="StockCarV8 2023" xml_name="StockCarV8_2023">
             <liveries>
                 <livery>Full Time Bassani - T.Kanaan #6</livery>
                 <livery>RCM Motorsport - R.Zonta #10</livery>
@@ -2456,5 +2556,4 @@
             </liveries>
             <is_modded>false</is_modded>
         </vehicle_class>
-    </vehicle_classes>
 </vehicle_class_library>

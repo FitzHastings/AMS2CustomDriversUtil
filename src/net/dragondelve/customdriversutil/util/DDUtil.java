@@ -41,13 +41,15 @@ public class DDUtil {
     public static final String CUSTOM_GRID_WELCOME_FXML_PATHNAME = "fxml/CustomGridWelcome.fxml";
     public static final String MASS_MODIFY_TOOL_FXML_PATHNAME = "fxml/MassModifyTool.fxml";
     public static final String TRACK_LIBRARY_DEFAULT_PATHNAME = "library/tracks/ams2_tracks_1.5.0.2.xml";
-    public static final String VEHICLE_CLASS_LIBRARY_DEFAULT_PATHNAME = "library/vehicles/ams2_vehicles_1.4.8.1.xml";
+    public static final String VEHICLE_CLASS_LIBRARY_DEFAULT_PATHNAME = "library/vehicles/ams2_vehicles_1.5.0.2.xml";
 
     public static final String MAIN_CSS_RESOURCE = "css/Eraconstas.css";
     public static final String ATTENTION_CSS_RESOURCE = "css/EraconstasAttention.css";
     public static final String WARNING_CSS_RESOURCE = "css/EraconstasWarning.css";
 
-    public static final Image MAIN_ICON_IMAGE = new Image(Objects.requireNonNull(CustomDriverUtilMain.class.getClassLoader().getResourceAsStream("ams2CDU.png")));
+    public static final Image MAIN_ICON_IMAGE = new Image(Objects.requireNonNull(CustomDriverUtilMain.class.getClassLoader().getResourceAsStream("img/AMS2CDU.png")));
+    public static final Image BANNER_IMAGE =new Image(Objects.requireNonNull(CustomDriverUtilMain.class.getClassLoader().getResourceAsStream("img/CDUBANNER.png")));
+    public static final Image LARGE_ICON_IMAGE = new Image(Objects.requireNonNull(CustomDriverUtilMain.class.getClassLoader().getResourceAsStream("img/AMS2CDUL.png")));
 
     public URL TRACK_EDITOR_FXML_URL = MabelUtil.toURL(TRACK_EDITOR_FXML_PATHNAME);
     public URL VEHICLE_CLASS_EDITOR_FXML_URL = MabelUtil.toURL(VEHICLE_CLASS_EDITOR_FXML_PATHNAME);

@@ -27,10 +27,6 @@ import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
 import net.dragondelve.mabelfx.StageController;
 
-//TODO: Change logo and icons to those provided by THK84
-//TODO: Add explicit credits for NAMeS and logos to John B. Ellis and THK84 to the welcome screen
-//TODO: Vehicle library for AMS2 1.5
-
 /**
  * CustomDriverUtility's main class.
  * Responsible for launching the application, making sure the Configurator loads the Configuration and the
@@ -61,12 +57,13 @@ public class CustomDriverUtilMain extends Application {
            LibraryManager.getInstance().importDriverLibrary(Configurator.getInstance().getConfiguration().getDriverLibraryPathname()); 
         }
 
-        primaryStage.setTitle("Custom Driver Utility V2.1");
+        primaryStage.setTitle("Custom Driver Utility V2.2");
         primaryStage.setMinWidth(880);
         primaryStage.setMinHeight(700);
         primaryStage.setHeight(700);
         primaryStage.setWidth(1200);
 
+        primaryStage.getIcons().add(DDUtil.LARGE_ICON_IMAGE);
         primaryStage.getIcons().add(DDUtil.MAIN_ICON_IMAGE);
         if (Configurator.getInstance().getConfiguration().isSkipWelcomeScreen()) {
             try {
@@ -75,6 +72,8 @@ public class CustomDriverUtilMain extends Application {
                 stageController.setStage(primaryStage);
                 loader.setController(stageController);
                 Scene scene = new Scene(loader.load());
+                //scene.setFill(Color.TRANSPARENT);
+                //primaryStage.initStyle(StageStyle.TRANSPARENT);
                 primaryStage.setScene(scene);
                 primaryStage.show();
             } catch (Exception e) {

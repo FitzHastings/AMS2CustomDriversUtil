@@ -19,6 +19,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -89,6 +90,9 @@ public class CustomGridWelcomeController implements StageController {
     @FXML
     private CheckBox skipWelcomeScreenCheckBox;
 
+    @FXML
+    private ImageView bannerImageView;
+
     /**
      * Stage on which this StageController is going to be displayed.
      */
@@ -114,6 +118,9 @@ public class CustomGridWelcomeController implements StageController {
                 ex.printStackTrace();
             }
         });
+
+        bannerImageView.setStyle(" -fx-background-color: transparent;");
+        bannerImageView.setImage(DDUtil.BANNER_IMAGE);
     }
 
     /**

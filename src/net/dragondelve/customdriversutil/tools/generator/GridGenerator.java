@@ -84,7 +84,7 @@ public class GridGenerator {
 
             if (settings.isFromLiveryNames()) {
                 String liveryName = driver.getLiveryName();
-                driver.nameProperty().set("drv"+ (i+1) + liveryName.substring(liveryName.length()-8));
+                driver.nameProperty().set("drv" + (i+1) + liveryName.substring(liveryName.length()-8));
                 driver.countryProperty().set("GBR");
             } else if (settings.isUseNAMeS()) {
                 if (namesSource != null) {
