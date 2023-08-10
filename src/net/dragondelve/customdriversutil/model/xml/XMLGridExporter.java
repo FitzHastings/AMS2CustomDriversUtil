@@ -137,10 +137,12 @@ public class XMLGridExporter implements GridExporter {
      * @return same property converted to a String
      */
     private String convertProperty(double property) {
-        if (Configurator.getInstance().getConfiguration().isRoundGeneratedValues())
-            return Double.toString(property).substring(0, DDUtil.DECIMAL_POINT_CONSTANT + Configurator.getInstance().getConfiguration().getRoundingDecimalPlaces());
+        String stringProperty = Double.toString(property);
+        int nDigits = DDUtil.DECIMAL_POINT_CONSTANT + Configurator.getInstance().getConfiguration().getRoundingDecimalPlaces();
+        if (Configurator.getInstance().getConfiguration().isRoundGeneratedValues() && stringProperty.length() >= nDigits)
+            return stringProperty.substring(0, nDigits);
         else
-            return Double.toString(property);
+            return stringProperty;
     }
 
 }
