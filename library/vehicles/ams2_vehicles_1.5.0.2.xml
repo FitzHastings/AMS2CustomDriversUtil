@@ -2042,7 +2042,6 @@
             </liveries>
             <is_modded>false</is_modded>
         </vehicle_class>
-    </vehicle_classes>
         <vehicle_class name="Sprint Race" xml_name="SprintRace">
             <liveries>
                 <livery>Marcelo Henriques #03</livery>
@@ -2556,4 +2555,5 @@
             </liveries>
             <is_modded>false</is_modded>
         </vehicle_class>
+    </vehicle_classes>
 </vehicle_class_library>

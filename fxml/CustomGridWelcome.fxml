@@ -52,7 +52,7 @@ limitations under the License. -->
    </VBox>
    <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="48.0" prefWidth="620.0"
           styleClass="border-label"
-          text="version: 2.2.1 for AMS2 1.5.0.2, Logo and Icons by THK84, NAMeS Files by John B. Ellis, Used with permission"
+          text="version: 2.2.2 for AMS2 1.5.0.2, Logo and Icons by THK84, NAMeS Files by John B. Ellis, Used with permission"
           textAlignment="CENTER"/>
    <ToolBar>
       <Label prefHeight="25.0" prefWidth="182.0" styleClass="prompt-label" text="New AMS 2 Version Out? "/>
