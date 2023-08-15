@@ -53,6 +53,11 @@ public final class VehicleClass {
     private ObservableList<String> liveryNames = FXCollections.observableArrayList();
 
     /**
+     * Full list of vehicles that are used for this class.
+     */
+    private ObservableList<Vehicle> vehicles = FXCollections.observableArrayList();
+
+    /**
      * Lightweight accessor method.
      * @return Vehicle Class name that is human-readable.
      */
@@ -152,5 +157,23 @@ public final class VehicleClass {
     @Override
     public String toString() {
         return name.get();
+    }
+
+    /**
+     * Lightweight accessor method
+     * @return Full list of vehicles that are used for this class.
+     */
+    @XmlElementWrapper (name = "vehicles")
+    @XmlElement (name = "vehicle")
+    public ObservableList<Vehicle> getVehicles() {
+        return vehicles;
+    }
+
+    /**
+     * Lightweight mutator method
+     * @param vehicles Full list of vehicles that are used for this class.
+     */
+    public void setVehicles(ObservableList<Vehicle> vehicles) {
+        this.vehicles = vehicles;
     }
 }

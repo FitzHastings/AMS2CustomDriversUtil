@@ -47,7 +47,7 @@ public class GridGenerator {
 
     /**
      * Creates a new instance of GridGenerator. If this constructor is used grids created with generateGrid() method will
-     * not contain any values set as ValueGenerator is not provided.
+     * not contain any values as ValueGenerator is not provided.
      * @param settings Settings that dictate the desired grid that is generated when the generateGrid method is called.
      */
     public GridGenerator(GeneratorSettings settings) {
