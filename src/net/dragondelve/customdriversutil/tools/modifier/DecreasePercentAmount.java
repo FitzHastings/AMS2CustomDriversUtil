@@ -17,7 +17,7 @@ package net.dragondelve.customdriversutil.tools.modifier;
 /**
  * Decreases all values by a certain percentage of the original amount. If the resulting value is smaller than 0.0 it will use 0.0.
  */
-public class DecreasePercentAmount implements ModifierAction{
+public class DecreasePercentAmount implements ModifierAction {
     /**
      * Value from 0.0 to 1.0 that is used as a percentage value of modification.
      */
@@ -25,6 +25,7 @@ public class DecreasePercentAmount implements ModifierAction{
 
     /**
      * Creates new instance of DecreasePercentAmount
+     *
      * @param percentValue Value from 0.0 to 1.0 that is used as a percentage value of modification.
      */
     public DecreasePercentAmount(double percentValue) {
@@ -33,6 +34,7 @@ public class DecreasePercentAmount implements ModifierAction{
 
     /**
      * Decreases a given driver's property by a percent value.
+     *
      * @param driverProperty value to be modified.
      * @return Modified value. If modified value is smaller than 0.0 then it returns 0.0 instead.
      */

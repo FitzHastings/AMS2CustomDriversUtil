@@ -14,7 +14,6 @@
 
 package net.dragondelve.mabelfx;
 
-import net.dragondelve.mabelfx.fetcher.Fetcher;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -22,9 +21,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import net.dragondelve.mabelfx.fetcher.Fetcher;
 
 /**
- *  JavaFX GUI element that contains a table, content of which can be edited with add and remove actions.
+ * JavaFX GUI element that contains a table, content of which can be edited with add and remove actions.
+ *
  * @param <T> Type of item that is edited in the SimpleTableEditor.
  */
 public class SimpleTableEditor<T> extends VBox {
@@ -43,7 +44,8 @@ public class SimpleTableEditor<T> extends VBox {
 
     /**
      * Constructor that sets columns to null
-     * @param items Items to be displayed by the TableView.
+     *
+     * @param items   Items to be displayed by the TableView.
      * @param fetcher A fetcher that will be used when adding new items to the list. This fetcher should be initialized before providing it to the SimpleTableEditor.
      */
     SimpleTableEditor(ObservableList<T> items, Fetcher<T> fetcher) {
@@ -51,8 +53,7 @@ public class SimpleTableEditor<T> extends VBox {
     }
 
     /**
-     *
-     * @param items items to be displayed by the TableView
+     * @param items   items to be displayed by the TableView
      * @param fetcher A fetcher that will be used when adding new items to the list. This fetcher should be initialized before providing it to the SimpleTableEditor.
      * @param columns columns that will be added to the TableView
      */
@@ -72,16 +73,17 @@ public class SimpleTableEditor<T> extends VBox {
         addButton.setOnAction(event -> tableView.getItems().add(this.fetcher.retrieve()));
 
         removeButton.setOnAction(event -> {
-            if(tableView.getSelectionModel().getSelectedItem() != null)
+            if (tableView.getSelectionModel().getSelectedItem() != null)
                 tableView.getItems().removeAll(tableView.getSelectionModel().getSelectedItems());
         });
 
-        if(columns != null && columns.length != 0)
+        if (columns != null && columns.length != 0)
             tableView.getColumns().addAll(columns);
     }
 
     /**
      * Lightweight accessor.
+     *
      * @return tableView that is used inside
      */
     public TableView<T> getTableView() {
@@ -90,6 +92,7 @@ public class SimpleTableEditor<T> extends VBox {
 
     /**
      * Lightweight mutator. Sets items directly into the TableView
+     *
      * @param items items to be set to the TableView.
      */
     public void setItems(ObservableList<T> items) {
@@ -98,6 +101,7 @@ public class SimpleTableEditor<T> extends VBox {
 
     /**
      * Lightweight mutator.
+     *
      * @param fetcher fetcher whose retrieve method will be used to generate new items when adding them to the TableView
      */
     public void setFetcher(Fetcher<T> fetcher) {

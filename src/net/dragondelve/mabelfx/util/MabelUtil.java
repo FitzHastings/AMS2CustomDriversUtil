@@ -31,16 +31,16 @@ public final class MabelUtil {
 
     public static final String DEFAULT_STYLESHEET = "css/Eraconstas.css";
 
+    private MabelUtil() {
+        super();
+    }
+
     public static URL toURL(String url) {
         try {
-            return new URL("file:"+url);
+            return new URL("file:" + url);
         } catch (MalformedURLException e) {
             DEFAULT_LOGGER.log(Level.SEVERE, "URL: '" + url + "could not be parsed as a URL");
             return null;
         }
-    }
-
-    private MabelUtil() {
-        super();
     }
 }

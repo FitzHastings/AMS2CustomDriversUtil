@@ -40,208 +40,176 @@ import java.io.IOException;
  */
 public class NewGridWizardController implements StageController {
     /**
+     * Minimum value of all driver properties to be used in generating the new Grid.
+     */
+    private final DoubleProperty minValue = new SimpleDoubleProperty(0.0);
+    /**
+     * Maximum value of all driver properties to be used in generating the new Grid.
+     */
+    private final DoubleProperty maxValue = new SimpleDoubleProperty(1.0);
+    /**
+     * Generator settings that are passed to the grid generator if the user wants to generate a new grid.
+     */
+    private final GeneratorSettings generatorSettings = new GeneratorSettings();
+    /**
+     * Scene that was displayed on the primaryStage before this scene. Used for Back button.
+     */
+    Scene previousScene;
+    /**
      * Radio button that determines if the generated grid is going to use blank names as a source.
      */
     @FXML
     private RadioButton blankNamesRadioButton;
-
     /**
      * Button that performs generateAction() on action.
      */
     @FXML
     private Button generateButton;
-
     /**
      * Button that shows the previous scene from which this screen was called. Performs back action on action.
      */
     @FXML
     private Button backButton;
-
     /**
      * choiceBox that determines what vehicleClass is going to be used when generating a new grid.
      */
     @FXML
     private ChoiceBox<VehicleClass> vehicleClassChoiceBox;
-
     /**
      * CheckBox that determines if the user wants to start with a blank grid.
      */
     @FXML
     private CheckBox emptyGridCheckBox;
-
     /**
      * CheckBox that determines if QualiSkill should exceed raceSkill if those values are bound.
      */
     @FXML
     private CheckBox qualiExceedsRaceSkillCheckBox;
-
     /**
      * CheckBox that determines if the GridGenerator will generate trackOverrides for ovals, reducing the gap in
      * race skill and quali skill in half.
      */
     @FXML
     private CheckBox reduceGapOnOvalsCheckBox;
-
     /**
      * CheckBox that determines if the raceskill and qualiSkill properties of every Driver in the grid should be bound
      * instead of being generated independently.
      */
     @FXML
     private CheckBox bindQualiCheckBox;
-
     /**
      * CheckBox that determines if aggression should be limited to a particular value set by the limitToTextField.
      */
     @FXML
     private CheckBox limitAggressionCheckBox;
-
     /**
      * TextField that displays and allows the user to edit the aggressionLimit property that determines tha maximum
      * value that each driver's aggression property can have.
      */
     @FXML
     private TextField limitToTextField;
-
     /**
      * RadioButton that determines if no values should be set to the grid when generating it.
      */
     @FXML
     private RadioButton noValuesRadioButton;
-
     /**
      * TextField that displays and allows the user to edit the values of maxValue doubleProperty. maxValue determines the
      * max value that can be set on any property.
      */
     @FXML
     private TextField maxValueTextField;
-
     /**
      * CheckBox that determines if the user wants a grid to be generated using GridGenerator.
      */
     @FXML
     private CheckBox generateGridCheckBox;
-
     /**
      * The root pane of this window, used to apply the CSS resource to this entire scene.
      */
     @FXML
     private VBox rootPane;
-
     /**
      * CheckBox that determines if the RandomValuesGenerator is going to be used to generate the values of the new
      * grid.
      */
     @FXML
     private CheckBox randomValuesCheckBox;
-
     /**
      * TextField that determines by how much the quali skill will exceed race skill if those values are bound.
      */
     @FXML
     private TextField qualiExceedsTextField;
-
     /**
      * RadioButton that determines if all properties of generated drivers are going to be provided with RandomValueGenerator.
      */
     @FXML
     private RadioButton randomAllRadioButton;
-
     /**
      * CheckBox that determines if the amount of drivers generated is going to be equal to how many liveries there are in
      * the class.
      */
     @FXML
     private CheckBox forEachLiveryCheckBox;
-
     /**
      * RadioButton that determines if drivers in the generated grid should have generated names based on their livery name.
      */
     @FXML
     private RadioButton fromLiveryNamesRadioButton;
-
     /**
      * CheckBox that determines if RangeValueGenerator should be used to generate values for the generated grid.
      */
     @FXML
     private CheckBox rangeOfValuesCheckBox;
-
     /**
      * TextField that displays and allows the user to edit the values of minValue doubleProperty. maxValue determines the
      * minimum value that can be set on any property.
      */
     @FXML
     private TextField minValueTextField;
-
     /**
      * RadioButton that determines if drivers in the generated grid should have names borrowed from NAMeS resources if such
      * resources are available for this VehicleClass..
      */
     @FXML
     private RadioButton useNAMeSRadioButton;
-
     /**
      * RadioButton that determines if RandomValueGenerator should be only determinning the race skill of all drivers generated
      * by this item.
      */
     @FXML
     private RadioButton randomSkillRadioButton;
-
     /**
      * Slider that determines the amount of noise used to generate these items.
      */
     @FXML
     private Slider noiseSlider;
-
     /**
      * Text field that displays the noise value set in the noiseValueSlider
      */
     @FXML
     private TextField noiseTextField;
-
     /**
      * TextField that displays and allows user to edit the nDrivers property of GeneratorSettings that will be passed to
      * the GridGenerator. This value only matters if forEachLiveryCheckBox is not selected.
      */
     @FXML
     private TextField amountTextField;
-
     /**
      * Pane that contains the settings for grid generation. Used for disabling all generator settings if empty grid is
      * selected by the user.
      */
     @FXML
     private GridPane generateGridPane;
-
     /**
      * Label that displays the notice for NAMeS files if useNAMeS radioButton is selected.
      */
     @FXML
     private Label namesNoticeLabel;
-
-    /**
-     * Scene that was displayed on the primaryStage before this scene. Used for Back button.
-     */
-    Scene previousScene;
-
     /**
      * Stage on which this StageController is going to be displayed.
      */
     private Stage stage;
-
-    /**
-     * Minimum value of all driver properties to be used in generating the new Grid.
-     */
-    private final DoubleProperty minValue = new SimpleDoubleProperty(0.0);
-
-    /**
-     * Maximum value of all driver properties to be used in generating the new Grid.
-     */
-    private final DoubleProperty maxValue = new SimpleDoubleProperty(1.0);
-
-    /**
-     * Generator settings that are passed to the grid generator if the user wants to generate a new grid.
-     */
-    private final GeneratorSettings generatorSettings = new GeneratorSettings();
 
     /**
      * Initialize method initializes all the visual elements before they are displayed by the user.
@@ -359,6 +327,7 @@ public class NewGridWizardController implements StageController {
 
     /**
      * Lightweight mutator method.
+     *
      * @param stage Stage on which this controller is going to be displayed.
      */
     @Override
@@ -368,6 +337,7 @@ public class NewGridWizardController implements StageController {
 
     /**
      * Lightweight mutator method.
+     *
      * @param previousScene Previous scene that was displayed in the primaryStage before this scene.
      */
     public void setPreviousScene(Scene previousScene) {
@@ -418,6 +388,7 @@ public class NewGridWizardController implements StageController {
 
     /**
      * Loads the main window and sets the provided grid as the edited grid in the main window.
+     *
      * @param generatorGrid Grid generated by the GridGenerator or a new empty grid if the user wants to start with an empty grid.
      */
     private void loadMainWindow(Grid generatorGrid) {
@@ -438,38 +409,38 @@ public class NewGridWizardController implements StageController {
      * Initializes all tooltips for the control elements
      */
     private void initTooltips() {
-        emptyGridCheckBox       .setTooltip(TooltipUtil.EMPTY_GRID_TOOLTIP);
-        generateGridCheckBox    .setTooltip(TooltipUtil.GENERATE_GRID_TOOLTIP);
+        emptyGridCheckBox.setTooltip(TooltipUtil.EMPTY_GRID_TOOLTIP);
+        generateGridCheckBox.setTooltip(TooltipUtil.GENERATE_GRID_TOOLTIP);
         reduceGapOnOvalsCheckBox.setTooltip(TooltipUtil.REDUCE_GAP_ON_OVALS_TOOLTIP);
 
-        vehicleClassChoiceBox   .setTooltip(TooltipUtil.CHOOSE_VEHICLE_CLASS_TOOLTIP);
-        forEachLiveryCheckBox   .setTooltip(TooltipUtil.FOR_EACH_LIVERY_TOOLTIP);
-        amountTextField         .setTooltip(TooltipUtil.N_DRIVERS_TOOLTIP);
+        vehicleClassChoiceBox.setTooltip(TooltipUtil.CHOOSE_VEHICLE_CLASS_TOOLTIP);
+        forEachLiveryCheckBox.setTooltip(TooltipUtil.FOR_EACH_LIVERY_TOOLTIP);
+        amountTextField.setTooltip(TooltipUtil.N_DRIVERS_TOOLTIP);
 
-        randomValuesCheckBox    .setTooltip(TooltipUtil.RANDOM_VALUES_TOOLTIP);
-        randomSkillRadioButton  .setTooltip(TooltipUtil.RANDOM_SKILL_TOOLTIP);
-        randomAllRadioButton    .setTooltip(TooltipUtil.RANDOM_ALL_TOOLTIP);
+        randomValuesCheckBox.setTooltip(TooltipUtil.RANDOM_VALUES_TOOLTIP);
+        randomSkillRadioButton.setTooltip(TooltipUtil.RANDOM_SKILL_TOOLTIP);
+        randomAllRadioButton.setTooltip(TooltipUtil.RANDOM_ALL_TOOLTIP);
 
-        rangeOfValuesCheckBox   .setTooltip(TooltipUtil.RANGE_OF_VALUES_TOOLTIP);
-        noiseSlider             .setTooltip(TooltipUtil.NOISE_TOOLTIP);
-        noiseTextField          .setTooltip(TooltipUtil.NOISE_TOOLTIP);
+        rangeOfValuesCheckBox.setTooltip(TooltipUtil.RANGE_OF_VALUES_TOOLTIP);
+        noiseSlider.setTooltip(TooltipUtil.NOISE_TOOLTIP);
+        noiseTextField.setTooltip(TooltipUtil.NOISE_TOOLTIP);
 
-        noValuesRadioButton     .setTooltip(TooltipUtil.NO_VALUES_TOOLTIP);
+        noValuesRadioButton.setTooltip(TooltipUtil.NO_VALUES_TOOLTIP);
 
-        minValueTextField       .setTooltip(TooltipUtil.MIN_GENERATED_VALUE_TOOLTIP);
-        maxValueTextField       .setTooltip(TooltipUtil.MAX_GENERATED_VALUE_TOOLTIP);
-        limitAggressionCheckBox .setTooltip(TooltipUtil.LIMIT_AGGRESSION_TOOLTIP);
-        limitToTextField        .setTooltip(TooltipUtil.LIMIT_AGGRESSION_TO_TOOLTIP);
+        minValueTextField.setTooltip(TooltipUtil.MIN_GENERATED_VALUE_TOOLTIP);
+        maxValueTextField.setTooltip(TooltipUtil.MAX_GENERATED_VALUE_TOOLTIP);
+        limitAggressionCheckBox.setTooltip(TooltipUtil.LIMIT_AGGRESSION_TOOLTIP);
+        limitToTextField.setTooltip(TooltipUtil.LIMIT_AGGRESSION_TO_TOOLTIP);
 
-        bindQualiCheckBox               .setTooltip(TooltipUtil.BIND_QUALI_SKILL_TOOLTIP);
-        qualiExceedsRaceSkillCheckBox   .setTooltip(TooltipUtil.QUALI_SKILL_EXCEEDS_TOOLTIP);
-        qualiExceedsTextField           .setTooltip(TooltipUtil.EXCEEDS_BY_AMOUNT_TOOLTIP);
+        bindQualiCheckBox.setTooltip(TooltipUtil.BIND_QUALI_SKILL_TOOLTIP);
+        qualiExceedsRaceSkillCheckBox.setTooltip(TooltipUtil.QUALI_SKILL_EXCEEDS_TOOLTIP);
+        qualiExceedsTextField.setTooltip(TooltipUtil.EXCEEDS_BY_AMOUNT_TOOLTIP);
 
-        blankNamesRadioButton       .setTooltip(TooltipUtil.BLANK_NAMES_TOOLTIP);
-        useNAMeSRadioButton         .setTooltip(TooltipUtil.USE_NAMES_TOOLTIP);
-        fromLiveryNamesRadioButton  .setTooltip(TooltipUtil.FROM_LIVERY_NAME_TOOLTIP);
+        blankNamesRadioButton.setTooltip(TooltipUtil.BLANK_NAMES_TOOLTIP);
+        useNAMeSRadioButton.setTooltip(TooltipUtil.USE_NAMES_TOOLTIP);
+        fromLiveryNamesRadioButton.setTooltip(TooltipUtil.FROM_LIVERY_NAME_TOOLTIP);
 
-        backButton      .setTooltip(TooltipUtil.BACK_TOOLTIP);
-        generateButton  .setTooltip(TooltipUtil.GENERATE_TOOLTIP);
+        backButton.setTooltip(TooltipUtil.BACK_TOOLTIP);
+        generateButton.setTooltip(TooltipUtil.GENERATE_TOOLTIP);
     }
 }

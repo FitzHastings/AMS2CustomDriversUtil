@@ -39,6 +39,7 @@ final public class Driver extends DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return In game name of the livery.
      */
     public String getLiveryName() {
@@ -47,6 +48,7 @@ final public class Driver extends DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return In game name of the livery as a property.
      */
     public StringProperty liveryNameProperty() {
@@ -55,6 +57,7 @@ final public class Driver extends DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return List of all track specific overrides.
      */
     public ObservableList<TrackOverride> getTrackOverrides() {

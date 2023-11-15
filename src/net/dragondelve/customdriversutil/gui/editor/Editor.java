@@ -23,6 +23,7 @@ import net.dragondelve.mabelfx.StageController;
 public interface Editor<T> extends StageController {
     /**
      * Lightweight accessor method.
+     *
      * @return an observableArrayList of items of T.
      */
     ObservableList<T> getItems();
@@ -30,6 +31,7 @@ public interface Editor<T> extends StageController {
     /**
      * Lightweight mutator method.
      * Should be called before the editor is displayed to the user.
+     *
      * @param items an observableList of items of T.
      */
     void setItems(ObservableList<T> items);

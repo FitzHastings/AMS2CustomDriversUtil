@@ -32,6 +32,7 @@ import java.util.logging.Level;
 /**
  * Displays two listviews that can be dragged or dropped from one to another the left list is labeled as a "library" list view,
  * the right list is labeled as a "selected" list view. They are labeled by their respective labels.
+ *
  * @param <T> Type that will be contained by each List within ListToList
  */
 public class ListToListChooser<T> extends HBox {
@@ -75,6 +76,7 @@ public class ListToListChooser<T> extends HBox {
 
     /**
      * Creates a new instance of ListToListChooser
+     *
      * @param stylesheet path to a css resource to be used for styling this element.
      */
     public ListToListChooser(String stylesheet) {
@@ -98,7 +100,7 @@ public class ListToListChooser<T> extends HBox {
 
         HBox.setHgrow(rootPane, Priority.ALWAYS);
         //Handling Double Clicks
-        libraryListView.setOnMouseClicked(e-> {
+        libraryListView.setOnMouseClicked(e -> {
             T selectedItem = libraryListView.getSelectionModel().getSelectedItem();
             if (e.getClickCount() == 2 && selectedItem != null) {
                 selectedListView.getItems().add(selectedItem);
@@ -106,7 +108,7 @@ public class ListToListChooser<T> extends HBox {
             }
         });
 
-        selectedListView.setOnMouseClicked(e-> {
+        selectedListView.setOnMouseClicked(e -> {
             T selectedItem = selectedListView.getSelectionModel().getSelectedItem();
             if (e.getClickCount() >= 2 && selectedItem != null) {
                 libraryListView.getItems().add(selectedItem);
@@ -126,7 +128,7 @@ public class ListToListChooser<T> extends HBox {
         });
 
         libraryListView.setOnMouseDragged(event -> event.setDragDetect(true));
-        selectedListView.setOnDragOver((DragEvent event) ->  {
+        selectedListView.setOnDragOver((DragEvent event) -> {
             if (event.getGestureSource() != selectedListView && event.getDragboard().hasString())
                 event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
             event.consume();
@@ -155,7 +157,7 @@ public class ListToListChooser<T> extends HBox {
         });
 
         selectedListView.setOnMouseDragged(event -> event.setDragDetect(true));
-        libraryListView.setOnDragOver((DragEvent event) ->  {
+        libraryListView.setOnDragOver((DragEvent event) -> {
             if (event.getGestureSource() != libraryListView && event.getDragboard().hasString())
                 event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
             event.consume();
@@ -173,6 +175,7 @@ public class ListToListChooser<T> extends HBox {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Label that labels the selectedListView
      */
     public ListView<T> getSelectedListView() {
@@ -181,6 +184,7 @@ public class ListToListChooser<T> extends HBox {
 
     /**
      * Lightweight accessor method.
+     *
      * @return ListView that displays all tracks in the current track library
      */
     public ListView<T> getLibraryListView() {
@@ -189,6 +193,7 @@ public class ListToListChooser<T> extends HBox {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Label that labels the selectedListView
      */
     public Label getSelectedLabel() {
@@ -197,6 +202,7 @@ public class ListToListChooser<T> extends HBox {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Label that labels the libraryListView
      */
     public Label getLibraryLabel() {

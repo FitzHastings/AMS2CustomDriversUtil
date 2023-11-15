@@ -35,25 +35,22 @@ import java.util.logging.Level;
  */
 public class LibraryManager {
     /**
-     * Currently used Track Library. Track Library is used for generating new Track Specific Overrides.
+     * The only instance of Library manager that exists, You should use getInstance() in order to get it.
      */
-    private TrackLibrary trackLibrary = new TrackLibrary();
-
-    /**
-     * Currently used VehicleClassLibrary. VehicleClassLibrary is used to allow users to select a livery from a list.
-     */
-    private VehicleClassLibrary vehicleClassLibrary = new VehicleClassLibrary();
-
+    private static final LibraryManager instance = new LibraryManager();
     /**
      * Currently loaded DriverLibrary. DriverLibrary is used to allow users to store their drivers in an arbitrary library
      * without an association to any grid.
      */
     private final DriverLibrary driverLibrary = new DriverLibrary();
-
     /**
-     * The only instance of Library manager that exists, You should use getInstance() in order to get it.
+     * Currently used Track Library. Track Library is used for generating new Track Specific Overrides.
      */
-    private static final LibraryManager instance = new LibraryManager();
+    private TrackLibrary trackLibrary = new TrackLibrary();
+    /**
+     * Currently used VehicleClassLibrary. VehicleClassLibrary is used to allow users to select a livery from a list.
+     */
+    private VehicleClassLibrary vehicleClassLibrary = new VehicleClassLibrary();
 
     /**
      * Private constructor. Used to make this class non instantiable.
@@ -64,6 +61,7 @@ public class LibraryManager {
 
     /**
      * Lightweight accessor method.
+     *
      * @return The only instance of this class.
      */
     public static LibraryManager getInstance() {
@@ -71,7 +69,24 @@ public class LibraryManager {
     }
 
     /**
+     * Creates a new FileChooser, sets its extension filter to *.xml and sets its initial directory to the pathname provided,
+     * and the title of its Stage to the title provided.
+     *
+     * @param title            Title of the Stage on which the FileChooser is going to be displayed.
+     * @param initialDirectory Pathname to an initial directory for the FileChooser.
+     * @return A new FileChooser that is ready to be displayed.
+     */
+    public static FileChooser createLibraryFileChooser(String title, String initialDirectory) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle(title);
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("xml library file", "*.xml"));
+        fileChooser.setInitialDirectory(new File(initialDirectory));
+        return fileChooser;
+    }
+
+    /**
      * Lightweight accessor method.
+     *
      * @return The currently loaded TrackLibrary.
      */
     public TrackLibrary getTrackLibrary() {
@@ -80,6 +95,7 @@ public class LibraryManager {
 
     /**
      * Imports the Track Library from a File located at a given pathname.
+     *
      * @param pathname Pathname to an XML file that contains a Track Library.
      * @return true if importing has succeeded, false if it has failed.
      */
@@ -93,13 +109,14 @@ public class LibraryManager {
             DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Track library loading successful from path: " + pathname);
             return true;
         } catch (JAXBException | IllegalArgumentException e) {
-            DDUtil.DEFAULT_LOGGER.log(Level.WARNING,"Track library loading failed from path: " + pathname);
+            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Track library loading failed from path: " + pathname);
             return false;
         }
     }
 
     /**
      * Exports the currently loaded TrackLibrary to an XML file located at a given pathname.
+     *
      * @param pathname pathname to a File to which the TrackLibrary should be exported.
      * @return true if exporting has succeeded, false if it has failed.
      */
@@ -121,6 +138,7 @@ public class LibraryManager {
 
     /**
      * Lightweight accessor method.
+     *
      * @return The currently loaded VehicleClassLibrary.
      */
     public VehicleClassLibrary getVehicleClassLibrary() {
@@ -129,6 +147,7 @@ public class LibraryManager {
 
     /**
      * Imports the VehicleClassLibrary from a File located at a given pathname.
+     *
      * @param pathname Pathname to an XML file that contains a Vehicle Class Library.
      * @return True if importing has succeeded, false if it has failed.
      */
@@ -149,6 +168,7 @@ public class LibraryManager {
 
     /**
      * Exports the currently loaded VehicleClassLibrary to an XML file located at a given pathname.
+     *
      * @param pathname Pathname to a File to which the VehicleClassLibrary should be exported.
      * @return True if exporting has succeeded, false if it has failed.
      */
@@ -170,6 +190,7 @@ public class LibraryManager {
 
     /**
      * lightweight accessor method.
+     *
      * @return Currently loaded DriverLibrary.
      */
     public DriverLibrary getDriverLibrary() {
@@ -178,6 +199,7 @@ public class LibraryManager {
 
     /**
      * Imports the DriverLibrary from a File located at a given pathname.
+     *
      * @param pathname Pathname to an XML file that contains a Driver Library.
      * @return True if importing has succeeded, false if it has failed.
      */
@@ -191,8 +213,7 @@ public class LibraryManager {
             driverLibrary.getDrivers().addAll(importedDrivers);
             DDUtil.DEFAULT_LOGGER.log(Level.FINE, "Driver Library loading successful from path: " + pathname);
             return true;
-        }
-        else {
+        } else {
             DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Driver Library loading failed from path: " + pathname);
             return false;
         }
@@ -200,6 +221,7 @@ public class LibraryManager {
 
     /**
      * Exports the currently loaded driverLibrary to an XML file located at a given pathname.
+     *
      * @param pathname pathname to a File to which the DriverLibrary should be exported.
      * @return Always returns true.
      */
@@ -215,20 +237,5 @@ public class LibraryManager {
         grid.getDrivers().addAll(driverLibrary.getDrivers());
         exporter.exportToFile(grid, library);
         return true;
-    }
-
-    /**
-     * Creates a new FileChooser, sets its extension filter to *.xml and sets its initial directory to the pathname provided,
-     * and the title of its Stage to the title provided.
-     * @param title Title of the Stage on which the FileChooser is going to be displayed.
-     * @param initialDirectory Pathname to an initial directory for the FileChooser.
-     * @return A new FileChooser that is ready to be displayed.
-     */
-    public static FileChooser createLibraryFileChooser(String title, String initialDirectory) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle(title);
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("xml library file", "*.xml"));
-        fileChooser.setInitialDirectory(new File(initialDirectory));
-        return fileChooser;
     }
 }

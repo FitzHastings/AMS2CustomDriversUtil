@@ -35,6 +35,7 @@ import net.dragondelve.mabelfx.StageController;
 public class CustomDriverUtilMain extends Application {
     /**
      * Application's main method.
+     *
      * @param args Program arguments (ignored).
      */
     public static void main(String[] args) {
@@ -43,6 +44,7 @@ public class CustomDriverUtilMain extends Application {
 
     /**
      * Application Start Method.
+     *
      * @param primaryStage primary stage that is used to display the GUI.
      */
     @Override
@@ -54,7 +56,7 @@ public class CustomDriverUtilMain extends Application {
         LibraryManager.getInstance().importTrackLibrary(Configurator.getInstance().getConfiguration().getTrackLibraryPathname());
         LibraryManager.getInstance().importVehicleClassLibrary(Configurator.getInstance().getConfiguration().getVehicleClassLibraryPathname());
         if (Configurator.getInstance().getConfiguration().getDriverLibraryPathname() != null && Configurator.getInstance().getConfiguration().getDriverLibraryPathname().length() > 0) {
-           LibraryManager.getInstance().importDriverLibrary(Configurator.getInstance().getConfiguration().getDriverLibraryPathname()); 
+            LibraryManager.getInstance().importDriverLibrary(Configurator.getInstance().getConfiguration().getDriverLibraryPathname());
         }
 
         primaryStage.setTitle("Custom Driver Utility V2.2.2");
@@ -96,6 +98,7 @@ public class CustomDriverUtilMain extends Application {
 
     /**
      * Generates a new configuration for the program with default values if conf.xml was not found.
+     *
      * @return newly generated default configuration.
      */
     private Configuration generateDefaultConfiguration() {

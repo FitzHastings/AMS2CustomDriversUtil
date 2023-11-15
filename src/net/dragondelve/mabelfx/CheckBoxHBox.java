@@ -43,7 +43,8 @@ public class CheckBoxHBox extends HBox {
 
     /**
      * Creates a new instance of CheckBoxHBox.
-     * @param checkBoxes CheckBoxes tho be displayed inside CheckBoxHBox
+     *
+     * @param checkBoxes        CheckBoxes tho be displayed inside CheckBoxHBox
      * @param booleanProperties Boolean properties to be bound to the checkBoxes selected property.
      */
     public CheckBoxHBox(List<CheckBox> checkBoxes, List<BooleanProperty> booleanProperties) {
@@ -52,9 +53,10 @@ public class CheckBoxHBox extends HBox {
 
     /**
      * Creates a new instance of CheckBoxHBox.
-     * @param checkBoxes CheckBoxes tho be displayed inside CheckBoxHBox
+     *
+     * @param checkBoxes        CheckBoxes tho be displayed inside CheckBoxHBox
      * @param booleanProperties Boolean properties to be bound to the checkBoxes selected property.
-     * @param split Defines how many check boxes will be grouped together before a split. if split < 1 it will not create any breaks
+     * @param split             Defines how many check boxes will be grouped together before a split. if split < 1 it will not create any breaks
      */
     public CheckBoxHBox(List<CheckBox> checkBoxes, List<BooleanProperty> booleanProperties, int split) {
         initCheckBoxes(checkBoxes, split);
@@ -62,7 +64,25 @@ public class CheckBoxHBox extends HBox {
     }
 
     /**
+     * Creates an arbitrary amount of checkboxes and puts them a list. Checkboxes are given "list-check-box" styel class
+     * so that they can be more appropriately styled for the use in a list with css.
+     *
+     * @param amount amount of checkBoxes to be generated.
+     * @return List that contains an amount of checkboxes equal to amount passed.
+     */
+    public static List<CheckBox> generateCheckBoxes(int amount) {
+        List<CheckBox> checkBoxes = new ArrayList<>();
+        for (int i = 0; i < amount; i++) {
+            CheckBox checkBox = new CheckBox();
+            checkBox.getStyleClass().add("list-check-box");
+            checkBoxes.add(checkBox);
+        }
+        return checkBoxes;
+    }
+
+    /**
      * Initializes CheckBoxHBox with a given list of checkBoxes.
+     *
      * @param checkBoxes CheckBoxes tho be displayed inside CheckBoxHBox
      */
     public void initCheckBoxes(List<CheckBox> checkBoxes) {
@@ -72,8 +92,9 @@ public class CheckBoxHBox extends HBox {
     /**
      * Initializes CheckBoxHBox with a given list of checkBoxes. Will insert a break every split of checkBoxes for visual
      * clarity.
+     *
      * @param checkBoxes CheckBoxes tho be displayed inside CheckBoxHBox
-     * @param split Defines how many check boxes will be grouped together before a split. if split < 1 it will not create any breaks
+     * @param split      Defines how many check boxes will be grouped together before a split. if split < 1 it will not create any breaks
      */
     public void initCheckBoxes(List<CheckBox> checkBoxes, int split) {
         if (checkBoxes == null)
@@ -103,6 +124,7 @@ public class CheckBoxHBox extends HBox {
 
     /**
      * Binds the selectedProperty of checkBoxes contained in CheckBoxHBox to the given list of booleanProperties.
+     *
      * @param booleanProperties Boolean properties to be bound to the checkBoxes selected property.
      */
     public void initProperties(List<BooleanProperty> booleanProperties) {
@@ -120,25 +142,10 @@ public class CheckBoxHBox extends HBox {
 
     /**
      * Lightweight accessor method.
+     *
      * @return CheckBoxes that are displayed inside CheckBoxHBox
      */
     public List<CheckBox> getCheckBoxes() {
-        return checkBoxes;
-    }
-
-    /**
-     * Creates an arbitrary amount of checkboxes and puts them a list. Checkboxes are given "list-check-box" styel class
-     * so that they can be more appropriately styled for the use in a list with css.
-     * @param amount amount of checkBoxes to be generated.
-     * @return List that contains an amount of checkboxes equal to amount passed.
-     */
-    public static List<CheckBox> generateCheckBoxes(int amount) {
-        List<CheckBox> checkBoxes = new ArrayList<>();
-        for (int i = 0; i < amount; i++) {
-            CheckBox checkBox = new CheckBox();
-            checkBox.getStyleClass().add("list-check-box");
-            checkBoxes.add(checkBox);
-        }
         return checkBoxes;
     }
 }

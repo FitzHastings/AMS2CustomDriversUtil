@@ -40,15 +40,25 @@ public class Configurator {
     private Configuration configuration = new Configuration();
 
     /**
-     * Lightweight accessor method.
-     * @return the only instance of Configurator.
+     * Private constructor. it is private to ensure that
+     * only one instance of configurator exists per program.
      */
-    public static Configurator getInstance() {
-       return instance;
+    private Configurator() {
+        super();
     }
 
     /**
      * Lightweight accessor method.
+     *
+     * @return the only instance of Configurator.
+     */
+    public static Configurator getInstance() {
+        return instance;
+    }
+
+    /**
+     * Lightweight accessor method.
+     *
      * @return program's current configuration.
      */
     public Configuration getConfiguration() {
@@ -57,6 +67,7 @@ public class Configurator {
 
     /**
      * Lightweight mutator method.
+     *
      * @param configuration program's new configuration, Should only be used if loadConfiguration has failed.
      */
     public void setConfiguration(Configuration configuration) {
@@ -67,6 +78,7 @@ public class Configurator {
      * Attempts to load the configuration from the default pathname.
      * If it fails to load the configuration it will return false, if it succeeds in loading the configuration it will return true, allowing
      * the GUI to alert the user of configuration file becoming corrupted or missing.
+     *
      * @return True if loading succeeded, false if the configuration loading failed.
      */
     public boolean loadConfiguration() {
@@ -77,6 +89,7 @@ public class Configurator {
      * Attempts to load the configuration from a file at a provided pathname.
      * If it fails to load the configuration it will return false, if it succeeds in loading the configuration it will return true, allowing
      * the GUI to alert the user of configuration file becoming corrupted or missing.
+     *
      * @param pathname pathnamne to an XML file that contains a configuration.
      * @return True if loading succeeded, false if the configuration loading failed.
      */
@@ -89,13 +102,14 @@ public class Configurator {
             configuration = (Configuration) unmarshaller.unmarshal(config);
             return true;
         } catch (JAXBException | IllegalArgumentException e) {
-            DDUtil.DEFAULT_LOGGER.log(Level.WARNING,"Configuration loading failed");
+            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Configuration loading failed");
             return false;
         }
     }
 
     /**
      * Saves the current configuration to the defeault pathname, that is defined in CONFIGURATION_DEFAULT_PATHNAME
+     *
      * @return True if the save succeeded, false if the configuration save failed.
      */
     public boolean saveConfiguration() {
@@ -104,6 +118,7 @@ public class Configurator {
 
     /**
      * Saves the current configuration to the given pathname.
+     *
      * @param pathname pathname to which the configuration file is going to be saved.
      * @return True if the save succeeded, false if the configuration save failed.
      */
@@ -121,13 +136,5 @@ public class Configurator {
             DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Configuration loading failed");
             return false;
         }
-    }
-
-    /**
-     * Private constructor. it is private to ensure that
-     * only one instance of configurator exists per program.
-     */
-    private Configurator() {
-        super();
     }
 }

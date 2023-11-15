@@ -25,6 +25,7 @@ public final class Grid extends DriverLibrary {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Class of cars that are driven by the grid.
      */
     public VehicleClass getVehicleClass() {
@@ -33,6 +34,7 @@ public final class Grid extends DriverLibrary {
 
     /**
      * Lightweight mutator method.
+     *
      * @param vehicleClass Class of cars that are driven by the grid.
      */
     public void setVehicleClass(VehicleClass vehicleClass) {

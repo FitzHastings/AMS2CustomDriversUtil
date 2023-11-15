@@ -37,16 +37,27 @@ public class TrackLibrary {
 
     /**
      * Lightweight accessor method.
+     *
      * @return List of all tracks in the Track Library.
      */
-    @XmlElementWrapper (name = "tracks")
-    @XmlElement (name = "track")
+    @XmlElementWrapper(name = "tracks")
+    @XmlElement(name = "track")
     public ObservableList<Track> getTracks() {
         return tracks;
     }
 
     /**
+     * Lightweight mutator method.
+     *
+     * @param tracks List of all tracks in the Track Library.
+     */
+    public void setTracks(ObservableList<Track> tracks) {
+        this.tracks = tracks;
+    }
+
+    /**
      * Finds a track in the library with a given name.
+     *
      * @param xmlName Track name that is used in the XML when exporting.
      * @return track from the library with that name or null if none found.
      */
@@ -54,16 +65,8 @@ public class TrackLibrary {
         try {
             return tracks.stream().filter(track -> track.getXmlName().equals(xmlName)).findFirst().get();
         } catch (NoSuchElementException e) {
-            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Trying to find track with name '"+xmlName+"' in the library but no such track found");
+            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Trying to find track with name '" + xmlName + "' in the library but no such track found");
             return null;
         }
-    }
-
-    /**
-     * Lightweight mutator method.
-     * @param tracks List of all tracks in the Track Library.
-     */
-    public void setTracks(ObservableList<Track> tracks) {
-        this.tracks = tracks;
     }
 }

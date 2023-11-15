@@ -21,33 +21,33 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 
 /**
- *  Hybrid Choice Box is a choice box with a checkbox inside an HBox. if the checkbox is set then Choice Box is
- *  displayed. if the checkbox is not selected then it displays a TextField instead.
+ * Hybrid Choice Box is a choice box with a checkbox inside an HBox. if the checkbox is set then Choice Box is
+ * displayed. if the checkbox is not selected then it displays a TextField instead.
+ *
  * @param <T> Choice box that will be displayed if the CheckBox is selected.
  */
 public class HybridChoiceHBox<T extends ChoiceBox<?>> extends HBox {
+    /**
+     * CheckBox that controls whether the ChoiceBox is shown to the user or the TextField.
+     */
+    private final CheckBox checkBox = new CheckBox();
+    /**
+     * TextField that is displayed to the user if the CheckBox is NOT selected.
+     */
+    private final TextField textField = new TextField();
     /**
      * Choice Box that is displayed to the user if the CheckBox is selected.
      */
     private T choiceBox;
 
     /**
-     * CheckBox that controls whether the ChoiceBox is shown to the user or the TextField.
-     */
-    private final CheckBox checkBox = new CheckBox();
-
-    /**
-     * TextField that is displayed to the user if the CheckBox is NOT selected.
-     */
-    private final TextField textField = new TextField();
-
-    /**
      * Initializes the HybridCheckBox. You must call this method before the HybridChoiceHBox is shown on a Stage.
      * Binds the ChoiceBox and the TextField with the CheckBox and sets the checkBox's text.
+     *
      * @param checkBoxText Text that is going to be displayed next to the CheckBox.
-     * @param choiceBox ChoiceBox that is going to be shown if the CheckBox is selected.
+     * @param choiceBox    ChoiceBox that is going to be shown if the CheckBox is selected.
      */
-    public void initialize(String checkBoxText, T choiceBox){
+    public void initialize(String checkBoxText, T choiceBox) {
         this.choiceBox = choiceBox;
         HBox.setHgrow(choiceBox, Priority.ALWAYS);
         HBox.setHgrow(textField, Priority.ALWAYS);
@@ -71,6 +71,7 @@ public class HybridChoiceHBox<T extends ChoiceBox<?>> extends HBox {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Choice Box that is displayed to the user if the CheckBox is selected.
      */
     public T getChoiceBox() {
@@ -79,6 +80,7 @@ public class HybridChoiceHBox<T extends ChoiceBox<?>> extends HBox {
 
     /**
      * Lightweight accessor method.
+     *
      * @return CheckBox that controls whether the ChoiceBox is shown to the user or the TextField.
      */
     public CheckBox getCheckBox() {
@@ -87,6 +89,7 @@ public class HybridChoiceHBox<T extends ChoiceBox<?>> extends HBox {
 
     /**
      * Lightweight accessor method.
+     *
      * @return TextField that is displayed to the user if the CheckBox is NOT selected.
      */
     public TextField getTextField() {

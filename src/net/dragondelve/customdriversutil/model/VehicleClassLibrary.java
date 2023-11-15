@@ -28,7 +28,7 @@ import java.util.logging.Level;
  * Represents a reference Library of Vehicle Classes.
  * This class is fully annotated with JAXB for easy XML conversion.
  */
-@XmlRootElement(name="vehicle_class_library")
+@XmlRootElement(name = "vehicle_class_library")
 public class VehicleClassLibrary {
     /**
      * List of vehicle classes contained in the library.
@@ -37,6 +37,7 @@ public class VehicleClassLibrary {
 
     /**
      * Lightweight Accessor Method
+     *
      * @return List of vehicle classes contained in the library.
      */
     @XmlElementWrapper(name = "vehicle_classes")
@@ -46,7 +47,17 @@ public class VehicleClassLibrary {
     }
 
     /**
+     * Lightweight Mutator Method
+     *
+     * @param vehicleClasses List of vehicle classes contained in the library.
+     */
+    public void setVehicleClasses(ObservableList<VehicleClass> vehicleClasses) {
+        this.vehicleClasses = vehicleClasses;
+    }
+
+    /**
      * Finds an unmodded grid with the XMLName that matches the xmlName provided.
+     *
      * @param xmlName Name of the xmlFile of the vehicle class without the .xml
      * @return Vanilla vehicle class with xmlName that matches the xmlName provided if it's found or null if it isn't found.
      */
@@ -54,16 +65,8 @@ public class VehicleClassLibrary {
         try {
             return vehicleClasses.stream().filter(track -> track.getXmlName().equals(xmlName) && !track.isModded()).findFirst().get();
         } catch (NoSuchElementException e) {
-            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Trying to find vehicle class with xml name '"+xmlName+"' in the library but no such track found");
+            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Trying to find vehicle class with xml name '" + xmlName + "' in the library but no such track found");
             return null;
         }
-    }
-
-    /**
-     * Lightweight Mutator Method
-     * @param vehicleClasses List of vehicle classes contained in the library.
-     */
-    public void setVehicleClasses(ObservableList<VehicleClass> vehicleClasses) {
-        this.vehicleClasses = vehicleClasses;
     }
 }

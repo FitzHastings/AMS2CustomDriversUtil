@@ -16,6 +16,7 @@ package net.dragondelve.mabelfx.button;
 
 
 import net.dragondelve.mabelfx.util.MabelUtil;
+
 import java.util.logging.Level;
 
 /**
@@ -29,8 +30,8 @@ public class ExitButton extends StageControlButton {
      */
     @Override
     protected void initBehaviour() {
-        this.setOnAction(e-> {
-            if(stage != null)
+        this.setOnAction(e -> {
+            if (stage != null)
                 stage.close();
             else
                 MabelUtil.DEFAULT_LOGGER.log(Level.WARNING, "ExitButton attempted to maximize a stage that was equal to null.");

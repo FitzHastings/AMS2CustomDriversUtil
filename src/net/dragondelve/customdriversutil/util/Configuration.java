@@ -77,15 +77,17 @@ public class Configuration {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Pathname to the last imported TrackLibrary.
      */
-    @XmlElement (name = "track_library")
+    @XmlElement(name = "track_library")
     public String getTrackLibraryPathname() {
         return trackLibraryPathname;
     }
 
     /**
      * Lightweight mutator method.
+     *
      * @param trackLibraryPathname pathname to the last imported TrackLibrary.
      */
     public void setTrackLibraryPathname(String trackLibraryPathname) {
@@ -94,15 +96,17 @@ public class Configuration {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Pathname to the last imported VehicleClassLibrary.
      */
-    @XmlElement (name = "vehicle_class_library")
+    @XmlElement(name = "vehicle_class_library")
     public String getVehicleClassLibraryPathname() {
         return vehicleClassLibraryPathname;
     }
 
     /**
      * Lightweight mutator method.
+     *
      * @param vehicleClassLibraryPathname Pathname to the last imported VehicleClassLibrary.
      */
     public void setVehicleClassLibraryPathname(String vehicleClassLibraryPathname) {
@@ -111,15 +115,17 @@ public class Configuration {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Pathname to the last imported DriverLibrary
      */
-    @XmlElement (name = "driver_library")
+    @XmlElement(name = "driver_library")
     public String getDriverLibraryPathname() {
         return driverLibraryPathname;
     }
 
     /**
      * Lightweight mutator method.
+     *
      * @param driverLibraryPathname Pathname to the last imported DriverLibrary
      */
     public void setDriverLibraryPathname(String driverLibraryPathname) {
@@ -128,6 +134,7 @@ public class Configuration {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Default override flags that are set to every new Driver.
      */
     @XmlElement(name = "default_driver_flags")
@@ -137,6 +144,7 @@ public class Configuration {
 
     /**
      * Lightweight mutator method.
+     *
      * @param defaultDriverFlags Default override flags that are set to every new Driver.
      */
     public void setDefaultDriverFlags(OverrideFlags defaultDriverFlags) {
@@ -145,15 +153,17 @@ public class Configuration {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Default override flags that are set to every new TrackOverride.
      */
-    @XmlElement (name = "default_track_override_flags")
+    @XmlElement(name = "default_track_override_flags")
     public OverrideFlags getDefaultTrackOverrideFlags() {
         return defaultTrackOverrideFlags;
     }
 
     /**
      * Lightweight mutator method.
+     *
      * @param defaultTrackOverrideFlags Default override flags that are set to every new TrackOverride.
      */
     public void setDefaultTrackOverrideFlags(OverrideFlags defaultTrackOverrideFlags) {
@@ -162,15 +172,17 @@ public class Configuration {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Flag that determines if the user prefers to choose the livery or to type the livery's name into the textField.
      */
-    @XmlElement (name = "choose_livery")
+    @XmlElement(name = "choose_livery")
     public boolean isChooseLivery() {
         return chooseLivery;
     }
 
     /**
      * Lightweight mutator method.
+     *
      * @param chooseLivery Flag that determines if the user prefers to choose the livery or to type the livery's name into the textField.
      */
     public void setChooseLivery(boolean chooseLivery) {
@@ -179,15 +191,17 @@ public class Configuration {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Flag that determines if the user prefers to skip the welcome screen of the Custom Driver Utility.
      */
-    @XmlElement (name = "skip_welcome_screen")
+    @XmlElement(name = "skip_welcome_screen")
     public boolean isSkipWelcomeScreen() {
         return skipWelcomeScreen;
     }
 
     /**
      * Lightweight mutator method.
+     *
      * @param skipWelcomeScreen Flag that determines if the user prefers to skip the welcome screen of the Custom Driver Utility.
      */
     public void setSkipWelcomeScreen(boolean skipWelcomeScreen) {
@@ -196,15 +210,17 @@ public class Configuration {
 
     /**
      * Lightweight accessor method.
+     *
      * @return URL to which the user goes when pressing on the manual update button.
      */
-    @XmlElement (name = "update_url")
+    @XmlElement(name = "update_url")
     public String getUpdateURL() {
         return updateURL;
     }
 
     /**
      * Lightweight mutator method.
+     *
      * @param updateURL URL to which the user goes when pressing on the manual update button.
      */
     public void setUpdateURL(String updateURL) {
@@ -213,15 +229,17 @@ public class Configuration {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Flag that determines if during export phase the generated values should be rounded or not.
      */
-    @XmlElement (name = "override_generated_values")
+    @XmlElement(name = "override_generated_values")
     public boolean isRoundGeneratedValues() {
         return roundGeneratedValues;
     }
 
     /**
      * Lightweight mutator method.
+     *
      * @param roundGeneratedValues Flag that determines if during export phase the generated values should be rounded or not.
      */
     public void setRoundGeneratedValues(boolean roundGeneratedValues) {
@@ -230,6 +248,7 @@ public class Configuration {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Value that determines how many decimal places should be kept for each property during Grid exporting.
      */
     public int getRoundingDecimalPlaces() {
@@ -238,6 +257,7 @@ public class Configuration {
 
     /**
      * Lightweight mutator method.
+     *
      * @param roundingDecimalPlaces Value that determines how many decimal places should be kept for each property during Grid exporting.
      */
     public void setRoundingDecimalPlaces(int roundingDecimalPlaces) {

@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * Represents a vehicle in the game
  * This class is fully annotated with JAXB for easy XML conversion.
  */
-@XmlRootElement (name = "vehicle")
+@XmlRootElement(name = "vehicle")
 public class Vehicle {
 
     /**
@@ -39,23 +39,17 @@ public class Vehicle {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Human-readable name of the vehicle
      */
-    @XmlAttribute (name = "name")
+    @XmlAttribute(name = "name")
     public String getName() {
         return name.get();
     }
 
     /**
-     * Lightweight accessor method.
-     * @return Human-readable name of the vehicle as a property
-     */
-    public StringProperty nameProperty() {
-        return name;
-    }
-
-    /**
      * Lightweight mutator method.
+     *
      * @param name Human-readable name of the vehicle
      */
     public void setName(String name) {
@@ -64,26 +58,38 @@ public class Vehicle {
 
     /**
      * Lightweight accessor method.
+     *
+     * @return Human-readable name of the vehicle as a property
+     */
+    public StringProperty nameProperty() {
+        return name;
+    }
+
+    /**
+     * Lightweight accessor method.
+     *
      * @return Xml-name of the vehicle used in livery overrides
      */
-    @XmlAttribute (name = "xml_name")
+    @XmlAttribute(name = "xml_name")
     public String getXmlName() {
         return xmlName.get();
     }
 
     /**
-     * Lightweight accessor method.
-     * @return Xml-name of the vehicle used in livery overrides as a property
-     */
-    public StringProperty xmlNameProperty() {
-        return xmlName;
-    }
-
-    /**
      * Lightweight mutator method.
+     *
      * @param xmlName Xml-name of the vehicle used in livery overrides
      */
     public void setXmlName(String xmlName) {
         this.xmlName.set(xmlName);
+    }
+
+    /**
+     * Lightweight accessor method.
+     *
+     * @return Xml-name of the vehicle used in livery overrides as a property
+     */
+    public StringProperty xmlNameProperty() {
+        return xmlName;
     }
 }

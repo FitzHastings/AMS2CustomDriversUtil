@@ -26,6 +26,7 @@ public class IncreaseDistanceFloorAction extends FloorCeilingAction {
 
     /**
      * Creates a new instance of IncreaseDistanceFloorAction
+     *
      * @param modificationValue Value from 0.0 to 1.0 that is used as a percentage value of modification.
      */
     public IncreaseDistanceFloorAction(double modificationValue) {
@@ -34,6 +35,7 @@ public class IncreaseDistanceFloorAction extends FloorCeilingAction {
 
     /**
      * increases the distance by decreasing the floor.
+     *
      * @param driverProperty value to be modified.
      * @return modified vale.
      */

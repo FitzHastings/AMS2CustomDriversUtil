@@ -59,6 +59,7 @@ public final class VehicleClass {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Vehicle Class name that is human-readable.
      */
     @XmlAttribute(name = "name")
@@ -67,15 +68,8 @@ public final class VehicleClass {
     }
 
     /**
-     * Lightweight accessor method.
-     * @return Vehicle Class name that is human-readable as a property
-     */
-    public StringProperty nameProperty() {
-        return name;
-    }
-
-    /**
      * Lightweight mutator method.
+     *
      * @param name Vehicle Class name that is human-readable
      */
     public void setName(String name) {
@@ -84,6 +78,16 @@ public final class VehicleClass {
 
     /**
      * Lightweight accessor method.
+     *
+     * @return Vehicle Class name that is human-readable as a property
+     */
+    public StringProperty nameProperty() {
+        return name;
+    }
+
+    /**
+     * Lightweight accessor method.
+     *
      * @return Vehicle Class name that is used in the XML when exporting.
      */
     @XmlAttribute(name = "xml_name")
@@ -92,15 +96,8 @@ public final class VehicleClass {
     }
 
     /**
-     * Lightweight accessor method.
-     * @return Vehicle Class name that is used in the XML when exporting as a property.
-     */
-    public StringProperty xmlNameProperty() {
-        return xmlName;
-    }
-
-    /**
      * Lightweight mutator method.
+     *
      * @param xmlName Vehicle Class name that is used in the XML when exporting.
      */
     public void setXmlName(String xmlName) {
@@ -109,6 +106,16 @@ public final class VehicleClass {
 
     /**
      * Lightweight accessor method.
+     *
+     * @return Vehicle Class name that is used in the XML when exporting as a property.
+     */
+    public StringProperty xmlNameProperty() {
+        return xmlName;
+    }
+
+    /**
+     * Lightweight accessor method.
+     *
      * @return Flag that determines whether this vehicle class is a vanilla vehicle class or a modded vehicle class.
      */
     @XmlElement(name = "is_modded")
@@ -118,14 +125,7 @@ public final class VehicleClass {
 
     /**
      * Lightweight accessor method.
-     * @return Flag that determines whether this vehicle class is a vanilla vehicle class or a modded vehicle class, as a property.
-     */
-    public BooleanProperty isModdedProperty() {
-        return this.isModded;
-    }
-
-    /**
-     * Lightweight accessor method.
+     *
      * @param modded Flag that determines whether this vehicle class is a vanilla vehicle class or a modded vehicle class.
      */
     public void setModded(boolean modded) {
@@ -134,6 +134,16 @@ public final class VehicleClass {
 
     /**
      * Lightweight accessor method.
+     *
+     * @return Flag that determines whether this vehicle class is a vanilla vehicle class or a modded vehicle class, as a property.
+     */
+    public BooleanProperty isModdedProperty() {
+        return this.isModded;
+    }
+
+    /**
+     * Lightweight accessor method.
+     *
      * @return Full list of liveries available for this class.
      */
     @XmlElementWrapper(name = "liveries")
@@ -144,6 +154,7 @@ public final class VehicleClass {
 
     /**
      * Lightweight mutator method.
+     *
      * @param liveryNames Full list of liveries available for this class.
      */
     public void setLiveryNames(ObservableList<String> liveryNames) {
@@ -152,6 +163,7 @@ public final class VehicleClass {
 
     /**
      * Converts vehicle class to String for visual representation of the object.
+     *
      * @return Human-readable name of the vehicle class.
      */
     @Override
@@ -161,16 +173,18 @@ public final class VehicleClass {
 
     /**
      * Lightweight accessor method
+     *
      * @return Full list of vehicles that are used for this class.
      */
-    @XmlElementWrapper (name = "vehicles")
-    @XmlElement (name = "vehicle")
+    @XmlElementWrapper(name = "vehicles")
+    @XmlElement(name = "vehicle")
     public ObservableList<Vehicle> getVehicles() {
         return vehicles;
     }
 
     /**
      * Lightweight mutator method
+     *
      * @param vehicles Full list of vehicles that are used for this class.
      */
     public void setVehicles(ObservableList<Vehicle> vehicles) {

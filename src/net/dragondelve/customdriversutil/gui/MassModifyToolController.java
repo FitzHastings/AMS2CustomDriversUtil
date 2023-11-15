@@ -32,187 +32,159 @@ import java.util.List;
 public class MassModifyToolController implements StageController {
 
     /**
+     * Settings that are going to be used to modify the grid of drivers.
+     */
+    private final ModifierSettings modifierSettings;
+    /**
      * CheckBox that determines if blueFlagConceding property should be modified.
      */
     @FXML
     private CheckBox blueFlagConcedingCheckBox;
-
     /**
      * RadioButton that determines if DecreasePercentAction should be passed to the GridModifier.
      */
     @FXML
     private RadioButton decreasePercentRadioButton;
-
     /**
      * RadioButton that determines if DecreasePercentAction should be passed to the GridModifier.
      */
     @FXML
     private RadioButton increaseDistanceCeilingRadioButton;
-
     /**
      * CheckBox that determines if aggression property should be modified.
      */
     @FXML
     private CheckBox aggressionCheckBox;
-
     /**
      * Slider that determines the modificationValue that will be passed to the ModifierAction.
      */
     @FXML
     private Slider modificationValueSlider;
-
     /**
      * CheckBox that determines if tyreManagement property should be modified.
      */
     @FXML
     private CheckBox tyreManagementCheckBox;
-
     /**
      * RadioButton that determines if IncreaseFlatAction should be passed to the GridModifier.
      */
     @FXML
     private RadioButton increaseFlatRadioButton;
-
     /**
      * RadioButton that determines if BringCloserFloorAction should be passed to the GridModifier.
      */
     @FXML
     private RadioButton bringCloserFloorRadioButton;
-
     /**
      * Button that performs cancelAction() on action,
      * Closes the stage.
      */
     @FXML
     private Button cancelButton;
-
     /**
      * RadioButton that determines if BringCloserCeiling should be passed to the GridModifier.
      */
     @FXML
     private RadioButton bringCloserCeilingRadioButton;
-
     /**
      * Button that performs modifyAction() on action.
      * Performs modifications, then closes the stage.
      */
     @FXML
     private Button modifyButton;
-
     /**
      * CheckBox that determines if qualificationSkill property should be modified.
      */
     @FXML
     private CheckBox qualiSkillCheckBox;
-
     /**
      * CheckBox that determines if fuelManagement property should be modified.
      */
     @FXML
     private CheckBox fuelManagementCheckBox;
-
     /**
      * CheckBox that determines if startReactions property should be modified.
      */
     @FXML
     private CheckBox startReactionsCheckBox;
-
     /**
      * CheckBox that determines if mistakeAvoidance property should be modified.
      */
     @FXML
     private CheckBox mistakeAvoidanceCheckBox;
-
     /**
      * RadioButton that determines if IncreasePercentAction should be passed to the GridModifier.
      */
     @FXML
     private RadioButton increasePercentRadioButton;
-
     /**
      * CheckBox that determines if racingSkill property should be modified.
      */
     @FXML
     private CheckBox racingSkillCheckBox;
-
     /**
      * CheckBox that determines if stamina property should be modified.
      */
     @FXML
     private CheckBox staminaCheckBox;
-
     /**
      * The root pane of this window, used to apply the CSS resource to this entire scene.
      */
     @FXML
     private VBox rootPane;
-
     /**
      * RadioButton that determines if decreaseFlatAction should be passed to the GridModifier.
      */
     @FXML
     private RadioButton decreaseFlatRadioButton;
-
     /**
      * TextField that displays the exact value set in the modificationValueSlider
      */
     @FXML
     private TextField modificationValueTextField;
-
     /**
      * RadioButton that determines if IncreaseDistanceFloorAction should be passed to the GridModifier.
      */
     @FXML
     private RadioButton increaseDistanceFloorRadioButton;
-
     /**
      * CheckBox that determines if consistency property should be modified.
      */
     @FXML
     private CheckBox consistencyCheckBox;
-
     /**
      * CheckBox that determines if defending property should be modified.
      */
     @FXML
     private CheckBox defendingCheckBox;
-
     /**
      * CheckBox that determines if weatherPit property should be modified.
      */
     @FXML
     private CheckBox weatherPitCheckBox;
-
     /**
      * CheckBox that determines if wetSkill property should be modified.
      */
     @FXML
     private CheckBox wetSkillCheckBox;
-
     /**
      * CheckBox that determines if forcedMistakeAvoidance property should be modified.
      */
     @FXML
     private CheckBox forcedMistakeAvoidanceCheckbox;
-
     /**
      * CheckBox that determines if vehicleReliability property should be modified.
      */
     @FXML
     private CheckBox vehicleReliabilityCheckBox;
-
     /**
      * Stage on which this StageController is going to be displayed.
      */
     private Stage stage;
 
     /**
-     * Settings that are going to be used to modify the grid of drivers.
-     */
-    private final ModifierSettings modifierSettings;
-
-    /**
      * Creates a new instance of MassModifyToolController.
+     *
      * @param grid List of drivers to be modified.
      */
     public MassModifyToolController(List<Driver> grid) {
@@ -245,21 +217,21 @@ public class MassModifyToolController implements StageController {
         cancelButton.setOnAction(e -> cancelAction());
         modifyButton.setOnAction(e -> modifyAction());
 
-        racingSkillCheckBox             .selectedProperty().bindBidirectional(modifierSettings.overrideRaceSkillProperty());
-        qualiSkillCheckBox              .selectedProperty().bindBidirectional(modifierSettings.overrideQualifyingSkillProperty());
-        aggressionCheckBox              .selectedProperty().bindBidirectional(modifierSettings.overrideAggressionProperty());
-        defendingCheckBox               .selectedProperty().bindBidirectional(modifierSettings.overrideDefendingProperty());
-        staminaCheckBox                 .selectedProperty().bindBidirectional(modifierSettings.overrideStaminaProperty());
-        consistencyCheckBox             .selectedProperty().bindBidirectional(modifierSettings.overrideConsistencyProperty());
-        startReactionsCheckBox          .selectedProperty().bindBidirectional(modifierSettings.overrideStartReactionsProperty());
-        wetSkillCheckBox                .selectedProperty().bindBidirectional(modifierSettings.overrideWetSkillProperty());
-        tyreManagementCheckBox          .selectedProperty().bindBidirectional(modifierSettings.overrideTyreManagementProperty());
-        fuelManagementCheckBox          .selectedProperty().bindBidirectional(modifierSettings.overrideFuelManagementProperty());
-        blueFlagConcedingCheckBox       .selectedProperty().bindBidirectional(modifierSettings.overrideBlueFlagConcedingProperty());
-        weatherPitCheckBox              .selectedProperty().bindBidirectional(modifierSettings.overrideWeatherTyreChangeProperty());
-        mistakeAvoidanceCheckBox        .selectedProperty().bindBidirectional(modifierSettings.overrideAvoidanceOfMistakesProperty());
-        forcedMistakeAvoidanceCheckbox  .selectedProperty().bindBidirectional(modifierSettings.overrideAvoidanceOfForcedMistakesProperty());
-        vehicleReliabilityCheckBox      .selectedProperty().bindBidirectional(modifierSettings.overrideVehicleReliabilityProperty());
+        racingSkillCheckBox.selectedProperty().bindBidirectional(modifierSettings.overrideRaceSkillProperty());
+        qualiSkillCheckBox.selectedProperty().bindBidirectional(modifierSettings.overrideQualifyingSkillProperty());
+        aggressionCheckBox.selectedProperty().bindBidirectional(modifierSettings.overrideAggressionProperty());
+        defendingCheckBox.selectedProperty().bindBidirectional(modifierSettings.overrideDefendingProperty());
+        staminaCheckBox.selectedProperty().bindBidirectional(modifierSettings.overrideStaminaProperty());
+        consistencyCheckBox.selectedProperty().bindBidirectional(modifierSettings.overrideConsistencyProperty());
+        startReactionsCheckBox.selectedProperty().bindBidirectional(modifierSettings.overrideStartReactionsProperty());
+        wetSkillCheckBox.selectedProperty().bindBidirectional(modifierSettings.overrideWetSkillProperty());
+        tyreManagementCheckBox.selectedProperty().bindBidirectional(modifierSettings.overrideTyreManagementProperty());
+        fuelManagementCheckBox.selectedProperty().bindBidirectional(modifierSettings.overrideFuelManagementProperty());
+        blueFlagConcedingCheckBox.selectedProperty().bindBidirectional(modifierSettings.overrideBlueFlagConcedingProperty());
+        weatherPitCheckBox.selectedProperty().bindBidirectional(modifierSettings.overrideWeatherTyreChangeProperty());
+        mistakeAvoidanceCheckBox.selectedProperty().bindBidirectional(modifierSettings.overrideAvoidanceOfMistakesProperty());
+        forcedMistakeAvoidanceCheckbox.selectedProperty().bindBidirectional(modifierSettings.overrideAvoidanceOfForcedMistakesProperty());
+        vehicleReliabilityCheckBox.selectedProperty().bindBidirectional(modifierSettings.overrideVehicleReliabilityProperty());
 
         modificationValueTextField.textProperty().bind(modificationValueSlider.valueProperty().asString("%.2f"));
         modificationValueTextField.setEditable(false);
@@ -269,6 +241,7 @@ public class MassModifyToolController implements StageController {
 
     /**
      * Lightweight mutator method.
+     *
      * @param stage Stage on which this controller is going to be displayed.
      */
     @Override
@@ -316,34 +289,34 @@ public class MassModifyToolController implements StageController {
      * Initializes all tooltips for the control elements
      */
     private void initTooltips() {
-        racingSkillCheckBox             .setTooltip(TooltipUtil.RACE_SKILL_TOOLTIP);
-        qualiSkillCheckBox              .setTooltip(TooltipUtil.QUALI_SKILL_TOOLTIP);
-        aggressionCheckBox              .setTooltip(TooltipUtil.AGGRESSION_TOOLTIP);
-        defendingCheckBox               .setTooltip(TooltipUtil.DEFENDING_TOOLTIP);
-        staminaCheckBox                 .setTooltip(TooltipUtil.STAMINA_TOOLTIP);
-        consistencyCheckBox             .setTooltip(TooltipUtil.CONSISTENCY_TOOLTIP);
-        startReactionsCheckBox          .setTooltip(TooltipUtil.START_REACTIONS_TOOLTIP);
-        wetSkillCheckBox                .setTooltip(TooltipUtil.WET_SKILL_TOOLTIP);
-        tyreManagementCheckBox          .setTooltip(TooltipUtil.TYRE_MANAGEMENT_TOOLTIP);
-        fuelManagementCheckBox          .setTooltip(TooltipUtil.FUEL_MANAGEMENT_TOOLTIP);
-        blueFlagConcedingCheckBox       .setTooltip(TooltipUtil.BLUE_FLAG_CONCEDING_TOOLTIP);
-        weatherPitCheckBox              .setTooltip(TooltipUtil.WEATHER_PIT_TOOLTIP);
-        mistakeAvoidanceCheckBox        .setTooltip(TooltipUtil.MISTAKE_AVOIDANCE_TOOLTIP);
-        forcedMistakeAvoidanceCheckbox  .setTooltip(TooltipUtil.FORCED_MISTAKE_AVOIDANCE_TOOLTIP);
-        vehicleReliabilityCheckBox      .setTooltip(TooltipUtil.VEHICLE_RELIABILITY_TOOLTIP);
+        racingSkillCheckBox.setTooltip(TooltipUtil.RACE_SKILL_TOOLTIP);
+        qualiSkillCheckBox.setTooltip(TooltipUtil.QUALI_SKILL_TOOLTIP);
+        aggressionCheckBox.setTooltip(TooltipUtil.AGGRESSION_TOOLTIP);
+        defendingCheckBox.setTooltip(TooltipUtil.DEFENDING_TOOLTIP);
+        staminaCheckBox.setTooltip(TooltipUtil.STAMINA_TOOLTIP);
+        consistencyCheckBox.setTooltip(TooltipUtil.CONSISTENCY_TOOLTIP);
+        startReactionsCheckBox.setTooltip(TooltipUtil.START_REACTIONS_TOOLTIP);
+        wetSkillCheckBox.setTooltip(TooltipUtil.WET_SKILL_TOOLTIP);
+        tyreManagementCheckBox.setTooltip(TooltipUtil.TYRE_MANAGEMENT_TOOLTIP);
+        fuelManagementCheckBox.setTooltip(TooltipUtil.FUEL_MANAGEMENT_TOOLTIP);
+        blueFlagConcedingCheckBox.setTooltip(TooltipUtil.BLUE_FLAG_CONCEDING_TOOLTIP);
+        weatherPitCheckBox.setTooltip(TooltipUtil.WEATHER_PIT_TOOLTIP);
+        mistakeAvoidanceCheckBox.setTooltip(TooltipUtil.MISTAKE_AVOIDANCE_TOOLTIP);
+        forcedMistakeAvoidanceCheckbox.setTooltip(TooltipUtil.FORCED_MISTAKE_AVOIDANCE_TOOLTIP);
+        vehicleReliabilityCheckBox.setTooltip(TooltipUtil.VEHICLE_RELIABILITY_TOOLTIP);
 
-        increaseFlatRadioButton     .setTooltip(TooltipUtil.INCREASE_FLAT_TOOLTIP);
-        decreaseFlatRadioButton     .setTooltip(TooltipUtil.DECREASE_FLAT_TOOLTIP);
-        increasePercentRadioButton  .setTooltip(TooltipUtil.INCREASE_PERCENT_TOOLTIP);
-        decreasePercentRadioButton  .setTooltip(TooltipUtil.DECREASE_PERCENT_TOOLTIP);
+        increaseFlatRadioButton.setTooltip(TooltipUtil.INCREASE_FLAT_TOOLTIP);
+        decreaseFlatRadioButton.setTooltip(TooltipUtil.DECREASE_FLAT_TOOLTIP);
+        increasePercentRadioButton.setTooltip(TooltipUtil.INCREASE_PERCENT_TOOLTIP);
+        decreasePercentRadioButton.setTooltip(TooltipUtil.DECREASE_PERCENT_TOOLTIP);
 
-        bringCloserFloorRadioButton         .setTooltip(TooltipUtil.BRING_CLOSER_FLOOR_TOOLTIP);
-        bringCloserCeilingRadioButton       .setTooltip(TooltipUtil.BRING_CLOSER_CEILING_TOOLTIP);
-        increaseDistanceFloorRadioButton    .setTooltip(TooltipUtil.INCREASE_DISTANCE_FLOOR_TOOLTIP);
-        increaseDistanceCeilingRadioButton  .setTooltip(TooltipUtil.INCREASE_DISTANCE_CEILING_TOOLTIP);
+        bringCloserFloorRadioButton.setTooltip(TooltipUtil.BRING_CLOSER_FLOOR_TOOLTIP);
+        bringCloserCeilingRadioButton.setTooltip(TooltipUtil.BRING_CLOSER_CEILING_TOOLTIP);
+        increaseDistanceFloorRadioButton.setTooltip(TooltipUtil.INCREASE_DISTANCE_FLOOR_TOOLTIP);
+        increaseDistanceCeilingRadioButton.setTooltip(TooltipUtil.INCREASE_DISTANCE_CEILING_TOOLTIP);
 
-        modificationValueSlider     .setTooltip(TooltipUtil.MODIFICATION_VALUE_TOOLTIP);
-        modificationValueTextField  .setTooltip(TooltipUtil.MODIFICATION_VALUE_TOOLTIP);
+        modificationValueSlider.setTooltip(TooltipUtil.MODIFICATION_VALUE_TOOLTIP);
+        modificationValueTextField.setTooltip(TooltipUtil.MODIFICATION_VALUE_TOOLTIP);
 
         modifyButton.setTooltip(TooltipUtil.MODIFY_TOOLTIP);
         cancelButton.setTooltip(TooltipUtil.CANCEL_TOOLTIP);

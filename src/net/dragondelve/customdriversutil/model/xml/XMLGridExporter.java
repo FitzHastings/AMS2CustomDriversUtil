@@ -33,6 +33,7 @@ public class XMLGridExporter implements GridExporter {
     /**
      * Exports the given grid to a given file using JAXB. It uses the formatting described in
      * <a href="https://forum.reizastudios.com/threads/information-for-customizing-ai-drivers-in-ams2-v1-3.21758/">AMS2 Reiza Forums</a>
+     *
      * @param grid Grid to be exported in an AMS2 XML format.
      * @param file File to which the grid is to be exported. Should preferably end with .xml.
      */
@@ -43,8 +44,9 @@ public class XMLGridExporter implements GridExporter {
 
     /**
      * Exports a given XMLGrid to a given file.
+     *
      * @param xmlGrid XMLGrid to be exported to a file.
-     * @param file File to which the XMLGrid is to be exported.
+     * @param file    File to which the XMLGrid is to be exported.
      */
     private void exportXMLGrid(XMLGrid xmlGrid, File file) {
         try {
@@ -59,12 +61,13 @@ public class XMLGridExporter implements GridExporter {
 
     /**
      * Converts a given Grid to an XMLGrid
+     *
      * @param grid Grid that is going to be converted to an XMLGrid.
      * @return New instance of XMLGrid.
      */
     private XMLGrid toXMLGrid(Grid grid) {
         XMLGrid xmlGrid = new XMLGrid();
-        grid.getDrivers().forEach(driver-> {
+        grid.getDrivers().forEach(driver -> {
             XMLDriver xmlDriver = new XMLDriver();
             xmlDriver.setLiveryName(driver.getLiveryName());
             exportBaseProperties(driver, xmlDriver);
@@ -91,6 +94,7 @@ public class XMLGridExporter implements GridExporter {
 
     /**
      * Exports the base properties shared between the track specific overrides and driver overrides.
+     *
      * @param source Source DriverBase, whose fields will be used to set the base properties of the xmlDriver.
      * @param target Target whose properties are going to be set. Should be an xmlDriver whose other fields are set appropriately.
      */
@@ -133,6 +137,7 @@ public class XMLGridExporter implements GridExporter {
 
     /**
      * Converts the given driver's property to a String according to the current Export Rules
+     *
      * @param property property to be converted
      * @return same property converted to a String
      */

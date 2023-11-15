@@ -138,16 +138,16 @@ public class VehicleClassLibraryEditor implements Editor<VehicleClass> {
                 setDisableControls(true);
         });
 
-        vehicleClassNameTableColumn.setCellValueFactory(e->e.getValue().nameProperty());
+        vehicleClassNameTableColumn.setCellValueFactory(e -> e.getValue().nameProperty());
 
-        addVehicleClassButton.setOnAction(e->addVehicleClassAction());
-        removeVehicleClassButton.setOnAction(e->removeVehicleClassAction());
+        addVehicleClassButton.setOnAction(e -> addVehicleClassAction());
+        removeVehicleClassButton.setOnAction(e -> removeVehicleClassAction());
 
         liveryNameListView.setEditable(true);
         liveryNameListView.setCellFactory(TextFieldListCell.forListView());
 
-        addLiveryNameButton.setOnAction(e->addLiveryNameAction());
-        removeLiveryNameButton.setOnAction(e-> removeLiveryNameAction());
+        addLiveryNameButton.setOnAction(e -> addLiveryNameAction());
+        removeLiveryNameButton.setOnAction(e -> removeLiveryNameAction());
 
         initTooltips();
     }
@@ -155,6 +155,7 @@ public class VehicleClassLibraryEditor implements Editor<VehicleClass> {
     /**
      * Lightweight mutator method.
      * Should be called before the editor is initialized by JavaFX.
+     *
      * @param stage stage on which this editor is going to be displayed.
      */
     @Override
@@ -164,6 +165,7 @@ public class VehicleClassLibraryEditor implements Editor<VehicleClass> {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Observable list of Vehicle Classes that are edited by this editor.
      */
     @Override
@@ -174,6 +176,7 @@ public class VehicleClassLibraryEditor implements Editor<VehicleClass> {
     /**
      * Lightweight mutator method.
      * Should be called before initialize method is called by the JavaFX.
+     *
      * @param items Observable list of Vehicle Classes that are edited by this editor.
      */
     @Override
@@ -186,10 +189,10 @@ public class VehicleClassLibraryEditor implements Editor<VehicleClass> {
      * is set to New class as well.
      */
     private void addVehicleClassAction() {
-       VehicleClass vehicleClass =  new VehicleClass();
-       vehicleClass.setName("New Class");
-       vehicleClass.setXmlName("New Class");
-       items.add(vehicleClass);
+        VehicleClass vehicleClass = new VehicleClass();
+        vehicleClass.setName("New Class");
+        vehicleClass.setXmlName("New Class");
+        items.add(vehicleClass);
     }
 
     /**
@@ -232,6 +235,7 @@ public class VehicleClassLibraryEditor implements Editor<VehicleClass> {
 
     /**
      * Method used to disable all editing controls if no selection in the tableView is made.
+     *
      * @param disable True if you want to disable all controls, false if you want to enable them.
      */
     private void setDisableControls(boolean disable) {
@@ -246,6 +250,7 @@ public class VehicleClassLibraryEditor implements Editor<VehicleClass> {
     /**
      * Method that binds properties of a given vehicleClass to the controls to allow user to edit them.
      * The bind is bidirectional and should be unbound with unbindVehicleClass when it's no longer needed.
+     *
      * @param vehicleClass Vehicle Class whose properties are to be bound to the controls
      */
     private void bindVehicleClass(VehicleClass vehicleClass) {
@@ -260,6 +265,7 @@ public class VehicleClassLibraryEditor implements Editor<VehicleClass> {
      * Method that unbinds properties of a given vehicleClass from the control.
      * If a vehicleClass is bound with bindVehicleClass it should be unbound with unbindVehicleClass
      * when it's no longer needed.
+     *
      * @param vehicleClass Vehicle Class whose properties are to be bound to the controls
      */
     private void unbindVehicleCLass(VehicleClass vehicleClass) {
@@ -274,12 +280,12 @@ public class VehicleClassLibraryEditor implements Editor<VehicleClass> {
      * Initializes all tooltips for the control elements
      */
     private void initTooltips() {
-            addVehicleClassButton.setTooltip(TooltipUtil.ADD_VEHICLE_CLASS_TOOLTIP);
-            removeVehicleClassButton.setTooltip(TooltipUtil.REMOVE_VEHICLE_CLASS_TOOLTIP);
-            addLiveryNameButton.setTooltip(TooltipUtil.ADD_LIVERY_TOOLTIP);
-            removeLiveryNameButton.setTooltip(TooltipUtil.REMOVE_LIVERY_TOOLTIP);
-            vehicleClassNameTextField.setTooltip(TooltipUtil.VEHICLE_CLASS_NAME_TOOLTIP);
-            vehicleClassXMLNameTextField.setTooltip(TooltipUtil.VEHICLE_CLASS_XMLNAME_TOOLTIP);
-            isModdedCheckBox.setTooltip(TooltipUtil.IS_MODDED_TOOLTIP);
+        addVehicleClassButton.setTooltip(TooltipUtil.ADD_VEHICLE_CLASS_TOOLTIP);
+        removeVehicleClassButton.setTooltip(TooltipUtil.REMOVE_VEHICLE_CLASS_TOOLTIP);
+        addLiveryNameButton.setTooltip(TooltipUtil.ADD_LIVERY_TOOLTIP);
+        removeLiveryNameButton.setTooltip(TooltipUtil.REMOVE_LIVERY_TOOLTIP);
+        vehicleClassNameTextField.setTooltip(TooltipUtil.VEHICLE_CLASS_NAME_TOOLTIP);
+        vehicleClassXMLNameTextField.setTooltip(TooltipUtil.VEHICLE_CLASS_XMLNAME_TOOLTIP);
+        isModdedCheckBox.setTooltip(TooltipUtil.IS_MODDED_TOOLTIP);
     }
 }

@@ -25,6 +25,7 @@ public class IncreaseFlatAction implements ModifierAction {
 
     /**
      * Creates a new instance of IncreaseFlatAction
+     *
      * @param increaseAmount A flat amount by which all properties of all drivers in grid should ve increased.
      */
     public IncreaseFlatAction(double increaseAmount) {
@@ -33,6 +34,7 @@ public class IncreaseFlatAction implements ModifierAction {
 
     /**
      * Increases a given driver's property by a fixed amount.
+     *
      * @param driverProperty value to be modified.
      * @return modified value. If modified value exceeds 1.0 then it returns 1.0 instead.
      */

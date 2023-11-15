@@ -21,7 +21,7 @@ public class NamesInterpreter {
         for (File file : Objects.requireNonNull(folder.listFiles())) {
             String xml_name = file.getName().substring(0, file.getName().length() - 4);
             VehicleClass vehicleClass = fromLibrary(xml_name);
-            if(vehicleClass == null) {
+            if (vehicleClass == null) {
                 DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "Found Something Thad doesn't belong " + xml_name);
                 LibraryManager.getInstance().getVehicleClassLibrary().getVehicleClasses().add(newVehicleClass(file));
             } else {
@@ -59,6 +59,7 @@ public class NamesInterpreter {
         else
             return fromLib.get(0);
     }
+
     public static void main(String[] args) {
         if (!Configurator.getInstance().loadConfiguration()) {
             Configurator.getInstance().setConfiguration(generateDefaultConfiguration());

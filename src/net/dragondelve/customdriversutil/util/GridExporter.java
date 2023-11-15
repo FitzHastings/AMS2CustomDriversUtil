@@ -24,6 +24,7 @@ import java.io.File;
 public interface GridExporter {
     /**
      * Exports the given grid to a given file.
+     *
      * @param grid Grid to be exported.
      * @param file File to which the grid is to be exported.
      */

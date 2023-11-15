@@ -31,10 +31,13 @@ public final class PathRelativisor {
      * Default constructor. does not provide the path to be relativized.
      * If you're using this constructor you should provide the path later with setPath();
      */
-    public PathRelativisor() { super();}
+    public PathRelativisor() {
+        super();
+    }
 
     /**
      * Creates a new instance of PathRelativisor.
+     *
      * @param path Path to be relativized as a Path.
      */
     public PathRelativisor(Path path) {
@@ -43,6 +46,7 @@ public final class PathRelativisor {
 
     /**
      * Creates a new instance of PathRelativisor.
+     *
      * @param file File, a path to which you want to relativize.
      */
     public PathRelativisor(File file) {
@@ -51,6 +55,7 @@ public final class PathRelativisor {
 
     /**
      * Creates a new instance of PathRelativisor.
+     *
      * @param pathname Pathname which you want to relativize.
      */
     public PathRelativisor(String pathname) {
@@ -60,6 +65,7 @@ public final class PathRelativisor {
 
     /**
      * Relativizes the path to user.dir, which is the directory from which the application was launched.
+     *
      * @return Relative path of the path set in the PathRelativisor. If the path is not inside user.dir returns absolute path instead.
      */
     public String relativize() {
@@ -68,6 +74,7 @@ public final class PathRelativisor {
 
     /**
      * Relativizes the path to the pathname provided.
+     *
      * @param pathname Pathname which you want to relativize your path. This pathname has to be absolute, otherwise it will return what's already stored wether it's absolute or not.
      * @return Relative path of the path set in the PathRelativisor. If the path is not inside the file it returns absolute path instead.
      */
@@ -78,6 +85,7 @@ public final class PathRelativisor {
 
     /**
      * Relativizes the path to the file provided.
+     *
      * @param file File to which you want to relativize your path.
      * @return Relative path of the path set in the PathRelativisor. If the path is not inside the file it returns absolute path instead.
      */
@@ -87,6 +95,7 @@ public final class PathRelativisor {
 
     /**
      * Relativizes the path to the pathname provided.
+     *
      * @param path which you want to relativize your path. This path has to be absolute, otherwise it will return what's already stored wether it's absolute or not.
      * @return Relative path of the path set in the PathRelativisor. If the path is not inside the file it returns absolute path instead.
      */
@@ -97,7 +106,7 @@ public final class PathRelativisor {
             return this.path.toString();
 
         Path relative = path.relativize(this.path);
-        if (relative.toString().contains(".."+File.separator))
+        if (relative.toString().contains(".." + File.separator))
             return this.path.toString();
         else
             return relative.toString();
@@ -105,6 +114,7 @@ public final class PathRelativisor {
 
     /**
      * Lightweight mutator method.
+     *
      * @param path Path to be relativized as a Path.
      */
     public void setPath(Path path) {
@@ -113,6 +123,7 @@ public final class PathRelativisor {
 
     /**
      * Lightweight mutator method.
+     *
      * @param file File, a path to which you want to relativize;
      */
     public void setPath(File file) {
@@ -121,6 +132,7 @@ public final class PathRelativisor {
 
     /**
      * Lightweight mutator method.
+     *
      * @param pathname Pathname which you want to relativize.
      */
     public void setPath(String pathname) {

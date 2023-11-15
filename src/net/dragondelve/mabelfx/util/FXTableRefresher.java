@@ -19,9 +19,10 @@ import javafx.scene.control.TableView;
 /**
  * Refreshes the table when the refresh method is called. Usually passed to a window or a controller of a small part of
  * the entire view to allow it to refresh the table when some event happens.
+ *
  * @param <T> TableView or something that extends it
  */
-public class FXTableRefresher <T extends TableView<?>> {
+public class FXTableRefresher<T extends TableView<?>> {
     /**
      * TableView to be refreshed when the refresh method is called
      */
@@ -29,6 +30,7 @@ public class FXTableRefresher <T extends TableView<?>> {
 
     /**
      * Creates a new instance of
+     *
      * @param tableView TableView to be refreshed when the refresh method is called
      */
     public FXTableRefresher(T tableView) {

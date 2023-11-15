@@ -45,58 +45,50 @@ import java.net.URL;
  */
 public class CustomGridWelcomeController implements StageController {
     /**
+     * Stage on which this StageController is going to be displayed.
+     */
+    Stage stage;
+    /**
      * Button that performs loadExistingVanillaGridAction on action.
      * Shows a file chooser and imports the grid normally, if successful, it shows the main window.
      */
     @FXML
     private Button loadExistingVanillaGrid;
-
     /**
      * Button that performs newGeneratedGridAction on action.
      * Shows the NewGridWizard to the user.
      */
     @FXML
     private Button newGeneratedGridButton;
-
     /**
      * Button that performs the newEmptyGridAction on action.
      * Shows the user the main window with the empty grid, same as if he just skipped this screen.
      */
     @FXML
     private Button newEmptyGridButton;
-
     /**
      * Button that opens a URL for manual update in the user's default internet browser.
      */
     @FXML
     private Button manualUpdateButton;
-
     /**
      * Button that performs the loadModdedGridAction on action.
      * Shows a file chooser and if the file is chosen loads it as a grid and also loads its vehicleClass.
      */
     @FXML
     private Button loadModdedGridButton;
-
     /**
      * The root pane of this window, used to apply the CSS resource to this entire scene.
      */
     @FXML
     private VBox rootPane;
-
     /**
      * Checkbox that determines if the welcome screen is going to be skipped next time this program launches.
      */
     @FXML
     private CheckBox skipWelcomeScreenCheckBox;
-
     @FXML
     private ImageView bannerImageView;
-
-    /**
-     * Stage on which this StageController is going to be displayed.
-     */
-    Stage stage;
 
     /**
      * Initialize method initializes all the visual elements before they are displayed by the user.
@@ -125,6 +117,7 @@ public class CustomGridWelcomeController implements StageController {
 
     /**
      * Lightweight mutator method.
+     *
      * @param stage Stage on which this controller is going to be displayed.
      */
     @Override
@@ -167,7 +160,7 @@ public class CustomGridWelcomeController implements StageController {
         if (file != null) {
             Grid importedGrid = importer.importFromFile(file);
             if (importedGrid != null) {
-                VehicleClass vehicleClass = LibraryManager.getInstance().getVehicleClassLibrary().findVanillaVehicleClass(file.getName().substring(0, file.getName().length()-4));
+                VehicleClass vehicleClass = LibraryManager.getInstance().getVehicleClassLibrary().findVanillaVehicleClass(file.getName().substring(0, file.getName().length() - 4));
                 if (vehicleClass != null) {
                     importedGrid.setVehicleClass(vehicleClass);
                 } else
@@ -210,8 +203,9 @@ public class CustomGridWelcomeController implements StageController {
 
     /**
      * Shows the next scene in the same stage as this window.
+     *
      * @param controller StageController that is going to be controlling this stage after the fxml resource was loaded.
-     * @param fxmlURL URL to an fxml resource to be loaded.
+     * @param fxmlURL    URL to an fxml resource to be loaded.
      */
     private void nextScene(StageController controller, URL fxmlURL) {
         FXMLLoader loader = new FXMLLoader(fxmlURL);

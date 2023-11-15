@@ -19,7 +19,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
@@ -50,238 +53,202 @@ import java.net.URL;
  */
 public class CustomDriverUtilController implements StageController {
     /**
+     * an instance of DriverEditor that controls the driver editor that will edit a driver selected in driverTableView.
+     */
+    private final DriverEditor driverEditor = new DriverEditor();
+    /**
      * Button that performs addDriverAction on action.
      */
     @FXML
     private Button addDriverButton;
-
     /**
      * Button that performs addLibraryDriverAction on action;
      */
     @FXML
     private Button addLibraryDriverButton;
-
     /**
      * TableView that displays the Drivers in the currently loaded  DriverLibrary.
      */
     @FXML
     private TableView<Driver> libraryDriverTableView;
-
     /**
      * Table column in the libraryDriverTableView that displays the nameProperty of the Drivers in the table.
      */
     @FXML
     private TableColumn<Driver, String> libraryDriverNameColumn;
-
     /**
      * Table column in the libraryDriverTableView that displays the countryProperty  of the Drivers in the table.
      */
     @FXML
     private TableColumn<Driver, String> libraryDriverCountryColumn;
-
     /**
      * Button that performs removeLibraryDriverAction on action.
      */
     @FXML
     private Button removeLibraryDriverButton;
-
     /**
      * Button that performs the exportDriverLibraryAction() on action.
      */
     @FXML
     private Button saveDriverLibraryButton;
-
     /**
      * Opens the NewGridWizard.
      * Performs newGridAction on action.
      */
     @FXML
     private MenuItem newGridItem;
-
     /**
      * Button that performs removeDriverAction on action.
      */
     @FXML
     private Button removeDriverButton;
-
     /**
      * Button that performs exportGridCation on action
      */
     @FXML
     private Button saveGridButton;
-
     /**
      * Root Pane of the main screen. Is used to display everything inside the main window.
      * The main css style is applied to the rootPane.
      */
     @FXML
     private BorderPane rootPane;
-
     /**
      * Central Anchor Pane that is used to display the Driver Editor.
      */
     @FXML
     private AnchorPane centralAnchorPane;
-
     /**
      * Import Grid with a Vehicle Class Item.
      * Imports the Grid with a Vehicle class, adding the vehicle class to the current VehicleClassLibrary.
      */
     @FXML
     private MenuItem importGridWithClassItem;
-
     /**
      * Imports a Grid.
      * Imports the grid without the vehicle class.
      */
     @FXML
     private MenuItem importGridItem;
-
     /**
      * Exports a Grid
      * Exports a grid to XML.
      */
     @FXML
     private MenuItem exportGridItem;
-
     /**
      * Edit Tracks Menu Item. Displays the TrackLibraryEditor
      */
     @FXML
     private MenuItem editTracksItem;
-
     /**
      * Export Track Library Menu Item. Shows a FileChooser and if a selection is made attempts to export the currently
      * loaded track library to this file.
      */
     @FXML
     private MenuItem exportTracksItem;
-
     /**
      * Import Track Library Menu Item. Shows a FileChooser and if a selection is made attempts to import a track library.
      * from the File chosen.
      */
     @FXML
     private MenuItem importTracksItem;
-
     /**
      * Edit Vehicle Class Library Menu Item.  Displays the VehicleClassLibraryEditor
      */
     @FXML
     private MenuItem editVehicleClassesItem;
-
     /**
-     *  Export Vehicle Class Library Menu Item.  Shows a FileChooser and if a selection is made attempts to export the
-     *  currently loaded vehicle class library to this file.
+     * Export Vehicle Class Library Menu Item.  Shows a FileChooser and if a selection is made attempts to export the
+     * currently loaded vehicle class library to this file.
      */
     @FXML
     private MenuItem exportVehicleClassesItem;
-
     /**
      * Import Vehicle Class Library Menu Item. Shows a FileChooser and if a selection is made attempts to import a
      * vehicle class library from the File chosen.
      */
     @FXML
     private MenuItem importVehicleClassesItem;
-
     /**
      * Shows a configuration screen allowing  the user to directly edit the configuration file. Performs configurationAction
      * on action.
      */
     @FXML
     private MenuItem configurationMenuItem;
-
     /**
      * Shows a FileChooser and if a selection is made attempts to export a driver library from the file chosen.
      * Performs exportDriverLibraryAction on action.
      */
     @FXML
     private MenuItem exportDriverLibraryItem;
-
     /**
      * Opens the MassModifyTool Window and allows the user to modify the grid.
      * Performs massModifyAction on action.
      */
     @FXML
     private MenuItem massModifyItem;
-
     /**
      * Opens the DefineDrivers Step, which then opens the  MassModifyTool Window and allows the user to modify drivers selected..
      * Performs customModifyAction on action.
      */
     @FXML
     private MenuItem customModifyItem;
-
     /**
      * Shows a FileChooser and if a selection is made attempts to import a driver library form the file chosen.
      * Performs importDriverLibraryAction on action.
      */
     @FXML
     private MenuItem importDriverLibraryItem;
-
     /**
      * Tableview That displays the drivers from the grid that is being edited.
      */
     @FXML
     private TableView<Driver> driversTableView;
-
     /**
      * TableView that displays the trackOverrides for the driver selected in the driversTableView.
      */
     @FXML
     private TableView<TrackOverride> trackOverrideTableView;
-
     /**
      * TableColumn in trackOverrideTableView that displays the track name for the given override.
      */
     @FXML
     private TableColumn<TrackOverride, String> trackNameColumn;
-
     /**
      * TableColumn in driversTableView that displays the name of a driver
      */
     @FXML
     private TableColumn<Driver, String> driverNameColumn;
-
     /**
      * TableColumn in driver driversTableView that displays the three-letter code for the driver's country.
      */
     @FXML
     private TableColumn<Driver, String> driverCountryColumn;
-
     /**
      * Button that performs addTrackOverrideAction on action.
      */
     @FXML
     private Button addTrackOverrideButton;
-
     /**
      * Button that performs removeTrackOverrideAction on action.
      */
     @FXML
     private Button removeTrackOverrideButton;
-
     /**
      * Button that performs editTrackOverrideAction on action.
      */
     @FXML
     private Button editTrackOverrideButton;
-
     /**
      * Stage on which this controller is displayed.
      * This is also the primaryStage in the Application's main method.
      */
     private Stage stage = new Stage();
-
     /**
      * Grid that is being edited by the editor.
      */
     private Grid editedGrid = new Grid();
-
-    /**
-     * an instance of DriverEditor that controls the driver editor that will edit a driver selected in driverTableView.
-     */
-    private final DriverEditor driverEditor = new DriverEditor();
 
     /**
      * Initialize method initializes all the visual elements before they are displayed by the user.
@@ -356,19 +323,19 @@ public class CustomDriverUtilController implements StageController {
         driverCountryColumn.setCellFactory(col -> new TextFieldTableCell<Driver, String>() {
             @Override
             public void updateItem(String item, boolean empty) {
-            super.updateItem(item, empty);
-            if (empty || item == null) {
-                setText(null);
-                setGraphic(null);
-            } else {
-                this.setText(item);
-                if (hasValidLivery((Driver) this.getTableRow().getItem())) {
-                    this.getStylesheets().clear();
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setGraphic(null);
                 } else {
-                    this.getStylesheets().clear();
-                    this.getStylesheets().add(DDUtil.WARNING_CSS_RESOURCE);
+                    this.setText(item);
+                    if (hasValidLivery((Driver) this.getTableRow().getItem())) {
+                        this.getStylesheets().clear();
+                    } else {
+                        this.getStylesheets().clear();
+                        this.getStylesheets().add(DDUtil.WARNING_CSS_RESOURCE);
+                    }
                 }
-            }
             }
         });
 
@@ -404,7 +371,7 @@ public class CustomDriverUtilController implements StageController {
         libraryDriverCountryColumn.setCellValueFactory(e -> e.getValue().countryProperty());
         libraryDriverTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> removeLibraryDriverButton.setDisable(newValue == null));
 
-        trackNameColumn.setCellValueFactory(e-> e.getValue().getTrack().get(0).nameProperty());
+        trackNameColumn.setCellValueFactory(e -> e.getValue().getTrack().get(0).nameProperty());
 
         removeDriverButton.setDisable(true);
         addLibraryDriverButton.setDisable(true);
@@ -435,7 +402,7 @@ public class CustomDriverUtilController implements StageController {
         });
 
         driversTableView.setOnMouseDragged(event -> event.setDragDetect(true));
-        driversTableView.setOnDragOver((DragEvent event) ->  {
+        driversTableView.setOnDragOver((DragEvent event) -> {
             if (event.getGestureSource() != driversTableView && event.getDragboard().hasString())
                 event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
             event.consume();
@@ -457,6 +424,7 @@ public class CustomDriverUtilController implements StageController {
     /**
      * Lightweight mutator method.
      * Should be called before this class is displayed to the user.
+     *
      * @param stage Stage on which this controller is going to be displayed.
      */
     @Override
@@ -467,6 +435,7 @@ public class CustomDriverUtilController implements StageController {
     /**
      * Lightweight mutator method.
      * Should be called before the initialize() method is called.
+     *
      * @param grid Grid to be edited in the Custom Driver Utility.
      */
     public void setEditedGrid(Grid grid) {
@@ -543,6 +512,7 @@ public class CustomDriverUtilController implements StageController {
     /**
      * Initializes the Track Override Editor by opening the defineTrackStep and passing it the trackOverride that
      * is passed as an argument.
+     *
      * @param override Track specific override that is going to be edited by the trackOverrideEditor.
      */
     private void initTrackOverrideEditor(TrackOverride override) {
@@ -596,7 +566,7 @@ public class CustomDriverUtilController implements StageController {
     private void exportGridAction() {
         FileChooser fileChooser = LibraryManager.createLibraryFileChooser("Choose XML Grid File", "grids");
         if (editedGrid.getVehicleClass().getXmlName() != null)
-            fileChooser.setInitialFileName(editedGrid.getVehicleClass().getXmlName()+".xml");
+            fileChooser.setInitialFileName(editedGrid.getVehicleClass().getXmlName() + ".xml");
         File file = fileChooser.showSaveDialog(stage);
         GridExporter exporter = new XMLGridExporter();
         if (file != null)
@@ -619,7 +589,7 @@ public class CustomDriverUtilController implements StageController {
         }
         GridImporter importer = new XMLGridImporter();
         Grid importedGrid = importer.importFromFile(file);
-         if (importedGrid != null) {
+        if (importedGrid != null) {
             editedGrid.getDrivers().clear();
             editedGrid.getDrivers().addAll(importedGrid.getDrivers());
             editedGrid.setVehicleClass(vehicleClass);
@@ -636,7 +606,7 @@ public class CustomDriverUtilController implements StageController {
         if (file != null) {
             Grid importedGrid = importer.importFromFile(file);
             if (importedGrid != null) {
-                VehicleClass vehicleClass = LibraryManager.getInstance().getVehicleClassLibrary().findVanillaVehicleClass(file.getName().substring(0, file.getName().length()-4));
+                VehicleClass vehicleClass = LibraryManager.getInstance().getVehicleClassLibrary().findVanillaVehicleClass(file.getName().substring(0, file.getName().length() - 4));
                 if (vehicleClass != null) {
                     driverEditor.setVehicleClass(vehicleClass);
                     editedGrid.setVehicleClass(vehicleClass);
@@ -818,9 +788,10 @@ public class CustomDriverUtilController implements StageController {
     /**
      * Creates a stage on which an editor controlled by a StageController can be displayed.
      * Loads an FXML File from the URL, sets the controller and finally displays the stage.
+     *
      * @param editorFXMLURL URL to a FXML file that contains the editor's gui information.
-     * @param controller Controller to be used for the new Stage.
-     * @param title Text title to be displayed on the new Stage.
+     * @param controller    Controller to be used for the new Stage.
+     * @param title         Text title to be displayed on the new Stage.
      */
     private void openEditor(URL editorFXMLURL, StageController controller, String title) {
         Stage stage = new Stage();
@@ -843,7 +814,8 @@ public class CustomDriverUtilController implements StageController {
      * Creates a new FileChooser, sets its extension filter to *.xml and sets its initial directory to the pathname provided.
      * and the title of its Stage to the title provided. Displays the FileChooser to the user with showOpenDialog, waits
      * for a selection to be made and returns the File selected.
-     * @param title Title of the Stage on which the FileChooser is going to be displayed.
+     *
+     * @param title            Title of the Stage on which the FileChooser is going to be displayed.
      * @param initialDirectory Pathname to an initial directory for the FileChooser.
      * @return File Chosen by the user. returns null if no file was chosen.
      */
@@ -853,6 +825,7 @@ public class CustomDriverUtilController implements StageController {
 
     /**
      * Filters the editedFrid to drivers whose livery matches driver's livery name, and checks if it is unique;
+     *
      * @param driver Driver whose livery is to be checked for uniqueness
      * @return true if driver has a unique livery name, false if the driver does not
      */
@@ -869,36 +842,37 @@ public class CustomDriverUtilController implements StageController {
      * Creates a new FileChooser, sets its extension filter to *.xml and sets its initial directory to the pathname provided.
      * and the title of its Stage to the title provided. Displays the FileChooser to the user with showSaveDialog, waits
      * for a selection to be made and returns the File selected.
-     * @param title Title of the Stage on which the FileChooser is going to be displayed.
+     *
+     * @param title            Title of the Stage on which the FileChooser is going to be displayed.
      * @param initialDirectory Pathname to an initial directory for the FileChooser.
      * @return File Chosen by the user. returns null if no file was chosen.
      */
     private File chooseFileToSave(String title, String initialDirectory) {
-        return  LibraryManager.createLibraryFileChooser(title, initialDirectory).showSaveDialog(stage);
+        return LibraryManager.createLibraryFileChooser(title, initialDirectory).showSaveDialog(stage);
     }
 
     /**
      * Initializes all tooltips for the control elements
      */
     private void initTooltips() {
-        addDriverButton     .setTooltip(TooltipUtil.ADD_DRIVER_TOOLTIP);
-        removeDriverButton  .setTooltip(TooltipUtil.REMOVE_DRIVER_TOOLTIP);
-        saveGridButton      .setTooltip(TooltipUtil.SAVE_GRID_TOOLTIP);
+        addDriverButton.setTooltip(TooltipUtil.ADD_DRIVER_TOOLTIP);
+        removeDriverButton.setTooltip(TooltipUtil.REMOVE_DRIVER_TOOLTIP);
+        saveGridButton.setTooltip(TooltipUtil.SAVE_GRID_TOOLTIP);
 
-        addTrackOverrideButton      .setTooltip(TooltipUtil.ADD_TRACK_OVERRIDE_TOOLTIP);
-        removeTrackOverrideButton   .setTooltip(TooltipUtil.REMOVE_TRACK_OVERRIDE_TOOLTIP);
-        editTrackOverrideButton     .setTooltip(TooltipUtil.EDIT_TRACK_OVERRIDE_TOOLTIP);
+        addTrackOverrideButton.setTooltip(TooltipUtil.ADD_TRACK_OVERRIDE_TOOLTIP);
+        removeTrackOverrideButton.setTooltip(TooltipUtil.REMOVE_TRACK_OVERRIDE_TOOLTIP);
+        editTrackOverrideButton.setTooltip(TooltipUtil.EDIT_TRACK_OVERRIDE_TOOLTIP);
 
-        addLibraryDriverButton      .setTooltip(TooltipUtil.ADD_LIBRARY_DRIVER_TOOLTIP);
-        removeLibraryDriverButton   .setTooltip(TooltipUtil.REMOVE_LIBRARY_DRIVER_TOOLTIP);
-        saveDriverLibraryButton     .setTooltip(TooltipUtil.SAVE_DRIVER_LIBRARY_TOOLTIP);
+        addLibraryDriverButton.setTooltip(TooltipUtil.ADD_LIBRARY_DRIVER_TOOLTIP);
+        removeLibraryDriverButton.setTooltip(TooltipUtil.REMOVE_LIBRARY_DRIVER_TOOLTIP);
+        saveDriverLibraryButton.setTooltip(TooltipUtil.SAVE_DRIVER_LIBRARY_TOOLTIP);
     }
 
     public class LiveryValidator {
         public boolean validate(String liveryName) {
             if (liveryName == null)
                 return false;
-            FilteredList<Driver> filteredList = editedGrid.getDrivers().filtered(driver ->liveryName.equals(driver.getLiveryName()));
+            FilteredList<Driver> filteredList = editedGrid.getDrivers().filtered(driver -> liveryName.equals(driver.getLiveryName()));
             return filteredList == null || filteredList.size() == 0;
         }
     }

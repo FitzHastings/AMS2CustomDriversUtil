@@ -45,106 +45,89 @@ import java.io.IOException;
  */
 public class ConfigurationScreenController implements StageController {
     /**
+     * Buffer of the current configuration.
+     */
+    private final Configuration buffer = new Configuration();
+    /**
+     * Buffer that contains the rounding Decimal Points Value
+     */
+    private final IntegerProperty roundingBuffer = new SimpleIntegerProperty();
+    /**
      * AnchorPane that contains the OverrideFlagsEditor that edits default overrideFlags for any new driver.
      */
     @FXML
     private AnchorPane defaultNewDriverAnchorPane;
-
     /**
      * TextField that allows the user to edit the location of the VehicleClassLibrary xml file.
      */
     @FXML
     private TextField vehicleClassLibraryTextField;
-
     /**
      * TextField that allows the user to edit the location of the TrackLibrary xml file.
      */
     @FXML
     private TextField trackLibraryTextField;
-
     /**
      * AnchorPane that contains the OverrideFlagsEditor that edits default overrideFlags for any new track override.
      */
     @FXML
     private AnchorPane defaultNewOverrideAnchorPane;
-
     /**
      * Root Pane of the main screen. Is used to display everything inside the main window.
      * The main css style is applied to the rootPane.
      */
     @FXML
     private VBox rootPane;
-
     /**
      * Button that displays the FileChooser that allows the user to choose the new vehicle class library xml file.
      */
     @FXML
     private Button vehicleClassFileChooserButton;
-
     /**
      * Button that displays the FileChooser that allows the user to choose the new driver library xml file.
      */
     @FXML
     private Button driverLibraryFileChooserButton;
-
     /**
      * TextField that allows the user to edit the location of the DriverLibrary xml file.
      */
     @FXML
     private TextField driverLibraryTextField;
-
     /**
      * CheckBox that is used to edit the chooseLivery flag of the configuration.
      */
     @FXML
     private CheckBox chooseLiveryCheckBox;
-
     /**
      * CheckBox that is used to edit the skipWelcomeScreen flag of the configuration.
      */
     @FXML
     private CheckBox skipWelcomeScreenCheckBox;
-
     /**
      * Button that displays the FileChooser that allows the user to choose the new track library xml file.
      */
     @FXML
     private Button trackLibraryFileChooserButton;
-
     /**
      * Performs okAction on action.
      * Button that commits changes to the current configuration,saves it and closes the stage.
      */
     @FXML
     private Button okButton;
-
     /**
      * Performs cancelAction on action.
      * Button that disregards all changes and closes the stage.
      */
     @FXML
     private Button cancelButton;
-
     @FXML
     private TextField roundingTextField;
-
     @FXML
     private CheckBox roundGeneratedCheckBox;
-
     /**
      * Stage on which this StageController is displayed.
      */
     private Stage stage;
-
-    /**
-     * Buffer of the current configuration.
-     */
-    private final Configuration buffer = new Configuration();
-
-    /**
-     * Buffer that contains the rounding Decimal Points Value
-     */
-    private final IntegerProperty roundingBuffer = new SimpleIntegerProperty();
 
     /**
      * Initialize method initializes all the visual elements before they are displayed by the user.
@@ -204,6 +187,7 @@ public class ConfigurationScreenController implements StageController {
 
     /**
      * Lightweight mutator method.
+     *
      * @param stage Stage on which this controller is going to be displayed.
      */
     @Override
@@ -217,16 +201,16 @@ public class ConfigurationScreenController implements StageController {
     private void createConfigurationBuffer() {
         Configuration configuration = Configurator.getInstance().getConfiguration();
 
-        buffer.setTrackLibraryPathname(configuration        .getTrackLibraryPathname());
-        buffer.setVehicleClassLibraryPathname(configuration .getVehicleClassLibraryPathname());
-        buffer.setDriverLibraryPathname(configuration       .getDriverLibraryPathname());
-        buffer.setDefaultDriverFlags(configuration          .getDefaultDriverFlags());
-        buffer.setDefaultTrackOverrideFlags(configuration   .getDefaultTrackOverrideFlags());
-        buffer.setSkipWelcomeScreen(configuration           .isSkipWelcomeScreen());
-        buffer.setChooseLivery(configuration                .isChooseLivery());
-        buffer.setUpdateURL(configuration                   .getUpdateURL());
-        buffer.setRoundGeneratedValues(configuration        .isRoundGeneratedValues());
-        buffer.setRoundingDecimalPlaces(configuration       .getRoundingDecimalPlaces());
+        buffer.setTrackLibraryPathname(configuration.getTrackLibraryPathname());
+        buffer.setVehicleClassLibraryPathname(configuration.getVehicleClassLibraryPathname());
+        buffer.setDriverLibraryPathname(configuration.getDriverLibraryPathname());
+        buffer.setDefaultDriverFlags(configuration.getDefaultDriverFlags());
+        buffer.setDefaultTrackOverrideFlags(configuration.getDefaultTrackOverrideFlags());
+        buffer.setSkipWelcomeScreen(configuration.isSkipWelcomeScreen());
+        buffer.setChooseLivery(configuration.isChooseLivery());
+        buffer.setUpdateURL(configuration.getUpdateURL());
+        buffer.setRoundGeneratedValues(configuration.isRoundGeneratedValues());
+        buffer.setRoundingDecimalPlaces(configuration.getRoundingDecimalPlaces());
     }
 
     /**
@@ -257,8 +241,9 @@ public class ConfigurationScreenController implements StageController {
     /**
      * Loads the FXML file of the OverrideFlagsEditor, and adds its rootPane to a given AnchorPane as a child node.
      * Sets the edited item of the OverrideFlagsEditor to be equal to the given item.
+     *
      * @param targetPane Target AnchorPane that is used to display the OverrideFlagsEditor
-     * @param item OverrideFlags that are edited by the new OverrideFlagsEditor.
+     * @param item       OverrideFlags that are edited by the new OverrideFlagsEditor.
      */
     private void loadOverrideFlagsEditor(AnchorPane targetPane, OverrideFlags item) {
         FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().OVERRIDE_FLAGS_EDITOR_FXML_URL);

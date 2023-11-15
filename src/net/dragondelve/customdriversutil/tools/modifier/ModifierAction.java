@@ -20,6 +20,7 @@ package net.dragondelve.customdriversutil.tools.modifier;
 public interface ModifierAction {
     /**
      * Performs an action on the passed value modifying it.
+     *
      * @param driverProperty value to be modified.
      * @return modified driver's property.
      */

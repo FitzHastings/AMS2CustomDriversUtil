@@ -34,41 +34,37 @@ import java.io.IOException;
 
 public class DefineDriversStep implements StageController {
     /**
+     * Drivers from the currently edited grid
+     */
+    private final ObservableList<Driver> drivers = FXCollections.observableArrayList();
+    /**
      * Button that performs nextAction on action.
      */
     @FXML
     private Button nextButton;
-
     /**
      * Button that performs the cancelAction on action.
      */
     @FXML
     private Button cancelButton;
-
     /**
      * List to List chooser for user choice
      */
     @FXML
     private ListToListChooser<Driver> listToListChooser;
-
     /**
      * The root pane of the entire scene. Used to assign the css style to the controls and containers.
      */
     @FXML
     private VBox rootPane;
-
     /**
      * Stage on which this editor is displayed.
      */
     private Stage stage;
 
     /**
-     * Drivers from the currently edited grid
-     */
-    private final ObservableList<Driver> drivers = FXCollections.observableArrayList();
-
-    /**
      * creates a new instance of DefineDriversStep.
+     *
      * @param drivers All drivers from the currently edited grid
      */
     public DefineDriversStep(ObservableList<Driver> drivers) {
@@ -98,6 +94,7 @@ public class DefineDriversStep implements StageController {
     /**
      * Lightweight mutator method.
      * Should be called before the editor is initialized by JavaFX.
+     *
      * @param stage stage on which this editor is going to be displayed.
      */
     @Override

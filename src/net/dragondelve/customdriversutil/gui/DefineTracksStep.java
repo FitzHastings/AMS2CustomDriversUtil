@@ -105,6 +105,7 @@ public class DefineTracksStep implements StageController {
 
     /**
      * Lightweight mutator method. Used when editing a trackOverride.
+     *
      * @param trackOverride trackOverride that is being edited if this editor is performing the edit action
      */
     @FXML
@@ -117,6 +118,7 @@ public class DefineTracksStep implements StageController {
     /**
      * Lightweight mutator method.
      * Should be called before the editor is initialized by JavaFX.
+     *
      * @param stage stage on which this editor is going to be displayed.
      */
     @Override

@@ -34,6 +34,7 @@ public class StageControlButton extends Button {
 
     /**
      * Stage is set to null. You should set the controlled stage later if using this constructor with setStage.
+     *
      * @param text text that is displayed on the button.
      */
     public StageControlButton(String text) {
@@ -41,8 +42,7 @@ public class StageControlButton extends Button {
     }
 
     /**
-     *
-     * @param text text that is displayed on the button.
+     * @param text  text that is displayed on the button.
      * @param stage the JavaFX stage that will be controlled by this button.
      */
     public StageControlButton(String text, Stage stage) {
@@ -53,6 +53,7 @@ public class StageControlButton extends Button {
 
     /**
      * Semi-Lightweight Mutator Method.
+     *
      * @param stage the JavaFX stage that will be controlled by this button.
      */
     public void setStage(Stage stage) {

@@ -21,33 +21,33 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 
 /**
- *  Hybrid Combo Box is a Combo box with a checkbox inside an HBox. if the checkbox is set then Combo Box is
- *  displayed. if the checkbox is not selected then it displays a TextField instead.
+ * Hybrid Combo Box is a Combo box with a checkbox inside an HBox. if the checkbox is set then Combo Box is
+ * displayed. if the checkbox is not selected then it displays a TextField instead.
+ *
  * @param <T> Combo box that will be displayed if the CheckBox is selected.
  */
 public class HybridComboBox<T extends ComboBox<?>> extends HBox {
+    /**
+     * CheckBox that controls whether the ComboBox is shown to the user or the TextField.
+     */
+    private final CheckBox checkBox = new CheckBox();
+    /**
+     * TextField that is displayed to the user if the CheckBox is NOT selected.
+     */
+    private final TextField textField = new TextField();
     /**
      * Combo Box that is displayed to the user if the CheckBox is selected.
      */
     private T comboBox;
 
     /**
-     * CheckBox that controls whether the ComboBox is shown to the user or the TextField.
-     */
-    private final CheckBox checkBox = new CheckBox();
-
-    /**
-     * TextField that is displayed to the user if the CheckBox is NOT selected.
-     */
-    private final TextField textField = new TextField();
-
-    /**
      * Initializes the HybridCheckBox. You must call this method before the v is shown on a Stage.
      * Binds the comboBox and the TextField with the CheckBox and sets the checkBox's text.
+     *
      * @param checkBoxText Text that is going to be displayed next to the CheckBox.
-     * @param comboBox comboBox that is going to be shown if the CheckBox is selected.
+     * @param comboBox     comboBox that is going to be shown if the CheckBox is selected.
      */
-    public void initialize(String checkBoxText, T comboBox){
+    public void initialize(String checkBoxText, T comboBox) {
         this.comboBox = comboBox;
         HBox.setHgrow(comboBox, Priority.ALWAYS);
         HBox.setHgrow(textField, Priority.ALWAYS);
@@ -71,6 +71,7 @@ public class HybridComboBox<T extends ComboBox<?>> extends HBox {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Combo Box that is displayed to the user if the CheckBox is selected.
      */
     public T getComboBox() {
@@ -79,6 +80,7 @@ public class HybridComboBox<T extends ComboBox<?>> extends HBox {
 
     /**
      * Lightweight accessor method.
+     *
      * @return CheckBox that controls whether the ComboBox is shown to the user or the TextField.
      */
     public CheckBox getCheckBox() {
@@ -87,6 +89,7 @@ public class HybridComboBox<T extends ComboBox<?>> extends HBox {
 
     /**
      * Lightweight accessor method.
+     *
      * @return TextField that is displayed to the user if the CheckBox is NOT selected.
      */
     public TextField getTextField() {

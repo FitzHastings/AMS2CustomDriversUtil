@@ -82,7 +82,7 @@ public class TrackLibraryEditor implements Editor<Track> {
     /**
      * An observable list of items that are being edited by this editor.
      */
-    private ObservableList<Track>  items = FXCollections.observableArrayList();
+    private ObservableList<Track> items = FXCollections.observableArrayList();
 
     /**
      * Stage on which this editor is displayed.
@@ -106,7 +106,7 @@ public class TrackLibraryEditor implements Editor<Track> {
 
         //track Table View initialization
         trackTableView.setItems(items);
-        trackNameColumn.setCellValueFactory(e-> e.getValue().nameProperty());
+        trackNameColumn.setCellValueFactory(e -> e.getValue().nameProperty());
         trackTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (oldValue != null)
                 unbindTrack(oldValue);
@@ -121,8 +121,8 @@ public class TrackLibraryEditor implements Editor<Track> {
         });
 
         //button initialization
-        addTrackButton.setOnAction(e->addTrackAction());
-        removeTrackButton.setOnAction(e->removeTrackAction());
+        addTrackButton.setOnAction(e -> addTrackAction());
+        removeTrackButton.setOnAction(e -> removeTrackAction());
 
         setDisableControls(true);
 
@@ -132,6 +132,7 @@ public class TrackLibraryEditor implements Editor<Track> {
     /**
      * Lightweight mutator method.
      * Should be called before the editor is initialized by JavaFX.
+     *
      * @param stage stage on which this editor is going to be displayed.
      */
     @Override
@@ -141,6 +142,7 @@ public class TrackLibraryEditor implements Editor<Track> {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Observable list of Tracks that are edited by this editor.
      */
     @Override
@@ -151,6 +153,7 @@ public class TrackLibraryEditor implements Editor<Track> {
     /**
      * Lightweight mutator method.
      * Should be called before initialize method is called by the JavaFX.
+     *
      * @param items Observable list of Tracks that are edited by this editor.
      */
     @Override
@@ -191,6 +194,7 @@ public class TrackLibraryEditor implements Editor<Track> {
     /**
      * Binds the given track's properties to the control elements that are supposed to edit them. The bind will be done
      * bidirectionally, and you should call unbindTrack on the same track after it is no longer being edited.
+     *
      * @param track a track whose properties are to be bind to the control elements of this editor.
      */
     private void bindTrack(Track track) {
@@ -202,6 +206,7 @@ public class TrackLibraryEditor implements Editor<Track> {
     /**
      * Unbinds the given track's properties from the control elements of the editor. The bind will be unbound bidirectionally.
      * If a track was bound with bindTrack then you should unbind it with this method.
+     *
      * @param track a track whose properties are to be unbound from the control elements of this editor.
      */
     private void unbindTrack(Track track) {
@@ -212,6 +217,7 @@ public class TrackLibraryEditor implements Editor<Track> {
 
     /**
      * Method used to disable all editing controls if no selection in the tableView is made.
+     *
      * @param disable True if you want to disable all controls, false if you want to enable them.
      */
     private void setDisableControls(boolean disable) {

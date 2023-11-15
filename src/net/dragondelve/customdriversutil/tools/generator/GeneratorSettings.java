@@ -22,52 +22,43 @@ import net.dragondelve.customdriversutil.model.VehicleClass;
  */
 public class GeneratorSettings {
     /**
+     * Flag that determines whether NAMeS files should be used in order to generate driver names.
+     */
+    private final BooleanProperty useNAMeS = new SimpleBooleanProperty();
+    /**
+     * Flag that determines whether livery names should be used in order to generate driver names.
+     */
+    private final BooleanProperty fromLiveryNames = new SimpleBooleanProperty();
+    /**
+     * Flag that determines if Qualification skill and race skill should be bound together or not.
+     */
+    private final BooleanProperty bindQualiAndRaceSkills = new SimpleBooleanProperty();
+    /**
+     * Flag that determines if TrackOverrides for ovals with reduced gap ar going to be generated or not.
+     */
+    private final BooleanProperty reduceGapsOnOvals = new SimpleBooleanProperty();
+    /**
+     * Flag that determines whether aggression is limited or not.
+     */
+    private final BooleanProperty limitAggression = new SimpleBooleanProperty();
+    /**
+     * Number of drivers that determines how many drivers should be generated.
+     */
+    private final IntegerProperty nDrivers = new SimpleIntegerProperty();
+    /**
+     * Aggression limit determines the maximum value that driver's aggression can have.
+     */
+    private final DoubleProperty aggressionLimit = new SimpleDoubleProperty();
+    /**
+     * Gap between Driver's qualification skill and racing skill if those values are bound.
+     */
+    private final DoubleProperty boundSkillsGap = new SimpleDoubleProperty();
+    /**
      * Vehicle class of the desired generated grid.
      */
     private VehicleClass vehicleClass;
 
     /**
-     * Flag that determines whether NAMeS files should be used in order to generate driver names.
-     */
-    private final BooleanProperty useNAMeS = new SimpleBooleanProperty();
-
-    /**
-     * Flag that determines whether livery names should be used in order to generate driver names.
-     */
-    private final BooleanProperty fromLiveryNames = new SimpleBooleanProperty();
-
-    /**
-     * Flag that determines if Qualification skill and race skill should be bound together or not.
-     */
-    private final BooleanProperty bindQualiAndRaceSkills = new SimpleBooleanProperty();
-
-    /**
-     * Flag that determines if TrackOverrides for ovals with reduced gap ar going to be generated or not.
-     */
-    private final BooleanProperty reduceGapsOnOvals = new SimpleBooleanProperty();
-
-    /**
-     * Flag that determines whether aggression is limited or not.
-     */
-    private final BooleanProperty limitAggression = new SimpleBooleanProperty();
-
-    /**
-     * Number of drivers that determines how many drivers should be generated.
-     */
-    private final IntegerProperty nDrivers = new SimpleIntegerProperty();
-
-    /**
-     * Aggression limit determines the maximum value that driver's aggression can have.
-     */
-    private final DoubleProperty aggressionLimit = new SimpleDoubleProperty();
-
-    /**
-     * Gap between Driver's qualification skill and racing skill if those values are bound.
-     */
-    private final DoubleProperty boundSkillsGap = new SimpleDoubleProperty();
-
-    /**
-     *
      * @return Vehicle class of the desired generated grid.
      */
     public VehicleClass getVehicleClass() {
@@ -76,6 +67,7 @@ public class GeneratorSettings {
 
     /**
      * Lightweight accessor method.
+     *
      * @param vehicleClass Vehicle class of the desired generated grid.
      */
     public void setVehicleClass(VehicleClass vehicleClass) {
@@ -84,6 +76,7 @@ public class GeneratorSettings {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Flag that determines whether NAMeS files should be used in order to generate driver names.
      */
     public boolean isUseNAMeS() {
@@ -92,6 +85,7 @@ public class GeneratorSettings {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Flag that determines whether NAMeS files should be used in order to generate driver names as a property.
      */
     public BooleanProperty useNAMeSProperty() {
@@ -100,6 +94,7 @@ public class GeneratorSettings {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Flag that determines if Qualification skill and race skill should be bound together or not.
      */
     public boolean isFromLiveryNames() {
@@ -108,6 +103,7 @@ public class GeneratorSettings {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Flag that determines if Qualification skill and race skill should be bound together or not as a property.
      */
     public BooleanProperty fromLiveryNamesProperty() {
@@ -116,6 +112,7 @@ public class GeneratorSettings {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Flag that determines if Qualification skill and race skill should be bound together or not.
      */
     public boolean isBindQualiAndRaceSkills() {
@@ -124,6 +121,7 @@ public class GeneratorSettings {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Flag that determines if Qualification skill and race skill should be bound together or not as a property.
      */
     public BooleanProperty bindQualiAndRaceSkillsProperty() {
@@ -132,6 +130,7 @@ public class GeneratorSettings {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Flag that determines if TrackOverrides for ovals with reduced gap ar going to be generated or not.
      */
     public boolean isReduceGapsOnOvals() {
@@ -140,6 +139,7 @@ public class GeneratorSettings {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Flag that determines if TrackOverrides for ovals with reduced gap ar going to be generated or not as a property.
      */
     public BooleanProperty reduceGapsOnOvalsProperty() {
@@ -148,6 +148,7 @@ public class GeneratorSettings {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Flag that determines whether aggression is limited or not.
      */
     public boolean isLimitAggression() {
@@ -156,6 +157,7 @@ public class GeneratorSettings {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Flag that determines whether aggression is limited or not as a property.
      */
     public BooleanProperty limitAggressionProperty() {
@@ -164,6 +166,7 @@ public class GeneratorSettings {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Number of drivers that determines how many drivers should be generated.
      */
     public int getnDrivers() {
@@ -172,6 +175,7 @@ public class GeneratorSettings {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Number of drivers that determines how many drivers should be generated as a property.
      */
     public IntegerProperty nDriversProperty() {
@@ -180,6 +184,7 @@ public class GeneratorSettings {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Aggression limit determines the maximum value that driver's aggression can have.
      */
     public double getAggressionLimit() {
@@ -188,6 +193,7 @@ public class GeneratorSettings {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Aggression limit determines the maximum value that driver's aggression can have as a property.
      */
     public DoubleProperty aggressionLimitProperty() {
@@ -196,6 +202,7 @@ public class GeneratorSettings {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Gap between Driver's qualification skill and racing skill if those values are bound.
      */
     public double getBoundSkillsGap() {
@@ -204,6 +211,7 @@ public class GeneratorSettings {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Gap between Driver's qualification skill and racing skill if those values are bound as a property.
      */
     public DoubleProperty boundSkillsGapProperty() {

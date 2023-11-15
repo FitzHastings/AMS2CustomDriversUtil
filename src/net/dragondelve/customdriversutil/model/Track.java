@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * Stores all properties to allow an automatic generation of track specific overrides.
  * This class is fully annotated with JAXB for easy XML conversion.
  */
-@XmlRootElement (name = "track")
+@XmlRootElement(name = "track")
 public final class Track {
     /**
      * Track name that is human-readable, it's used for display purposes.
@@ -65,7 +65,8 @@ public final class Track {
 
     /**
      * Creates a new instance of track
-     * @param name Track name that is human-readable, it's used for display purposes.
+     *
+     * @param name    Track name that is human-readable, it's used for display purposes.
      * @param xmlName Track name that is used in the XML when exporting.
      */
     public Track(String name, String xmlName) {
@@ -75,23 +76,17 @@ public final class Track {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Track name that is human-readable, it's used for display purposes.
      */
-    @XmlAttribute (name = "name")
+    @XmlAttribute(name = "name")
     public String getName() {
         return name.get();
     }
 
     /**
-     * Lightweight accessor method.
-     * @return Track name that is human-readable as a property, it's used for display purposes.
-     */
-    public StringProperty nameProperty() {
-        return name;
-    }
-
-    /**
      * Lightweight mutator method.
+     *
      * @param name Track name that is human-readable, it's used for display purposes.
      */
     public void setName(String name) {
@@ -100,23 +95,26 @@ public final class Track {
 
     /**
      * Lightweight accessor method.
+     *
+     * @return Track name that is human-readable as a property, it's used for display purposes.
+     */
+    public StringProperty nameProperty() {
+        return name;
+    }
+
+    /**
+     * Lightweight accessor method.
+     *
      * @return Track name that is used in the XML when exporting.
      */
-    @XmlAttribute (name = "xml_name")
+    @XmlAttribute(name = "xml_name")
     public String getXmlName() {
         return xmlName.get();
     }
 
     /**
-     * Lightweight accessor method.
-     * @return Track name that is used in the XML when exporting as a property.
-     */
-    public StringProperty xmlNameProperty() {
-        return xmlName;
-    }
-
-    /**
      * Lightweight mutator method.
+     *
      * @param xmlName Track name that is used in the XML when exporting.
      */
     public void setXmlName(String xmlName) {
@@ -125,23 +123,26 @@ public final class Track {
 
     /**
      * Lightweight accessor method.
+     *
+     * @return Track name that is used in the XML when exporting as a property.
+     */
+    public StringProperty xmlNameProperty() {
+        return xmlName;
+    }
+
+    /**
+     * Lightweight accessor method.
+     *
      * @return Flag that determines if the track is an oval track or a road course.
      */
-    @XmlElement (name = "is_oval")
+    @XmlElement(name = "is_oval")
     public boolean isOval() {
         return isOval.get();
     }
 
     /**
-     * Lightweight accessor method.
-     * @return Flag that determines if the track is an oval track or a road course as a property.
-     */
-    public BooleanProperty isOvalProperty() {
-        return isOval;
-    }
-
-    /**
      * Lightweight mutator method.
+     *
      * @param isOval Flag that determines if the track is an oval track or a road course.
      */
     public void setOval(boolean isOval) {
@@ -150,23 +151,26 @@ public final class Track {
 
     /**
      * Lightweight accessor method.
+     *
+     * @return Flag that determines if the track is an oval track or a road course as a property.
+     */
+    public BooleanProperty isOvalProperty() {
+        return isOval;
+    }
+
+    /**
+     * Lightweight accessor method.
+     *
      * @return Flag that determines if the track is a RallyCross track or not.
      */
-    @XmlElement (name = "is_rx")
+    @XmlElement(name = "is_rx")
     public boolean isRX() {
         return isRX.get();
     }
 
     /**
-     * Lightweight accessor method.
-     * @return Flag that determines if the track is a RallyCross track or not as a property.
-     */
-    public BooleanProperty isRXProperty() {
-        return isRX;
-    }
-
-    /**
      * Lightweight mutator method
+     *
      * @param isRX Flag that determines if the track is a RallyCross track or not.
      */
     public void setRX(boolean isRX) {
@@ -174,7 +178,17 @@ public final class Track {
     }
 
     /**
+     * Lightweight accessor method.
+     *
+     * @return Flag that determines if the track is a RallyCross track or not as a property.
+     */
+    public BooleanProperty isRXProperty() {
+        return isRX;
+    }
+
+    /**
      * Overrides toString method, makes it so that the toString() value is the human-readable Name of the track
+     *
      * @return human-readable name of the track.
      */
     @Override

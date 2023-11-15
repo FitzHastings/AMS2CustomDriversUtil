@@ -27,6 +27,7 @@ public interface GridImporter {
     /**
      * Imports a grid from a given File.
      * This will not set the correct Class for the grid. This should be handled elsewhere.
+     *
      * @param file a file that contains the Grid.
      * @return New instance of a Grid from the source, or null if the import has failed.
      */
@@ -34,6 +35,7 @@ public interface GridImporter {
 
     /**
      * Imports a grid from a given input stream.
+     *
      * @param inputStream an input stream that contains the Grid;
      * @return New instance of a Grid from the source, or null if the import has failed.
      */
@@ -42,7 +44,8 @@ public interface GridImporter {
     /**
      * Imports a grid from a given File and generates a new VehicleClass if a vehicle class is not present in the given
      * VehicleClassLibrary. This will set the VehicleClass of Grid.
-     * @param file a file that contains the Grid.
+     *
+     * @param file    a file that contains the Grid.
      * @param library Vehicle Class Library that is meant to contain the newly loaded VehicleClass.
      * @return New instance of a Grid from the source, or null if the import has failed.
      */

@@ -23,6 +23,7 @@ import java.util.List;
 public interface SmartAction extends ModifierAction {
     /**
      * analyzes the values that are going to be modified by the SmartAction to adjust internal values.
+     *
      * @param modifiedValues List of values that are going to be modified by this action.
      */
     void analyzeValues(List<Double> modifiedValues);

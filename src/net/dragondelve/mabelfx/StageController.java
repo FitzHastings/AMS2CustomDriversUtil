@@ -24,6 +24,7 @@ import javafx.stage.Stage;
 public interface StageController {
     /**
      * Lightweight mutator method.
+     *
      * @param stage Stage on which this controller is going to be displayed.
      */
     void setStage(Stage stage);

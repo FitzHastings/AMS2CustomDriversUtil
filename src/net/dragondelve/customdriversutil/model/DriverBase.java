@@ -14,7 +14,10 @@
 
 package net.dragondelve.customdriversutil.model;
 
-import javafx.beans.property.*;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 import java.util.Random;
 
@@ -123,9 +126,9 @@ public abstract class DriverBase {
     private final DoubleProperty avoidanceOfMistakes = new SimpleDoubleProperty();
 
     /**
-     *  Drivers with 1.0 value for avoidance_of_forced_mistakes won't have their chances of mistakes increased when under pressure (when defending position).
-     *  Drivers with lower value for avoidance_of_forced_mistakes will have their chances of mistakes increased when under pressure (compared to their chances
-     *  of mistakes when not under pressure).
+     * Drivers with 1.0 value for avoidance_of_forced_mistakes won't have their chances of mistakes increased when under pressure (when defending position).
+     * Drivers with lower value for avoidance_of_forced_mistakes will have their chances of mistakes increased when under pressure (compared to their chances
+     * of mistakes when not under pressure).
      */
     private final DoubleProperty avoidanceOfForcedMistakes = new SimpleDoubleProperty();
 
@@ -141,6 +144,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Driver name.
      */
     public final String getName() {
@@ -149,6 +153,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Driver name as a property.
      */
     public final StringProperty nameProperty() {
@@ -157,14 +162,16 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return 3 letter country code as a property. This is used for displaying the country flag.
      */
     public final StringProperty countryProperty() {
         return country;
     }
 
-     /**
+    /**
      * Lightweight accessor method.
+     *
      * @return 3 letter country code. This is used for displaying the country flag.
      */
     public final String getCountry() {
@@ -173,6 +180,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Race session driver skill. It is mapped into a smaller range based on the "Opponent Skill Level" slider setting.
      */
     public final double getRaceSkill() {
@@ -181,6 +189,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Race session driver skill as a property. It is mapped into a smaller range based on the "Opponent Skill Level" slider setting.
      */
     public final DoubleProperty raceSkillProperty() {
@@ -189,6 +198,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Qualification Session driver skill. Its completely independent from the race_skill.
      */
     public final double getQualifyingSkill() {
@@ -197,6 +207,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Qualification Session driver skill as a property. Its completely independent from the race_skill.
      */
     public final DoubleProperty qualifyingSkillProperty() {
@@ -205,6 +216,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Driver aggression. It is scaled by the "Opponent Aggression".
      */
     public final double getAggression() {
@@ -213,6 +225,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Driver aggression as a property. It is scaled by the "Opponent Aggression".
      */
     public final DoubleProperty aggressionProperty() {
@@ -221,6 +234,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return How much the driver will try to defend his position.
      */
     public final double getDefending() {
@@ -229,6 +243,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return How much the driver will try to defend his position as a property.
      */
     public final DoubleProperty defendingProperty() {
@@ -237,6 +252,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Lower stamina value means the driver loses more of his skill during the session.
      */
     public final double getStamina() {
@@ -245,6 +261,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Lower stamina value means the driver loses more of his skill during the session.
      */
     public final DoubleProperty staminaProperty() {
@@ -253,6 +270,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Lower consistency value means the driver skill can be randomly reduced more.
      */
     public final double getConsistency() {
@@ -261,6 +279,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Lower consistency value means the driver skill can be randomly reduced more.
      */
     public final DoubleProperty consistencyProperty() {
@@ -269,6 +288,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Lower start_reactions value means the driver will take more time to react to the race green flag
      */
     public final double getStartReactions() {
@@ -277,6 +297,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Lower start_reactions value means the driver will take more time to react to the race green flag
      */
     public final DoubleProperty startReactionsProperty() {
@@ -285,6 +306,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return How good the driver is on a wet track.
      */
     public final double getWetSkill() {
@@ -293,6 +315,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return How good the driver is on a wet track as a property.
      */
     public final DoubleProperty wetSkillProperty() {
@@ -301,6 +324,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return How good the driver is in preventing tyre wear.
      */
     public final double getTyreManagement() {
@@ -309,6 +333,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return How good the driver is in preventing tyre wear as a proeprty.
      */
     public final DoubleProperty tyreManagementProperty() {
@@ -317,6 +342,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return The higher the value, the more the AI will try to save fuel in some strategic situations instead of pushing.
      */
     public final double getFuelManagement() {
@@ -325,6 +351,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return The higher the value, the more the AI will try to save fuel in some strategic situations instead of pushing.
      */
     public final DoubleProperty fuelManagementProperty() {
@@ -333,6 +360,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Drivers with high blue_flag_conceding will work harder to concede the position when under blue flag.
      */
     public final double getBlueFlagConceding() {
@@ -345,6 +373,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Drivers with high weather_tyre_changes are more likely to make pitstops for changing tyres when the track wetness state changes.
      */
     public final double getWeatherTyreChange() {
@@ -353,6 +382,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Drivers with high weather_tyre_changes are more likely to make pitstops for changing tyres when the track wetness state changes.
      */
     public final DoubleProperty weatherTyreChangeProperty() {
@@ -361,6 +391,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Drivers with lower avoidance_of_mistakes value are more likely to make AI programmed mistakes
      */
     public final double getAvoidanceOfMistakes() {
@@ -369,6 +400,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Drivers with lower avoidance_of_mistakes value are more likely to make AI programmed mistakes
      */
     public final DoubleProperty avoidanceOfMistakesProperty() {
@@ -377,6 +409,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Drivers with lower value for avoidance_of_forced_mistakes will have their chances of mistakes increased when under pressure.
      */
     public final double getAvoidanceOfForcedMistakes() {
@@ -385,6 +418,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Drivers with lower value for avoidance_of_forced_mistakes will have their chances of mistakes increased when under pressure.
      */
     public final DoubleProperty avoidanceOfForcedMistakesProperty() {
@@ -393,6 +427,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Ratio between the lowest and highest possible reliability for the car/class in question.
      */
     public final double getVehicleReliability() {
@@ -401,6 +436,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Ratio between the lowest and highest possible reliability for the car/class in question.
      */
     public final DoubleProperty vehicleReliabilityProperty() {
@@ -409,6 +445,7 @@ public abstract class DriverBase {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Flags that determine if given properties should be overriden on export.
      */
     public final OverrideFlags getOverrideFlags() {
@@ -418,6 +455,7 @@ public abstract class DriverBase {
     /**
      * Semi lightweight mutator method. Sets each property within overrideFlags within driverBase to match the values
      * in the given instance of overrideFlags.
+     *
      * @param overrideFlags instance of overrideFlags whose values are to be assigned to the overrideFlags within driverBase.
      */
     public final void setOverrideFlags(OverrideFlags overrideFlags) {
@@ -442,6 +480,7 @@ public abstract class DriverBase {
 
     /**
      * Gives a String representation of the driver
+     *
      * @return name of the driver.
      */
     @Override

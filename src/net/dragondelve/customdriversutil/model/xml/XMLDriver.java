@@ -133,9 +133,9 @@ final class XMLDriver {
     private String avoidanceOfMistakes;
 
     /**
-     *  Drivers with 1.0 value for avoidance_of_forced_mistakes won't have their chances of mistakes increased when under pressure (when defending position).
-     *  Drivers with lower value for avoidance_of_forced_mistakes will have their chances of mistakes increased when under pressure (compared to their chances
-     *  of mistakes when not under pressure).
+     * Drivers with 1.0 value for avoidance_of_forced_mistakes won't have their chances of mistakes increased when under pressure (when defending position).
+     * Drivers with lower value for avoidance_of_forced_mistakes will have their chances of mistakes increased when under pressure (compared to their chances
+     * of mistakes when not under pressure).
      */
     private String avoidanceOfForcedMistakes;
 
@@ -151,6 +151,7 @@ final class XMLDriver {
 
     /**
      * Lightweight accessor method.
+     *
      * @return In game name of the livery.
      */
     @XmlAttribute(name = "livery_name")
@@ -160,6 +161,7 @@ final class XMLDriver {
 
     /**
      * Lightweight mutator method.
+     *
      * @param liveryName In game name of the livery.
      */
     public void setLiveryName(String liveryName) {
@@ -168,6 +170,7 @@ final class XMLDriver {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Driver name.
      */
     @XmlElement(name = "name")
@@ -177,6 +180,7 @@ final class XMLDriver {
 
     /**
      * Lightweight mutator method.
+     *
      * @param name Driver name.
      */
     public void setName(String name) {
@@ -185,6 +189,7 @@ final class XMLDriver {
 
     /**
      * Lightweight accessor method.
+     *
      * @return 3-letter country code. This is used for displaying the country flag.
      */
     @XmlElement(name = "country")
@@ -194,6 +199,7 @@ final class XMLDriver {
 
     /**
      * Lightweight mutator method.
+     *
      * @param country 3-letter country code. This is used for displaying the country flag.
      */
     public void setCountry(String country) {
@@ -202,6 +208,7 @@ final class XMLDriver {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Race session driver skill. It is mapped into a smaller range based on the "Opponent Skill Level" slider setting.
      */
     @XmlElement(name = "race_skill")
@@ -211,7 +218,8 @@ final class XMLDriver {
 
     /**
      * Lightweight mutator method.
-     * @param raceSkill  Race session driver skill. It is mapped into a smaller range based on the "Opponent Skill Level" slider setting.
+     *
+     * @param raceSkill Race session driver skill. It is mapped into a smaller range based on the "Opponent Skill Level" slider setting.
      */
     public void setRaceSkill(String raceSkill) {
         this.raceSkill = raceSkill;
@@ -219,6 +227,7 @@ final class XMLDriver {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Qualification Session driver skill. Its completely independent of the race_skill.
      */
     @XmlElement(name = "qualifying_skill")
@@ -228,6 +237,7 @@ final class XMLDriver {
 
     /**
      * Lightweight mutator method.
+     *
      * @param qualifyingSkill Qualification Session driver skill. Its completely independent of the race_skill.
      */
     public void setQualifyingSkill(String qualifyingSkill) {
@@ -236,6 +246,7 @@ final class XMLDriver {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Driver aggression. It is scaled by the "Opponent Aggression".
      */
     @XmlElement(name = "aggression")
@@ -245,6 +256,7 @@ final class XMLDriver {
 
     /**
      * Lightweight mutator method.
+     *
      * @param aggression Driver aggression. It is scaled by the "Opponent Aggression".
      */
     public void setAggression(String aggression) {
@@ -253,6 +265,7 @@ final class XMLDriver {
 
     /**
      * Lightweight accessor method.
+     *
      * @return How much the driver will try to defend his position.
      */
     @XmlElement(name = "defending")
@@ -262,6 +275,7 @@ final class XMLDriver {
 
     /**
      * Lightweight mutator method.
+     *
      * @param defending How much the driver will try to defend his position.
      */
     public void setDefending(String defending) {
@@ -270,6 +284,7 @@ final class XMLDriver {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Lower stamina value means the driver loses more of his skill during the session.
      */
     @XmlElement(name = "stamina")
@@ -279,6 +294,7 @@ final class XMLDriver {
 
     /**
      * Lightweight mutator method.
+     *
      * @param stamina Lower stamina value means the driver loses more of his skill during the session.
      */
     public void setStamina(String stamina) {
@@ -287,6 +303,7 @@ final class XMLDriver {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Lower consistency value means the driver skill can be randomly reduced more.
      */
     @XmlElement(name = "consistency")
@@ -296,6 +313,7 @@ final class XMLDriver {
 
     /**
      * Lightweight mutator method.
+     *
      * @param consistency Lower consistency value means the driver skill can be randomly reduced more.
      */
     public void setConsistency(String consistency) {
@@ -304,6 +322,7 @@ final class XMLDriver {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Lower start_reactions value means the driver will take more time to react to the race green flag
      */
     @XmlElement(name = "start_reactions")
@@ -313,6 +332,7 @@ final class XMLDriver {
 
     /**
      * Lightweight mutator method.
+     *
      * @param startReactions Lower start_reactions value means the driver will take more time to react to the race green flag
      */
     public void setStartReactions(String startReactions) {
@@ -321,6 +341,7 @@ final class XMLDriver {
 
     /**
      * Lightweight accessor method.
+     *
      * @return How good the driver is on a wet track.
      */
     @XmlElement(name = "wet_skill")
@@ -330,6 +351,7 @@ final class XMLDriver {
 
     /**
      * Lightweight mutator method.
+     *
      * @param wetSkill How good the driver is on a wet track.
      */
     public void setWetSkill(String wetSkill) {
@@ -338,6 +360,7 @@ final class XMLDriver {
 
     /**
      * Lightweight accessor method.
+     *
      * @return How good the driver is in preventing tyre wear.
      */
     @XmlElement(name = "tyre_management")
@@ -347,6 +370,7 @@ final class XMLDriver {
 
     /**
      * Lightweight mutator method.
+     *
      * @param tyreManagement How good the driver is in preventing tyre wear.
      */
     public void setTyreManagement(String tyreManagement) {
@@ -355,6 +379,7 @@ final class XMLDriver {
 
     /**
      * Lightweight accessor method.
+     *
      * @return The higher the value, the more the AI will try to save fuel in some strategic situations instead of pushing.
      */
     @XmlElement(name = "fuel_management")
@@ -364,6 +389,7 @@ final class XMLDriver {
 
     /**
      * Lightweight mutator method.
+     *
      * @param fuelManagement The higher the value, the more the AI will try to save fuel in some strategic situations instead of pushing.
      */
     public void setFuelManagement(String fuelManagement) {
@@ -372,15 +398,17 @@ final class XMLDriver {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Drivers with high blue_flag_conceding will work harder to concede the position when under blue flag.
      */
-    @XmlElement (name = "blue_flag_conceding")
+    @XmlElement(name = "blue_flag_conceding")
     public String getBlueFlagConceding() {
         return blueFlagConceding;
     }
 
     /**
      * Lightweight mutator method.
+     *
      * @param blueFlagConceding Drivers with high blue_flag_conceding will work harder to concede the position when under blue flag.
      */
     public void setBlueFlagConceding(String blueFlagConceding) {
@@ -389,15 +417,17 @@ final class XMLDriver {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Drivers with high weather_tyre_changes are more likely to make pitstops for changing tyres when the track wetness state changes.
      */
-    @XmlElement (name = "weather_tyre_changes")
+    @XmlElement(name = "weather_tyre_changes")
     public String getWeatherTyreChanges() {
         return weatherTyreChanges;
     }
 
     /**
      * Lightweight mutator method.
+     *
      * @param weatherTyreChanges Drivers with high weather_tyre_changes are more likely to make pitstops for changing tyres when the track wetness state changes.
      */
     public void setWeatherTyreChanges(String weatherTyreChanges) {
@@ -406,15 +436,17 @@ final class XMLDriver {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Drivers with lower avoidance_of_mistakes value are more likely to make AI programmed mistakes
      */
-    @XmlElement (name = "avoidance_of_mistakes")
+    @XmlElement(name = "avoidance_of_mistakes")
     public String getAvoidanceOfMistakes() {
         return avoidanceOfMistakes;
     }
 
     /**
      * Lightweight mutator method.
+     *
      * @param avoidanceOfMistakes Drivers with lower avoidance_of_mistakes value are more likely to make AI programmed mistakes
      */
     public void setAvoidanceOfMistakes(String avoidanceOfMistakes) {
@@ -423,16 +455,18 @@ final class XMLDriver {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Drivers with lower value for avoidance_of_forced_mistakes will have their chances of mistakes increased when under pressure.
      */
-    @XmlElement (name = "avoidance_of_forced_mistakes")
+    @XmlElement(name = "avoidance_of_forced_mistakes")
     public String getAvoidanceOfForcedMistakes() {
         return avoidanceOfForcedMistakes;
     }
 
     /**
      * Lightweight mutator method.
-     * @param avoidanceOfForcedMistakes  Drivers with lower value for avoidance_of_forced_mistakes will have their chances of mistakes increased when under pressure.
+     *
+     * @param avoidanceOfForcedMistakes Drivers with lower value for avoidance_of_forced_mistakes will have their chances of mistakes increased when under pressure.
      */
     public void setAvoidanceOfForcedMistakes(String avoidanceOfForcedMistakes) {
         this.avoidanceOfForcedMistakes = avoidanceOfForcedMistakes;
@@ -440,15 +474,17 @@ final class XMLDriver {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Ratio between the lowest and highest possible reliability for the car/class in question.
      */
-    @XmlElement (name = "vehicle_reliability")
+    @XmlElement(name = "vehicle_reliability")
     public String getVehicleReliability() {
         return vehicleReliability;
     }
 
     /**
      * Lightweight mutator method.
+     *
      * @param vehicleReliability Ratio between the lowest and highest possible reliability for the car/class in question.
      */
     public void setVehicleReliability(String vehicleReliability) {
@@ -457,15 +493,17 @@ final class XMLDriver {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Comma separated list of track names.
      */
-    @XmlAttribute (name = "tracks")
+    @XmlAttribute(name = "tracks")
     public String getTracks() {
         return tracks;
     }
 
     /**
      * Lightweight mutator method.
+     *
      * @param tracks Comma separated list of track names.
      */
     public void setTracks(String tracks) {

@@ -30,33 +30,30 @@ import net.dragondelve.mabelfx.util.MabelUtil;
  * Stage controller that displays a list of items to the user on the stage provided to it. When the user presses the
  * okButton if a selection in the Table is made then it will return the item chosen if the selection in the table is
  * not made then it will return null instead.
+ *
  * @param <T> Class of object that will choose by the user from a list of objects.
  */
 public class FXObjectChooser<T> {
     /**
-     * TableView that displays the items chosen by the user.
-     */
-    private final TableView<T> tableView = new TableView<>();
-
-    /**
-     * Stage on which FXObjectChooser is going to be displayed.
-     */
-    private final Stage stage = new Stage();
-
-    /**
-     * Root pane of the scene of this stage. Used to apply the main css resource to the entire scene.
-     */
-    private final VBox rootPane = new VBox();
-
-    /**
      * Message that is displayed on the okButton if the selection is made in the table.
      */
     private static final String OK_MESSAGE = "Ok";
-
     /**
      * Message that is displayed in the table if the selection is not made in the table.
      */
     private static final String CANCEL_MESSAGE = "Cancel";
+    /**
+     * TableView that displays the items chosen by the user.
+     */
+    private final TableView<T> tableView = new TableView<>();
+    /**
+     * Stage on which FXObjectChooser is going to be displayed.
+     */
+    private final Stage stage = new Stage();
+    /**
+     * Root pane of the scene of this stage. Used to apply the main css resource to the entire scene.
+     */
+    private final VBox rootPane = new VBox();
 
     /**
      * Default constructor
@@ -93,6 +90,7 @@ public class FXObjectChooser<T> {
 
     /**
      * Creates a new instance of FXObjectChooser.
+     *
      * @param stylesheet pathname to a stylesheet that will be passed to the rootPane of this stage.
      */
     FXObjectChooser(String stylesheet) {
@@ -102,6 +100,7 @@ public class FXObjectChooser<T> {
 
     /**
      * Shows the FXObjectChooser to the user and waits until the user presses the okButton.
+     *
      * @return item selected by the user if the selection is made or null if the selection is not made.
      */
     public T showChooseDialog() {
@@ -116,6 +115,7 @@ public class FXObjectChooser<T> {
 
     /**
      * Sets items to the TableView should be called
+     *
      * @param items items to be displayed to the user, so he can make his selection
      */
     public void setItems(ObservableList<T> items) {
@@ -124,6 +124,7 @@ public class FXObjectChooser<T> {
 
     /**
      * Lightweight accessor method.
+     *
      * @return tableView that displays the list of items to the user.
      */
     public TableView<T> getTableView() {
@@ -132,6 +133,7 @@ public class FXObjectChooser<T> {
 
     /**
      * Initializes the stage on which FXObjectChooser is going to be displayed to a given Window
+     *
      * @param owner Owner of FXObjectChooser's stage.
      */
     public void initOwner(Window owner) {

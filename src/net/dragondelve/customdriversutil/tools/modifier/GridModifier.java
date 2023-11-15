@@ -35,7 +35,8 @@ public class GridModifier {
 
     /**
      * Creates a new instance of GridModifier
-     * @param settings Settings that encapsulate the grid and properties that have to be modified with the ModifierAction given.
+     *
+     * @param settings       Settings that encapsulate the grid and properties that have to be modified with the ModifierAction given.
      * @param modifierAction Action that will be performed on all properties when performModifications is called.
      */
     public GridModifier(ModifierSettings settings, ModifierAction modifierAction) {
@@ -56,7 +57,7 @@ public class GridModifier {
             grid.forEach(driver -> values.add(driver.getRaceSkill()));
             if (SmartAction.class.isAssignableFrom(modifierAction.getClass()))
                 ((SmartAction) modifierAction).analyzeValues(values);
-            for(int i = 0; i < values.size(); i++) {
+            for (int i = 0; i < values.size(); i++) {
                 grid.get(i).raceSkillProperty().set(modifierAction.performAction(values.get(i)));
             }
         }
@@ -66,7 +67,7 @@ public class GridModifier {
             grid.forEach(driver -> values.add(driver.getQualifyingSkill()));
             if (SmartAction.class.isAssignableFrom(modifierAction.getClass()))
                 ((SmartAction) modifierAction).analyzeValues(values);
-            for(int i = 0; i < values.size(); i++) {
+            for (int i = 0; i < values.size(); i++) {
                 grid.get(i).qualifyingSkillProperty().set(modifierAction.performAction(values.get(i)));
             }
         }
@@ -76,7 +77,7 @@ public class GridModifier {
             grid.forEach(driver -> values.add(driver.getAggression()));
             if (SmartAction.class.isAssignableFrom(modifierAction.getClass()))
                 ((SmartAction) modifierAction).analyzeValues(values);
-            for(int i = 0; i < values.size(); i++) {
+            for (int i = 0; i < values.size(); i++) {
                 grid.get(i).aggressionProperty().set(modifierAction.performAction(values.get(i)));
             }
         }
@@ -86,7 +87,7 @@ public class GridModifier {
             grid.forEach(driver -> values.add(driver.getDefending()));
             if (SmartAction.class.isAssignableFrom(modifierAction.getClass()))
                 ((SmartAction) modifierAction).analyzeValues(values);
-            for(int i = 0; i < values.size(); i++) {
+            for (int i = 0; i < values.size(); i++) {
                 grid.get(i).defendingProperty().set(modifierAction.performAction(values.get(i)));
             }
         }
@@ -96,7 +97,7 @@ public class GridModifier {
             grid.forEach(driver -> values.add(driver.getStamina()));
             if (SmartAction.class.isAssignableFrom(modifierAction.getClass()))
                 ((SmartAction) modifierAction).analyzeValues(values);
-            for(int i = 0; i < values.size(); i++) {
+            for (int i = 0; i < values.size(); i++) {
                 grid.get(i).staminaProperty().set(modifierAction.performAction(values.get(i)));
             }
         }
@@ -106,7 +107,7 @@ public class GridModifier {
             grid.forEach(driver -> values.add(driver.getConsistency()));
             if (SmartAction.class.isAssignableFrom(modifierAction.getClass()))
                 ((SmartAction) modifierAction).analyzeValues(values);
-            for(int i = 0; i < values.size(); i++) {
+            for (int i = 0; i < values.size(); i++) {
                 grid.get(i).consistencyProperty().set(modifierAction.performAction(values.get(i)));
             }
         }
@@ -116,7 +117,7 @@ public class GridModifier {
             grid.forEach(driver -> values.add(driver.getStartReactions()));
             if (SmartAction.class.isAssignableFrom(modifierAction.getClass()))
                 ((SmartAction) modifierAction).analyzeValues(values);
-            for(int i = 0; i < values.size(); i++) {
+            for (int i = 0; i < values.size(); i++) {
                 grid.get(i).startReactionsProperty().set(modifierAction.performAction(values.get(i)));
             }
         }
@@ -126,7 +127,7 @@ public class GridModifier {
             grid.forEach(driver -> values.add(driver.getWetSkill()));
             if (SmartAction.class.isAssignableFrom(modifierAction.getClass()))
                 ((SmartAction) modifierAction).analyzeValues(values);
-            for(int i = 0; i < values.size(); i++) {
+            for (int i = 0; i < values.size(); i++) {
                 grid.get(i).wetSkillProperty().set(modifierAction.performAction(values.get(i)));
             }
         }
@@ -136,7 +137,7 @@ public class GridModifier {
             grid.forEach(driver -> values.add(driver.getTyreManagement()));
             if (SmartAction.class.isAssignableFrom(modifierAction.getClass()))
                 ((SmartAction) modifierAction).analyzeValues(values);
-            for(int i = 0; i < values.size(); i++) {
+            for (int i = 0; i < values.size(); i++) {
                 grid.get(i).tyreManagementProperty().set(modifierAction.performAction(values.get(i)));
             }
         }
@@ -146,7 +147,7 @@ public class GridModifier {
             grid.forEach(driver -> values.add(driver.getFuelManagement()));
             if (SmartAction.class.isAssignableFrom(modifierAction.getClass()))
                 ((SmartAction) modifierAction).analyzeValues(values);
-            for(int i = 0; i < values.size(); i++) {
+            for (int i = 0; i < values.size(); i++) {
                 grid.get(i).fuelManagementProperty().set(modifierAction.performAction(values.get(i)));
             }
         }
@@ -156,7 +157,7 @@ public class GridModifier {
             grid.forEach(driver -> values.add(driver.getBlueFlagConceding()));
             if (SmartAction.class.isAssignableFrom(modifierAction.getClass()))
                 ((SmartAction) modifierAction).analyzeValues(values);
-            for(int i = 0; i < values.size(); i++) {
+            for (int i = 0; i < values.size(); i++) {
                 grid.get(i).blueFlagConcedingProperty().set(modifierAction.performAction(values.get(i)));
             }
         }
@@ -166,7 +167,7 @@ public class GridModifier {
             grid.forEach(driver -> values.add(driver.getWeatherTyreChange()));
             if (SmartAction.class.isAssignableFrom(modifierAction.getClass()))
                 ((SmartAction) modifierAction).analyzeValues(values);
-            for(int i = 0; i < values.size(); i++) {
+            for (int i = 0; i < values.size(); i++) {
                 grid.get(i).weatherTyreChangeProperty().set(modifierAction.performAction(values.get(i)));
             }
         }
@@ -176,7 +177,7 @@ public class GridModifier {
             grid.forEach(driver -> values.add(driver.getAvoidanceOfMistakes()));
             if (SmartAction.class.isAssignableFrom(modifierAction.getClass()))
                 ((SmartAction) modifierAction).analyzeValues(values);
-            for(int i = 0; i < values.size(); i++) {
+            for (int i = 0; i < values.size(); i++) {
                 grid.get(i).avoidanceOfMistakesProperty().set(modifierAction.performAction(values.get(i)));
             }
         }
@@ -186,7 +187,7 @@ public class GridModifier {
             grid.forEach(driver -> values.add(driver.getAvoidanceOfForcedMistakes()));
             if (SmartAction.class.isAssignableFrom(modifierAction.getClass()))
                 ((SmartAction) modifierAction).analyzeValues(values);
-            for(int i = 0; i < values.size(); i++) {
+            for (int i = 0; i < values.size(); i++) {
                 grid.get(i).avoidanceOfForcedMistakesProperty().set(modifierAction.performAction(values.get(i)));
             }
         }
@@ -196,7 +197,7 @@ public class GridModifier {
             grid.forEach(driver -> values.add(driver.getVehicleReliability()));
             if (SmartAction.class.isAssignableFrom(modifierAction.getClass()))
                 ((SmartAction) modifierAction).analyzeValues(values);
-            for(int i = 0; i < values.size(); i++) {
+            for (int i = 0; i < values.size(); i++) {
                 grid.get(i).vehicleReliabilityProperty().set(modifierAction.performAction(values.get(i)));
             }
         }

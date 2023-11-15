@@ -27,6 +27,7 @@ public class BringCloserCeilingAction extends FloorCeilingAction {
 
     /**
      * Creates a new instance of BringCloserCeilingAction.
+     *
      * @param modificationValue Value from 0.0 to 1.0 that is used as a percentage value of modification.
      */
     public BringCloserCeilingAction(double modificationValue) {
@@ -35,12 +36,13 @@ public class BringCloserCeilingAction extends FloorCeilingAction {
 
     /**
      * Brings the value closer to the ceiling by a percent modification value.
+     *
      * @param driverProperty value to be modified.
      * @return modified value.
      */
     @Override
     public double performAction(double driverProperty) {
         double delta = ceiling - floor;
-        return  driverProperty + ((ceiling - driverProperty) / delta) * (delta * modificationValue * 0.5);
+        return driverProperty + ((ceiling - driverProperty) / delta) * (delta * modificationValue * 0.5);
     }
 }

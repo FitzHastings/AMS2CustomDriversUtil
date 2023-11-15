@@ -38,8 +38,114 @@ import java.util.stream.Collectors;
 public class XMLGridImporter implements GridImporter {
 
     /**
+     * Loads a Vehicle Class only from an XML Grid assigning all livery names to the grid setting its name and xmlname to
+     * the name of the file.
+     *
+     * @param file File that contains the xmlGrid.
+     * @return new Vehicle Class that was used to create this XMLGrid.
+     */
+    public static VehicleClass importVehicleClassFromXMLGrid(File file) {
+        XMLGrid xmlGrid = loadXMLGrid(file);
+        if (xmlGrid != null)
+            return xmlGrid.generateVehicleClass(file.getName().substring(0, file.getName().length() - 4), file.getName().substring(0, file.getName().length() - 4));
+        else
+            return null;
+    }
+
+    /**
+     * Unmarshals xml grid from a given file.
+     *
+     * @param file File that contains XMLGrid formatted with XML.
+     * @return New instance of XMLGrid.
+     */
+    private static XMLGrid loadXMLGrid(File file) {
+        return parseXMLGrid(preParseFile(file));
+    }
+
+    /**
+     * Unmarshals xml grid from a given input stream.
+     *
+     * @param stream inputStream that contains XMLGrid formatted with XML.
+     * @return New instance of XMLGrid.
+     */
+    private static XMLGrid loadXMLGrid(InputStream stream) {
+        return parseXMLGrid(preParseInputStream(stream));
+    }
+
+    /**
+     * Parses the xml grid from a given pre-Parsed String containing the XML grid.
+     *
+     * @param xml xml grid pre-parsed to remove weird discrepancies between AMS2's loader and JAXB unmarshaller
+     * @return new Instance of XMLGrid loaded from the String.
+     */
+    private static XMLGrid parseXMLGrid(String xml) {
+        try {
+            DDUtil.DEFAULT_LOGGER.log(Level.FINE, "XML Grid loading initiated from String");
+            JAXBContext context = JAXBContext.newInstance(XMLGrid.class);
+            Unmarshaller unmarshaller = context.createUnmarshaller();
+            XMLGrid xmlGrid = (XMLGrid) unmarshaller.unmarshal(new StringReader(xml));
+            DDUtil.DEFAULT_LOGGER.log(Level.FINE, "XML Grid loading successful from String");
+            return xmlGrid;
+        } catch (JAXBException e) {
+            e.printStackTrace();
+            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "XML Grid loading failed from from String");
+            return null;
+        }
+    }
+
+    /**
+     * Removes things from the XML file that are technically not allowed but AMS2 will ignore and still load the file
+     * For example comments containing multiple --- and multiple xml header declarations.
+     *
+     * @param inputStream InputStream that contains the xml grid.
+     * @return String containing the XMLGrid
+     */
+    private static String preParseInputStream(InputStream inputStream) {
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
+            StringBuilder stringBuilder = new StringBuilder();
+            char[] buffer = new char[10];
+            while (bufferedReader.read(buffer) != -1) {
+                stringBuilder.append(new String(buffer));
+                buffer = new char[10];
+            }
+            bufferedReader.close();
+
+            //Fixes dropped characters at the beginning of the stream
+            String xml = stringBuilder.toString().trim().replaceFirst("^([\\W]+)<", "<");
+            //Removes any comments left in the xml
+            xml = xml.replaceAll("<!--[\\s\\S]*?-->", "");
+            //Removes redundant xml header declarations (don't ask, there are sometimes 2 headers in the same file
+            xml = xml.replaceAll("<\\?xml.*\\?>", "");
+            //Adding a fixed header after all other headers have been removed.
+            return "<?xml version=\"1.0\" encoding=\"UTF-8\"?> " + xml;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    /**
+     * Removes things from the XML file that are technically not allowed but AMS2 will ignore and still load the file
+     * For example comments containing multiple --- and multiple xml header declarations.
+     *
+     * @param file File that contains the xml grid.
+     * @return String containing the XMLGrid
+     */
+    private static String preParseFile(File file) {
+        try {
+            return preParseInputStream(new FileInputStream(file));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
      * Imports a grid from a given File. If the File contains a valid XML formatted with AMS2 XML representation of Custom AI it will return a Grid.
      * This will not set the correct Class for the grid. This should be handled elsewhere.
+     *
      * @param file An XML file formatted with AMS2 XML representation of Custom AI.
      * @return New instance of a Grid from the source, or null if the import has failed.
      */
@@ -54,6 +160,7 @@ public class XMLGridImporter implements GridImporter {
 
     /**
      * Imports a grid from a given input stream.
+     *
      * @param inputStream an input stream that contains the Grid in an xml format;
      * @return New instance of a Grid from the source, or null if the import has failed.
      */
@@ -66,11 +173,11 @@ public class XMLGridImporter implements GridImporter {
             return null;
     }
 
-
     /**
      * Imports a grid from a given File and generates a new VehicleClass if a vehicle class is not present in the given
      * VehicleClassLibrary. This will set the VehicleClass of Grid.
-     * @param file a file that contains the Grid formatted to XML.
+     *
+     * @param file    a file that contains the Grid formatted to XML.
      * @param library Vehicle Class Library that is meant to contain the newly loaded VehicleClass.
      * @return New instance of a Grid from the source, or null if the import has failed.
      */
@@ -86,21 +193,8 @@ public class XMLGridImporter implements GridImporter {
     }
 
     /**
-     * Loads a Vehicle Class only from an XML Grid assigning all livery names to the grid setting its name and xmlname to
-     * the name of the file.
-     * @param file File that contains the xmlGrid.
-     * @return new Vehicle Class that was used to create this XMLGrid.
-     */
-    public static VehicleClass importVehicleClassFromXMLGrid(File file) {
-        XMLGrid xmlGrid = loadXMLGrid(file);
-        if (xmlGrid != null)
-            return xmlGrid.generateVehicleClass(file.getName().substring(0, file.getName().length() - 4), file.getName().substring(0, file.getName().length() - 4));
-        else
-            return null;
-    }
-
-    /**
      * Coverts a given XMLGrid to a Grid.
+     *
      * @param xmlGrid given XML Grid.
      * @return new instance of Grid from XMLGrid.
      */
@@ -109,15 +203,15 @@ public class XMLGridImporter implements GridImporter {
             return null;
 
         Grid grid = new Grid();
-        xmlGrid.getXmlDrivers().forEach(xmlDriver-> {
+        xmlGrid.getXmlDrivers().forEach(xmlDriver -> {
             if (xmlDriver.getTracks() != null)
                 return;
-            
+
             Driver driver = new Driver();
-            
+
             if (xmlDriver.getLiveryName() != null)
                 driver.liveryNameProperty().set(xmlDriver.getLiveryName());
-            
+
             importBaseProperties(xmlDriver, driver);
             grid.getDrivers().add(driver);
         });
@@ -129,7 +223,7 @@ public class XMLGridImporter implements GridImporter {
             TrackOverride override = new TrackOverride();
             List<String> stringTracks = Arrays.asList(xmlDriver.getTracks().split(","));
             List<Track> tracks = new ArrayList<>();
-            stringTracks.forEach(stringTrack-> {
+            stringTracks.forEach(stringTrack -> {
                 Track track = LibraryManager.getInstance().getTrackLibrary().findTrackWithXmlName(stringTrack);
                 if (track != null)
                     tracks.add(track);
@@ -152,45 +246,8 @@ public class XMLGridImporter implements GridImporter {
     }
 
     /**
-     * Unmarshals xml grid from a given file.
-     * @param file File that contains XMLGrid formatted with XML.
-     * @return New instance of XMLGrid.
-     */
-    private static XMLGrid loadXMLGrid(File file) {
-        return parseXMLGrid(preParseFile(file));
-    }
-
-    /**
-     * Unmarshals xml grid from a given input stream.
-     * @param stream inputStream that contains XMLGrid formatted with XML.
-     * @return New instance of XMLGrid.
-     */
-    private static XMLGrid loadXMLGrid(InputStream stream) {
-        return parseXMLGrid(preParseInputStream(stream));
-    }
-
-    /**
-     * Parses the xml grid from a given pre-Parsed String containing the XML grid.
-     * @param xml xml grid pre-parsed to remove weird discrepancies between AMS2's loader and JAXB unmarshaller
-     * @return new Instance of XMLGrid loaded from the String.
-     */
-    private static XMLGrid parseXMLGrid(String xml) {
-        try {
-            DDUtil.DEFAULT_LOGGER.log(Level.FINE, "XML Grid loading initiated from String");
-            JAXBContext context = JAXBContext.newInstance(XMLGrid.class);
-            Unmarshaller unmarshaller = context.createUnmarshaller();
-            XMLGrid xmlGrid = (XMLGrid) unmarshaller.unmarshal(new StringReader(xml));
-            DDUtil.DEFAULT_LOGGER.log(Level.FINE, "XML Grid loading successful from String");
-            return xmlGrid;
-        } catch (JAXBException e) {
-            e.printStackTrace();
-            DDUtil.DEFAULT_LOGGER.log(Level.WARNING, "XML Grid loading failed from from String");
-            return null;
-        }
-    }
-
-    /**
      * Imports the base properties shared between the track specific overrides and driver overrides.
+     *
      * @param source Source XML driver, whose fields will be used to set the base properties.
      * @param target Target whose properties are going to be set. Should be either a Driver or a TrackOverride.
      */
@@ -296,53 +353,6 @@ public class XMLGridImporter implements GridImporter {
             target.getOverrideFlags().overrideVehicleReliabilityProperty().set(true);
         } else
             target.getOverrideFlags().overrideVehicleReliabilityProperty().set(false);
-    }
-
-    /**
-     * Removes things from the XML file that are technically not allowed but AMS2 will ignore and still load the file
-     * For example comments containing multiple --- and multiple xml header declarations.
-     * @param inputStream InputStream that contains the xml grid.
-     * @return String containing the XMLGrid
-     */
-    private static String preParseInputStream(InputStream inputStream) {
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
-            StringBuilder stringBuilder = new StringBuilder();
-            char[] buffer = new char[10];
-            while (bufferedReader.read(buffer) != -1) {
-                stringBuilder.append(new String(buffer));
-                buffer = new char[10];
-            }
-            bufferedReader.close();
-
-            //Fixes dropped characters at the beginning of the stream
-            String xml = stringBuilder.toString().trim().replaceFirst("^([\\W]+)<","<");
-            //Removes any comments left in the xml
-            xml = xml.replaceAll("<!--[\\s\\S]*?-->", "");
-            //Removes redundant xml header declarations (don't ask, there are sometimes 2 headers in the same file
-            xml = xml.replaceAll("<\\?xml.*\\?>", "");
-            //Adding a fixed header after all other headers have been removed.
-            return "<?xml version=\"1.0\" encoding=\"UTF-8\"?> " + xml;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return null;
-    }
-
-    /**
-     * Removes things from the XML file that are technically not allowed but AMS2 will ignore and still load the file
-     * For example comments containing multiple --- and multiple xml header declarations.
-     * @param file File that contains the xml grid.
-     * @return String containing the XMLGrid
-     */
-    private static String preParseFile(File file) {
-        try {
-            return preParseInputStream(new FileInputStream(file));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
 }

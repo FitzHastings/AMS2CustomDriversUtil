@@ -25,6 +25,7 @@ public class DecreaseFlatAction implements ModifierAction {
 
     /**
      * Creates a new instance of DecreaseFlatAction
+     *
      * @param decreaseAmount A flat amount by which all properties of all drivers in grid should be decreased.
      */
     public DecreaseFlatAction(double decreaseAmount) {
@@ -33,6 +34,7 @@ public class DecreaseFlatAction implements ModifierAction {
 
     /**
      * Decreases a given driver's property by a fixed amount.
+     *
      * @param driverProperty value to be modified.
      * @return modified value. If modified value is smaller than 0.0 then it returns 0.0 instead.
      */

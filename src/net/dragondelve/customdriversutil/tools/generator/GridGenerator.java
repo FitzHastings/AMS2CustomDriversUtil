@@ -48,6 +48,7 @@ public class GridGenerator {
     /**
      * Creates a new instance of GridGenerator. If this constructor is used grids created with generateGrid() method will
      * not contain any values as ValueGenerator is not provided.
+     *
      * @param settings Settings that dictate the desired grid that is generated when the generateGrid method is called.
      */
     public GridGenerator(GeneratorSettings settings) {
@@ -57,7 +58,8 @@ public class GridGenerator {
 
     /**
      * Creates a new instance of GridGenerator.
-     * @param settings Settings that dictate the desired grid that is generated when the generateGrid method is called.
+     *
+     * @param settings  Settings that dictate the desired grid that is generated when the generateGrid method is called.
      * @param generator ValueGenerator used in generation of values for each driver in the grid.
      */
     public GridGenerator(GeneratorSettings settings, ValueGenerator generator) {
@@ -67,6 +69,7 @@ public class GridGenerator {
 
     /**
      * Generates a new Grid for the class set in GeneratorSettings using the ValueGenerator if one is provided.
+     *
      * @return Newly generated grid.
      */
     public Grid generateNewGrid() {
@@ -84,7 +87,7 @@ public class GridGenerator {
 
             if (settings.isFromLiveryNames()) {
                 String liveryName = driver.getLiveryName();
-                driver.nameProperty().set("drv" + (i+1) + liveryName.substring(liveryName.length()-8));
+                driver.nameProperty().set("drv" + (i + 1) + liveryName.substring(liveryName.length() - 8));
                 driver.countryProperty().set("GBR");
             } else if (settings.isUseNAMeS()) {
                 if (namesSource != null) {
@@ -93,7 +96,7 @@ public class GridGenerator {
                         driver.nameProperty().set(name.getName());
                         driver.countryProperty().set(name.getCountry());
                     } catch (NoSuchElementException e) {
-                        DDUtil.DEFAULT_LOGGER.log(Level.SEVERE, "No such Livery in NAMeS: " + driver.getLiveryName() );
+                        DDUtil.DEFAULT_LOGGER.log(Level.SEVERE, "No such Livery in NAMeS: " + driver.getLiveryName());
                         driver.countryProperty().set("GBR");
                     }
 
@@ -148,7 +151,7 @@ public class GridGenerator {
 
             ObservableList<Track> ovals = LibraryManager.getInstance().getTrackLibrary().getTracks().filtered(Track::isOval);
 
-            for(Driver driver : grid.getDrivers()) {
+            for (Driver driver : grid.getDrivers()) {
                 TrackOverride trackOverride = new TrackOverride();
                 trackOverride.setOverrideFlags(Configurator.getInstance().getConfiguration().getDefaultTrackOverrideFlags());
                 double newRaceSkill = ((maxRaceSkill - driver.getRaceSkill()) / delta) * (delta * 0.5) + driver.getRaceSkill();

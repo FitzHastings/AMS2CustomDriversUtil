@@ -26,7 +26,7 @@ import java.util.List;
  * Represents an entire grid of drivers and track overrides as described by AMS2 Developers here:
  * <a href="https://forum.reizastudios.com/threads/information-for-customizing-ai-drivers-in-ams2-v1-3.21758/">AMS2 Reiza Forums</a>
  */
-@XmlRootElement (name = "custom_ai_drivers")
+@XmlRootElement(name = "custom_ai_drivers")
 final class XMLGrid {
 
     /**
@@ -36,15 +36,17 @@ final class XMLGrid {
 
     /**
      * Lightweight Accessor Method.
+     *
      * @return List of all drivers and track overrides in the grid in their XML form.
      */
-    @XmlElement(name="driver")
+    @XmlElement(name = "driver")
     public List<XMLDriver> getXmlDrivers() {
         return xmlDrivers;
     }
 
     /**
      * Lightweight Mutator Method.
+     *
      * @param xmlDrivers List of all drivers and track overrides in the grid in their XML form.
      */
     public void setXmlDrivers(List<XMLDriver> xmlDrivers) {
@@ -53,7 +55,8 @@ final class XMLGrid {
 
     /**
      * Generates a new VehicleClass for this XMLGrid. It includes all
-     * @param name new VehicleClass's name.
+     *
+     * @param name    new VehicleClass's name.
      * @param xmlName new VehicleCLass's xmlName.
      * @return new VehicleClass with liveries from this grid.
      */
@@ -62,7 +65,7 @@ final class XMLGrid {
         vehicleClass.setName(name);
         vehicleClass.setXmlName(xmlName);
         vehicleClass.setModded(true);
-        xmlDrivers.stream().filter(xmlDriver -> xmlDriver.getTracks() == null).forEach(e->vehicleClass.getLiveryNames().add(e.getLiveryName()));
+        xmlDrivers.stream().filter(xmlDriver -> xmlDriver.getTracks() == null).forEach(e -> vehicleClass.getLiveryNames().add(e.getLiveryName()));
         return vehicleClass;
     }
 }

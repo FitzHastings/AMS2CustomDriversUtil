@@ -15,13 +15,14 @@
 package net.dragondelve.mabelfx.button;
 
 import net.dragondelve.mabelfx.util.MabelUtil;
+
 import java.util.logging.Level;
 
 /**
  * Button that maximizes the stage that is provided to it on action if it isn't maximized already.
  * If the stage provided is already maximized it unmaximizes it.
  */
-public class MaximizeButton extends StageControlButton{
+public class MaximizeButton extends StageControlButton {
 
     /**
      * Initializes the behaviour of the button.
@@ -30,8 +31,8 @@ public class MaximizeButton extends StageControlButton{
      */
     @Override
     protected void initBehaviour() {
-        this.setOnAction(e-> {
-            if(stage != null)
+        this.setOnAction(e -> {
+            if (stage != null)
                 stage.setMaximized(!stage.isMaximized());
             else {
                 MabelUtil.DEFAULT_LOGGER.log(Level.WARNING, "MaximizeButton attempted to maximize a stage that was equal to null.");

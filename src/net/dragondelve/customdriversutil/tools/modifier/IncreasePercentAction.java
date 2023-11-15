@@ -26,6 +26,7 @@ public class IncreasePercentAction implements ModifierAction {
 
     /**
      * Creates new instance of IncreasePercentAction
+     *
      * @param percentValue Value from 0.0 to 1.0 that is used as a percentage value of modification.
      */
     public IncreasePercentAction(double percentValue) {
@@ -34,6 +35,7 @@ public class IncreasePercentAction implements ModifierAction {
 
     /**
      * Increases a given driver's property by a percent value.
+     *
      * @param driverProperty value to be modified.
      * @return Modified value. If modified value exceeds 1.0 then it returns 1.0 instead.
      */

@@ -18,7 +18,7 @@ package net.dragondelve.customdriversutil.tools.modifier;
  * Action that reduces the gap in properties by a percent value.
  * This action brings all values closer to the floor.
  */
-public class BringCloserFloorAction  extends FloorCeilingAction {
+public class BringCloserFloorAction extends FloorCeilingAction {
 
     /**
      * Value from 0.0 to 1.0 that is used as a percentage value of modification.
@@ -27,6 +27,7 @@ public class BringCloserFloorAction  extends FloorCeilingAction {
 
     /**
      * Creates a new instance of BringCloserFloorAction
+     *
      * @param modificationValue Value from 0.0 to 1.0 that is used as a percentage value of modification.
      */
     public BringCloserFloorAction(double modificationValue) {
@@ -35,15 +36,16 @@ public class BringCloserFloorAction  extends FloorCeilingAction {
 
     /**
      * Brings the value closer to the floor by a percent modification value.
+     *
      * @param driverProperty value to be modified.
      * @return modified value.
      */
     @Override
     public double performAction(double driverProperty) {
         double delta = ceiling - floor;
-        System.out.print("Original: "+driverProperty);
-        double newProperty =  driverProperty + ((floor - driverProperty) / delta) * (delta * modificationValue * 0.5);
-        System.out.println(" Modified: "+newProperty);
+        System.out.print("Original: " + driverProperty);
+        double newProperty = driverProperty + ((floor - driverProperty) / delta) * (delta * modificationValue * 0.5);
+        System.out.println(" Modified: " + newProperty);
         return newProperty;
     }
 }

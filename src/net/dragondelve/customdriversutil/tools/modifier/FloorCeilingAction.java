@@ -32,6 +32,7 @@ abstract class FloorCeilingAction implements SmartAction {
 
     /**
      * Analuzes the given list of values to find the floor (minimum value) and ceiling (maximum value)
+     *
      * @param modifiedValues List of values that are going to be modified by this action.
      */
     @Override

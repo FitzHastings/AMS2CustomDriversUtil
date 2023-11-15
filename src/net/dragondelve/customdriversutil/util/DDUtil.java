@@ -48,9 +48,10 @@ public class DDUtil {
     public static final String WARNING_CSS_RESOURCE = "css/EraconstasWarning.css";
 
     public static final Image MAIN_ICON_IMAGE = new Image(Objects.requireNonNull(CustomDriverUtilMain.class.getClassLoader().getResourceAsStream("img/AMS2CDU.png")));
-    public static final Image BANNER_IMAGE =new Image(Objects.requireNonNull(CustomDriverUtilMain.class.getClassLoader().getResourceAsStream("img/CDUBANNER.png")));
+    public static final Image BANNER_IMAGE = new Image(Objects.requireNonNull(CustomDriverUtilMain.class.getClassLoader().getResourceAsStream("img/CDUBANNER.png")));
     public static final Image LARGE_ICON_IMAGE = new Image(Objects.requireNonNull(CustomDriverUtilMain.class.getClassLoader().getResourceAsStream("img/AMS2CDUL.png")));
-
+    private final static DDUtil instance = new DDUtil();
+    public static int DECIMAL_POINT_CONSTANT = 2;
     public URL TRACK_EDITOR_FXML_URL = MabelUtil.toURL(TRACK_EDITOR_FXML_PATHNAME);
     public URL VEHICLE_CLASS_EDITOR_FXML_URL = MabelUtil.toURL(VEHICLE_CLASS_EDITOR_FXML_PATHNAME);
     public URL DRIVER_EDITOR_FXML_URL = MabelUtil.toURL(DRIVER_EDITOR_FXML_PATHNAME);
@@ -62,18 +63,14 @@ public class DDUtil {
     public URL CUSTOM_GRID_WELCOME_FXML_URL = MabelUtil.toURL(CUSTOM_GRID_WELCOME_FXML_PATHNAME);
     public URL MASS_MODIFY_TOOL_FXML_URL = MabelUtil.toURL(MASS_MODIFY_TOOL_FXML_PATHNAME);
 
-    public static int DECIMAL_POINT_CONSTANT = 2;
-
-    private final static DDUtil instance = new DDUtil();
-
-    public static DDUtil getInstance() {
-        return instance;
-    }
-
     /**
      * Private Constructor. It is used to make this class non-instantiable. Attempts to form URLs to all FXML files.
      */
     private DDUtil() {
         super();
+    }
+
+    public static DDUtil getInstance() {
+        return instance;
     }
 }

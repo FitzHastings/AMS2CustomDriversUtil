@@ -30,6 +30,7 @@ public class ModifierSettings extends OverrideFlags {
 
     /**
      * Creates a new instance of ModifierSettings.
+     *
      * @param grid List of drivers who need to be modified.
      */
     public ModifierSettings(List<? extends DriverBase> grid) {
@@ -38,6 +39,7 @@ public class ModifierSettings extends OverrideFlags {
 
     /**
      * Lightweight accessor method.
+     *
      * @return List of drivers who need to be modified.
      */
     public List<? extends DriverBase> getGrid() {

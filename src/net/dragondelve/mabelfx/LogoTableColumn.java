@@ -23,6 +23,7 @@ import javafx.scene.image.ImageView;
 
 /**
  * a JavaFX TableColumn that displays an image for each row that corresponds to pathname of this cell's String value
+ *
  * @param <S> Class of an object that is displayed in the TableView
  */
 public class LogoTableColumn<S> extends TableColumn<S, String> {
@@ -34,54 +35,6 @@ public class LogoTableColumn<S> extends TableColumn<S, String> {
     private final DoubleProperty imageWidthProperty = new SimpleDoubleProperty(DEFAULT_IMAGE_WIDTH);
 
     /**
-     * Lightweight accessor method
-     * @return image height property
-     */
-    DoubleProperty ImageHeightProperty() {
-        return imageHeightProperty;
-    }
-
-    /**
-     * Lightweight accessor method
-     * @return image width property
-     */
-    DoubleProperty ImageWidthProperty() {
-        return imageWidthProperty;
-    }
-
-    /**
-     * Lightweight accessor method
-     * @return numeric value of imageHeightProperty
-     */
-    public Double getImageHeight() {
-        return imageHeightProperty.get();
-    }
-
-    /**
-     * Lightweight accessor method
-     * @return numeric value of imageWidthProperty
-     */
-    public Double getImageWidth() {
-        return imageWidthProperty.get();
-    }
-
-    /**
-     * Lightweight mutator method
-     * @param height desired height of the image inside the column
-     */
-    public void setImageHeight(Double height) {
-        imageHeightProperty.setValue(height);
-    }
-
-    /**
-     * Lightweight mutator method
-     * @param width desired width of the image inside the column
-     */
-    public void setImageWidth(Double width) {
-        imageWidthProperty.setValue(width);
-    }
-
-    /**
      * Default constructor. does not initialize the column title.
      */
     public LogoTableColumn() {
@@ -91,11 +44,66 @@ public class LogoTableColumn<S> extends TableColumn<S, String> {
 
     /**
      * Constructor that initializes the column title
+     *
      * @param name title text of the column.
      */
     public LogoTableColumn(String name) {
         super(name);
         initializeCells();
+    }
+
+    /**
+     * Lightweight accessor method
+     *
+     * @return image height property
+     */
+    DoubleProperty ImageHeightProperty() {
+        return imageHeightProperty;
+    }
+
+    /**
+     * Lightweight accessor method
+     *
+     * @return image width property
+     */
+    DoubleProperty ImageWidthProperty() {
+        return imageWidthProperty;
+    }
+
+    /**
+     * Lightweight accessor method
+     *
+     * @return numeric value of imageHeightProperty
+     */
+    public Double getImageHeight() {
+        return imageHeightProperty.get();
+    }
+
+    /**
+     * Lightweight mutator method
+     *
+     * @param height desired height of the image inside the column
+     */
+    public void setImageHeight(Double height) {
+        imageHeightProperty.setValue(height);
+    }
+
+    /**
+     * Lightweight accessor method
+     *
+     * @return numeric value of imageWidthProperty
+     */
+    public Double getImageWidth() {
+        return imageWidthProperty.get();
+    }
+
+    /**
+     * Lightweight mutator method
+     *
+     * @param width desired width of the image inside the column
+     */
+    public void setImageWidth(Double width) {
+        imageWidthProperty.setValue(width);
     }
 
     /**

@@ -15,12 +15,13 @@
 package net.dragondelve.mabelfx.button;
 
 import net.dragondelve.mabelfx.util.MabelUtil;
+
 import java.util.logging.Level;
 
 /**
  * Button that iconifies (minimizes) the stage that is provided to it on action.
  */
-public class MinimizeButton extends StageControlButton{
+public class MinimizeButton extends StageControlButton {
 
     /**
      * Initializes the behaviour of the button.
@@ -29,10 +30,10 @@ public class MinimizeButton extends StageControlButton{
     @Override
     protected void initBehaviour() {
         this.setOnAction(e -> {
-        if(stage != null)
-            stage.setIconified(true);
-        else
-            MabelUtil.DEFAULT_LOGGER.log(Level.WARNING, "MinimizeButton attempted to minimize a stage that was equal to null.");
+            if (stage != null)
+                stage.setIconified(true);
+            else
+                MabelUtil.DEFAULT_LOGGER.log(Level.WARNING, "MinimizeButton attempted to minimize a stage that was equal to null.");
         });
     }
 }
