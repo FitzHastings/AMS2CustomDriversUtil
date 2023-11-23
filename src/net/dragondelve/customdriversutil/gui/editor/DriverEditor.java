@@ -21,7 +21,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import net.dragondelve.customdriversutil.gui.CustomDriverUtilController;
 import net.dragondelve.customdriversutil.model.Driver;
 import net.dragondelve.customdriversutil.model.DriverBase;
@@ -357,7 +356,7 @@ public class DriverEditor {
 
     /**
      * Initialize method initializes all the visual elements before they are displayed by the user.
-     * initialize method is called automatically by JavaFX when this editor is being loaded from XML.
+     * Initialize JavaFX calls this method automatically when this editor is being loaded from XML.
      */
     @FXML
     public void initialize() {
@@ -438,31 +437,27 @@ public class DriverEditor {
         chooseLiveryHBox.getCheckBox().selectedProperty().set(Configurator.getInstance().getConfiguration().isChooseLivery());
 
 
-        chooseLiveryHBox.getComboBox().setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
-            @Override
-            public ListCell<String> call(ListView<String> param) {
-                crutchListView = param;
-                final ListCell<String> cell = new ListCell<String>() {
-                    @Override
-                    public void updateItem(String item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (item != null) {
-                            setText(item);
-                            if (item.equals(chooseLiveryHBox.getComboBox().getValue())) {
-                                this.getStylesheets().clear();
-                                this.getStylesheets().add(DDUtil.ATTENTION_CSS_RESOURCE);
-                            } else if (!liveryValidator.validate(item)) {
-                                this.getStylesheets().clear();
-                                this.getStylesheets().add(DDUtil.WARNING_CSS_RESOURCE);
-                            } else
-                                this.getStylesheets().clear();
-                        } else {
-                            setText(null);
-                        }
+        chooseLiveryHBox.getComboBox().setCellFactory((param) -> {
+            crutchListView = param;
+            return new ListCell<String>() {
+                @Override
+                public void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (item != null) {
+                        setText(item);
+                        if (item.equals(chooseLiveryHBox.getComboBox().getValue())) {
+                            this.getStylesheets().clear();
+                            this.getStylesheets().add(DDUtil.ATTENTION_CSS_RESOURCE);
+                        } else if (!liveryValidator.validate(item)) {
+                            this.getStylesheets().clear();
+                            this.getStylesheets().add(DDUtil.WARNING_CSS_RESOURCE);
+                        } else
+                            this.getStylesheets().clear();
+                    } else {
+                        setText(null);
                     }
-                };
-                return cell;
-            }
+                }
+            };
         });
 
         //TODO: Remove this crutch call to refresh.
