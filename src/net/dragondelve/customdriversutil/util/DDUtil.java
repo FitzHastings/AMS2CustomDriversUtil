@@ -40,6 +40,7 @@ public class DDUtil {
     public static final String NEW_GRID_WIZARD_FXML_PATHNAME = "fxml/NewGridWizard.fxml";
     public static final String CUSTOM_GRID_WELCOME_FXML_PATHNAME = "fxml/CustomGridWelcome.fxml";
     public static final String MASS_MODIFY_TOOL_FXML_PATHNAME = "fxml/MassModifyTool.fxml";
+    public static final String CLASSIC_GRID_GENERATOR_FXML_PATHNAME = "fxml/generator/ClassicGridGenerator.fxml";
     public static final String TRACK_LIBRARY_DEFAULT_PATHNAME = "library/tracks/ams2_tracks_1.5.0.2.xml";
     public static final String VEHICLE_CLASS_LIBRARY_DEFAULT_PATHNAME = "library/vehicles/ams2_vehicles_1.5.0.2.xml";
 
@@ -62,6 +63,7 @@ public class DDUtil {
     public final URL NEW_GRID_WIZARD_FXML_URL = MabelUtil.toURL(NEW_GRID_WIZARD_FXML_PATHNAME);
     public final URL CUSTOM_GRID_WELCOME_FXML_URL = MabelUtil.toURL(CUSTOM_GRID_WELCOME_FXML_PATHNAME);
     public final URL MASS_MODIFY_TOOL_FXML_URL = MabelUtil.toURL(MASS_MODIFY_TOOL_FXML_PATHNAME);
+    public final URL CLASSIC_GRID_GENERATOR_FXML_URL = MabelUtil.toURL(CLASSIC_GRID_GENERATOR_FXML_PATHNAME);
 
     /**
      * Private Constructor. It is used to make this class non-instantiable. Attempts to form URLs to all FXML files.
