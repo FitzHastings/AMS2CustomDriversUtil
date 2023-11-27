@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Copyright 2023 Prokhor Kalinin
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License. -->
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="593.0"
+      prefWidth="918.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <HBox alignment="CENTER_LEFT" spacing="10.0">
+        <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+        </padding>
+        <ChoiceBox fx:id="vehicleClassChoiceBox" prefWidth="300.0"/>
+        <Label styleClass="prompt-label" text="Choose Vehicle Class"/>
+    </HBox>
+    <Accordion>
+      <panes>
+          <TitledPane animated="false" text="Options">
+              <VBox prefWidth="100.0">
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                      <padding>
+                          <Insets bottom="10.0" left="10.0" right="10.0"/>
+                      </padding>
+                      <Label styleClass="prompt-label" prefWidth="130.0" text="Minimum Race Skill"/>
+                      <Slider fx:id="maxRaceSkillSlider" HBox.hgrow="ALWAYS"/>
+                      <TextField fx:id="maxRaceSkillTextField"/>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                      <padding>
+                          <Insets bottom="10.0" left="10.0" right="10.0"/>
+                      </padding>
+                      <Label styleClass="prompt-label" prefWidth="130.0" text="Random Noize"/>
+                      <Slider fx:id="noizeSlider" HBox.hgrow="ALWAYS"/>
+                      <TextField fx:id="noizeTextField"/>
+                  </HBox>
+              </VBox>
+          </TitledPane>
+          <TitledPane animated="false" text="Advanced Options">
+              <VBox prefWidth="100.0">
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                      <padding>
+                          <Insets bottom="10.0" left="10.0" right="10.0"/>
+                      </padding>
+                      <CheckBox fx:id="limitAgressionCheckBox" mnemonicParsing="false"
+                                text="Limit Agression"/>
+                      <Label styleClass="prompt-label" text="Limit to:"/>
+                      <TextField fx:id="limitToTextFIeld"/>
+                  </HBox>
+                  <HBox fx:id="bindQualiCheckBox" alignment="CENTER_LEFT" spacing="10.0">
+                      <padding>
+                          <Insets bottom="10.0" left="10.0" right="10.0"/>
+                      </padding>
+                      <CheckBox mnemonicParsing="false" text="Bind Quali &amp; Race Skills"/>
+                      <CheckBox fx:id="qualiExceedsRaceCheckbox" mnemonicParsing="false"
+                                text="Quali Skill &gt; Race Skill"/>
+                      <Label styleClass="prompt-label" text="By This Amount"/>
+                      <TextField fx:id="exceedsByTextField"/>
+                  </HBox>
+              </VBox>
+          </TitledPane>
+      </panes>
+    </Accordion>
+    <HBox VBox.vgrow="ALWAYS">
+        <TableView fx:id="driversTable" prefHeight="403.0" prefWidth="846.0" HBox.hgrow="ALWAYS"
+                   VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="nameColumn" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="338.0"
+                             text="Name"/>
+                <TableColumn fx:id="liveryColumn" maxWidth="1.7976931348623157E308" minWidth="150.0"
+                             prefWidth="414.0" text="Livery"/>
+                <TableColumn fx:id="pointsColumn" maxWidth="1.7976931348623157E308" minWidth="64.0" prefWidth="64.0"
+                             text="Points"/>
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+        </TableView>
+        <ToolBar minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="407.0"
+                 prefWidth="83.0" HBox.hgrow="NEVER">
+            <Button fx:id="addButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="+"/>
+            <Button fx:id="removeButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="-"/>
+        </ToolBar>
+    </HBox>
+</VBox>

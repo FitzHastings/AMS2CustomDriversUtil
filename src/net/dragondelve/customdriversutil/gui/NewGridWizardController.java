@@ -16,14 +16,17 @@ package net.dragondelve.customdriversutil.gui;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import net.dragondelve.customdriversutil.gui.generator.ClassicGridGeneratorController;
+import net.dragondelve.customdriversutil.gui.generator.TableGridGeneratorController;
 import net.dragondelve.customdriversutil.model.Grid;
 import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.TooltipUtil;
@@ -71,10 +74,15 @@ public class NewGridWizardController implements StageController {
     @FXML
     private Label namesNoticeLabel;
     /**
-     *
+     * Main HBox that contains the classic grid generator or the table grid generator depending on the checkbox selection.
      */
     @FXML
     private HBox mainHBox;
+    /**
+     * CheckBox that determines if the user wants to generate a grid using the table grid generator.
+     */
+    @FXML
+    private CheckBox tableGridCheckBox;
     /**
      * Stage on which this StageController is going to be displayed.
      */
@@ -84,6 +92,20 @@ public class NewGridWizardController implements StageController {
      * Controller for the classic grid generator.
      */
     private ClassicGridGeneratorController classicGridGenerator;
+
+    /**
+     * Root Node of the classic grid generator.
+     */
+    private Node classigGridGeneratorRootNode;
+
+    /**
+     * Controller for the table grid generator.
+     */
+    private TableGridGeneratorController tableGridGenerator;
+    /**
+     * Root Node of the table grid generator.
+     */
+    private Node tableGridGeneratorRootNode;
 
     /**
      * Initialize method initializes all the visual elements before they are displayed by the user.
@@ -98,7 +120,18 @@ public class NewGridWizardController implements StageController {
         FXMLLoader loader = new FXMLLoader(DDUtil.getInstance().CLASSIC_GRID_GENERATOR_FXML_URL);
         loader.setController(classicGridGenerator);
         try {
-            mainHBox.getChildren().add(loader.load());
+            classigGridGeneratorRootNode = loader.load();
+            mainHBox.getChildren().add(classigGridGeneratorRootNode);
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new IllegalStateException("Failed to load ClassicGridGenerator.fxml");
+        }
+
+        FXMLLoader tableLoader = new FXMLLoader(DDUtil.getInstance().TABLE_GRID_GENERATOR_FXML_URL);
+        loader.setController(tableGridGenerator);
+        try {
+            tableGridGeneratorRootNode = tableLoader.load();
+            HBox.setHgrow(tableGridGeneratorRootNode, Priority.ALWAYS);
         } catch (IOException e) {
             e.printStackTrace();
             throw new IllegalStateException("Failed to load ClassicGridGenerator.fxml");
@@ -109,15 +142,31 @@ public class NewGridWizardController implements StageController {
         emptyGridCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if (Boolean.TRUE.equals(newValue)) {
                 generateGridCheckBox.selectedProperty().set(false);
+                tableGridCheckBox.selectedProperty().set(false);
                 generateButton.setDisable(false);
+                mainHBox.getChildren().remove(mainHBox.getChildren().size()-1);
+                mainHBox.getChildren().add(new HBox());
             }
         });
 
         generateGridCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if (Boolean.TRUE.equals(newValue)) {
                 emptyGridCheckBox.selectedProperty().set(false);
+                tableGridCheckBox.selectedProperty().set(false);
                 if (!classicGridGenerator.isGoodToGenerate())
                     generateButton.setDisable(true);
+                mainHBox.getChildren().remove(mainHBox.getChildren().size()-1);
+                mainHBox.getChildren().add(classigGridGeneratorRootNode);
+            }
+        });
+
+        tableGridCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (Boolean.TRUE.equals(newValue)) {
+                emptyGridCheckBox.selectedProperty().set(false);
+                generateGridCheckBox.selectedProperty().set(false);
+                generateButton.setDisable(true);
+                mainHBox.getChildren().remove(mainHBox.getChildren().size()-1);
+                mainHBox.getChildren().add(tableGridGeneratorRootNode);
             }
         });
 
