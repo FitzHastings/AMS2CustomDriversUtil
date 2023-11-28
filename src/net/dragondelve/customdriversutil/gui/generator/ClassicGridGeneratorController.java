@@ -27,7 +27,7 @@ import net.dragondelve.customdriversutil.util.TooltipUtil;
 /**
  * Controller for fxml/ClassicGridGenerator.fxml
  */
-public class ClassicGridGeneratorController {
+public class ClassicGridGeneratorController implements GeneratorController {
     /**
      * Minimum value of all driver properties to be used in generating the new Grid.
      */
@@ -171,25 +171,6 @@ public class ClassicGridGeneratorController {
     }
 
     /**
-     * Method that determines if the classic grid generator will generate a valid grid with the current settings
-     *
-     * @return true if the grid can be generated, false otherwise.
-     */
-    public boolean isGoodToGenerate() {
-        return vehicleClassChoiceBox.valueProperty().get() != null;
-    }
-
-    /**
-     * Lightweight accessor method.
-     *
-     * @return RadioButton that determines if drivers in the generated grid should have names borrowed from NAMeS resources if such
-     * resources are available for this VehicleClass.
-     */
-    public RadioButton getUseNAMeSRadioButton() {
-        return useNAMeSRadioButton;
-    }
-
-    /**
      * Initialize method initializes all the visual elements before they are displayed by the user.
      * Initialize JavaFX calls method automatically when this editor is being loaded from XML.
      */
@@ -279,6 +260,26 @@ public class ClassicGridGeneratorController {
     }
 
     /**
+     * Method that determines if the classic grid generator will generate a valid grid with the current settings
+     *
+     * @return true if the grid can be generated, false otherwise.
+     */
+    public boolean isGoodToGenerate() {
+        return vehicleClassChoiceBox.valueProperty().get() != null;
+    }
+
+    /**
+     * Lightweight accessor method.
+     *
+     * @return RadioButton that determines if drivers in the generated grid should have names borrowed from NAMeS resources if such
+     * resources are available for this VehicleClass.
+     */
+    public RadioButton getUseNAMeSRadioButton() {
+        return useNAMeSRadioButton;
+    }
+
+
+    /**
      * Method that is called when the user clicks the generateButton.
      *
      * @return GridGenerator that is created using the settings provided by the user.
@@ -308,6 +309,9 @@ public class ClassicGridGeneratorController {
         return new GridGenerator(generatorSettings, generator);
     }
 
+    /**
+     * Method that initializes all the tooltips for the visual elements.
+     */
     private void initTooltips() {
         reduceGapOnOvalsCheckBox.setTooltip(TooltipUtil.REDUCE_GAP_ON_OVALS_TOOLTIP);
 

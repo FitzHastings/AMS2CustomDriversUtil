@@ -22,62 +22,66 @@ import javafx.util.converter.IntegerStringConverter;
 import net.dragondelve.customdriversutil.model.Driver;
 import net.dragondelve.customdriversutil.model.Grid;
 import net.dragondelve.customdriversutil.model.VehicleClass;
+import net.dragondelve.customdriversutil.tools.generator.GeneratorSettings;
+import net.dragondelve.customdriversutil.tools.generator.GridGenerator;
+import net.dragondelve.customdriversutil.tools.generator.TableGenerator;
 import net.dragondelve.customdriversutil.util.LibraryManager;
 
-public class TableGridGeneratorController {
+/**
+ * Controller for fxml/TableGridGenerator.fxml
+ */
+public class TableGridGeneratorController implements GeneratorController {
     @FXML
     private Slider maxRaceSkillSlider;
-
     @FXML
     private TextField maxRaceSkillTextField;
-
     @FXML
     private CheckBox limitAgressionCheckBox;
-
     @FXML
     private Button addButton;
-
     @FXML
     private ChoiceBox<VehicleClass> vehicleClassChoiceBox;
-
     @FXML
     private TextField limitToTextFIeld;
-
     @FXML
     private Slider noizeSlider;
-
     @FXML
     private CheckBox qualiExceedsRaceCheckbox;
-
     @FXML
     private TableView<Driver> driversTable;
-
     @FXML
     private TextField exceedsByTextField;
-
     @FXML
     private TableColumn<Driver, String> nameColumn;
-
     @FXML
     private CheckBox bindQualiCheckBox;
-
     @FXML
     private HBox mainHBox;
-
     @FXML
     private TableColumn<Driver, Integer> pointsColumn;
-
     @FXML
     private Button removeButton;
-
     @FXML
     private TextField noizeTextField;
-
     private Grid pregeneratedGrid = new Grid();
+    private GeneratorSettings settings = new GeneratorSettings();
+    private Button generateButton;
 
+    /**
+     * Constructor for TableGridGeneratorController. Creates a new instance of TableGridGeneratorController.
+     *
+     * @param generateButton Button that is used to actuate generation of the grid..
+     */
+    public TableGridGeneratorController(Button generateButton) {
+        this.generateButton = generateButton;
+    }
+
+    /**
+     * Initializes the controller class. This method is automatically called
+     * after the fxml file has been loaded.
+     */
     @FXML
     public void initialize() {
-
         removeButton.setDisable(true);
         driversTable.setItems(pregeneratedGrid.getDrivers());
         nameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -99,26 +103,50 @@ public class TableGridGeneratorController {
         vehicleClassChoiceBox.setItems(LibraryManager.getInstance().getVehicleClassLibrary().getVehicleClasses());
         vehicleClassChoiceBox.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
-                    if (newValue != null) {
+                    boolean newValueIsNull = newValue == null;
+                    if (!newValueIsNull)
                         pregeneratedGrid.setVehicleClass(newValue);
-                        mainHBox.setDisable(false);
-                    } else {
-                        mainHBox.setDisable(true);
-                    }
+                    mainHBox.setDisable(newValueIsNull);
+                    generateButton.setDisable(newValueIsNull);
                 }
         );
 
         mainHBox.setDisable(true);
     }
 
+    /**
+     * Creates a new instance of GridGenerator with the settings.
+     * @return GridGenerator that is going to be used to generate a new grid.
+     */
+    @Override
+    public GridGenerator createGridGenerator() {
+        return new GridGenerator(settings, new TableGenerator(pregeneratedGrid));
+    }
+
+    /**
+     * Checks if the current settings can be used to generate a valid grid.
+     *
+     * @return true if the settings are good to generate a new grid, false otherwise.
+     */
+    @Override
+    public boolean isGoodToGenerate() {
+        return vehicleClassChoiceBox.getSelectionModel().getSelectedItem() != null && !pregeneratedGrid.getDrivers().isEmpty();
+    }
+
+    /**
+     * Action that is performed by the addButton. Adds a new driver to the grid.
+     */
     private void addDriverAction() {
         Driver driver = new Driver();
-        driver.nameProperty().set("");
+        driver.nameProperty().set("New Driver");
         driver.liveryNameProperty().set("Not Assigned");
         driver.pointsProperty().set(0);
         pregeneratedGrid.getDrivers().add(driver);
     }
 
+    /**
+     * Action that is performed by the removeButton. Removes the selected driver from the grid.
+     */
     private void removeDriverAction() {
         if (driversTable.getSelectionModel().getSelectedItem() != null)
             pregeneratedGrid.getDrivers().remove(driversTable.getSelectionModel().getSelectedItem());
