@@ -16,9 +16,13 @@ package net.dragondelve.customdriversutil.gui.generator;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.HBox;
+import javafx.util.converter.IntegerStringConverter;
 import net.dragondelve.customdriversutil.model.Driver;
+import net.dragondelve.customdriversutil.model.Grid;
 import net.dragondelve.customdriversutil.model.VehicleClass;
+import net.dragondelve.customdriversutil.util.LibraryManager;
 
 public class TableGridGeneratorController {
     @FXML
@@ -55,7 +59,10 @@ public class TableGridGeneratorController {
     private TableColumn<Driver, String> nameColumn;
 
     @FXML
-    private HBox bindQualiCheckBox;
+    private CheckBox bindQualiCheckBox;
+
+    @FXML
+    private HBox mainHBox;
 
     @FXML
     private TableColumn<Driver, Integer> pointsColumn;
@@ -64,13 +71,56 @@ public class TableGridGeneratorController {
     private Button removeButton;
 
     @FXML
-    private TableColumn<Driver, String> liveryColumn;
-
-    @FXML
     private TextField noizeTextField;
+
+    private Grid pregeneratedGrid = new Grid();
 
     @FXML
     public void initialize() {
 
+        removeButton.setDisable(true);
+        driversTable.setItems(pregeneratedGrid.getDrivers());
+        nameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        pointsColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+        pointsColumn.setCellValueFactory(cellData -> cellData.getValue().pointsProperty().asObject());
+
+        addButton.setOnAction(e -> addDriverAction());
+
+        driversTable.setEditable(true);
+        nameColumn.setEditable(true);
+        pointsColumn.setEditable(true);
+        removeButton.setOnAction(e -> removeDriverAction());
+
+        driversTable.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> removeButton.setDisable(newValue == null)
+        );
+
+        vehicleClassChoiceBox.setItems(LibraryManager.getInstance().getVehicleClassLibrary().getVehicleClasses());
+        vehicleClassChoiceBox.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        pregeneratedGrid.setVehicleClass(newValue);
+                        mainHBox.setDisable(false);
+                    } else {
+                        mainHBox.setDisable(true);
+                    }
+                }
+        );
+
+        mainHBox.setDisable(true);
+    }
+
+    private void addDriverAction() {
+        Driver driver = new Driver();
+        driver.nameProperty().set("");
+        driver.liveryNameProperty().set("Not Assigned");
+        driver.pointsProperty().set(0);
+        pregeneratedGrid.getDrivers().add(driver);
+    }
+
+    private void removeDriverAction() {
+        if (driversTable.getSelectionModel().getSelectedItem() != null)
+            pregeneratedGrid.getDrivers().remove(driversTable.getSelectionModel().getSelectedItem());
     }
 }

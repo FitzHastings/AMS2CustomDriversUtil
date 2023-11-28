@@ -36,16 +36,28 @@ limitations under the License. -->
                           <Insets bottom="10.0" left="10.0" right="10.0"/>
                       </padding>
                       <Label styleClass="prompt-label" prefWidth="130.0" text="Minimum Race Skill"/>
-                      <Slider fx:id="maxRaceSkillSlider" HBox.hgrow="ALWAYS"/>
-                      <TextField fx:id="maxRaceSkillTextField"/>
+                      <Slider fx:id="maxRaceSkillSlider" majorTickUnit="0.1" max="1.0" maxWidth="1.7976931348623157E308"
+                              minorTickCount="10" showTickLabels="true" showTickMarks="true" snapToTicks="true"
+                              HBox.hgrow="ALWAYS">
+                          <HBox.margin>
+                              <Insets top="20.0"/>
+                          </HBox.margin>
+                      </Slider>
+                      <TextField fx:id="maxRaceSkillTextField" prefWidth="55.0"/>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" spacing="10.0">
                       <padding>
                           <Insets bottom="10.0" left="10.0" right="10.0"/>
                       </padding>
                       <Label styleClass="prompt-label" prefWidth="130.0" text="Random Noize"/>
-                      <Slider fx:id="noizeSlider" HBox.hgrow="ALWAYS"/>
-                      <TextField fx:id="noizeTextField"/>
+                      <Slider fx:id="noizeSlider" majorTickUnit="0.1" max="1.0" maxWidth="1.7976931348623157E308"
+                              minorTickCount="10" showTickLabels="true" showTickMarks="true" snapToTicks="true"
+                              HBox.hgrow="ALWAYS">
+                          <HBox.margin>
+                              <Insets top="20.0"/>
+                          </HBox.margin>
+                      </Slider>
+                      <TextField fx:id="noizeTextField" prefWidth="55.0"/>
                   </HBox>
               </VBox>
           </TitledPane>
@@ -58,30 +70,28 @@ limitations under the License. -->
                       <CheckBox fx:id="limitAgressionCheckBox" mnemonicParsing="false"
                                 text="Limit Agression"/>
                       <Label styleClass="prompt-label" text="Limit to:"/>
-                      <TextField fx:id="limitToTextFIeld"/>
+                      <TextField fx:id="limitToTextFIeld" prefWidth="55.0"/>
                   </HBox>
-                  <HBox fx:id="bindQualiCheckBox" alignment="CENTER_LEFT" spacing="10.0">
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
                       <padding>
                           <Insets bottom="10.0" left="10.0" right="10.0"/>
                       </padding>
-                      <CheckBox mnemonicParsing="false" text="Bind Quali &amp; Race Skills"/>
+                      <CheckBox fx:id="bindQualiCheckBox" mnemonicParsing="false" text="Bind Quali &amp; Race Skills"/>
                       <CheckBox fx:id="qualiExceedsRaceCheckbox" mnemonicParsing="false"
                                 text="Quali Skill &gt; Race Skill"/>
                       <Label styleClass="prompt-label" text="By This Amount"/>
-                      <TextField fx:id="exceedsByTextField"/>
+                      <TextField fx:id="exceedsByTextField" prefWidth="55.0" />
                   </HBox>
               </VBox>
           </TitledPane>
       </panes>
     </Accordion>
-    <HBox VBox.vgrow="ALWAYS">
+    <HBox fx:id="mainHBox" VBox.vgrow="ALWAYS">
         <TableView fx:id="driversTable" prefHeight="403.0" prefWidth="846.0" HBox.hgrow="ALWAYS"
                    VBox.vgrow="ALWAYS">
             <columns>
                 <TableColumn fx:id="nameColumn" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="338.0"
                              text="Name"/>
-                <TableColumn fx:id="liveryColumn" maxWidth="1.7976931348623157E308" minWidth="150.0"
-                             prefWidth="414.0" text="Livery"/>
                 <TableColumn fx:id="pointsColumn" maxWidth="1.7976931348623157E308" minWidth="64.0" prefWidth="64.0"
                              text="Points"/>
             </columns>

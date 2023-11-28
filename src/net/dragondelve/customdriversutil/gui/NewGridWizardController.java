@@ -101,7 +101,7 @@ public class NewGridWizardController implements StageController {
     /**
      * Controller for the table grid generator.
      */
-    private TableGridGeneratorController tableGridGenerator;
+    private final TableGridGeneratorController tableGridGenerator = new TableGridGeneratorController();
     /**
      * Root Node of the table grid generator.
      */
@@ -128,7 +128,7 @@ public class NewGridWizardController implements StageController {
         }
 
         FXMLLoader tableLoader = new FXMLLoader(DDUtil.getInstance().TABLE_GRID_GENERATOR_FXML_URL);
-        loader.setController(tableGridGenerator);
+        tableLoader.setController(tableGridGenerator);
         try {
             tableGridGeneratorRootNode = tableLoader.load();
             HBox.setHgrow(tableGridGeneratorRootNode, Priority.ALWAYS);

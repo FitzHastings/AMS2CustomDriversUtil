@@ -14,6 +14,8 @@
 
 package net.dragondelve.customdriversutil.model;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -24,11 +26,17 @@ import javafx.collections.ObservableList;
  * <a href="https://forum.reizastudios.com/threads/information-for-customizing-ai-drivers-in-ams2-v1-3.21758/">Reiza AMS2Forums</a>
  * Stores Livery Name that is shared with its track specific overrides.
  */
-final public class Driver extends DriverBase {
+public final class Driver extends DriverBase {
     /**
      * In game name of the livery. Ths value determines to which car the custom AI values are going to be applied.
      */
     private final StringProperty liveryName = new SimpleStringProperty();
+
+    /**
+     * Points that the driver has This value is used to determine the driver's skill level when generating a grid with
+     * a table generator.
+     */
+    private final IntegerProperty points = new SimpleIntegerProperty();
 
     /**
      * List of all track specific overrides that this driver has.
@@ -62,5 +70,23 @@ final public class Driver extends DriverBase {
      */
     public ObservableList<TrackOverride> getTrackOverrides() {
         return trackOverrides;
+    }
+
+    /**
+     * Lightweight accessor method.
+     *
+     * @return Points that the driver has.
+     */
+    public int getPoints() {
+        return points.get();
+    }
+
+    /**
+     * Lightweight accessor method.
+     *
+     * @return Points that the driver has as a property.
+     */
+    public IntegerProperty pointsProperty() {
+        return points;
     }
 }
