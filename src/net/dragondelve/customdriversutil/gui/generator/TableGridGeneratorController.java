@@ -19,12 +19,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.HBox;
 import javafx.util.converter.IntegerStringConverter;
+import javafx.util.converter.NumberStringConverter;
 import net.dragondelve.customdriversutil.model.Driver;
 import net.dragondelve.customdriversutil.model.Grid;
 import net.dragondelve.customdriversutil.model.VehicleClass;
-import net.dragondelve.customdriversutil.tools.generator.GeneratorSettings;
-import net.dragondelve.customdriversutil.tools.generator.GridGenerator;
-import net.dragondelve.customdriversutil.tools.generator.TableGenerator;
+import net.dragondelve.customdriversutil.tools.generator.*;
 import net.dragondelve.customdriversutil.util.LibraryManager;
 
 /**
@@ -32,9 +31,9 @@ import net.dragondelve.customdriversutil.util.LibraryManager;
  */
 public class TableGridGeneratorController implements GeneratorController {
     @FXML
-    private Slider maxRaceSkillSlider;
+    private Slider minRaceSkillSlider;
     @FXML
-    private TextField maxRaceSkillTextField;
+    private TextField minRaceSkillTextField;
     @FXML
     private CheckBox limitAgressionCheckBox;
     @FXML
@@ -100,6 +99,20 @@ public class TableGridGeneratorController implements GeneratorController {
                 (observable, oldValue, newValue) -> removeButton.setDisable(newValue == null)
         );
 
+        qualiExceedsRaceCheckbox.disableProperty().bind(bindQualiCheckBox.selectedProperty().not());
+        exceedsByTextField.disableProperty().bind(qualiExceedsRaceCheckbox.selectedProperty().not());
+        limitToTextFIeld.disableProperty().bind(limitAgressionCheckBox.selectedProperty().not());
+
+
+        limitToTextFIeld.textProperty().bindBidirectional(settings.aggressionLimitProperty(), new NumberStringConverter());
+        limitAgressionCheckBox.selectedProperty().bindBidirectional(settings.limitAggressionProperty());
+        bindQualiCheckBox.selectedProperty().bindBidirectional(settings.bindQualiAndRaceSkillsProperty());
+
+        noizeTextField.textProperty().bind(noizeSlider.valueProperty().asString("%.2f"));
+        minRaceSkillTextField.textProperty().bind(minRaceSkillSlider.valueProperty().asString("%.2f"));
+        minRaceSkillTextField.setEditable(false);
+        noizeTextField.setEditable(false);
+
         vehicleClassChoiceBox.setItems(LibraryManager.getInstance().getVehicleClassLibrary().getVehicleClasses());
         vehicleClassChoiceBox.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
@@ -111,6 +124,7 @@ public class TableGridGeneratorController implements GeneratorController {
                 }
         );
 
+
         mainHBox.setDisable(true);
     }
 
@@ -120,7 +134,22 @@ public class TableGridGeneratorController implements GeneratorController {
      */
     @Override
     public GridGenerator createGridGenerator() {
-        return new GridGenerator(settings, new TableGenerator(pregeneratedGrid));
+        settings.setVehicleClass(vehicleClassChoiceBox.valueProperty().get());
+
+        settings.nDriversProperty().set(driversTable.getItems().size());
+
+        settings.useNAMeSProperty().set(false);
+        settings.fromLiveryNamesProperty().set(false);
+
+        ValueGenerator generator = new TableGenerator(pregeneratedGrid);
+
+        if (settings.getnDrivers() > settings.getVehicleClass().getLiveryNames().size())
+            settings.nDriversProperty().set(settings.getVehicleClass().getLiveryNames().size());
+
+        if (generator != null)
+            generator.setLimits(minRaceSkillSlider.getValue(), 1.0);
+
+        return new GridGenerator(settings, generator);
     }
 
     /**

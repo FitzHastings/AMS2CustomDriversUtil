@@ -95,4 +95,13 @@ public class RandomValueGenerator implements ValueGenerator {
             this.ceiling = ceiling;
         }
     }
+
+    /**
+     * Returns the default name of this driver if no name source was provided.
+     * @return "New Driver"
+     */
+    @Override
+    public String getName() {
+        return "New Driver";
+    }
 }

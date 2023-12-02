@@ -69,7 +69,7 @@ public class TableGenerator implements ValueGenerator {
     public void nexDriver() {
         currentDriver++;
         isRaceSkill = true;
-        if (currentDriver >= grid.getDrivers().size())
+        if (currentDriver > grid.getDrivers().size())
             throw new IllegalStateException("No more drivers in the grid");
     }
 
@@ -98,5 +98,14 @@ public class TableGenerator implements ValueGenerator {
     public void setLimits(double floor, double ceiling) {
         this.floor = floor;
         this.ceiling = ceiling;
+    }
+
+    /**
+     * returns the default name of this driver if no name source was provided.
+     * @return name of the current driver in the grid.
+     */
+    @Override
+    public String getName() {
+        return grid.getDrivers().get(currentDriver).getName();
     }
 }

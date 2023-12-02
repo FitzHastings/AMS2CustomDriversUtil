@@ -77,33 +77,37 @@ public class GridGenerator {
         grid.setVehicleClass(settings.getVehicleClass());
         int i = 0;
         Grid namesSource = null;
+        boolean noNames = false;
         if (settings.isUseNAMeS()) {
             namesSource = (new XMLGridImporter().importFromStream(CustomDriverUtilMain.class.getClassLoader().getResourceAsStream("NAMeS/" + settings.getVehicleClass().getXmlName() + ".xml")));
         }
         while (i < settings.getnDrivers()) {
             Driver driver = new Driver();
             driver.setOverrideFlags(Configurator.getInstance().getConfiguration().getDefaultDriverFlags());
-            driver.liveryNameProperty().set(settings.getVehicleClass().getLiveryNames().get(i));
 
             if (settings.isFromLiveryNames()) {
                 String liveryName = driver.getLiveryName();
                 driver.nameProperty().set("drv" + (i + 1) + liveryName.substring(liveryName.length() - 8));
                 driver.countryProperty().set("GBR");
+                driver.liveryNameProperty().set(settings.getVehicleClass().getLiveryNames().get(i));
             } else if (settings.isUseNAMeS()) {
                 if (namesSource != null) {
                     try {
                         Driver name = namesSource.getDrivers().filtered(d -> d.getLiveryName().equals(driver.getLiveryName())).stream().findFirst().get();
                         driver.nameProperty().set(name.getName());
                         driver.countryProperty().set(name.getCountry());
+                        driver.liveryNameProperty().set(settings.getVehicleClass().getLiveryNames().get(i));
                     } catch (NoSuchElementException e) {
                         DDUtil.DEFAULT_LOGGER.log(Level.SEVERE, "No such Livery in NAMeS: " + driver.getLiveryName());
                         driver.countryProperty().set("GBR");
                     }
-
                 } else {
                     driver.countryProperty().set("GBR");
                 }
 
+            } else {
+                noNames = true;
+                driver.countryProperty().set("GBR");
             }
 
             if (generator != null) {
@@ -118,6 +122,8 @@ public class GridGenerator {
                 else
                     driver.aggressionProperty().setValue(generator.nextValue());
 
+                if (noNames)
+                    driver.nameProperty().set(generator.getName());
                 driver.defendingProperty().set(generator.nextValue());
                 driver.staminaProperty().set(generator.nextValue());
                 driver.consistencyProperty().set(generator.nextValue());
