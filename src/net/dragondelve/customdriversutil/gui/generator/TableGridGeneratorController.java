@@ -103,10 +103,10 @@ public class TableGridGeneratorController implements GeneratorController {
         exceedsByTextField.disableProperty().bind(qualiExceedsRaceCheckbox.selectedProperty().not());
         limitToTextFIeld.disableProperty().bind(limitAgressionCheckBox.selectedProperty().not());
 
-
         limitToTextFIeld.textProperty().bindBidirectional(settings.aggressionLimitProperty(), new NumberStringConverter());
         limitAgressionCheckBox.selectedProperty().bindBidirectional(settings.limitAggressionProperty());
         bindQualiCheckBox.selectedProperty().bindBidirectional(settings.bindQualiAndRaceSkillsProperty());
+        exceedsByTextField.textProperty().bindBidirectional(settings.boundSkillsGapProperty(), new NumberStringConverter());
 
         noizeTextField.textProperty().bind(noizeSlider.valueProperty().asString("%.2f"));
         minRaceSkillTextField.textProperty().bind(minRaceSkillSlider.valueProperty().asString("%.2f"));
@@ -123,7 +123,13 @@ public class TableGridGeneratorController implements GeneratorController {
                     generateButton.setDisable(newValueIsNull);
                 }
         );
-
+        settings.aggressionLimitProperty().set(0.9);
+        settings.boundSkillsGapProperty().set(0.1);
+        minRaceSkillSlider.setValue(0.4);
+        noizeSlider.setValue(0.2);
+        limitAgressionCheckBox.selectedProperty().set(true);
+        bindQualiCheckBox.selectedProperty().set(true);
+        qualiExceedsRaceCheckbox.selectedProperty().set(true);
 
         mainHBox.setDisable(true);
     }
@@ -140,6 +146,9 @@ public class TableGridGeneratorController implements GeneratorController {
 
         settings.useNAMeSProperty().set(false);
         settings.fromLiveryNamesProperty().set(false);
+
+        if (!qualiExceedsRaceCheckbox.isSelected())
+            settings.boundSkillsGapProperty().set(0.0);
 
         ValueGenerator generator = new TableGenerator(pregeneratedGrid);
 
@@ -171,6 +180,7 @@ public class TableGridGeneratorController implements GeneratorController {
         driver.liveryNameProperty().set("Not Assigned");
         driver.pointsProperty().set(0);
         pregeneratedGrid.getDrivers().add(driver);
+        addButton.setDisable(pregeneratedGrid.getDrivers().size() >= vehicleClassChoiceBox.getSelectionModel().getSelectedItem().getLiveryNames().size());
     }
 
     /**
@@ -179,5 +189,6 @@ public class TableGridGeneratorController implements GeneratorController {
     private void removeDriverAction() {
         if (driversTable.getSelectionModel().getSelectedItem() != null)
             pregeneratedGrid.getDrivers().remove(driversTable.getSelectionModel().getSelectedItem());
+        addButton.setDisable(pregeneratedGrid.getDrivers().size() >= vehicleClassChoiceBox.getSelectionModel().getSelectedItem().getLiveryNames().size());
     }
 }
