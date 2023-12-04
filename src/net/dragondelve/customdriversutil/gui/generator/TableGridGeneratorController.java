@@ -25,6 +25,7 @@ import net.dragondelve.customdriversutil.model.Grid;
 import net.dragondelve.customdriversutil.model.VehicleClass;
 import net.dragondelve.customdriversutil.tools.generator.*;
 import net.dragondelve.customdriversutil.util.LibraryManager;
+import net.dragondelve.customdriversutil.util.TooltipUtil;
 
 /**
  * Controller for fxml/TableGridGenerator.fxml
@@ -62,9 +63,9 @@ public class TableGridGeneratorController implements GeneratorController {
     private Button removeButton;
     @FXML
     private TextField noizeTextField;
-    private Grid pregeneratedGrid = new Grid();
-    private GeneratorSettings settings = new GeneratorSettings();
-    private Button generateButton;
+    private final Grid pregeneratedGrid = new Grid();
+    private final GeneratorSettings settings = new GeneratorSettings();
+    private final Button generateButton;
 
     /**
      * Constructor for TableGridGeneratorController. Creates a new instance of TableGridGeneratorController.
@@ -106,6 +107,9 @@ public class TableGridGeneratorController implements GeneratorController {
         limitToTextFIeld.textProperty().bindBidirectional(settings.aggressionLimitProperty(), new NumberStringConverter());
         limitAgressionCheckBox.selectedProperty().bindBidirectional(settings.limitAggressionProperty());
         bindQualiCheckBox.selectedProperty().bindBidirectional(settings.bindQualiAndRaceSkillsProperty());
+        bindQualiCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (Boolean.FALSE.equals(newValue)) qualiExceedsRaceCheckbox.selectedProperty().set(false);
+        });
         exceedsByTextField.textProperty().bindBidirectional(settings.boundSkillsGapProperty(), new NumberStringConverter());
 
         noizeTextField.textProperty().bind(noizeSlider.valueProperty().asString("%.2f"));
@@ -132,6 +136,8 @@ public class TableGridGeneratorController implements GeneratorController {
         qualiExceedsRaceCheckbox.selectedProperty().set(true);
 
         mainHBox.setDisable(true);
+
+        initTooltips();
     }
 
     /**
@@ -141,23 +147,18 @@ public class TableGridGeneratorController implements GeneratorController {
     @Override
     public GridGenerator createGridGenerator() {
         settings.setVehicleClass(vehicleClassChoiceBox.valueProperty().get());
-
         settings.nDriversProperty().set(driversTable.getItems().size());
-
         settings.useNAMeSProperty().set(false);
         settings.fromLiveryNamesProperty().set(false);
 
         if (!qualiExceedsRaceCheckbox.isSelected())
             settings.boundSkillsGapProperty().set(0.0);
 
-        ValueGenerator generator = new TableGenerator(pregeneratedGrid);
-
         if (settings.getnDrivers() > settings.getVehicleClass().getLiveryNames().size())
             settings.nDriversProperty().set(settings.getVehicleClass().getLiveryNames().size());
 
-        if (generator != null)
-            generator.setLimits(minRaceSkillSlider.getValue(), 1.0);
-
+        ValueGenerator generator = new TableGenerator(pregeneratedGrid, noizeSlider.getValue());
+        generator.setLimits(minRaceSkillSlider.getValue(), 1.0);
         return new GridGenerator(settings, generator);
     }
 
@@ -190,5 +191,26 @@ public class TableGridGeneratorController implements GeneratorController {
         if (driversTable.getSelectionModel().getSelectedItem() != null)
             pregeneratedGrid.getDrivers().remove(driversTable.getSelectionModel().getSelectedItem());
         addButton.setDisable(pregeneratedGrid.getDrivers().size() >= vehicleClassChoiceBox.getSelectionModel().getSelectedItem().getLiveryNames().size());
+    }
+
+    /**
+     * Initializes the tooltips for the controls.
+     */
+    private void initTooltips() {
+        vehicleClassChoiceBox.setTooltip(TooltipUtil.CHOOSE_VEHICLE_CLASS_TOOLTIP);
+        noizeSlider.setTooltip(TooltipUtil.NOISE_TOOLTIP);
+        noizeTextField.setTooltip(TooltipUtil.NOISE_TOOLTIP);
+
+        minRaceSkillSlider.setTooltip(TooltipUtil.MIN_GENERATED_VALUE_TOOLTIP);
+        minRaceSkillSlider.setTooltip(TooltipUtil.MAX_GENERATED_VALUE_TOOLTIP);
+        limitAgressionCheckBox.setTooltip(TooltipUtil.LIMIT_AGGRESSION_TOOLTIP);
+        limitToTextFIeld.setTooltip(TooltipUtil.LIMIT_AGGRESSION_TO_TOOLTIP);
+
+        bindQualiCheckBox.setTooltip(TooltipUtil.BIND_QUALI_SKILL_TOOLTIP);
+        qualiExceedsRaceCheckbox.setTooltip(TooltipUtil.QUALI_SKILL_EXCEEDS_TOOLTIP);
+        exceedsByTextField.setTooltip(TooltipUtil.EXCEEDS_BY_AMOUNT_TOOLTIP);
+
+        addButton.setTooltip(TooltipUtil.ADD_DRIVER_TOOLTIP);
+        removeButton.setTooltip(TooltipUtil.REMOVE_DRIVER_TOOLTIP);
     }
 }

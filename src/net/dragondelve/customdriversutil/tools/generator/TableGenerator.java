@@ -51,12 +51,19 @@ public class TableGenerator implements ValueGenerator {
     private int currentDriver = 0;
 
     /**
+     * value ranging from 0.0 to 1.0 that determines what percentage of the values generated will be random,
+     */
+    private final double noise;
+
+    /**
      * Creates a new instance of TableGenerator
      *
      * @param pregeneratedGrid Grid that is used to generate values.
+     * @param noise Value ranging from 0.0 to 1.0 that determines what percentage of the values generated will be random,
      */
-    public TableGenerator(Grid pregeneratedGrid) {
+    public TableGenerator(Grid pregeneratedGrid, double noise) {
         this.grid = pregeneratedGrid;
+        this.noise = noise;
         grid.getDrivers().sort((o1, o2) -> o1.getPoints() > o2.getPoints() ? -1 : 1);
         this.minPoints = grid.getDrivers().get(grid.getDrivers().size() - 1).getPoints();
         this.maxPoints = grid.getDrivers().get(0).getPoints();
@@ -86,7 +93,11 @@ public class TableGenerator implements ValueGenerator {
         if (isRaceSkill) {
             isRaceSkill = false;
             return floor + range * weight;
-        } else return floor + range * weight - 0.1;
+        } else {
+            double noiseValue = Math.random() * noise;
+            double rangeValue = weight * (1 - noise);
+            return (noiseValue + rangeValue) * range + floor;
+        }
     }
 
     /**

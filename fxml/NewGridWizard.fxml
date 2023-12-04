@@ -33,7 +33,7 @@ limitations under the License. -->
             </HBox.margin>
             <CheckBox fx:id="emptyGridCheckBox" mnemonicParsing="false" text="Empty Grid"/>
             <CheckBox fx:id="generateGridCheckBox" mnemonicParsing="false" text="Generate Grid"/>
-            <CheckBox fx:id="tableGridCheckBox" mnemonicParsing="false" text="Table Generator"/>
+            <CheckBox fx:id="tableGridCheckBox" mnemonicParsing="false" text="From Table"/>
         </VBox>
         <Separator orientation="VERTICAL" prefHeight="200.0"/>
     </HBox>
