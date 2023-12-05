@@ -36,7 +36,6 @@ import java.util.stream.Collectors;
  * <a href="https://forum.reizastudios.com/threads/information-for-customizing-ai-drivers-in-ams2-v1-3.21758/">Reiza Studios Forum</a>
  */
 public class XMLGridImporter implements GridImporter {
-
     /**
      * Loads a Vehicle Class only from an XML Grid assigning all livery names to the grid setting its name and xmlname to
      * the name of the file.
