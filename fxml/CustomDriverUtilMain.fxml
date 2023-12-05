@@ -67,6 +67,7 @@ limitations under the License. -->
                    <MenuItem fx:id="editVehicleClassesItem" mnemonicParsing="false" text="Edit"/>
                    <MenuItem fx:id="exportVehicleClassesItem" mnemonicParsing="false" text="Export"/>
                    <MenuItem fx:id="importVehicleClassesItem" mnemonicParsing="false" text="Import"/>
+                   <MenuItem fx:id="fromLiveryOverrideItem" mnemonicParsing="false" text="From Livery Overrides"/>
                </Menu>
                <Menu mnemonicParsing="false" text="Drivers ">
                    <MenuItem fx:id="exportDriverLibraryItem" mnemonicParsing="false" text="Export"/>

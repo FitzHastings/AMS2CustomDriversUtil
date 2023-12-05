@@ -39,6 +39,7 @@ import net.dragondelve.customdriversutil.gui.editor.VehicleClassLibraryEditor;
 import net.dragondelve.customdriversutil.model.*;
 import net.dragondelve.customdriversutil.model.xml.XMLGridExporter;
 import net.dragondelve.customdriversutil.model.xml.XMLGridImporter;
+import net.dragondelve.customdriversutil.model.xml.XMLOverridesImporter;
 import net.dragondelve.customdriversutil.util.*;
 import net.dragondelve.mabelfx.StageController;
 import net.dragondelve.mabelfx.util.FXTableRefresher;
@@ -241,6 +242,11 @@ public class CustomDriverUtilController implements StageController {
     @FXML
     private Button editTrackOverrideButton;
     /**
+     * Menu Item that performs fromLiveryOverrideAction on action.
+     */
+    @FXML
+    private MenuItem fromLiveryOverrideItem;
+    /**
      * Stage on which this controller is displayed.
      * This is also the primaryStage in the Application's main method.
      */
@@ -286,6 +292,7 @@ public class CustomDriverUtilController implements StageController {
         editVehicleClassesItem.setOnAction(e -> editVehicleClassesAction());
         exportVehicleClassesItem.setOnAction(e -> exportVehicleClassesAction());
         importVehicleClassesItem.setOnAction(e -> importVehicleClassesAction());
+        fromLiveryOverrideItem.setOnAction(e -> fromLiveryOverrideAction());
 
         exportDriverLibraryItem.setOnAction(e -> exportDriverLibraryAction());
         importDriverLibraryItem.setOnAction(e -> importDriverLibraryAction());
@@ -675,6 +682,23 @@ public class CustomDriverUtilController implements StageController {
         File selectedFile = chooseFileToSave("Export Vehicle Class Library", "library/vehicles");
         if (selectedFile != null) {
             LibraryManager.getInstance().exportVehicleClassLibrary(selectedFile.getPath());
+        }
+    }
+
+    /**
+     * Action that is performed by fromLiveryOverrideItem.
+     * Opens a FileChooser with the *.xml extension filter, displays the FileChooser to the user and allows them to make
+     * a selection. When the FileChooser is closed if a file was selected it attempts to import a VehicleClass from
+     * the chosen file.
+     */
+    private void fromLiveryOverrideAction() {
+        File selectedFile = chooseFileToOpen("Import Livery Overrides", "/");
+        if (selectedFile != null) {
+            VehicleClass vehicleClass = new XMLOverridesImporter().importFromFile(selectedFile);
+            if (vehicleClass == null)
+                return;
+            LibraryManager.getInstance().getVehicleClassLibrary().getVehicleClasses().add(vehicleClass);
+            LibraryManager.getInstance().exportVehicleClassLibrary(Configurator.getInstance().getConfiguration().getVehicleClassLibraryPathname());
         }
     }
 

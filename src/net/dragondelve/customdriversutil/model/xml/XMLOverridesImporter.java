@@ -54,7 +54,7 @@ public class XMLOverridesImporter {
         for (XMLLiveryOverride liveryOverride : overrides.getLiveryOverrides()) {
             newClass.getLiveryNames().add(liveryOverride.getName());
         }
-        return new VehicleClass();
+        return newClass;
     }
 
     /**

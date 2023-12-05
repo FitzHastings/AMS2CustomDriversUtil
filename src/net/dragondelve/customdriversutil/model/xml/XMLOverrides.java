@@ -27,7 +27,6 @@ public class XMLOverrides {
     /**
      * List of livery overrides.
      */
-
     private List<XMLLiveryOverride> liveryOverrides = new ArrayList<>();
 
     /**
