@@ -697,8 +697,9 @@ public class CustomDriverUtilController implements StageController {
             VehicleClass vehicleClass = new XMLOverridesImporter().importFromFile(selectedFile);
             if (vehicleClass == null)
                 return;
-            LibraryManager.getInstance().getVehicleClassLibrary().getVehicleClasses().add(vehicleClass);
-            LibraryManager.getInstance().exportVehicleClassLibrary(Configurator.getInstance().getConfiguration().getVehicleClassLibraryPathname());
+            openEditor(DDUtil.getInstance().LIVERY_IMPORT_CONFIRM_FXML_URL, new LiveryImportConfirmController(vehicleClass), "Confirm Vehicle Class");
+            // LibraryManager.getInstance().getVehicleClassLibrary().getVehicleClasses().add(vehicleClass);
+            // LibraryManager.getInstance().exportVehicleClassLibrary(Configurator.getInstance().getConfiguration().getVehicleClassLibraryPathname());
         }
     }
 

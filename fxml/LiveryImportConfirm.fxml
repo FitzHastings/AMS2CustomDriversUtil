@@ -28,10 +28,10 @@ limitations under the License. -->
         <VBox.margin>
             <Insets left="10.0" right="10.0" top="10.0"/>
         </VBox.margin>
-        <Label text="Name"/>
+        <Label styleClass="prompt-label" text="Name"/>
         <TextField fx:id="nameTextField" HBox.hgrow="ALWAYS"/>
     </HBox>
-    <ListView fx:id="liveryNameListView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+    <ListView styleClass="normal-list-view" fx:id="liveryNameListView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
         <VBox.margin>
           <Insets left="10.0" right="10.0"/>
         </VBox.margin>
@@ -39,7 +39,7 @@ limitations under the License. -->
     <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0">
         <Button fx:id="importButton" mnemonicParsing="false" text="Import"/>
         <Button fx:id="cancelButton" mnemonicParsing="false" text="Cancel"/>
-        <Label text="0"/>
-        <Label text="Liveries imported:"/>
+        <Label styleClass="prompt-label" text="0"/>
+        <Label styleClass="prompt-label" text="Liveries imported:"/>
     </ToolBar>
 </VBox>
