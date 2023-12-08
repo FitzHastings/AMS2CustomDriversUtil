@@ -110,6 +110,7 @@ public class XMLGridImporter implements GridImporter {
             }
             bufferedReader.close();
 
+
             //Fixes dropped characters at the beginning of the stream
             String xml = stringBuilder.toString().trim().replaceFirst("^([\\W]+)<", "<");
             //Removes any comments left in the xml
