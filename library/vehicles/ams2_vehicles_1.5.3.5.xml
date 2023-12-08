@@ -27,6 +27,7 @@
                 <livery>Mobius Autosports #99</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Carrera Cup" xml_name="Carrera Cup">
             <liveries>
@@ -54,6 +55,7 @@
                 <livery>Porsche 911 GT3 Cup 3.8 #98</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Caterham 620R" xml_name="Cat620R">
             <liveries>
@@ -85,6 +87,7 @@
                 <livery>Caterham 620R - Chris Shire #26</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Caterham Academy" xml_name="Cat_Academy">
             <liveries>
@@ -114,6 +117,7 @@
                 <livery>Caterham Academy - Darin Phillips #99</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Caterham Superlight" xml_name="Cat_Superlight">
             <liveries>
@@ -145,6 +149,7 @@
                 <livery>Caterham Superlight #83 A.Nenes Skin</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Caterham Supersport" xml_name="Cat_Supersport">
             <liveries>
@@ -174,6 +179,7 @@
                 <livery>Caterham Supersport #98</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Copa Classic B" xml_name="CopaClassicB">
             <liveries>
@@ -219,6 +225,7 @@
                 <livery>Puma GTE #100</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Copa Classic FL" xml_name="CopaClassicFL">
             <liveries>
@@ -248,6 +255,7 @@
                 <livery>Puma GTB #94</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Copa Fusca" xml_name="CopaFusca">
             <liveries>
@@ -279,6 +287,7 @@
                 <livery>Copa Fusca #3422 - T.Emilsen Skin</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Copa Truck" xml_name="CopaTruck">
             <liveries>
@@ -300,6 +309,7 @@
                 <livery>Beto Monteiro #88</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Copa Uno" xml_name="CopaUno">
             <liveries>
@@ -333,6 +343,7 @@
                 <livery>Copa Uno #99</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="DPI" xml_name="DPI">
             <liveries>
@@ -355,6 +366,7 @@
                 <livery>Cadillac DPi-V.R #87</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="F-3" xml_name="F-3">
             <liveries>
@@ -389,6 +401,7 @@
                 <livery>Power On Racing #86</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="F-Classic Gen 1" xml_name="F-Classic_Gen1">
             <liveries>
@@ -420,6 +433,7 @@
                 <livery>Team Lotus 98T #12</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="F-Classic Gen 2" xml_name="F-Classic_Gen2">
             <liveries>
@@ -451,6 +465,7 @@
                 <livery>McLaren MP4/4 #12</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="F-Classic Gen 3" xml_name="F-Classic_Gen3">
             <liveries>
@@ -482,6 +497,7 @@
                 <livery>McLaren MP4/5B #28</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="F-Classic Gen 4" xml_name="F-Classic_Gen4">
             <liveries>
@@ -513,6 +529,71 @@
                 <livery>McLaren MP4/6 #2</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
+        </vehicle_class>
+        <vehicle_class name="F-HiTech Gen 1" xml_name="F-HiTech_Gen1">
+            <liveries>
+                <livery>Scuderia Forza #3</livery>
+                <livery>Scuderia Forza #4</livery>
+                <livery>Paddy G.P. #7</livery>
+                <livery>Paddy G.P. #8</livery>
+                <livery>DLA Scuderia Italia #11</livery>
+                <livery>DLA Scuderia Italia #12</livery>
+                <livery>Scuderia Faenza Girardi #19</livery>
+                <livery>Scuderia Faenza Girardi #20</livery>
+                <livery>Didcot Racing #5</livery>
+                <livery>Didcot Racing #6</livery>
+                <livery>United Racing #9</livery>
+                <livery>United Racing #10</livery>
+                <livery>Team Hornsey #17</livery>
+                <livery>Team Hornsey #18</livery>
+                <livery>Fontel G.P. #22</livery>
+                <livery>Fontel G.P. #23</livery>
+                <livery>Surrey Racing #13</livery>
+                <livery>Surrey Racing #14</livery>
+                <livery>Bolt-Work G.P. #15</livery>
+                <livery>Bolt-Work G.P. #16</livery>
+                <livery>Newcyan Racing #24</livery>
+                <livery>Newcyan Racing #25</livery>
+                <livery>Bradley Motorsports #26</livery>
+                <livery>Bradley Motorsports #27</livery>
+                <livery>McLaren MP4/7A #1</livery>
+                <livery>McLaren MP4/7A #2</livery>
+            </liveries>
+            <is_modded>false</is_modded>
+            <vehicles/>
+        </vehicle_class>
+        <vehicle_class name="F-HiTech Gen 2" xml_name="F-HiTech_Gen2">
+            <liveries>
+                <livery>Scuderia Forza #3</livery>
+                <livery>Scuderia Forza #4</livery>
+                <livery>DLA Scuderia Italia #11</livery>
+                <livery>DLA Scuderia Italia #12</livery>
+                <livery>AntLar Racing #19</livery>
+                <livery>AntLar Racing #20</livery>
+                <livery>Didcot Racing #0</livery>
+                <livery>Didcot Racing #6</livery>
+                <livery>Surrey Racing #13</livery>
+                <livery>Surrey Racing #14</livery>
+                <livery>Bolt-Work G.P. #15</livery>
+                <livery>Bolt-Work G.P. #16</livery>
+                <livery>Paddy G.P. #17</livery>
+                <livery>Paddy G.P. #18</livery>
+                <livery>Zir-Win Motorsport #29</livery>
+                <livery>Zir-Win Motorsport #30</livery>
+                <livery>Lione G.P. #31</livery>
+                <livery>Lione G.P. #32</livery>
+                <livery>United Racing #9</livery>
+                <livery>United Racing #10</livery>
+                <livery>Team Hornsey #24</livery>
+                <livery>Team Hornsey #25</livery>
+                <livery>Scuderia Faenza Girardi #26</livery>
+                <livery>Scuderia Faenza Girardi #27</livery>
+                <livery>McLaren MP4/8 #7</livery>
+                <livery>McLaren MP4/8 #8</livery>
+            </liveries>
+            <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="F-Dirt" xml_name="F-Dirt">
             <liveries>
@@ -538,6 +619,7 @@
                 <livery>Formula Dirt #934</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="F Junior" xml_name="F-Junior">
             <liveries>
@@ -563,6 +645,7 @@
                 <livery>F-Junior #205</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="F-Inter" xml_name="F-Inter">
             <liveries>
@@ -589,6 +672,7 @@
                 <livery>F.Inter MG-15 #99</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="F-Reiza" xml_name="F-Reiza">
             <liveries>
@@ -614,6 +698,7 @@
                 <livery>energyX Racing #21</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="F-Retro Gen 1" xml_name="F-Retro_Gen1">
             <liveries>
@@ -646,6 +731,7 @@
                 <livery>McLaren M23 #33</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="F-Retro Gen 2" xml_name="F-Retro_Gen2">
             <liveries>
@@ -673,6 +759,7 @@
                 <livery>Team Lotus 79 #4</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="F-Retro Gen 3" xml_name="F-Retro_Gen3">
             <liveries>
@@ -702,6 +789,7 @@
                 <livery>McLaren MP4/1C #8</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="F-Trainer" xml_name="F-Trainer">
             <liveries>
@@ -734,6 +822,7 @@
                 <livery>Formula Trainer #33</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="F-Trainer Advanced" xml_name="F-Trainer_A">
             <liveries>
@@ -766,6 +855,7 @@
                 <livery>Formula Trainer Advance #33</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="F-Ultimate" xml_name="F-Ultimate">
             <liveries>
@@ -791,6 +881,7 @@
                 <livery>McLean G.P. #99</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="F-Ultimate Gen 2" xml_name="F-Ultimate_Gen2">
             <liveries>
@@ -820,6 +911,7 @@
                 <livery>Strike G.P. #85</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="F-USA Gen 1" xml_name="F-USA_Gen1">
             <liveries>
@@ -853,6 +945,7 @@
                 <livery>Reynard 95i Mercedes-Benz #23</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="F-USA Gen 2" xml_name="F-USA_Gen2">
             <liveries>
@@ -883,6 +976,7 @@
                 <livery>Swift 009c Ford-Cosworth #11</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="F-USA Gen 3" xml_name="F-USA_Gen3">
             <liveries>
@@ -918,6 +1012,7 @@
                 <livery>Reynard 2Ki Toyota #96</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="F-USA_2023" xml_name="F-USA_2023">
             <liveries>
@@ -955,6 +1050,7 @@
                 <livery>F-USA 2023 #92</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="F-V10 Gen 1" xml_name="F-V10_Gen1">
             <liveries>
@@ -984,6 +1080,7 @@
                 <livery>McLaren MP4/12 Testcar #10</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="F-V10 Gen 2" xml_name="F-V10_Gen2">
             <liveries>
@@ -1013,6 +1110,7 @@
                 <livery>United Racing #27</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="F-V12" xml_name="F-V12">
             <liveries>
@@ -1044,6 +1142,7 @@
                 <livery>Zir-Win Motorsport #69 - Community Skin</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="F-Vee" xml_name="F-Vee">
             <liveries>
@@ -1070,6 +1169,7 @@
                 <livery>Lucas Veloso #96</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="F-Vintage Gen 1" xml_name="F-Vintage_Gen1">
             <liveries>
@@ -1095,6 +1195,7 @@
                 <livery>Pheonix West Racing #12</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="F-Vintage Gen 2" xml_name="F-Vintage_Gen2">
             <liveries>
@@ -1126,6 +1227,7 @@
                 <livery>Team Lotus #16</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Ginetta G40 Cup" xml_name="G40Cup">
             <liveries>
@@ -1154,6 +1256,7 @@
                 <livery>Ginetta G40 Cup #92</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Ginetta G55 Supercup" xml_name="G55Supercup">
             <liveries>
@@ -1183,6 +1286,7 @@
                 <livery>Firenze Autosports #117</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Group A" xml_name="Group A">
             <liveries>
@@ -1214,6 +1318,7 @@
                 <livery>FR ZeeZitrone #58</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Group C" xml_name="Group C">
             <liveries>
@@ -1255,6 +1360,7 @@
                 <livery>BRS Auto #65</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="GT1" xml_name="GT1">
             <liveries>
@@ -1300,6 +1406,7 @@
                 <livery>Nissan R390 GT1 #39</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="GT3" xml_name="GT3">
             <liveries>
@@ -1338,6 +1445,7 @@
                 <livery>BMW M6 GT3 #96</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="GT4" xml_name="GT4">
             <liveries>
@@ -1377,6 +1485,7 @@
                 <livery>BMW M4 GT4 #1</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="GT5" xml_name="GT5">
             <liveries>
@@ -1422,6 +1531,7 @@
                 <livery>Puma P052 #99</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="GTE" xml_name="GTE">
             <liveries>
@@ -1453,6 +1563,7 @@
                 <livery>Porsche 911 RSR GTE #79</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="GT Open" xml_name="GTOpen">
             <liveries>
@@ -1484,6 +1595,7 @@
                 <livery>Team NorthStar Cars #82</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Hot Cars" xml_name="Hot Cars">
             <liveries>
@@ -1511,6 +1623,7 @@
                 <livery>Passat HC #78</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Hypercars" xml_name="Hypercars">
             <liveries>
@@ -1534,6 +1647,7 @@
                 <livery>McLaren Senna #10</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Kart 125cc" xml_name="Kart125cc">
             <liveries>
@@ -1559,6 +1673,7 @@
                 <livery>Kart 125cc 2STROKE #99</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="KartCross" xml_name="KartCross">
             <liveries>
@@ -1584,6 +1699,7 @@
                 <livery>Kart Cross #77</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Kart GX390" xml_name="KartGX390">
             <liveries>
@@ -1613,6 +1729,7 @@
                 <livery>Kart GX390 Race #61</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Kart Rental" xml_name="KartRental">
             <liveries>
@@ -1628,6 +1745,7 @@
                 <livery>Kart GX390 Rental #09</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Kart Shifter" xml_name="KartShifter">
             <liveries>
@@ -1657,6 +1775,7 @@
                 <livery>Kart 125cc Shifter #61</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Lancer Cup" xml_name="LancerCup">
             <liveries>
@@ -1694,6 +1813,7 @@
                 <livery>Phobes #96</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Mini Challenge" xml_name="MiniChallenge">
             <liveries>
@@ -1723,6 +1843,7 @@
                 <livery>MINI Cooper JCW #99</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Montana" xml_name="Montana">
             <liveries>
@@ -1752,6 +1873,7 @@
                 <livery>Copa Montana #99</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Old Stock" xml_name="OldStock">
             <liveries>
@@ -1778,6 +1900,7 @@
                 <livery>Opala Old Stock Race #909</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Opala 79" xml_name="Opala79">
             <liveries>
@@ -1803,6 +1926,7 @@
                 <livery>Sidney Alves #163</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Opala 86" xml_name="Opala86">
             <liveries>
@@ -1828,6 +1952,7 @@
                 <livery>Dudacar - Regina Calderoni #64</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="P1" xml_name="P1">
             <liveries>
@@ -1872,6 +1997,7 @@
                 <livery>Ginetta G58 #54</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="P1 Gen2" xml_name="P1Gen2">
             <liveries>
@@ -1900,6 +2026,7 @@
                 <livery>Ginetta G58 Gen2 #54</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="P2" xml_name="P2">
             <liveries>
@@ -1920,6 +2047,7 @@
                 <livery>Sigma P1 #16</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="P3" xml_name="P3">
             <liveries>
@@ -1947,6 +2075,7 @@
                 <livery>Roco 001 #98</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="P4" xml_name="P4">
             <liveries>
@@ -1989,6 +2118,7 @@
                 <livery>Metalmoro MRX P4 #56</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Procar" xml_name="Procar">
             <liveries>
@@ -2020,6 +2150,7 @@
                 <livery>Apex Motorsports #87</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="RX" xml_name="RX">
             <liveries>
@@ -2041,6 +2172,7 @@
                 <livery>VW Polo RX #888</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Sprint Race" xml_name="SprintRace">
             <liveries>
@@ -2066,6 +2198,7 @@
                 <livery>Joao Rosate #858</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Stock Car 99" xml_name="StockCar99">
             <liveries>
@@ -2091,6 +2224,7 @@
                 <livery>Carlos Neto #0</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Stock Car V8" xml_name="StockCarV8">
             <liveries>
@@ -2124,6 +2258,7 @@
                 <livery>Crown Racing - M.Colleta #177</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Stock Car V8 2020" xml_name="StockCarV8_2020">
             <liveries>
@@ -2161,6 +2296,7 @@
                 <livery>Crown Racing - B.Monteiro #188</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="StockCar V8 2021" xml_name="StockCarV8_2021">
             <liveries>
@@ -2201,6 +2337,7 @@
                 <livery>Hot Car New Gen - F.Lapenna #110</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="StockCar V8 2022" xml_name="StockCarV8_2022">
             <liveries>
@@ -2239,6 +2376,7 @@
                 <livery>RKL Competicoes - G.Frigotto #86</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="StockCarV8 2023" xml_name="StockCarV8_2023">
             <liveries>
@@ -2275,6 +2413,7 @@
                 <livery>KTF Racing - F.Baptista #121</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Street" xml_name="Street">
             <liveries>
@@ -2300,6 +2439,7 @@
                 <livery>Chevrolet Camaro SS #20</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Supercars" xml_name="Supercars">
             <liveries>
@@ -2343,6 +2483,7 @@
                 <livery>Long Beach Red Metallic</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Super Kart" xml_name="SuperKart">
             <liveries>
@@ -2368,6 +2509,7 @@
                 <livery>Superkart 250cc - Machuca #99</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="Super V8" xml_name="SuperV8">
             <liveries>
@@ -2403,6 +2545,7 @@
                 <livery>Team Avalone #99</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="TC 60S" xml_name="TC60S">
             <liveries>
@@ -2436,6 +2579,7 @@
                 <livery>Chevrolet Corvette C3 #47</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="TC 60S2 - Reiza grid" xml_name="TC60S2 - Reiza grid">
             <liveries>
@@ -2461,6 +2605,7 @@
                 <livery>Lotus 23 #52</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="TC 60S2" xml_name="TC60S2">
             <liveries>
@@ -2486,6 +2631,7 @@
                 <livery>Lotus 23 #52</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="TC 70S" xml_name="TC70S">
             <liveries>
@@ -2525,6 +2671,7 @@
                 <livery>Chevrolet Corvette C3-R #50</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
         <vehicle_class name="TSICup" xml_name="TSICup">
             <liveries>
@@ -2554,6 +2701,7 @@
                 <livery>VW Virtus GTS #6</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
         </vehicle_class>
     </vehicle_classes>
 </vehicle_class_library>

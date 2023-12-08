@@ -17,7 +17,6 @@ import java.util.logging.Level;
 
 public class NamesInterpreter {
     private static void parseALlFilesInFolder(File folder) {
-
         for (File file : Objects.requireNonNull(folder.listFiles())) {
             String xml_name = file.getName().substring(0, file.getName().length() - 4);
             VehicleClass vehicleClass = fromLibrary(xml_name);
