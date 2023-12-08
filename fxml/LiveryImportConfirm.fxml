@@ -31,9 +31,20 @@ limitations under the License. -->
         <Label styleClass="prompt-label" text="Name"/>
         <TextField fx:id="nameTextField" HBox.hgrow="ALWAYS"/>
     </HBox>
-    <ListView styleClass="normal-list-view" fx:id="liveryNameListView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+    <HBox alignment="CENTER_LEFT" spacing="10.0">
+        <opaqueInsets>
+            <Insets/>
+        </opaqueInsets>
         <VBox.margin>
-          <Insets left="10.0" right="10.0"/>
+            <Insets left="10.0" right="10.0"/>
+        </VBox.margin>
+        <Label styleClass="prompt-label" text="Mod For:"/>
+        <ChoiceBox fx:id="modForChoiceBox" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS"/>
+    </HBox>
+    <ListView fx:id="liveryNameListView" prefHeight="200.0" prefWidth="200.0" styleClass="normal-list-view"
+              VBox.vgrow="ALWAYS">
+        <VBox.margin>
+            <Insets left="10.0" right="10.0"/>
         </VBox.margin>
     </ListView>
     <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0">
@@ -41,5 +52,7 @@ limitations under the License. -->
         <Button fx:id="cancelButton" mnemonicParsing="false" text="Cancel"/>
         <Label fx:id="nLiveriesLabel" styleClass="prompt-label" text="0"/>
         <Label styleClass="prompt-label" text="Liveries imported:"/>
+        <Button fx:id="moreButton" mnemonicParsing="false" text="+"/>
+        <Label styleClass="prompt-label" text="Import More Vehicles"/>
     </ToolBar>
 </VBox>

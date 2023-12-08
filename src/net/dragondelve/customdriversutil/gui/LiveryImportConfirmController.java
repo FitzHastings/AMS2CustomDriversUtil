@@ -15,18 +15,18 @@
 package net.dragondelve.customdriversutil.gui;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import net.dragondelve.customdriversutil.model.VehicleClass;
+import net.dragondelve.customdriversutil.model.xml.XMLOverridesImporter;
 import net.dragondelve.customdriversutil.util.Configurator;
 import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
 import net.dragondelve.customdriversutil.util.TooltipUtil;
 import net.dragondelve.mabelfx.StageController;
+
+import java.io.File;
 
 
 /**
@@ -77,6 +77,18 @@ public class LiveryImportConfirmController implements StageController {
     private Label nLiveriesLabel;
 
     /**
+     *
+     */
+    @FXML
+    private Button moreButton;
+
+    /**
+     *
+     */
+    @FXML
+    private ChoiceBox<VehicleClass> modForChoiceBox;
+
+    /**
      * Represents the stage on which the controller is displayed.
      */
     private Stage stage;
@@ -109,8 +121,9 @@ public class LiveryImportConfirmController implements StageController {
 
         importButton.setOnAction(e -> importAction());
         cancelButton.setOnAction(e -> stage.close());
-
+        moreButton.setOnAction(e -> moreAction());
         importButton.disableProperty().bind(vehicleClass.nameProperty().isEmpty());
+        modForChoiceBox.setItems(LibraryManager.getInstance().getVehicleClassLibrary().getVehicleClasses());
 
         nLiveriesLabel.setText(Integer.toString(vehicleClass.getLiveryNames().size()));
 
@@ -133,10 +146,14 @@ public class LiveryImportConfirmController implements StageController {
      *
      * @throws NullPointerException if LibraryManager or Configurator instances are not initialized.
      */
-    public void importAction() {
-         LibraryManager.getInstance().getVehicleClassLibrary().getVehicleClasses().add(vehicleClass);
-         LibraryManager.getInstance().exportVehicleClassLibrary(Configurator.getInstance().getConfiguration().getVehicleClassLibraryPathname());
-         this.stage.close();
+    private void importAction() {
+        this.vehicleClass.setModded(true);
+        if (modForChoiceBox.getSelectionModel().selectedItemProperty() != null)
+            this.vehicleClass.xmlNameProperty().set(modForChoiceBox.getSelectionModel().selectedItemProperty().get().getXmlName());
+
+        LibraryManager.getInstance().getVehicleClassLibrary().getVehicleClasses().add(vehicleClass);
+        LibraryManager.getInstance().exportVehicleClassLibrary(Configurator.getInstance().getConfiguration().getVehicleClassLibraryPathname());
+        this.stage.close();
     }
 
     /**
@@ -148,5 +165,16 @@ public class LiveryImportConfirmController implements StageController {
         nameTextField.setTooltip(TooltipUtil.VEHICLE_CLASS_NAME_TOOLTIP);
         importButton.setTooltip(TooltipUtil.CONFIRM_IMPORT);
         cancelButton.setTooltip(TooltipUtil.CANCEL_IMPORT);
+    }
+
+    private void moreAction() {
+        File selectedFile = LibraryManager.createLibraryFileChooser("Import Additional Livery Overrides", "/").showOpenDialog(stage);
+        if (selectedFile != null) {
+            VehicleClass vehicleClass = new XMLOverridesImporter().importFromFile(selectedFile);
+            if (vehicleClass == null)
+                return;
+            this.vehicleClass.getLiveryNames().addAll(vehicleClass.getLiveryNames());
+            nLiveriesLabel.setText(Integer.toString(Integer.parseInt(nLiveriesLabel.getText()) + vehicleClass.getLiveryNames().size()));
+        }
     }
 }
