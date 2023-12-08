@@ -421,14 +421,14 @@
                 <livery>McLean G.P. #8</livery>
                 <livery>Deutsch Speed Racing #13</livery>
                 <livery>Deutsch Speed Racing #14</livery>
-                <livery>Lione G.P. #15</livery>
-                <livery>Lione G.P. #16</livery>
-                <livery>Scuderia Faenza Girardi #23</livery>
-                <livery>Scuderia Faenza Girardi #24</livery>
-                <livery>Scuderia Milano #27</livery>
-                <livery>Scuderia Milano #28</livery>
-                <livery>Bolt G.P. #32</livery>
-                <livery>Bolt G.P. #33</livery>
+                <livery>Scuderia Milano #15</livery>
+                <livery>Scuderia Milano #16</livery>
+                <livery>Bolt G.P. #23</livery>
+                <livery>Bolt G.P. #24</livery>
+                <livery>Lione G.P. #27</livery>
+                <livery>Lione G.P. #28</livery>
+                <livery>Scuderia Faenza Girardi #32</livery>
+                <livery>Scuderia Faenza Girardi #33</livery>
                 <livery>Team Lotus 98T #11</livery>
                 <livery>Team Lotus 98T #12</livery>
             </liveries>
@@ -2487,26 +2487,26 @@
         </vehicle_class>
         <vehicle_class name="Super Kart" xml_name="SuperKart">
             <liveries>
-                <livery>Superkart 250cc - Bolting #2</livery>
-                <livery>Superkart 250cc - Lublix #4</livery>
-                <livery>Superkart 250cc - SimmSon #5</livery>
-                <livery>Superkart 250cc - Auryn #6</livery>
-                <livery>Superkart 250cc - Suei #13</livery>
-                <livery>Superkart 250cc - Vittorio #14</livery>
-                <livery>Superkart 250cc - Quasol #17</livery>
-                <livery>Superkart 250cc - Demonio #23</livery>
-                <livery>Superkart 250cc - FineKarts #29</livery>
-                <livery>Superkart 250cc - CTD #43</livery>
-                <livery>Superkart 250cc - Hauminator #55</livery>
-                <livery>Superkart 250cc - Kolomiets #79</livery>
-                <livery>Superkart 250cc - Luquitas #79</livery>
-                <livery>Superkart 250cc - Jeschke #83</livery>
-                <livery>Superkart 250cc - Mestron #95</livery>
-                <livery>Superkart 250cc - ToK #96</livery>
-                <livery>Superkart 250cc - Tengco #97</livery>
-                <livery>Superkart 250cc - Green Arrow #98</livery>
-                <livery>Superkart 250cc - Sptcar #98</livery>
-                <livery>Superkart 250cc - Machuca #99</livery>
+                <livery>Superkart 250cc #2</livery>
+                <livery>Superkart 250cc #4</livery>
+                <livery>Superkart 250cc #5</livery>
+                <livery>Superkart 250cc #6</livery>
+                <livery>Superkart 250cc #13</livery>
+                <livery>Superkart 250cc #14</livery>
+                <livery>Superkart 250cc #17</livery>
+                <livery>Superkart 250cc #23</livery>
+                <livery>Superkart 250cc #29</livery>
+                <livery>Superkart 250cc #43</livery>
+                <livery>Superkart 250cc #55</livery>
+                <livery>Superkart 250cc #79</livery>
+                <livery>Superkart 250cc #80</livery>
+                <livery>Superkart 250cc #83</livery>
+                <livery>Superkart 250cc #94</livery>
+                <livery>Superkart 250cc #95</livery>
+                <livery>Superkart 250cc #96</livery>
+                <livery>Superkart 250cc #97</livery>
+                <livery>Superkart 250cc #98</livery>
+                <livery>Superkart 250cc #99</livery>
             </liveries>
             <is_modded>false</is_modded>
             <vehicles/>
