@@ -57,7 +57,7 @@ public class LiveryImportConfirmController implements StageController {
 
     /**
      * A JavaFX TextField for entering a name.
-     *
+     * <p>
      * The nameTextField is a JavaFX TextField component that allows the user to input a name.
      * It is typically used in forms or dialogs where the user needs to enter a name.
      */
@@ -77,13 +77,17 @@ public class LiveryImportConfirmController implements StageController {
     private Label nLiveriesLabel;
 
     /**
-     *
+     * Represents a button used for displaying more options or information.
+     * This button is used in the LiveryImportConfirmController class.
      */
     @FXML
     private Button moreButton;
 
     /**
-     *
+     * The modForChoiceBox variable is a JavaFX ChoiceBox component that is used for selecting a VehicleClass object
+     * representing a modded vehicle class. The ChoiceBox displays the available modded vehicle classes as options for
+     * selection. When a modded vehicle class is selected, the corresponding VehicleClass object is stored in the modForChoiceBox
+     * variable.
      */
     @FXML
     private ChoiceBox<VehicleClass> modForChoiceBox;
@@ -97,10 +101,11 @@ public class LiveryImportConfirmController implements StageController {
      * Represents an in-game vehicle class.
      * This class is fully annotated with JAXB for easy XML conversion.
      */
-    private VehicleClass vehicleClass;
+    private final VehicleClass vehicleClass;
 
     /**
      * Creates a new instance of
+     *
      * @param vehicleClass Vehicle class
      */
     public LiveryImportConfirmController(VehicleClass vehicleClass) {
@@ -132,6 +137,7 @@ public class LiveryImportConfirmController implements StageController {
 
     /**
      * Sets the stage on which this controller is going to be displayed.
+     *
      * @param stage Stage on which this controller is going to be displayed.
      */
     @Override

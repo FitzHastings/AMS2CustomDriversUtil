@@ -23,7 +23,10 @@ import javafx.util.converter.NumberStringConverter;
 import net.dragondelve.customdriversutil.model.Driver;
 import net.dragondelve.customdriversutil.model.Grid;
 import net.dragondelve.customdriversutil.model.VehicleClass;
-import net.dragondelve.customdriversutil.tools.generator.*;
+import net.dragondelve.customdriversutil.tools.generator.GeneratorSettings;
+import net.dragondelve.customdriversutil.tools.generator.GridGenerator;
+import net.dragondelve.customdriversutil.tools.generator.TableGenerator;
+import net.dragondelve.customdriversutil.tools.generator.ValueGenerator;
 import net.dragondelve.customdriversutil.util.LibraryManager;
 import net.dragondelve.customdriversutil.util.TooltipUtil;
 
@@ -31,6 +34,9 @@ import net.dragondelve.customdriversutil.util.TooltipUtil;
  * Controller for fxml/TableGridGenerator.fxml
  */
 public class TableGridGeneratorController implements GeneratorController {
+    private final Grid pregeneratedGrid = new Grid();
+    private final GeneratorSettings settings = new GeneratorSettings();
+    private final Button generateButton;
     @FXML
     private Slider minRaceSkillSlider;
     @FXML
@@ -63,9 +69,6 @@ public class TableGridGeneratorController implements GeneratorController {
     private Button removeButton;
     @FXML
     private TextField noizeTextField;
-    private final Grid pregeneratedGrid = new Grid();
-    private final GeneratorSettings settings = new GeneratorSettings();
-    private final Button generateButton;
 
     /**
      * Constructor for TableGridGeneratorController. Creates a new instance of TableGridGeneratorController.
@@ -142,6 +145,7 @@ public class TableGridGeneratorController implements GeneratorController {
 
     /**
      * Creates a new instance of GridGenerator with the settings.
+     *
      * @return GridGenerator that is going to be used to generate a new grid.
      */
     @Override

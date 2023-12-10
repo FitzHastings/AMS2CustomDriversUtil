@@ -22,12 +22,14 @@ import net.dragondelve.customdriversutil.tools.generator.GridGenerator;
 public interface GeneratorController {
     /**
      * Creates a new GridGenerator instance based on the settings provided by the user.
+     *
      * @return new GridGenerator instance.
      */
     GridGenerator createGridGenerator();
 
     /**
      * Checks if the settings provided by the user are good enough to generate a grid.
+     *
      * @return true if the settings are good enough to generate a grid.
      */
     boolean isGoodToGenerate();

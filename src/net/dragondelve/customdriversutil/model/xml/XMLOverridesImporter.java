@@ -25,38 +25,9 @@ import java.nio.charset.StandardCharsets;
 import java.util.logging.Level;
 
 /**
- *  Responsible for the conversion between AMS2 XML Overrides storage method and this program's data model.
+ * Responsible for the conversion between AMS2 XML Overrides storage method and this program's data model.
  */
 public class XMLOverridesImporter {
-    /**
-     * Imports a overrides from a given File. If the File contains a valid XML formatted with AMS2 XML representation of Custom AI it will return a overrides.
-     * This will not set the correct Class for the overrides. This should be handled elsewhere.
-     *
-     * @param file An XML file formatted with AMS2 XML representation of Custom AI.
-     * @return New instance of a overrides from the source, or null if the import has failed.
-     */
-    public VehicleClass importFromFile(File file) {
-        XMLOverrides xmlOverrides = loadXMLOverrides(file);
-        if (xmlOverrides != null)
-            return fromXmlOverrides(xmlOverrides);
-        else
-            return null;
-    }
-
-    /**
-     * Converts XMLOverrides to a VehicleClass.
-     * @param overrides XMLOverrides to convert.
-     * @return New instance of VehicleClass.
-     */
-    private VehicleClass fromXmlOverrides(XMLOverrides overrides) {
-        VehicleClass newClass = new VehicleClass();
-        newClass.setXmlName("New Class");
-        for (XMLLiveryOverride liveryOverride : overrides.getLiveryOverrides()) {
-            newClass.getLiveryNames().add(liveryOverride.getName());
-        }
-        return newClass;
-    }
-
     /**
      * Unmarshals xml overrides from a given file.
      *
@@ -69,6 +40,7 @@ public class XMLOverridesImporter {
 
     /**
      * Parses a String containing XMLOverrides formatted to an xml
+     *
      * @param xml String containing XMLOverrides formatted to an xml
      * @return New instance of XMLOverrides.
      */
@@ -86,7 +58,7 @@ public class XMLOverridesImporter {
             return null;
         }
     }
-    
+
     /**
      * Removes things from the XML file that are technically not allowed but AMS2 will ignore and still load the file
      * For example comments containing multiple --- and multiple xml header declarations.
@@ -134,5 +106,35 @@ public class XMLOverridesImporter {
             e.printStackTrace();
         }
         return null;
+    }
+
+    /**
+     * Imports a overrides from a given File. If the File contains a valid XML formatted with AMS2 XML representation of Custom AI it will return a overrides.
+     * This will not set the correct Class for the overrides. This should be handled elsewhere.
+     *
+     * @param file An XML file formatted with AMS2 XML representation of Custom AI.
+     * @return New instance of a overrides from the source, or null if the import has failed.
+     */
+    public VehicleClass importFromFile(File file) {
+        XMLOverrides xmlOverrides = loadXMLOverrides(file);
+        if (xmlOverrides != null)
+            return fromXmlOverrides(xmlOverrides);
+        else
+            return null;
+    }
+
+    /**
+     * Converts XMLOverrides to a VehicleClass.
+     *
+     * @param overrides XMLOverrides to convert.
+     * @return New instance of VehicleClass.
+     */
+    private VehicleClass fromXmlOverrides(XMLOverrides overrides) {
+        VehicleClass newClass = new VehicleClass();
+        newClass.setXmlName("New Class");
+        for (XMLLiveryOverride liveryOverride : overrides.getLiveryOverrides()) {
+            newClass.getLiveryNames().add(liveryOverride.getName());
+        }
+        return newClass;
     }
 }

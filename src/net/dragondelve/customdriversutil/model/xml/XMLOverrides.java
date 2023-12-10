@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * Represents the USER_OVERRIDES section of the XML file.
  */
-@XmlRootElement (name = "USER_OVERRIDES")
+@XmlRootElement(name = "USER_OVERRIDES")
 public class XMLOverrides {
     /**
      * List of livery overrides.

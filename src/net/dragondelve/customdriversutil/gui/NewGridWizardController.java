@@ -148,7 +148,7 @@ public class NewGridWizardController implements StageController {
                 generateGridCheckBox.selectedProperty().set(false);
                 tableGridCheckBox.selectedProperty().set(false);
                 generateButton.setDisable(false);
-                mainHBox.getChildren().remove(mainHBox.getChildren().size()-1);
+                mainHBox.getChildren().remove(mainHBox.getChildren().size() - 1);
                 mainHBox.getChildren().add(new HBox());
             }
         });
@@ -160,7 +160,7 @@ public class NewGridWizardController implements StageController {
                 currentController = classicGridGenerator;
                 if (!currentController.isGoodToGenerate())
                     generateButton.setDisable(true);
-                mainHBox.getChildren().remove(mainHBox.getChildren().size()-1);
+                mainHBox.getChildren().remove(mainHBox.getChildren().size() - 1);
                 mainHBox.getChildren().add(classigGridGeneratorRootNode);
             }
         });
@@ -171,7 +171,7 @@ public class NewGridWizardController implements StageController {
                 generateGridCheckBox.selectedProperty().set(false);
                 generateButton.setDisable(true);
                 currentController = tableGridGenerator;
-                mainHBox.getChildren().remove(mainHBox.getChildren().size()-1);
+                mainHBox.getChildren().remove(mainHBox.getChildren().size() - 1);
                 mainHBox.getChildren().add(tableGridGeneratorRootNode);
             }
         });
