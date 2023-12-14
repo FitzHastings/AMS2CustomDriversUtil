@@ -195,6 +195,8 @@ public class TooltipUtil {
 
     public static final Tooltip CONFIG_CANCEL_BUTTON = new Tooltip("Discard changes and exit");
 
+    public static final Tooltip RANDOMIZE_TOOLTIP = new Tooltip("Randomizes selected driver properties");
+
     public static final Tooltip CONFIRM_IMPORT = new Tooltip("Confirm import and save your vehicle class library");
     public static final Tooltip CANCEL_IMPORT = new Tooltip("Cancel import");
 

@@ -93,10 +93,10 @@ public class GridGenerator {
             } else if (settings.isUseNAMeS()) {
                 if (namesSource != null) {
                     try {
+                        driver.liveryNameProperty().set(settings.getVehicleClass().getLiveryNames().get(i));
                         Driver name = namesSource.getDrivers().filtered(d -> d.getLiveryName().equals(driver.getLiveryName())).stream().findFirst().get();
                         driver.nameProperty().set(name.getName());
                         driver.countryProperty().set(name.getCountry());
-                        driver.liveryNameProperty().set(settings.getVehicleClass().getLiveryNames().get(i));
                     } catch (NoSuchElementException e) {
                         DDUtil.DEFAULT_LOGGER.log(Level.SEVERE, "No such Livery in NAMeS: " + driver.getLiveryName());
                         driver.countryProperty().set("GBR");

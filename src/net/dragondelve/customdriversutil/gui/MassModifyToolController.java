@@ -148,6 +148,11 @@ public class MassModifyToolController implements StageController {
     @FXML
     private RadioButton increaseDistanceFloorRadioButton;
     /**
+     * RadioButton that determines if RandomizeAction should be passed to the GridModifier.
+     */
+    @FXML
+    private RadioButton randomizeRadioButton;
+    /**
      * CheckBox that determines if consistency property should be modified.
      */
     @FXML
@@ -212,7 +217,12 @@ public class MassModifyToolController implements StageController {
         increaseDistanceCeilingRadioButton.setToggleGroup(actionGroup);
         bringCloserCeilingRadioButton.setToggleGroup(actionGroup);
 
+        randomizeRadioButton.setToggleGroup(actionGroup);
+
         increaseFlatRadioButton.selectedProperty().set(true);
+
+        modificationValueSlider.disableProperty().bind(randomizeRadioButton.selectedProperty());
+        modificationValueTextField.disableProperty().bind(randomizeRadioButton.selectedProperty());
 
         cancelButton.setOnAction(e -> cancelAction());
         modifyButton.setOnAction(e -> modifyAction());
@@ -278,6 +288,8 @@ public class MassModifyToolController implements StageController {
             action = new IncreaseDistanceFloorAction(modificationValueSlider.getValue());
         } else if (increaseDistanceCeilingRadioButton.isSelected()) {
             action = new IncreaseDistanceCeilingAction(modificationValueSlider.getValue());
+        } else if (randomizeRadioButton.isSelected()) {
+            action = new RandomizeAction();
         }
 
         GridModifier modifier = new GridModifier(modifierSettings, action);
@@ -314,6 +326,8 @@ public class MassModifyToolController implements StageController {
         bringCloserCeilingRadioButton.setTooltip(TooltipUtil.BRING_CLOSER_CEILING_TOOLTIP);
         increaseDistanceFloorRadioButton.setTooltip(TooltipUtil.INCREASE_DISTANCE_FLOOR_TOOLTIP);
         increaseDistanceCeilingRadioButton.setTooltip(TooltipUtil.INCREASE_DISTANCE_CEILING_TOOLTIP);
+
+        randomizeRadioButton.setTooltip(TooltipUtil.RANDOMIZE_TOOLTIP);
 
         modificationValueSlider.setTooltip(TooltipUtil.MODIFICATION_VALUE_TOOLTIP);
         modificationValueTextField.setTooltip(TooltipUtil.MODIFICATION_VALUE_TOOLTIP);
