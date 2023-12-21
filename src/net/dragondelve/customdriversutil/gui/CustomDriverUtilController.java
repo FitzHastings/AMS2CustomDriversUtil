@@ -41,6 +41,7 @@ import net.dragondelve.customdriversutil.model.xml.XMLGridExporter;
 import net.dragondelve.customdriversutil.model.xml.XMLGridImporter;
 import net.dragondelve.customdriversutil.model.xml.XMLOverridesImporter;
 import net.dragondelve.customdriversutil.util.*;
+import net.dragondelve.mabelfx.FXObjectChooser;
 import net.dragondelve.mabelfx.StageController;
 import net.dragondelve.mabelfx.util.FXTableRefresher;
 
@@ -247,6 +248,11 @@ public class CustomDriverUtilController implements StageController {
     @FXML
     private MenuItem fromLiveryOverrideItem;
     /**
+     * Menu Item that performs switchVehicleClassOnAction on action.
+     */
+    @FXML
+    private MenuItem switchVehicleClassItem;
+    /**
      * Stage on which this controller is displayed.
      * This is also the primaryStage in the Application's main method.
      */
@@ -299,6 +305,7 @@ public class CustomDriverUtilController implements StageController {
 
         massModifyItem.setOnAction(e -> massModifyAction());
         customModifyItem.setOnAction(e -> customModifyAction());
+        switchVehicleClassItem.setOnAction(e -> switchVehicleClassAction());
 
         configurationMenuItem.setOnAction(e -> configurationAction());
 
@@ -743,6 +750,26 @@ public class CustomDriverUtilController implements StageController {
             e.printStackTrace();
         }
 
+    }
+
+    /**
+     *
+     */
+    private void switchVehicleClassAction() {
+        FXObjectChooser<VehicleClass> vehicleClassFXObjectChooser = new FXObjectChooser<>();
+        TableColumn<VehicleClass, String> nameColumn =  new TableColumn<>();
+        nameColumn.setCellValueFactory(e -> e.getValue().nameProperty());
+        vehicleClassFXObjectChooser.getTableView().getColumns().add(nameColumn);
+        vehicleClassFXObjectChooser.setItems(LibraryManager.getInstance().getVehicleClassLibrary().getVehicleClasses());
+        VehicleClass newVehicleClass = vehicleClassFXObjectChooser.showChooseDialog();
+
+        if (newVehicleClass != null) {
+            editedGrid.setVehicleClass(newVehicleClass);
+            driverEditor.setVehicleClass(newVehicleClass);
+
+            for (Driver driver : editedGrid.getDrivers())
+                driver.liveryNameProperty().set(null);
+        }
     }
 
     /**

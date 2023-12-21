@@ -77,6 +77,7 @@ limitations under the License. -->
            <Menu mnemonicParsing="false" text="Tools">
                <MenuItem fx:id="massModifyItem" mnemonicParsing="false" text="Mass Modify"/>
                <MenuItem fx:id="customModifyItem" mnemonicParsing="false" text="Custom Mass Modify"/>
+               <MenuItem fx:id="switchVehicleClassItem" mnemonicParsing="false" text="Switch Vehicle Class"/>
            </Menu>
            <Menu mnemonicParsing="false" text="Settings">
                <MenuItem fx:id="configurationMenuItem" mnemonicParsing="false" text="Configuration"/>
