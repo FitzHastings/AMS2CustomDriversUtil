@@ -401,6 +401,14 @@
             <is_oval>false</is_oval>
             <is_rx>false</is_rx>
         </track>
+        <track name="Le Mans 24h" xml_name="Le_Mans_24h">
+            <is_oval>false</is_oval>
+            <is_rx>false</is_rx>
+        </track>
+        <track name="Le Mans Bugatti" xml_name="Le_Mans_bugatti">
+            <is_oval>false</is_oval>
+            <is_rx>false</is_rx>
+        </track>
         <track name="Londrina Short" xml_name="Londrina_short">
             <is_oval>false</is_oval>
             <is_rx>false</is_rx>

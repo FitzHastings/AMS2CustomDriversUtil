@@ -43,7 +43,7 @@ public class DDUtil {
     public static final String CLASSIC_GRID_GENERATOR_FXML_PATHNAME = "fxml/generator/ClassicGridGenerator.fxml";
     public static final String TABLE_GRID_GENERATOR_FXML_PATHNAME = "fxml/generator/TableGridGenerator.fxml";
     public static final String LIVERY_IMPORT_CONFIRM_FXML_PATHNAME = "fxml/LiveryImportConfirm.fxml";
-    public static final String TRACK_LIBRARY_DEFAULT_PATHNAME = "library/tracks/ams2_tracks_1.5.3.5.xml";
+    public static final String TRACK_LIBRARY_DEFAULT_PATHNAME = "library/tracks/ams2_tracks_1.5.5.0.xml";
     public static final String VEHICLE_CLASS_LIBRARY_DEFAULT_PATHNAME = "library/vehicles/ams2_vehicles_1.5.5.0.xml";
 
     public static final String MAIN_CSS_RESOURCE = "css/Eraconstas.css";
