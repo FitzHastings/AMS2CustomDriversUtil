@@ -59,7 +59,7 @@ public class CustomDriverUtilMain extends Application {
             LibraryManager.getInstance().importDriverLibrary(Configurator.getInstance().getConfiguration().getDriverLibraryPathname());
         }
 
-        primaryStage.setTitle("Custom Driver Utility V2.3.1");
+        primaryStage.setTitle("Custom Driver Utility V2.4.0");
         primaryStage.setMinWidth(880);
         primaryStage.setMinHeight(700);
         primaryStage.setHeight(700);
