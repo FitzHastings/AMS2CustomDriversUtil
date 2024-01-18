@@ -35,11 +35,15 @@ import java.io.File;
  */
 public class LiveryImportConfirmController implements StageController {
     /**
+     * Represents an in-game vehicle class.
+     * This class is fully annotated with JAXB for easy XML conversion.
+     */
+    private final VehicleClass vehicleClass;
+    /**
      * ListView for displaying the names of liveries.
      */
     @FXML
     private ListView<String> liveryNameListView;
-
     /**
      * Represents a cancel button in a JavaFX scene.
      * The cancel button is typically used to cancel or close a form or dialog.
@@ -47,14 +51,12 @@ public class LiveryImportConfirmController implements StageController {
      */
     @FXML
     private Button cancelButton;
-
     /**
      * Root Pane of the main screen. Is used to display everything inside the main window.
      * The main css style is applied to the rootPane.
      */
     @FXML
     private VBox rootPane;
-
     /**
      * A JavaFX TextField for entering a name.
      * <p>
@@ -63,26 +65,22 @@ public class LiveryImportConfirmController implements StageController {
      */
     @FXML
     private TextField nameTextField;
-
     /**
      * Performs the importAction on action.
      */
     @FXML
     private Button importButton;
-
     /**
      * Represents a Label that displays the number of liveries.
      */
     @FXML
     private Label nLiveriesLabel;
-
     /**
      * Represents a button used for displaying more options or information.
      * This button is used in the LiveryImportConfirmController class.
      */
     @FXML
     private Button moreButton;
-
     /**
      * The modForChoiceBox variable is a JavaFX ChoiceBox component that is used for selecting a VehicleClass object
      * representing a modded vehicle class. The ChoiceBox displays the available modded vehicle classes as options for
@@ -91,17 +89,10 @@ public class LiveryImportConfirmController implements StageController {
      */
     @FXML
     private ChoiceBox<VehicleClass> modForChoiceBox;
-
     /**
      * Represents the stage on which the controller is displayed.
      */
     private Stage stage;
-
-    /**
-     * Represents an in-game vehicle class.
-     * This class is fully annotated with JAXB for easy XML conversion.
-     */
-    private final VehicleClass vehicleClass;
 
     /**
      * Creates a new instance of

@@ -757,7 +757,7 @@ public class CustomDriverUtilController implements StageController {
      */
     private void switchVehicleClassAction() {
         FXObjectChooser<VehicleClass> vehicleClassFXObjectChooser = new FXObjectChooser<>();
-        TableColumn<VehicleClass, String> nameColumn =  new TableColumn<>();
+        TableColumn<VehicleClass, String> nameColumn = new TableColumn<>();
         nameColumn.setCellValueFactory(e -> e.getValue().nameProperty());
         vehicleClassFXObjectChooser.getTableView().getColumns().add(nameColumn);
         vehicleClassFXObjectChooser.setItems(LibraryManager.getInstance().getVehicleClassLibrary().getVehicleClasses());
