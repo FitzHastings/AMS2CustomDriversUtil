@@ -1,4 +1,4 @@
-// Copyright 2023 Prokhor Kalinin
+// Copyright 2023-2024 Prokhor Kalinin
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -59,11 +59,11 @@ public class CustomDriverUtilMain extends Application {
             LibraryManager.getInstance().importDriverLibrary(Configurator.getInstance().getConfiguration().getDriverLibraryPathname());
         }
 
-        primaryStage.setTitle("Custom Driver Utility V2.4.0");
+        primaryStage.setTitle("Custom Driver Utility V2.4.1");
         primaryStage.setMinWidth(880);
         primaryStage.setMinHeight(700);
         primaryStage.setHeight(700);
-        primaryStage.setWidth(1200);
+        primaryStage.setWidth(1250);
 
         primaryStage.getIcons().add(DDUtil.LARGE_ICON_IMAGE);
         primaryStage.getIcons().add(DDUtil.MAIN_ICON_IMAGE);

@@ -1,4 +1,4 @@
-// Copyright 2023 Prokhor Kalinin
+// Copyright 2023-2024 Prokhor Kalinin
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,6 +25,7 @@ import net.dragondelve.customdriversutil.util.Configurator;
 import net.dragondelve.customdriversutil.util.DDUtil;
 import net.dragondelve.customdriversutil.util.LibraryManager;
 
+import java.util.Collections;
 import java.util.NoSuchElementException;
 import java.util.logging.Level;
 
@@ -78,6 +79,10 @@ public class GridGenerator {
         int i = 0;
         Grid namesSource = null;
         boolean noNames = false;
+
+        //Randomizing Livery Order
+        Collections.shuffle(settings.getVehicleClass().getLiveryNames());
+
         if (settings.isUseNAMeS()) {
             namesSource = (new XMLGridImporter().importFromStream(CustomDriverUtilMain.class.getClassLoader().getResourceAsStream("NAMeS/" + settings.getVehicleClass().getXmlName() + ".xml")));
         }
@@ -111,7 +116,7 @@ public class GridGenerator {
             }
 
             if (generator != null) {
-                driver.qualifyingSkillProperty().set(generator.nextValue());
+                    driver.qualifyingSkillProperty().set(generator.nextValue());
                 if (settings.isBindQualiAndRaceSkills())
                     driver.raceSkillProperty().set(Math.max(driver.getQualifyingSkill() - settings.getBoundSkillsGap(), 0.0));
                 else

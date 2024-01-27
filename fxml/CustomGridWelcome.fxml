@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- Copyright 2023 Prokhor Kalinin
+<!-- Copyright 2023-2024 Prokhor Kalinin
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -52,7 +52,7 @@ limitations under the License. -->
    </VBox>
    <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="48.0" prefWidth="620.0"
           styleClass="border-label"
-          text="version: 2.4.0 for AMS2 1.5.5.x, Logo and Icons by THK84, NAMeS Files by John B. Ellis, Used with permission"
+          text="version: 2.4.1 for AMS2 1.5.5.x, Logo and Icons by THK84, NAMeS Files by John B. Ellis, Used with permission"
           textAlignment="CENTER"/>
    <ToolBar>
       <Label prefHeight="25.0" prefWidth="182.0" styleClass="prompt-label" text="New AMS 2 Version Out? "/>
