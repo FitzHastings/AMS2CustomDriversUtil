@@ -28,7 +28,7 @@ public class NamesInterpreter {
             }
         }
 
-        LibraryManager.getInstance().exportVehicleClassLibrary("ams2_vehicles_1.5.5.0.xml");
+        LibraryManager.getInstance().exportVehicleClassLibrary("ams2_vehicles_1.5.6.3.xml");
     }
 
     private static void updateVehicleClass(VehicleClass vehicleClass, File file) {

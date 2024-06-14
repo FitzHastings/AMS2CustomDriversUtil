@@ -35,11 +35,11 @@
                 <livery>Porsche 911 GT3 Cup 4.0 #2</livery>
                 <livery>Porsche 911 GT3 Cup 4.0 #4</livery>
                 <livery>Porsche 911 GT3 Cup 4.0 #14</livery>
+                <livery>Porsche 911 GT3 Cup 4.0 #20</livery>
                 <livery>Porsche 911 GT3 Cup 4.0 #29</livery>
+                <livery>Porsche 911 GT3 Cup 4.0 #34</livery>
                 <livery>Porsche 911 GT3 Cup 4.0 #41</livery>
                 <livery>Porsche 911 GT3 Cup 4.0 #70</livery>
-                <livery>Porsche 911 GT3 Cup 4.0 #34</livery>
-                <livery>Porsche 911 GT3 Cup 4.0 #20</livery>
                 <livery>Porsche 911 GT3 Cup 4.0 #94</livery>
                 <livery>Porsche 911 GT3 Cup 3.8 #911</livery>
                 <livery>Porsche 911 GT3 Cup 3.8 #00</livery>
@@ -884,30 +884,26 @@
         </vehicle_class>
         <vehicle_class name="F-Ultimate Gen 2" xml_name="F-Ultimate_Gen2">
             <liveries>
-                <livery>Didcot Racing #1</livery>
-                <livery>Didcot Racing #6</livery>
+                <livery>energyX Racing #1</livery>
+                <livery>energyX Racing #6</livery>
                 <livery>Team Virystone #2</livery>
                 <livery>Team Virystone #15</livery>
                 <livery>Bond G.P. #3</livery>
                 <livery>Bond G.P. #5</livery>
                 <livery>DNA-US #4</livery>
                 <livery>DNA-US #7</livery>
-                <livery>Full Force Racing #8</livery>
-                <livery>Full Force Racing #10</livery>
                 <livery>Starward G.P. #9</livery>
                 <livery>Starward G.P. #18</livery>
-                <livery>Scuderia Milano #17</livery>
-                <livery>Scuderia Milano #28</livery>
+                <livery>Zir-Win Motorsport #17</livery>
+                <livery>Zir-Win Motorsport #28</livery>
                 <livery>McLean G.P. #22</livery>
                 <livery>McLean G.P. #32</livery>
-                <livery>energyX Racing #24</livery>
-                <livery>energyX Racing #51</livery>
+                <livery>Didcot Racing #24</livery>
+                <livery>Didcot Racing #51</livery>
                 <livery>Scuderia Forza #45</livery>
                 <livery>Scuderia Forza #72</livery>
                 <livery>energyX Faenza #60</livery>
                 <livery>energyX Faenza #98</livery>
-                <livery>Strike G.P. #63</livery>
-                <livery>Strike G.P. #85</livery>
             </liveries>
             <is_modded>false</is_modded>
             <vehicles/>
@@ -953,8 +949,8 @@
                 <livery>Lola T98 Ford-Cosworth #88</livery>
                 <livery>Reynard 98i Ford-Cosworth #7</livery>
                 <livery>Reynard 98i Ford-Cosworth #19</livery>
-                <livery>Reynard 98i Ford-Cosworth #20</livery>
                 <livery>Reynard 98i Ford-Cosworth #21</livery>
+                <livery>Reynard 98i Ford-Cosworth #20</livery>
                 <livery>Reynard 98i Ford-Cosworth #40</livery>
                 <livery>Reynard 98i Ford-Cosworth #41</livery>
                 <livery>Reynard 98i Honda #1</livery>
@@ -969,10 +965,10 @@
                 <livery>Reynard 98i Toyota #24</livery>
                 <livery>Reynard 98i Toyota #25</livery>
                 <livery>Reynard 98i Toyota #36</livery>
-                <livery>Swift 009c Ford-Cosworth #00</livery>
                 <livery>Swift 009c Ford-Cosworth #6</livery>
-                <livery>Swift 009c Ford-Cosworth #10</livery>
                 <livery>Swift 009c Ford-Cosworth #11</livery>
+                <livery>Swift 009c Ford-Cosworth #00</livery>
+                <livery>Swift 009c Ford-Cosworth #10</livery>
             </liveries>
             <is_modded>false</is_modded>
             <vehicles/>
@@ -996,10 +992,11 @@
                 <livery>Reynard 2Ki Ford-Cosworth #8</livery>
                 <livery>Reynard 2Ki Ford-Cosworth #22</livery>
                 <livery>Reynard 2Ki Ford-Cosworth #77</livery>
-                <livery>Reynard 2Ki Honda #26</livery>
-                <livery>Reynard 2Ki Honda #27</livery>
+                <livery>Reynard 2Ki Honda #2</livery>
                 <livery>Reynard 2Ki Honda #3</livery>
                 <livery>Reynard 2Ki Honda #4</livery>
+                <livery>Reynard 2Ki Honda #26</livery>
+                <livery>Reynard 2Ki Honda #27</livery>
                 <livery>Reynard 2Ki Mercedes-Benz #18</livery>
                 <livery>Reynard 2Ki Mercedes-Benz #19</livery>
                 <livery>Reynard 2Ki Mercedes-Benz #20</livery>
@@ -1294,17 +1291,15 @@
                 <livery>AMG Mercedes Berlin2000 #5</livery>
                 <livery>AMG Mercedes Berlin2000 #6</livery>
                 <livery>Team Midas Racing #10</livery>
-                <livery>Team Midas Racing #11</livery>
+                <livery>Team Midas Racing #12</livery>
                 <livery>Green Spartan #26</livery>
                 <livery>Green Spartan #27</livery>
                 <livery>ALPS Motorsport #37</livery>
                 <livery>ALPS Motorsport #38</livery>
                 <livery>Dietrich Autosports #48</livery>
                 <livery>Dietrich Autosports #49</livery>
-                <livery>Vidtak/Deutsch Kom Racing #51</livery>
-                <livery>Vidtak/Deutsch Kom Racing #52</livery>
-                <livery>BMW Motorsport #1</livery>
-                <livery>BMW Motorsport #2</livery>
+                <livery>BMW Motorsport #11</livery>
+                <livery>BMW Motorsport #22</livery>
                 <livery>Team DT Racing #15</livery>
                 <livery>Team DT Racing #16</livery>
                 <livery>Schneider Sports #20</livery>
@@ -1313,8 +1308,6 @@
                 <livery>BKAF Autosports #34</livery>
                 <livery>WeiBbier/Petrocelli Racing #45</livery>
                 <livery>WeiBbier/Petrocelli Racing #46</livery>
-                <livery>FR ZeeZitrone #57</livery>
-                <livery>FR ZeeZitrone #58</livery>
             </liveries>
             <is_modded>false</is_modded>
             <vehicles/>
@@ -1339,11 +1332,11 @@
                 <livery>Chevrolet Corvette GTP #59</livery>
                 <livery>Chevrolet Corvette GTP #84</livery>
                 <livery>Chevrolet Corvette GTP #88</livery>
+                <livery>Nissan R89C #23</livery>
+                <livery>Nissan R89C #24</livery>
                 <livery>Nissan R89C #00</livery>
                 <livery>Nissan R89C #17</livery>
                 <livery>Nissan R89C #22</livery>
-                <livery>Nissan R89C #23</livery>
-                <livery>Nissan R89C #24</livery>
                 <livery>Nissan R89C #36</livery>
                 <livery>Nissan R89C #82</livery>
                 <livery>Nissan R89C #83</livery>
@@ -1429,13 +1422,13 @@
                 <livery>Mercedes-AMG GT3 #81</livery>
                 <livery>Mercedes-AMG GT3 #85</livery>
                 <livery>Mercedes-AMG GT3 #99</livery>
-                <livery>Nissan Nismo GT-R GT3 #211</livery>
-                <livery>Nissan Nismo GT-R GT3 #212</livery>
                 <livery>Nissan Nismo GT-R GT3 #201</livery>
                 <livery>Nissan Nismo GT-R GT3 #202</livery>
                 <livery>Nissan Nismo GT-R GT3 #205</livery>
                 <livery>Nissan Nismo GT-R GT3 #207</livery>
                 <livery>Nissan Nismo GT-R GT3 #209</livery>
+                <livery>Nissan Nismo GT-R GT3 #211</livery>
+                <livery>Nissan Nismo GT-R GT3 #212</livery>
                 <livery>BMW M6 GT3 #2</livery>
                 <livery>BMW M6 GT3 #11</livery>
                 <livery>BMW M6 GT3 #61</livery>
@@ -1448,12 +1441,12 @@
         </vehicle_class>
         <vehicle_class name="GT3 Gen 2" xml_name="GT3_Gen2">
             <liveries>
+                <livery>McLaren 720S GT3 Evo #76</livery>
                 <livery>McLaren 720S GT3 Evo #00</livery>
                 <livery>McLaren 720S GT3 Evo #25</livery>
                 <livery>McLaren 720S GT3 Evo #32</livery>
                 <livery>McLaren 720S GT3 Evo #41</livery>
                 <livery>McLaren 720S GT3 Evo #59</livery>
-                <livery>McLaren 720S GT3 Evo #76</livery>
                 <livery>Porsche 992 GT3 R #992</livery>
                 <livery>Porsche 992 GT3 R #03</livery>
                 <livery>Porsche 992 GT3 R #14</livery>
@@ -1466,12 +1459,12 @@
                 <livery>Mercedes-AMG GT3 Evo #69</livery>
                 <livery>Mercedes-AMG GT3 Evo #70</livery>
                 <livery>Mercedes-AMG GT3 Evo #71</livery>
+                <livery>BMW M4 GT3 #55</livery>
                 <livery>BMW M4 GT3 #07</livery>
                 <livery>BMW M4 GT3 #10</livery>
                 <livery>BMW M4 GT3 #12</livery>
                 <livery>BMW M4 GT3 #13</livery>
                 <livery>BMW M4 GT3 #28</livery>
-                <livery>BMW M4 GT3 #55</livery>
             </liveries>
             <is_modded>false</is_modded>
             <vehicles/>
@@ -1506,12 +1499,12 @@
                 <livery>Ginetta G55 GT4 #19</livery>
                 <livery>Ginetta G55 GT4 #79</livery>
                 <livery>Ginetta G55 GT4 #117</livery>
+                <livery>BMW M4 GT4 #1</livery>
                 <livery>BMW M4 GT4 #7</livery>
                 <livery>BMW M4 GT4 #8</livery>
                 <livery>BMW M4 GT4 #9</livery>
                 <livery>BMW M4 GT4 #10</livery>
                 <livery>BMW M4 GT4 #11</livery>
-                <livery>BMW M4 GT4 #1</livery>
             </liveries>
             <is_modded>false</is_modded>
             <vehicles/>
@@ -1676,6 +1669,39 @@
                 <livery>McLaren Senna #10</livery>
             </liveries>
             <is_modded>false</is_modded>
+            <vehicles/>
+        </vehicle_class>
+        <vehicle_class name="Indycar 2023" xml_name="Indycar_2023">
+            <liveries>
+                <livery>Team Penske #2</livery>
+                <livery>Team Penske #3</livery>
+                <livery>Arrow McLaren #5</livery>
+                <livery>Arrow McLaren #6</livery>
+                <livery>Arrow McLaren #7</livery>
+                <livery>Chip Ganassi Racing #8</livery>
+                <livery>Chip Ganassi Racing #9</livery>
+                <livery>Chip Ganassi Racing #10</livery>
+                <livery>Chip Ganassi Racing #11</livery>
+                <livery>Team Penske #12</livery>
+                <livery>A.J. Foyt Enterprises #14</livery>
+                <livery>Rahal Letterman Lanigan Racing #15</livery>
+                <livery>Dale Coyne Racing #18</livery>
+                <livery>Ed Carpenter Racing #20</livery>
+                <livery>Ed Carpenter Racing #21</livery>
+                <livery>Andretti Autosport #26</livery>
+                <livery>Andretti Autosport #27</livery>
+                <livery>Andretti Autosport #28</livery>
+                <livery>Andretti Autosport #29</livery>
+                <livery>Rahal Letterman Lanigan Racing #30</livery>
+                <livery>Rahal Letterman Lanigan Racing #45</livery>
+                <livery>Dale Coyne Racing #51</livery>
+                <livery>A.J. Foyt Enterprises #55</livery>
+                <livery>Meyer Shank Racing #60</livery>
+                <livery>Juncos Hollinger Racing #77</livery>
+                <livery>Juncos Hollinger Racing #78</livery>
+                <livery>Meyer Shank Racing #06</livery>
+            </liveries>
+            <is_modded>true</is_modded>
             <vehicles/>
         </vehicle_class>
         <vehicle_class name="Kart 125cc" xml_name="Kart125cc">
@@ -2033,13 +2059,9 @@
                 <livery>Laponi Racing #73</livery>
                 <livery>Kia Power Imports Racing #80</livery>
                 <livery>Ginetta G58 #1</livery>
-                <livery>Ginetta G58 #111</livery>
-                <livery>Ginetta G58 #3</livery>
-                <livery>Ginetta G58 #4</livery>
                 <livery>Ginetta G58 #20</livery>
                 <livery>Ginetta G58 #21</livery>
                 <livery>Ginetta G58 #22</livery>
-                <livery>Ginetta G58 #40</livery>
                 <livery>Ginetta G58 #53</livery>
                 <livery>Ginetta G58 #54</livery>
             </liveries>
@@ -2107,13 +2129,13 @@
                 <livery>MetalMoro MRX Duratec Turbo P3 #82</livery>
                 <livery>MetalMoro MRX Duratec Turbo P3 #96</livery>
                 <livery>MetalMoro MRX Honda P3 #07</livery>
+                <livery>MetalMoro MRX Honda P3 #17</livery>
+                <livery>MetalMoro MRX Honda P3 #36</livery>
+                <livery>MetalMoro MRX Honda P3 #37</livery>
                 <livery>MetalMoro MRX Honda P3 #65</livery>
                 <livery>MetalMoro MRX Honda P3 #72</livery>
                 <livery>MetalMoro MRX Honda P3 #93</livery>
                 <livery>MetalMoro MRX Honda P3 #94</livery>
-                <livery>MetalMoro MRX Honda P3 #36</livery>
-                <livery>MetalMoro MRX Honda P3 #37</livery>
-                <livery>MetalMoro MRX Honda P3 #17</livery>
                 <livery>Roco 001 #46</livery>
                 <livery>Roco 001 #21</livery>
                 <livery>Roco 001 #69</livery>
@@ -2205,8 +2227,8 @@
                 <livery>Citroen DS3 RX #18</livery>
                 <livery>Citroen DS3 RX #303</livery>
                 <livery>Citroen DS3 RX #444</livery>
-                <livery>Mini R60 RX #88</livery>
                 <livery>Mini R60 RX #59</livery>
+                <livery>Mini R60 RX #88</livery>
                 <livery>Mini R60 RX #725</livery>
                 <livery>Mini R60 RX #931</livery>
                 <livery>Mitsubishi Lancer RX #56</livery>
@@ -2462,6 +2484,40 @@
             <is_modded>false</is_modded>
             <vehicles/>
         </vehicle_class>
+        <vehicle_class name="StockCarV8 2024" xml_name="StockCarV8_2024">
+            <liveries>
+                <livery>RCM Motorsport - R.Zonta #10</livery>
+                <livery>RCM Motorsport - B.Baptista #44</livery>
+                <livery>Ipiranga Racing - T.Camilo #21</livery>
+                <livery>Ipiranga Racing - C.Ramos #30</livery>
+                <livery>Crown Racing - E.Elias #28</livery>
+                <livery>Crown Racing - F.Baptista #121</livery>
+                <livery>Full Time Bassani - A.Leist #81</livery>
+                <livery>Full Time Bassani - G.Petecof #101</livery>
+                <livery>MOBIL ALE - E.Barrichello #91</livery>
+                <livery>MOBIL ALE - R.Barrichello #111</livery>
+                <livery>KTF Racing - C.Bueno #0</livery>
+                <livery>KTF Sports - Z.Muggiati #38</livery>
+                <livery>KTF Sports - G.Salas #85</livery>
+                <livery>Pole Motorsport - J.Campos #4</livery>
+                <livery>Pole Motorsport - A.Abreu #51</livery>
+                <livery>TMG Racing - R.Suzuki #8</livery>
+                <livery>TMG Racing - F.Massa #19</livery>
+                <livery>Cavaleiro Sports - G.Di Mauro #11</livery>
+                <livery>Cavaleiro Sports - N.Piquet Jr. #33</livery>
+                <livery>A.Mattheis Vogel - L.Foresti #12</livery>
+                <livery>A.Mattheis Vogel - G.Casagrande #83</livery>
+                <livery>Blau Motorsport - A.Khodair #18</livery>
+                <livery>Blau Motorsport - F.Fraga #88</livery>
+                <livery>Eurofarma RC - D.Serra #29</livery>
+                <livery>Eurofarma RC - R.Mauricio #90</livery>
+                <livery>ASR - R.Teixeira #37</livery>
+                <livery>Wokin Garra Racing - G.Robe #35</livery>
+                <livery>Wokin Garra Racing - L.Kohl #95</livery>
+            </liveries>
+            <is_modded>false</is_modded>
+            <vehicles/>
+        </vehicle_class>
         <vehicle_class name="Street" xml_name="Street">
             <liveries>
                 <livery>Chevrolet Camaro SS #01</livery>
@@ -2490,14 +2546,20 @@
         </vehicle_class>
         <vehicle_class name="Supercars" xml_name="Supercars">
             <liveries>
-                <livery>Racing Yellow</livery>
+                <livery>Arctic White</livery>
                 <livery>Black</livery>
-                <livery>Artic White</livery>
                 <livery>Torch Red</livery>
-                <livery>Blade Silver Metallic</livery>
-                <livery>Shark Grey Metallic</livery>
-                <livery>Laguna Blue Metallic</livery>
-                <livery>Long Beach Red Metallic</livery>
+                <livery>Silver Flare Metallic</livery>
+                <livery>Cacti Green</livery>
+                <livery>Ceramic Matrix Gray Metallic</livery>
+                <livery>Hypersonic Gray Metallic</livery>
+                <livery>Carbon Flash Metallic</livery>
+                <livery>Riptide Blue Metallic</livery>
+                <livery>Rapid Blue</livery>
+                <livery>Accelerate Yellow Metallic</livery>
+                <livery>Amplify Orange Tintcoat</livery>
+                <livery>Red Mist Metallic Tintcoat</livery>
+                <livery>Sea Wolf Gray Tricoat</livery>
                 <livery>McLaren F1 LM #01</livery>
                 <livery>McLaren F1 LM #02</livery>
                 <livery>McLaren F1 LM #03</livery>

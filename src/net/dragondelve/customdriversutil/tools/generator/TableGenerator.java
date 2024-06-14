@@ -92,11 +92,13 @@ public class TableGenerator implements ValueGenerator {
         double weight = (current.getPoints() - minPoints) / (double) pointDistance;
         if (isRaceSkill) {
             isRaceSkill = false;
-            return floor + range * weight;
+            double result = floor + range * weight;
+            return Double.isNaN(result) ? 0.0 : result;
         } else {
             double noiseValue = Math.random() * noise;
             double rangeValue = weight * (1 - noise);
-            return (noiseValue + rangeValue) * range + floor;
+            double result = (noiseValue + rangeValue) * range + floor;
+            return Double.isNaN(result) ? 0.0 : result;
         }
     }
 
